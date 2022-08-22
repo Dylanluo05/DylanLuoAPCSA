@@ -4,7 +4,7 @@
 - toc: true
 - layout: post
 - description: My first Markdown blog post for AP CSA
-- categories: [markdown]
+- categories: [jupyter]
 - title: My First Markdown Post
 - author: Dylan Luo
 - show_tags: true
