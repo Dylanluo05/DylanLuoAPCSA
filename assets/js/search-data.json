@@ -2,10 +2,10 @@
   
     
         "post0": {
-            "title": "Title",
-            "content": ". toc: true layout: post description: My first blog post for AP CSA categories: [markdown] title: My First Post author: Dylan Luo show_tags: true . comments: true . first = &quot;Hello World!&quot; print(first) . Hello World! . Jupyter Notebook seems to be working fine for Python . second = &quot;Hey, I&#39;m Dylan&quot; print(second) . Hey, I&#39;m Dylan .",
-            "url": "https://dylanluo05.github.io/DylanLuoAPCSA/2022/08/21/My-First-Python.html",
-            "relUrl": "/2022/08/21/My-First-Python.html",
+            "title": "My First Python Post",
+            "content": "first = &quot;Hello World!&quot; print(first) . Hello World! . Jupyter Notebook seems to be working fine for Python . second = &quot;Hey, I&#39;m Dylan&quot; print(second) . Hey, I&#39;m Dylan .",
+            "url": "https://dylanluo05.github.io/DylanLuoAPCSA/jupyter/2022/08/21/My-First-Python.html",
+            "relUrl": "/jupyter/2022/08/21/My-First-Python.html",
             "date": " • Aug 21, 2022"
         }
         
