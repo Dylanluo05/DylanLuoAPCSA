@@ -25,7 +25,7 @@
     
         ,"post2": {
             "title": "Title",
-            "content": "String first = &quot;Hello World!&quot;; System.out.println(first); . Hello World . Jupyter Notebook seems to be working fine for Java . String second = &quot;Hey, I&#39;m Dylan&quot;; System.out.println(second); . Hey, I&#39;m Dylan .",
+            "content": ". categories: [markdown] title: My First Post . author: Dylan Luo . String first = &quot;Hello World!&quot;; System.out.println(first); . Hello World . Jupyter Notebook seems to be working fine for Java . String second = &quot;Hey, I&#39;m Dylan&quot;; System.out.println(second); . Hey, I&#39;m Dylan .",
             "url": "https://dylanluo05.github.io/DylanLuoAPCSA/2022/08/21/My-First-Java.html",
             "relUrl": "/2022/08/21/My-First-Java.html",
             "date": " • Aug 21, 2022"
