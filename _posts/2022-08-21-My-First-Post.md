@@ -8,5 +8,3 @@ author: Dylan Luo
 show_tags: true
 comments: true
 ---
-
-<h1>Hello World</h1>
