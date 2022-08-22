@@ -14,9 +14,9 @@
     
         ,"post1": {
             "title": "My First Markdown Post",
-            "content": "Markdown Post . Markdown Post . toc: true | layout: post | description: My first Markdown blog post for AP CSA | categories: [jupyter] | title: My First Markdown Post | author: Dylan Luo | show_tags: true | comments: true | . Dylan Luo&#39;s first Markdown blog post .",
-            "url": "https://dylanluo05.github.io/DylanLuoAPCSA/2022/08/21/My-First-Markdown-Post.html",
-            "relUrl": "/2022/08/21/My-First-Markdown-Post.html",
+            "content": "Dylan Luo&#39;s first Markdown blog post .",
+            "url": "https://dylanluo05.github.io/DylanLuoAPCSA/markdown/2022/08/21/My-First-Markdown-Post.html",
+            "relUrl": "/markdown/2022/08/21/My-First-Markdown-Post.html",
             "date": " • Aug 21, 2022"
         }
         
