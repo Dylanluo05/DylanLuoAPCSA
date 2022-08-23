@@ -14,7 +14,7 @@
     
         ,"post1": {
             "title": "My First Markdown Post",
-            "content": "AP CSA First Markdown Post . Hey my name is Dylan Luo, and I am ready to take on the AP CSA class and its very many challenges! .",
+            "content": "AP CSA First Markdown Post . Hey my name is Dylan Luo, and I am ready to take on the AP CSA class and its very many challenges! . Example Code Embed . &lt;h1 id = &quot;a&quot;&gt;&lt;/h1&gt; var A = document.getElementById(&quot;a&quot;); A.innerHTML = &quot;Hello World!&quot; .",
             "url": "https://dylanluo05.github.io/DylanLuoAPCSA/markdown/2022/08/21/My-First-Markdown-Post.html",
             "relUrl": "/markdown/2022/08/21/My-First-Markdown-Post.html",
             "date": " • Aug 21, 2022"
