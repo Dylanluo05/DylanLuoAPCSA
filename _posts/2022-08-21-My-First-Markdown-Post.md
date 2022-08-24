@@ -1,12 +1,17 @@
 ---
 toc: true
 layout: post
-description: My first blog post for AP CSA
+description: My first Markdown blog post for AP CSA
 categories: [markdown]
-title: My First Post
-author: Dylan Luo
-show_tags: true
-comments: true
+title: My First Markdown Post
 ---
 
-<h1>Dylan Luo's first Markdown blog post<h1>
+# AP CSA First Markdown Post #
+Hey my name is Dylan Luo, and I am ready to take on the AP CSA class and its very many challenges!
+
+### Example Code Embed ###
+```
+<h1 id = "a"></h1>
+var A = document.getElementById("a");
+A.innerHTML = "Hello World!"
+```
