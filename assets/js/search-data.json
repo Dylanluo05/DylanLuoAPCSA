@@ -82,9 +82,6 @@
   
 
   
-  
-
-  
 
   
   
@@ -92,7 +89,12 @@
   
 
   
-      ,"page6": {
+  
+
+  
+
+  
+      ,"page7": {
           "title": "About Me",
           "content": "AP CSA Vocab Terms: .",
           "url": "https://dylanluo05.github.io/DylanLuoAPCSA/vocab/",
@@ -112,7 +114,7 @@
   
 
   
-      ,"page10": {
+      ,"page11": {
           "title": "",
           "content": "Sitemap: {{ “sitemap.xml” | absolute_url }} | .",
           "url": "https://dylanluo05.github.io/DylanLuoAPCSA/robots.txt",
