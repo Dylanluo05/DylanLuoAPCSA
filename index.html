@@ -20,12 +20,12 @@ var y = document.getElementById("y");
 y.innerHTML = "Python is awesome!";
 var z = document.getElementById("z");
 z.innerHTML = "Java is awesome!"
-# Basic use of the DOM
+/* Basic use of the DOM */
 ``` 
 
 ### Python Example Basic Code:
 ```python
-var userInput = str(input("What is your favorite NBA basketball team?"))
+var userInput = str(input("What is your favorite NBA basketball team? "))
 if (userInput == "Chicago Bulls") {
     print("Your favorite basketball team is going to win the NBA championships this year")
 } else {
@@ -35,7 +35,7 @@ if (userInput == "Chicago Bulls") {
 
 ### Database Example Basic Code:
 ```javascript
-# Local Storage
+/* Local Storage */
 var array = ["A", "B", "C"];
 localStorage.setItem("arrayKey", JSON.stringify(array));
 var arrayRetrieve = JSON.parse(localStorage.getItem("arrayKey"));
@@ -46,7 +46,7 @@ for (var i = 0; i < arrayRetrieve.length; i++) {
     databaseRetrieve.innerHTML += arrayRetrieve[i];
 }
 
-# Firebase
+/* Firebase */
 firebase.initialize({
     projectName: "My Project"
 });
