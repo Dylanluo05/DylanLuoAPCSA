@@ -13,10 +13,10 @@
   
     
         ,"post1": {
-            "title": "Title",
+            "title": "Week 1 - Java Primitives Post",
             "content": "import java.util.Scanner; public class GPACalculator { public static void main(String[] args) { System.out.println(&quot;Trimester GPA Calculator&quot;); Scanner userInput = new Scanner(System.in); int sum = 0; System.out.println(&quot;Enter the number of classes this trimester or the most recent trimester with final grades:&quot;); int classes = userInput.nextInt(); System.out.println(classes + &quot; classes&quot;); System.out.println(&quot;Enter Class Grades:&quot;); for (int i = 0; i &lt;= classes; i++) { int gpa = 0; String grade = userInput.nextLine(); System.out.println(grade); if (grade.equals(&quot;A&quot;)) { gpa = 4; } else if (grade.equals(&quot;B&quot;)) { gpa = 3; } else if (grade.equals(&quot;C&quot;)) { gpa = 2; } else if (grade.equals(&quot;D&quot;)) { gpa = 1; } else if (grade.equals(&quot;F&quot;)) { gpa = 0; } sum = sum + gpa; } float gpaWhole = (float) sum/(float) classes; System.out.println(&quot;Your Overall GPA: &quot; + gpaWhole); } } GPACalculator.main(null); . Trimester GPA Calculator Enter the number of classes this trimester or the most recent trimester with final grades: 8 classes Enter Class Grades: A A B A A B A A Your Overall GPA: 3.75 .",
-            "url": "https://dylanluo05.github.io/DylanLuoAPCSA/2022/08/27/Java-Primitives.html",
-            "relUrl": "/2022/08/27/Java-Primitives.html",
+            "url": "https://dylanluo05.github.io/DylanLuoAPCSA/jupyter/2022/08/27/Java-Primitives.html",
+            "relUrl": "/jupyter/2022/08/27/Java-Primitives.html",
             "date": " • Aug 27, 2022"
         }
         
