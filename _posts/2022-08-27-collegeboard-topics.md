@@ -25,6 +25,13 @@
         <hr>
         <h2>Unit 1: Primitive Types</h2>
         <hr>
+        <h3>Vocab:</h3>
+        <ol>
+            <li>Integer: Written as int in Java</li>
+            <li>Double: Written as double in Java</li>
+            <li>Boolean: Written as boolean in Java</li>
+            <li>String: Written as String in Java</li>
+        </ol>
         <h2>Unit 2: Using Objects</h2>
         <hr>
         <h2>Unit 3: Boolean Expressions and If Statements</h2>
