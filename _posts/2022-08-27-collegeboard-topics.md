@@ -25,13 +25,19 @@
         <hr>
         <h2>Unit 1: Primitive Types</h2>
         <hr>
-        <h3>Vocab:</h3>
+        <p>In Java, there are primitive and non-primitive data types. Some primitive data types include int, double and boolean, and some non-primitive data types include String and array.</p>
+        <h3>Data Types:</h3>
         <ol>
-            <li>Integer: Written as int in Java</li>
-            <li>Double: Written as double in Java</li>
-            <li>Boolean: Written as boolean in Java</li>
-            <li>String: Written as String in Java</li>
+            <li>int: Used for all integers.</li>
+            <li>double: Used for numbers with decimals.</li>
+            <li>boolean: Used for all boolean values, which are usually two return values that typically vary between true or false.<li>
+            <li>String: Used for all text values.</li>
         </ol>
+        <h3>Java Input:</h3>
+        <p>"static" or "hard coded" programs typically when all of the website information is displayed by default. There are no instances of user input in these types of programs.</p>
+        <p>To increase user interaction, having user inputs is important</p>
+        <p>In Java, Scanner is the utility class used for console user input</p>
+        <p>All programming has the means of formatting and combining data. An example of this is shown through concatenation (e.g. "Hello," + " World!" = "Hello, World!". The "+" symbol combined the two strings).</p>
         <h2>Unit 2: Using Objects</h2>
         <hr>
         <h2>Unit 3: Boolean Expressions and If Statements</h2>
