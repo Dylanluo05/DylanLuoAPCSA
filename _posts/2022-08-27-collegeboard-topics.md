@@ -40,6 +40,22 @@
         <p>All programming has the means of formatting and combining data. An example of this is shown through concatenation (e.g. "Hello," + " World!" = "Hello, World!". The "+" symbol combined the two strings).</p>
         <h2>Unit 2: Using Objects</h2>
         <hr>
+        <p>The relationship between a class and an object is that a class is essentially a template for an object, and an object is an instance of a class.</p>
+        <h3>Other College Board Topics related to this unit:</h3>
+        <ol>
+            <li>A 2D array can be used to store colors.</li>
+            <li>A control structure can be used to process menu selections. A switch can be used to run code that performs the related action of a selection.</li>
+            <li>A 1D array can be used to hold a menu.</li>
+            <li>A control structure such as if-else if-else can be used to process menu selections by running code that performs the related action of a selection.</li>
+            <li>Class inheritance.</li>
+            <li>Conditional statements, while loops, and boolean expressions.</li>
+        </ol>
+        <p>Some Java imports are designated toward allowing user input and console output in the terminal.</p>
+        <p>The Scanner class makes an object to collect inputs / menu selections from users</p>
+        <p>The System class can be used to call static methods like System.out.print() and System.out.println() to output in the console.</p>
+        <p>The Math class can be used to call the static method Math.random() to generate a random number within a specified range.</p>
+        <p>Objects are often intended to encapsulate Frontend, Backend, Web Site control flow, Database CRUD Operations, and many more.</p>
+        <p>With Swing and AWT imports, Java has the ability to provide a Graphical User Interface (GUI) on the desktop.</p>
         <h2>Unit 3: Boolean Expressions and If Statements</h2>
         <hr>
         <h2>Unit 4: Iteration</h2>
