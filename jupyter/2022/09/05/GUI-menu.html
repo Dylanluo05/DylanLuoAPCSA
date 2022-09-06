@@ -4,21 +4,22 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Title | fastpages</title>
+<title>Week 1 - Java Objects Post | fastpages</title>
 <meta name="generator" content="Jekyll v4.1.1" />
-<meta property="og:title" content="Title" />
+<meta property="og:title" content="Week 1 - Java Objects Post" />
+<meta name="author" content="Dylan Luo" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="An easy to use blogging platform with support for Jupyter Notebooks." />
-<meta property="og:description" content="An easy to use blogging platform with support for Jupyter Notebooks." />
-<link rel="canonical" href="https://dylanluo05.github.io/DylanLuoAPCSA/2022/09/05/GUI-menu.html" />
-<meta property="og:url" content="https://dylanluo05.github.io/DylanLuoAPCSA/2022/09/05/GUI-menu.html" />
+<meta name="description" content="Blog post demonstrating Java objects for AP CSA" />
+<meta property="og:description" content="Blog post demonstrating Java objects for AP CSA" />
+<link rel="canonical" href="https://dylanluo05.github.io/DylanLuoAPCSA/jupyter/2022/09/05/GUI-menu.html" />
+<meta property="og:url" content="https://dylanluo05.github.io/DylanLuoAPCSA/jupyter/2022/09/05/GUI-menu.html" />
 <meta property="og:site_name" content="fastpages" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2022-09-05T00:00:00-05:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Title" />
+<meta property="twitter:title" content="Week 1 - Java Objects Post" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-09-05T00:00:00-05:00","datePublished":"2022-09-05T00:00:00-05:00","description":"An easy to use blogging platform with support for Jupyter Notebooks.","headline":"Title","mainEntityOfPage":{"@type":"WebPage","@id":"https://dylanluo05.github.io/DylanLuoAPCSA/2022/09/05/GUI-menu.html"},"url":"https://dylanluo05.github.io/DylanLuoAPCSA/2022/09/05/GUI-menu.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Dylan Luo"},"dateModified":"2022-09-05T00:00:00-05:00","datePublished":"2022-09-05T00:00:00-05:00","description":"Blog post demonstrating Java objects for AP CSA","headline":"Week 1 - Java Objects Post","mainEntityOfPage":{"@type":"WebPage","@id":"https://dylanluo05.github.io/DylanLuoAPCSA/jupyter/2022/09/05/GUI-menu.html"},"url":"https://dylanluo05.github.io/DylanLuoAPCSA/jupyter/2022/09/05/GUI-menu.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/DylanLuoAPCSA/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://dylanluo05.github.io/DylanLuoAPCSA/feed.xml" title="fastpages" /><link rel="shortcut icon" type="image/x-icon" href="/DylanLuoAPCSA/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
@@ -73,9 +74,11 @@ window.onload = wrap_img;
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Title</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-09-05T00:00:00-05:00" itemprop="datePublished">
+    <h1 class="post-title p-name" itemprop="name headline">Week 1 - Java Objects Post</h1><p class="page-description">Blog post demonstrating Java objects for AP CSA</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-09-05T00:00:00-05:00" itemprop="datePublished">
         Sep 5, 2022
-      </time>
+      </time>• 
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="p-author h-card" itemprop="name">Dylan Luo</span></span>
        • <span class="read-time" title="Estimated read time">
     
     
@@ -83,6 +86,13 @@ window.onload = wrap_img;
     
 </span></p>
 
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/DylanLuoAPCSA/categories/#jupyter">jupyter</a>
+        
+      
+      </p>
     
 
     
@@ -116,7 +126,8 @@ window.onload = wrap_img;
       </header>
 
   <div class="post-content e-content" itemprop="articleBody">
-    <!--
+    <ul id="toc" class="section-nav">
+</ul><!--
 #################################################
 ### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
 #################################################
@@ -145,25 +156,25 @@ window.onload = wrap_img;
         <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">quit</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">try</span> <span class="p">{</span> 
                 <span class="kt">int</span> <span class="n">choice</span> <span class="o">=</span> <span class="n">sc</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
-                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">&quot;&quot;</span> <span class="o">+</span> <span class="n">choice</span> <span class="o">+</span> <span class="s">&quot;: &quot;</span><span class="p">);</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">""</span> <span class="o">+</span> <span class="n">choice</span> <span class="o">+</span> <span class="s">": "</span><span class="p">);</span>
                 <span class="n">quit</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="na">action</span><span class="p">(</span><span class="n">choice</span><span class="p">);</span>
             <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
                 <span class="n">sc</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span>
-                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">e</span> <span class="o">+</span> <span class="s">&quot;: Not a number, try again.&quot;</span><span class="p">);</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">e</span> <span class="o">+</span> <span class="s">": Not a number, try again."</span><span class="p">);</span>
             <span class="p">}</span>
         <span class="p">}</span>
         <span class="n">sc</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
     <span class="p">}</span>
 
     <span class="kd">private</span> <span class="kt">void</span> <span class="nf">print</span><span class="p">()</span> <span class="p">{</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;-------------------------\n&quot;</span><span class="p">);</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Java Menu&quot;</span><span class="p">);</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;-------------------------\n&quot;</span><span class="p">);</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;1 - NBA Player Personality Quiz&quot;</span><span class="p">);</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;2 - Which kinematics equation should I use?&quot;</span><span class="p">);</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;3 - Print out digits of PI&quot;</span><span class="p">);</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;0 - Quit&quot;</span><span class="p">);</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;-------------------------\n&quot;</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"-------------------------\n"</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Java Menu"</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"-------------------------\n"</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"1 - NBA Player Personality Quiz"</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"2 - Which kinematics equation should I use?"</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"3 - Print out digits of PI"</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"0 - Quit"</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"-------------------------\n"</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="c1">// Private method to perform action and return true if action is to quit/exit</span>
@@ -172,129 +183,129 @@ window.onload = wrap_img;
         <span class="n">Scanner</span> <span class="n">typeInput</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
         <span class="k">switch</span> <span class="p">(</span><span class="n">selection</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">// Switch or Switch/Case is Control Flow statement and is used to evaluate the user selection</span>
             <span class="k">case</span> <span class="mi">0</span><span class="p">:</span>  
-                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">&quot;Goodbye, World!&quot;</span><span class="p">);</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">"Goodbye, World!"</span><span class="p">);</span>
                 <span class="n">quit</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
                 <span class="k">break</span><span class="p">;</span>
             <span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;\nNBA Players Personality Test&quot;</span><span class="p">);</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"\nNBA Players Personality Test"</span><span class="p">);</span>
             <span class="kt">int</span><span class="o">[]</span> <span class="n">questionNumberList</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">};</span>
             <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
             <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">questionNumberList</span><span class="p">.</span><span class="na">length</span><span class="p">;</span> <span class="n">a</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Question &quot;</span> <span class="o">+</span> <span class="n">questionNumberList</span><span class="o">[</span><span class="n">a</span><span class="o">]</span><span class="p">);</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Question "</span> <span class="o">+</span> <span class="n">questionNumberList</span><span class="o">[</span><span class="n">a</span><span class="o">]</span><span class="p">);</span>
                 <span class="k">if</span> <span class="p">(</span><span class="n">questionNumberList</span><span class="o">[</span><span class="n">a</span><span class="o">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;What is your favorite basketball team?&quot;</span><span class="p">);</span>
-                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;A) Chicago Bulls&quot;</span><span class="p">);</span>
-                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;B) LA Lakers&quot;</span><span class="p">);</span>
-                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;C) Golden State Warriors&quot;</span><span class="p">);</span>
-                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;D) Oklahoma City Thunder&quot;</span><span class="p">);</span>
+                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"What is your favorite basketball team?"</span><span class="p">);</span>
+                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"A) Chicago Bulls"</span><span class="p">);</span>
+                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"B) LA Lakers"</span><span class="p">);</span>
+                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"C) Golden State Warriors"</span><span class="p">);</span>
+                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"D) Oklahoma City Thunder"</span><span class="p">);</span>
                     <span class="n">String</span> <span class="n">userAnswer1</span> <span class="o">=</span> <span class="n">typeInput</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span>
                     <span class="n">String</span> <span class="n">userAnswer1Update</span> <span class="o">=</span> <span class="n">userAnswer1</span><span class="p">.</span><span class="na">toLowerCase</span><span class="p">();</span>
-                    <span class="k">if</span> <span class="p">(</span><span class="n">userAnswer1Update</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">userAnswer1Update</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">"a"</span><span class="p">))</span> <span class="p">{</span>
                         <span class="n">count</span> <span class="o">+=</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
-                    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">userAnswer1Update</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;b&quot;</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">userAnswer1Update</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">"b"</span><span class="p">))</span> <span class="p">{</span>
                         <span class="n">count</span> <span class="o">+=</span> <span class="o">+</span> <span class="mi">2</span><span class="p">;</span>
-                    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">userAnswer1Update</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;c&quot;</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">userAnswer1Update</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">"c"</span><span class="p">))</span> <span class="p">{</span>
                         <span class="n">count</span> <span class="o">+=</span> <span class="o">+</span> <span class="mi">3</span><span class="p">;</span>
-                    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">userAnswer1Update</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;d&quot;</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">userAnswer1Update</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">"d"</span><span class="p">))</span> <span class="p">{</span>
                         <span class="n">count</span> <span class="o">+=</span> <span class="mi">4</span><span class="p">;</span>
                     <span class="p">}</span>
                 <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">questionNumberList</span><span class="o">[</span><span class="n">a</span><span class="o">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;What is your ideal height?&quot;</span><span class="p">);</span>
-                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;A) 7&#39;1&quot;</span><span class="p">);</span>
-                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;B) 6&#39;6&quot;</span><span class="p">);</span>
-                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;C) 6&#39;11&quot;</span><span class="p">);</span>
-                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;D) 6&#39;3&quot;</span><span class="p">);</span>
+                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"What is your ideal height?"</span><span class="p">);</span>
+                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"A) 7'1"</span><span class="p">);</span>
+                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"B) 6'6"</span><span class="p">);</span>
+                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"C) 6'11"</span><span class="p">);</span>
+                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"D) 6'3"</span><span class="p">);</span>
                     <span class="n">String</span> <span class="n">userAnswer2</span> <span class="o">=</span> <span class="n">typeInput</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span>
                     <span class="n">String</span> <span class="n">userAnswer2Update</span> <span class="o">=</span> <span class="n">userAnswer2</span><span class="p">.</span><span class="na">toLowerCase</span><span class="p">();</span>
-                    <span class="k">if</span> <span class="p">(</span><span class="n">userAnswer2Update</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">userAnswer2Update</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">"a"</span><span class="p">))</span> <span class="p">{</span>
                         <span class="n">count</span> <span class="o">+=</span> <span class="mi">2</span><span class="p">;</span>
-                    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">userAnswer2Update</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;b&quot;</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">userAnswer2Update</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">"b"</span><span class="p">))</span> <span class="p">{</span>
                         <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
-                    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">userAnswer2Update</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;c&quot;</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">userAnswer2Update</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">"c"</span><span class="p">))</span> <span class="p">{</span>
                         <span class="n">count</span> <span class="o">+=</span> <span class="mi">4</span><span class="p">;</span>
-                    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">userAnswer2Update</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;d&quot;</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">userAnswer2Update</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">"d"</span><span class="p">))</span> <span class="p">{</span>
                         <span class="n">count</span> <span class="o">+=</span> <span class="mi">3</span><span class="p">;</span>
                     <span class="p">}</span>
                 <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">questionNumberList</span><span class="o">[</span><span class="n">a</span><span class="o">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;What is your favorite basketball position?&quot;</span><span class="p">);</span>
-                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;A) Small Forward&quot;</span><span class="p">);</span>
-                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;B) Point Guard&quot;</span><span class="p">);</span>
-                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;C) Center&quot;</span><span class="p">);</span>
-                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;D) Shooting Guard&quot;</span><span class="p">);</span>
+                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"What is your favorite basketball position?"</span><span class="p">);</span>
+                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"A) Small Forward"</span><span class="p">);</span>
+                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"B) Point Guard"</span><span class="p">);</span>
+                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"C) Center"</span><span class="p">);</span>
+                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"D) Shooting Guard"</span><span class="p">);</span>
                     <span class="n">String</span> <span class="n">userAnswer3</span> <span class="o">=</span> <span class="n">typeInput</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span>
                     <span class="n">String</span> <span class="n">userAnswer3Update</span> <span class="o">=</span> <span class="n">userAnswer3</span><span class="p">.</span><span class="na">toLowerCase</span><span class="p">();</span>
-                    <span class="k">if</span> <span class="p">(</span><span class="n">userAnswer3Update</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">userAnswer3Update</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">"a"</span><span class="p">))</span> <span class="p">{</span>
                         <span class="n">count</span> <span class="o">+=</span> <span class="mi">4</span><span class="p">;</span>
-                    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">userAnswer3Update</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;b&quot;</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">userAnswer3Update</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">"b"</span><span class="p">))</span> <span class="p">{</span>
                         <span class="n">count</span> <span class="o">+=</span> <span class="mi">3</span><span class="p">;</span>
-                    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">userAnswer3Update</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;c&quot;</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">userAnswer3Update</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">"c"</span><span class="p">))</span> <span class="p">{</span>
                         <span class="n">count</span> <span class="o">+=</span> <span class="mi">2</span><span class="p">;</span>
-                    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">userAnswer3Update</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;d&quot;</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">userAnswer3Update</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">"d"</span><span class="p">))</span> <span class="p">{</span>
                         <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
                     <span class="p">}</span>
                 <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">questionNumberList</span><span class="o">[</span><span class="n">a</span><span class="o">]</span> <span class="o">==</span> <span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;What is favorite basketball skill?&quot;</span><span class="p">);</span>
-                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;A) Shooting&quot;</span><span class="p">);</span>
-                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;B) Dunking&quot;</span><span class="p">);</span>
-                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;C) Dribbling&quot;</span><span class="p">);</span>
-                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;D) Defending&quot;</span><span class="p">);</span>
+                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"What is favorite basketball skill?"</span><span class="p">);</span>
+                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"A) Shooting"</span><span class="p">);</span>
+                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"B) Dunking"</span><span class="p">);</span>
+                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"C) Dribbling"</span><span class="p">);</span>
+                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"D) Defending"</span><span class="p">);</span>
                     <span class="n">String</span> <span class="n">userAnswer4</span> <span class="o">=</span> <span class="n">typeInput</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span>
                     <span class="n">String</span> <span class="n">userAnswer4Update</span> <span class="o">=</span> <span class="n">userAnswer4</span><span class="p">.</span><span class="na">toLowerCase</span><span class="p">();</span>
-                    <span class="k">if</span> <span class="p">(</span><span class="n">userAnswer4Update</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">userAnswer4Update</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">"a"</span><span class="p">))</span> <span class="p">{</span>
                         <span class="n">count</span> <span class="o">+=</span> <span class="mi">3</span><span class="p">;</span>
-                    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">userAnswer4Update</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;b&quot;</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">userAnswer4Update</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">"b"</span><span class="p">))</span> <span class="p">{</span>
                         <span class="n">count</span> <span class="o">+=</span> <span class="mi">2</span><span class="p">;</span>
-                    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">userAnswer4Update</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;c&quot;</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">userAnswer4Update</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">"c"</span><span class="p">))</span> <span class="p">{</span>
                         <span class="n">count</span> <span class="o">+=</span> <span class="mi">4</span><span class="p">;</span>
-                    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">userAnswer4Update</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;d&quot;</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">userAnswer4Update</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">"d"</span><span class="p">))</span> <span class="p">{</span>
                         <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
                     <span class="p">}</span>
                 <span class="p">}</span>
             <span class="p">}</span>
 
-            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;You have completed the NBA personality quiz!&quot;</span><span class="p">);</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"You have completed the NBA personality quiz!"</span><span class="p">);</span>
             <span class="k">if</span> <span class="p">(</span><span class="n">count</span> <span class="o">&gt;=</span> <span class="mi">13</span><span class="p">)</span> <span class="p">{</span>
-                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;You are Kevin Durant!&quot;</span><span class="p">);</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"You are Kevin Durant!"</span><span class="p">);</span>
             <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
-                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;You are Stephen Curry!&quot;</span><span class="p">);</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"You are Stephen Curry!"</span><span class="p">);</span>
             <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">7</span><span class="p">)</span> <span class="p">{</span>
-                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;You are Shaq O&#39; Neal!&quot;</span><span class="p">);</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"You are Shaq O' Neal!"</span><span class="p">);</span>
             <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">count</span> <span class="o">&gt;=</span> <span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
-                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;You are Michael Jordan!&quot;</span><span class="p">);</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"You are Michael Jordan!"</span><span class="p">);</span>
             <span class="p">}</span>
             <span class="k">break</span><span class="p">;</span>
             <span class="k">case</span> <span class="mi">2</span><span class="p">:</span>
-                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;What is the information you need to find?&quot;</span><span class="p">);</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"What is the information you need to find?"</span><span class="p">);</span>
                 <span class="n">String</span> <span class="n">kinematicsInput1</span> <span class="o">=</span> <span class="n">typeInput</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span>
                 <span class="n">String</span> <span class="n">kinematicsInput1LowerCase</span> <span class="o">=</span> <span class="n">kinematicsInput1</span><span class="p">.</span><span class="na">toLowerCase</span><span class="p">();</span>
                 
-                <span class="n">String</span> <span class="n">kinematicsEquation1</span> <span class="o">=</span> <span class="s">&quot;Vf = Vi + a * t&quot;</span><span class="p">;</span>
-                <span class="n">String</span> <span class="n">kinematicsEquation2</span> <span class="o">=</span> <span class="s">&quot;x = Vi * t + (a * t^2)/2&quot;</span><span class="p">;</span>
-                <span class="n">String</span> <span class="n">kinematicsEquation3</span> <span class="o">=</span> <span class="s">&quot;Vf^2 = Vi^2 + 2 * a * x&quot;</span><span class="p">;</span>
-                <span class="n">String</span> <span class="n">kinematicsEquation4</span> <span class="o">=</span> <span class="s">&quot;x = (Vi + Vf)/2 * t&quot;</span><span class="p">;</span>
-                <span class="n">String</span> <span class="n">kinematicsEquation5</span> <span class="o">=</span> <span class="s">&quot;x = Vf * t - (a * t^2)/2&quot;</span><span class="p">;</span>
+                <span class="n">String</span> <span class="n">kinematicsEquation1</span> <span class="o">=</span> <span class="s">"Vf = Vi + a * t"</span><span class="p">;</span>
+                <span class="n">String</span> <span class="n">kinematicsEquation2</span> <span class="o">=</span> <span class="s">"x = Vi * t + (a * t^2)/2"</span><span class="p">;</span>
+                <span class="n">String</span> <span class="n">kinematicsEquation3</span> <span class="o">=</span> <span class="s">"Vf^2 = Vi^2 + 2 * a * x"</span><span class="p">;</span>
+                <span class="n">String</span> <span class="n">kinematicsEquation4</span> <span class="o">=</span> <span class="s">"x = (Vi + Vf)/2 * t"</span><span class="p">;</span>
+                <span class="n">String</span> <span class="n">kinematicsEquation5</span> <span class="o">=</span> <span class="s">"x = Vf * t - (a * t^2)/2"</span><span class="p">;</span>
 
-                <span class="k">if</span> <span class="p">(</span><span class="n">kinematicsInput1LowerCase</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;displacement&quot;</span><span class="p">))</span> <span class="p">{</span>
-                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;The kinematics equation you need is: &quot;</span> <span class="o">+</span> <span class="n">kinematicsEquation1</span><span class="p">);</span>
-                <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">kinematicsInput1LowerCase</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;final velocity&quot;</span><span class="p">))</span> <span class="p">{</span>
-                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;The kinematics equation you need is: &quot;</span> <span class="o">+</span> <span class="n">kinematicsEquation2</span><span class="p">);</span>
-                <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">kinematicsInput1LowerCase</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;time&quot;</span><span class="p">))</span> <span class="p">{</span>
-                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;The kinematics equation you need is: &quot;</span> <span class="o">+</span> <span class="n">kinematicsEquation3</span><span class="p">);</span>
-                <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">kinematicsInput1LowerCase</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;acceleration&quot;</span><span class="p">))</span> <span class="p">{</span>
-                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;The kinematics equation you need is: &quot;</span> <span class="o">+</span> <span class="n">kinematicsEquation4</span><span class="p">);</span>
-                <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">kinematicsInput1LowerCase</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">&quot;initial velocity&quot;</span><span class="p">))</span> <span class="p">{</span>
-                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;The kinematics equation you need is: &quot;</span> <span class="o">+</span> <span class="n">kinematicsEquation5</span><span class="p">);</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">kinematicsInput1LowerCase</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">"displacement"</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"The kinematics equation you need is: "</span> <span class="o">+</span> <span class="n">kinematicsEquation1</span><span class="p">);</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">kinematicsInput1LowerCase</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">"final velocity"</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"The kinematics equation you need is: "</span> <span class="o">+</span> <span class="n">kinematicsEquation2</span><span class="p">);</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">kinematicsInput1LowerCase</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">"time"</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"The kinematics equation you need is: "</span> <span class="o">+</span> <span class="n">kinematicsEquation3</span><span class="p">);</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">kinematicsInput1LowerCase</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">"acceleration"</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"The kinematics equation you need is: "</span> <span class="o">+</span> <span class="n">kinematicsEquation4</span><span class="p">);</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">kinematicsInput1LowerCase</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">"initial velocity"</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"The kinematics equation you need is: "</span> <span class="o">+</span> <span class="n">kinematicsEquation5</span><span class="p">);</span>
                 <span class="p">}</span>
                 <span class="k">break</span><span class="p">;</span>
             <span class="k">case</span> <span class="mi">3</span><span class="p">:</span>
                 <span class="n">Scanner</span> <span class="n">piInput</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
-                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;How many digits of Pi do you want to print out?&quot;</span><span class="p">);</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"How many digits of Pi do you want to print out?"</span><span class="p">);</span>
                 <span class="kt">int</span> <span class="n">piDigits</span> <span class="o">=</span> <span class="n">piInput</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
                 <span class="kt">int</span><span class="o">[]</span> <span class="n">piArray</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]</span><span class="p">{</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">};</span>
-                <span class="n">String</span> <span class="n">piPrint</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+                <span class="n">String</span> <span class="n">piPrint</span> <span class="o">=</span> <span class="s">""</span><span class="p">;</span>
                 <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">piDigits</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
                     <span class="k">if</span> <span class="p">(</span><span class="n">piDigits</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-                        <span class="n">piPrint</span> <span class="o">+=</span> <span class="n">piArray</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">+</span> <span class="s">&quot;.&quot;</span><span class="p">;</span>
+                        <span class="n">piPrint</span> <span class="o">+=</span> <span class="n">piArray</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">+</span> <span class="s">"."</span><span class="p">;</span>
                     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
                         <span class="n">piPrint</span> <span class="o">+=</span> <span class="n">piArray</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">;</span>
                     <span class="p">}</span>
@@ -304,7 +315,7 @@ window.onload = wrap_img;
                     
             <span class="k">default</span><span class="p">:</span>
                 <span class="c1">//Prints error message from console</span>
-                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">&quot;Unexpected choice, try again.&quot;</span><span class="p">);</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">"Unexpected choice, try again."</span><span class="p">);</span>
         <span class="p">}</span>
         <span class="k">return</span> <span class="n">quit</span><span class="p">;</span>
     <span class="p">}</span>
@@ -349,10 +360,10 @@ C) Golden State Warriors
 D) Oklahoma City Thunder
 Question 2
 What is your ideal height?
-A) 7&#39;1
-B) 6&#39;6
-C) 6&#39;11
-D) 6&#39;3
+A) 7'1
+B) 6'6
+C) 6'11
+D) 6'3
 Question 3
 What is your favorite basketball position?
 A) Small Forward
@@ -366,7 +377,7 @@ B) Dunking
 C) Dribbling
 D) Defending
 You have completed the NBA personality quiz!
-You are Shaq O&#39; Neal!
+You are Shaq O' Neal!
 2: What is the information you need to find?
 The kinematics equation you need is: x = (Vi + Vf)/2 * t
 3: How many digits of Pi do you want to print out?
@@ -385,7 +396,15 @@ The kinematics equation you need is: x = (Vi + Vf)/2 * t
 
 
 
-  </div><a class="u-url" href="/DylanLuoAPCSA/2022/09/05/GUI-menu.html" hidden></a>
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="Dylanluo05/DylanLuoAPCSA"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/DylanLuoAPCSA/jupyter/2022/09/05/GUI-menu.html" hidden></a>
 </article>
 
       </div>
