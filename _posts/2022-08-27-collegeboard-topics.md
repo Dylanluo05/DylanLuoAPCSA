@@ -30,7 +30,7 @@
         <ol>
             <li>int: Used for all integers.</li>
             <li>double: Used for numbers with decimals.</li>
-            <li>boolean: Used for all boolean values, which are usually two return values that typically vary between true or false.<li>
+            <li>boolean: Used for all boolean values, which are usually two return values that typically vary between true or false.</li>
             <li>String: Used for all text values.</li>
         </ol>
         <h3>Java Input:</h3>
