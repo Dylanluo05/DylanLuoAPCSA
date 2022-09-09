@@ -58,6 +58,8 @@
         <p>With Swing and AWT imports, Java has the ability to provide a Graphical User Interface (GUI) on the desktop.</p>
         <h2>Unit 3: Boolean Expressions and If Statements</h2>
         <hr>
+        <p>A Boolean expression is a logical statement that can evaluate to only two values, which are usually true or false.</p>
+        <p>A Boolean expression may comprise of a combination of Boolean constants true or false.</p>
         <h2>Unit 4: Iteration</h2>
         <hr>
         <h2>Unit 5: Writing Classes</h2>

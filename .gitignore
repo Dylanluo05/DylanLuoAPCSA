@@ -1,3 +1,6 @@
+settings.ini
+Gemfile.lock
+./images/copied_from_nb/
 *.swp
 ~*
 *~
@@ -12,3 +15,10 @@ _notebooks/.ipynb_checkpoints
 .netlify
 .tweet-cache
 __pycache__
+#_posts/2020-02-20-test.md
+#_posts/2022-08-21-My-First-Java.md
+#_posts/2022-08-21-My-First-Python.md
+#_posts/2022-08-26-My-First-Bash.md
+#_posts/2022-08-27-Java-Primitives.md
+#_posts/2022-08-31-GUI-menu.md
+#_posts/2022-09-08-ifelse.md
