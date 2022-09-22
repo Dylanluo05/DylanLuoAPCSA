@@ -82,7 +82,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      6 min read
+      5 min read
     
 </span></p>
 
@@ -144,17 +144,10 @@ window.onload = wrap_img;
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-java"><pre><span></span><span class="kd">class</span> <span class="nc">AnimeLoop</span> <span class="p">{</span>
-    <span class="c1">//The area between class definition and the 1st method is where we keep data for object in Java</span>
-    <span class="n">String</span> <span class="o">[][]</span> <span class="n">animeArray</span><span class="p">;</span>    <span class="c1">//2D Array: AP CSA Unit 8: 2D array of strings</span>
-                            <span class="c1">//2D array is like a grid [x][y]</span>
-                            <span class="c1">// or like a spreadsheet [row][column]</span>
+    <span class="n">String</span> <span class="o">[][]</span> <span class="n">animeArray</span><span class="p">;</span>
 
-    <span class="cm">/**</span>
-<span class="cm">     * Constructor initializes a 2D array of Monkeys</span>
-<span class="cm">     */</span>
     <span class="kd">public</span> <span class="nf">AnimeLoop</span><span class="p">()</span> <span class="p">{</span>
-        <span class="c1">//Storing Data in 2D arrays</span>
-        <span class="n">animeArray</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">[][]</span><span class="p">{</span>   <span class="c1">//2D array above is just a name, "new" makes a container ("object")</span>
+        <span class="n">animeArray</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">[][]</span><span class="p">{</span>  
                 <span class="c1">//Toji</span>
                 <span class="p">{</span>
                 <span class="s">"               ,@&amp;@#"</span><span class="p">,</span>                
@@ -269,39 +262,24 @@ window.onload = wrap_img;
     <span class="p">}</span>
 
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">printAnime</span><span class="p">()</span> <span class="p">{</span>
-        <span class="c1">//begin the poem</span>
         <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
         <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Java Iteration Lab"</span><span class="p">);</span>
 
-        <span class="c1">// monkeys (non-primitive) defined in constructor knows its length</span>
         <span class="kt">int</span> <span class="n">animeCount</span> <span class="o">=</span> <span class="n">animeArray</span><span class="p">.</span><span class="na">length</span><span class="p">;</span>
-        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">animeCount</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">--</span><span class="p">)</span>  <span class="c1">//loops through 2D array length backwards</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">animeCount</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">--</span><span class="p">)</span>
         <span class="p">{</span>
 
-            <span class="c1">//this print statement shows current count of Monkeys</span>
-            <span class="c1">//  concatenation (+) of the loop variable and string to form a countdown message</span>
             <span class="k">if</span> <span class="p">(</span><span class="n">animeCount</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="o">||</span> <span class="n">animeCount</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
               <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"There are "</span> <span class="o">+</span> <span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s">" Megumi Fushiguros standing around..."</span><span class="p">);</span>
             <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">animeCount</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
               <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"There is "</span> <span class="o">+</span> <span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s">" Megumi Fushiguro standing around..."</span><span class="p">);</span>
             <span class="p">}</span> 
             
-
-            <span class="c1">//how many separate parts are there in a monkey monkey?</span>
-            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">row</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">row</span> <span class="o">&lt;</span> <span class="n">animeCount</span><span class="p">;</span> <span class="n">row</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">//cycles through "cells" of 2d array</span>
-
-                <span class="cm">/*cycles through columns to print</span>
-<span class="cm">                each monkey part by part, will eventually print entire column*/</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">row</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">row</span> <span class="o">&lt;</span> <span class="n">animeCount</span><span class="p">;</span> <span class="n">row</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span> 
                 <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">col</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">col</span> <span class="o">&lt;</span> <span class="n">animeArray</span><span class="o">[</span><span class="n">row</span><span class="o">]</span><span class="p">.</span><span class="na">length</span><span class="p">;</span> <span class="n">col</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-
-                    <span class="c1">// prints specific part of the monkey from the column</span>
                     <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="n">animeArray</span><span class="o">[</span><span class="n">row</span><span class="o">][</span><span class="n">col</span><span class="o">]</span> <span class="o">+</span> <span class="s">" "</span><span class="p">);</span>
-
-                    <span class="c1">//this is new line between separate parts</span>
                     <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
                 <span class="p">}</span>
-
-                <span class="c1">//this new line gives separation between stanza of poem</span>
                 <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
             <span class="p">}</span>
             
@@ -314,21 +292,16 @@ window.onload = wrap_img;
             
             <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
 
-            <span class="c1">//countdown for poem, decrementing monkeyCount variable by 1</span>
             <span class="n">animeCount</span> <span class="o">-=</span> <span class="mi">1</span><span class="p">;</span>
         <span class="p">}</span>
 
-        <span class="c1">//out of all the loops, prints finishing messages</span>
         <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"There are no more Megumi Fushiguros standing around"</span><span class="p">);</span>
         <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"0000000000000000000000000000000000"</span><span class="p">);</span>
         <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"             THE END              "</span><span class="p">);</span>
     <span class="p">}</span>
 
-    <span class="cm">/**</span>
-<span class="cm">    * A Java Driver/Test method that is the entry point for execution</span>
-<span class="cm">    */</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span>  <span class="p">{</span>
-        <span class="k">new</span> <span class="n">AnimeLoop</span><span class="p">().</span><span class="na">printAnime</span><span class="p">();</span>   <span class="c1">//a new monkey list and output in one step</span>
+        <span class="k">new</span> <span class="n">AnimeLoop</span><span class="p">().</span><span class="na">printAnime</span><span class="p">();</span>
     <span class="p">}</span>
 
 <span class="p">}</span>

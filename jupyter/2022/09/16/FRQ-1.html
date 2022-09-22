@@ -174,13 +174,43 @@ window.onload = wrap_img;
     <span class="kd">private</span> <span class="n">Level</span> <span class="n">levelThree</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Level</span><span class="p">();</span>
 
     <span class="c1">//Default constructor created</span>
+    <span class="c1">// public Game() { }</span>
     <span class="n">String</span> <span class="n">bonusStatus</span><span class="p">;</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">play</span><span class="p">()</span> <span class="p">{</span>
         <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Game Simulation"</span><span class="p">);</span>
-        <span class="n">Scanner</span> <span class="n">userInput</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
         <span class="n">Scanner</span> <span class="n">numInput</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
         <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"How many times are you playing the game?"</span><span class="p">);</span>
         <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="n">numInput</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
+        <span class="n">playManyTimes</span><span class="p">(</span><span class="n">num</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isBonus</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">bonusStatus</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">"y"</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getScore</span><span class="p">()</span> <span class="p">{</span> 
+        <span class="kt">int</span> <span class="n">score</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">levelOne</span><span class="p">.</span><span class="na">goalReached</span><span class="p">()</span> <span class="o">==</span> <span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">score</span> <span class="o">+=</span> <span class="n">levelOne</span><span class="p">.</span><span class="na">getPoints</span><span class="p">();</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">levelTwo</span><span class="p">.</span><span class="na">goalReached</span><span class="p">()</span> <span class="o">==</span> <span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">score</span> <span class="o">+=</span> <span class="n">levelTwo</span><span class="p">.</span><span class="na">getPoints</span><span class="p">();</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">levelThree</span><span class="p">.</span><span class="na">goalReached</span><span class="p">()</span> <span class="o">==</span> <span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="n">score</span> <span class="o">+=</span> <span class="n">levelThree</span><span class="p">.</span><span class="na">getPoints</span><span class="p">();</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">isBonus</span><span class="p">()</span> <span class="o">==</span> <span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">score</span> <span class="o">*=</span> <span class="mi">3</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">score</span><span class="p">;</span>
+    <span class="p">}</span> 
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">playManyTimes</span><span class="p">(</span><span class="kt">int</span> <span class="n">num</span><span class="p">){</span> 
+        <span class="n">Scanner</span> <span class="n">userInput</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
         <span class="kt">int</span><span class="o">[]</span> <span class="n">scoreArray</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]</span><span class="p">{};</span>
         <span class="n">scoreArray</span> <span class="o">=</span> <span class="n">Arrays</span><span class="p">.</span><span class="na">copyOf</span><span class="p">(</span><span class="n">scoreArray</span><span class="p">,</span> <span class="n">scoreArray</span><span class="p">.</span><span class="na">length</span> <span class="o">+</span> <span class="n">num</span><span class="p">);</span>
         <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">w</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">w</span> <span class="o">&lt;</span> <span class="n">num</span><span class="p">;</span> <span class="n">w</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
@@ -215,37 +245,7 @@ window.onload = wrap_img;
                 <span class="n">highScore</span> <span class="o">=</span> <span class="n">scoreArray</span><span class="o">[</span><span class="n">a</span> <span class="o">-</span> <span class="mi">1</span><span class="o">]</span><span class="p">;</span>
             <span class="p">}</span>
         <span class="p">}</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Your high score was "</span> <span class="o">+</span> <span class="n">highScore</span><span class="p">);</span>
-        <span class="n">playManyTimes</span><span class="p">();</span>
-    <span class="p">}</span>
-    
-    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isBonus</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">bonusStatus</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">"y"</span><span class="p">))</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    
-    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getScore</span><span class="p">()</span> <span class="p">{</span> 
-        <span class="kt">int</span> <span class="n">score</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">levelOne</span><span class="p">.</span><span class="na">goalReached</span><span class="p">()</span> <span class="o">==</span> <span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">score</span> <span class="o">+=</span> <span class="n">levelOne</span><span class="p">.</span><span class="na">getPoints</span><span class="p">();</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">levelTwo</span><span class="p">.</span><span class="na">goalReached</span><span class="p">()</span> <span class="o">==</span> <span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
-                <span class="n">score</span> <span class="o">+=</span> <span class="n">levelTwo</span><span class="p">.</span><span class="na">getPoints</span><span class="p">();</span>
-                <span class="k">if</span> <span class="p">(</span><span class="n">levelThree</span><span class="p">.</span><span class="na">goalReached</span><span class="p">()</span> <span class="o">==</span> <span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="n">score</span> <span class="o">+=</span> <span class="n">levelThree</span><span class="p">.</span><span class="na">getPoints</span><span class="p">();</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">isBonus</span><span class="p">()</span> <span class="o">==</span> <span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">score</span> <span class="o">*=</span> <span class="mi">3</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="n">score</span><span class="p">;</span>
-    <span class="p">}</span> 
-
-    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">playManyTimes</span><span class="p">(){</span> 
-        <span class="kt">int</span> <span class="n">highScore</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Your high score was: "</span> <span class="o">+</span> <span class="n">highScore</span><span class="p">);</span>
         <span class="k">return</span> <span class="n">highScore</span><span class="p">;</span>
     <span class="p">}</span>
     
@@ -277,23 +277,13 @@ Did you complete level 1? (y/n)
 Did you complete level 2? (y/n)
 Did you complete level 3? (y/n)
 Is this a bonus game? (y/n)
-2400
-Did you complete level 1? (y/n)
-Did you complete level 2? (y/n)
-Did you complete level 3? (y/n)
-Is this a bonus game? (y/n)
-2400
-Did you complete level 1? (y/n)
-Did you complete level 2? (y/n)
-Did you complete level 3? (y/n)
-Is this a bonus game? (y/n)
 600
 Did you complete level 1? (y/n)
 Did you complete level 2? (y/n)
 Did you complete level 3? (y/n)
 Is this a bonus game? (y/n)
 2400
-Your high score was 2400
+Your high score was: 2400
 </pre>
 </div>
 </div>
