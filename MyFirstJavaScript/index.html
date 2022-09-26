@@ -186,7 +186,7 @@ window.onload = wrap_img;
                             username1Input.value = "";
                             password1Input.value = "";
                         } else if (a < userListRetrieve2.length - 1 && !(user.name == userListRetrieve2[a].name && user.passwd == userListRetrieve2[a].passwd)) {
-                        } else {
+                        } else if  (a == userListRetrieve2.length - 1 && !(user.name == userListRetrieve2[a].name && user.passwd == userListRetrieve2[a].passwd)) {
                             alert("Incorrect username and/or password!");
                         }
                     }
