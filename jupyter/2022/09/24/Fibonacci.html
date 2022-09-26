@@ -216,21 +216,18 @@ window.onload = wrap_img;
             <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
         <span class="p">}</span>
         <span class="k">return</span> <span class="n">recursion</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">recursion</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
-        
-        <span class="cm">/*double timeElapsed = (double) (System.nanoTime() - timeStart)/ (double) (1000);</span>
-<span class="cm">        String fiboArrayPrint = Arrays.toString(fiboArray);</span>
-<span class="cm">        System.out.println("Using a recursion loop:");</span>
-<span class="cm">        System.out.println("Computational Time (In Microseconds): " + timeElapsed);</span>
-<span class="cm">        System.out.println("Fibonacci array with n integers: " + fiboArrayPrint);</span>
-<span class="cm">        System.out.println("The nth integer of the Fibonacci sequence: " + fiboArray[n-1]);*/</span>
     <span class="p">}</span>
 
+    
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Fibo</span> <span class="kd">extends</span> <span class="n">Fibonacci</span> <span class="p">{</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">Fibonacci</span> <span class="n">play</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fibonacci</span><span class="p">();</span>
         <span class="n">play</span><span class="p">.</span><span class="na">checkNthPosition</span><span class="p">();</span>
     <span class="p">}</span>
 <span class="p">}</span>
-<span class="n">Fibonacci</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+<span class="n">Fibo</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
 </pre></div>
 
     </div>
@@ -245,16 +242,16 @@ window.onload = wrap_img;
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Enter an integer for n to get the nth integer of the Fibonacci Sequence:
 Using a for loop:
-Computational Time (In Microseconds): 1.393
-Fibonacci array with n integers: [0, 1, 1, 2, 3, 5, 8, 13, 21]
-The nth integer of the Fibonacci sequence: 21
+Computational Time (In Microseconds): 7.409
+Fibonacci array with n integers: [0, 1, 1, 2, 3, 5, 8, 13]
+The nth integer of the Fibonacci sequence: 13
 Using a while loop:
-Computational Time (In Microseconds): 1.264
-Fibonacci array with n integers: [0, 1, 1, 2, 3, 5, 8, 13, 21]
-The nth integer of the Fibonacci sequence: 21
+Computational Time (In Microseconds): 4.479
+Fibonacci array with n integers: [0, 1, 1, 2, 3, 5, 8, 13]
+The nth integer of the Fibonacci sequence: 13
 Using a recursion loop:
-Computational Time (In Microseconds): 8.613
-The nth integer of the Fibonacci sequence: 21
+Computational Time (In Microseconds): 13.698
+The nth integer of the Fibonacci sequence: 13
 </pre>
 </div>
 </div>
