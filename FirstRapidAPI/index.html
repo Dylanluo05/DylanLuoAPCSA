@@ -4,20 +4,20 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Tags | fastpages</title>
+<title>JavaScript Soccer RapidAPI | fastpages</title>
 <meta name="generator" content="Jekyll v4.1.1" />
-<meta property="og:title" content="Tags" />
+<meta property="og:title" content="JavaScript Soccer RapidAPI" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="An easy to use blogging platform with support for Jupyter Notebooks." />
 <meta property="og:description" content="An easy to use blogging platform with support for Jupyter Notebooks." />
-<link rel="canonical" href="https://dylanluo05.github.io/DylanLuoAPCSA/categories/" />
-<meta property="og:url" content="https://dylanluo05.github.io/DylanLuoAPCSA/categories/" />
+<link rel="canonical" href="https://dylanluo05.github.io/DylanLuoAPCSA/FirstRapidAPI/" />
+<meta property="og:url" content="https://dylanluo05.github.io/DylanLuoAPCSA/FirstRapidAPI/" />
 <meta property="og:site_name" content="fastpages" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Tags" />
+<meta property="twitter:title" content="JavaScript Soccer RapidAPI" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"An easy to use blogging platform with support for Jupyter Notebooks.","headline":"Tags","url":"https://dylanluo05.github.io/DylanLuoAPCSA/categories/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"An easy to use blogging platform with support for Jupyter Notebooks.","headline":"JavaScript Soccer RapidAPI","url":"https://dylanluo05.github.io/DylanLuoAPCSA/FirstRapidAPI/"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/DylanLuoAPCSA/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://dylanluo05.github.io/DylanLuoAPCSA/feed.xml" title="fastpages" /><link rel="shortcut icon" type="image/x-icon" href="/DylanLuoAPCSA/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
@@ -69,117 +69,89 @@ window.onload = wrap_img;
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <div class="home">
+        <article class="post">
 
+  <header class="post-header">
+    <h1 class="post-title">JavaScript Soccer RapidAPI</h1>
+  </header>
 
-<h2>Contents</h2>
+  <div class="post-content">
+    <html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    </head>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin: auto;
+        }
+        th {
+            background-color: black;
+            color: white;
+            padding: 10px;
+        }
+        td {
+            padding: 10px;
+            color: black;
+        }
+        td:nth-child(odd) {
+            background-color: lightgray;
+        }
+        td:nth-child(even) {
+            background-color: darkgray;
+        }
+    </style>
+    <body>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Country</th>
+                <th>Team Name</th>
+            </tr>
+            <tr class = "data-row"></tr>
+            <tr class = "data-row"></tr>
+            <tr class = "data-row"></tr>
+            <tr class = "data-row"></tr>
+            <tr class = "data-row"></tr>
+            <tr class = "data-row"></tr>
+            <tr class = "data-row"></tr>
+            <tr class = "data-row"></tr>
+            <tr class = "data-row"></tr>
+        </table>
+        <script>
+        const settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://basketball-data.p.rapidapi.com/tournament/teams?tournamentId=89",
+            "method": "GET",
+            "headers": {
+                "X-RapidAPI-Key": "9205057203msh04a5e5cadaa01c8p11274ejsnf67dea2bb043",
+                "X-RapidAPI-Host": "basketball-data.p.rapidapi.com"
+            }
+        };
 
-  
-  
-  
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+            for (var i = 0; i < response.length; i++) {
+                var newDataId = document.createElement("td");
+                newDataId.innerHTML = response[i].id;
+                var newDataCountry = document.createElement("td");
+                newDataCountry.innerHTML = response[i].country.name;
+                var newDataName = document.createElement("td");
+                newDataName.innerHTML = response[i].name;
 
-  <ul>
-  
-    <li><a href="#jupyter">jupyter</a></li>
-  
-    <li><a href="#markdown">markdown</a></li>
-  
-  </ul>
+                $(".data-row").eq(i).append(newDataId);
+                $(".data-row").eq(i).append(newDataCountry);
+                $(".data-row").eq(i).append(newDataName);
+            }
+        });
+        </script>
+    </body>
+</html>
+  </div>
 
-  
-      <h3 id ="jupyter"><i class="fas fa-tags category-tags-icon"></i></i> jupyter</h3>
-      <a name="jupyter"></a>
-      
-        <article class="archive-item">
-          <p class="post-meta post-meta-title"><a class="page-meta" href="/DylanLuoAPCSA/jupyter/2022/09/27/Java-API.html">Java API Post</a>  • Sep 27, 2022</p>
-        </article>
-        
-      
-        <article class="archive-item">
-          <p class="post-meta post-meta-title"><a class="page-meta" href="/DylanLuoAPCSA/jupyter/2022/09/27/Arrays-and-Images.html">Arrays and Images Post</a>  • Sep 27, 2022</p>
-        </article>
-        
-      
-        <article class="archive-item">
-          <p class="post-meta post-meta-title"><a class="page-meta" href="/DylanLuoAPCSA/jupyter/2022/09/24/Fibonacci.html">Fibonacci Post</a>  • Sep 24, 2022</p>
-        </article>
-        
-      
-        <article class="archive-item">
-          <p class="post-meta post-meta-title"><a class="page-meta" href="/DylanLuoAPCSA/jupyter/2022/09/16/FRQ-1.html">CSA FRQ</a>  • Sep 16, 2022</p>
-        </article>
-        
-      
-        <article class="archive-item">
-          <p class="post-meta post-meta-title"><a class="page-meta" href="/DylanLuoAPCSA/jupyter/2022/09/15/Java-Iteration.html">Java Iteration Statements Post</a>  • Sep 15, 2022</p>
-        </article>
-        
-      
-        <article class="archive-item">
-          <p class="post-meta post-meta-title"><a class="page-meta" href="/DylanLuoAPCSA/jupyter/2022/09/08/Java-Conditional.html">Java Conditional Statements Post</a>  • Sep 8, 2022</p>
-        </article>
-        
-      
-        <article class="archive-item">
-          <p class="post-meta post-meta-title"><a class="page-meta" href="/DylanLuoAPCSA/jupyter/2022/08/31/GUI-menu.html">Week 1 - Java Objects Post</a>  • Aug 31, 2022</p>
-        </article>
-        
-      
-        <article class="archive-item">
-          <p class="post-meta post-meta-title"><a class="page-meta" href="/DylanLuoAPCSA/jupyter/2022/08/27/Java-Primitives.html">Week 1 - Java Primitives Post</a>  • Aug 27, 2022</p>
-        </article>
-        
-      
-        <article class="archive-item">
-          <p class="post-meta post-meta-title"><a class="page-meta" href="/DylanLuoAPCSA/jupyter/2022/08/26/My-First-Bash.html">Week 1 - Bash Post</a>  • Aug 26, 2022</p>
-        </article>
-        
-      
-        <article class="archive-item">
-          <p class="post-meta post-meta-title"><a class="page-meta" href="/DylanLuoAPCSA/jupyter/2022/08/21/My-First-Python.html">My First Python Post</a>  • Aug 21, 2022</p>
-        </article>
-        
-      
-        <article class="archive-item">
-          <p class="post-meta post-meta-title"><a class="page-meta" href="/DylanLuoAPCSA/jupyter/2022/08/21/My-First-Java.html">My First Java Post</a>  • Aug 21, 2022</p>
-        </article>
-        
-      
-        <article class="archive-item">
-          <p class="post-meta post-meta-title"><a class="page-meta" href="/DylanLuoAPCSA/jupyter/2020/02/20/test.html">Fastpages Notebook Blog Post</a>  • Feb 20, 2020</p>
-        </article>
-        
-      
-  
-      <h3 id ="markdown"><i class="fas fa-tags category-tags-icon"></i></i> markdown</h3>
-      <a name="markdown"></a>
-      
-        <article class="archive-item">
-          <p class="post-meta post-meta-title"><a class="page-meta" href="/DylanLuoAPCSA/markdown/2022/09/11/Gratitude.html">Gratitude Post</a>  • Sep 11, 2022</p>
-        </article>
-        
-      
-        <article class="archive-item">
-          <p class="post-meta post-meta-title"><a class="page-meta" href="/DylanLuoAPCSA/markdown/2022/09/05/Codeorg.html">Code.org Blog Post</a>  • Sep 5, 2022</p>
-        </article>
-        
-      
-        <article class="archive-item">
-          <p class="post-meta post-meta-title"><a class="page-meta" href="/DylanLuoAPCSA/markdown/2022/08/21/My-First-Markdown-Post.html">My First Markdown Post</a>  • Aug 21, 2022</p>
-        </article>
-        
-      
-        <article class="archive-item">
-          <p class="post-meta post-meta-title"><a class="page-meta" href="/DylanLuoAPCSA/markdown/2020/01/14/test-markdown-post.html">An Example Markdown Post</a>  • Jan 14, 2020</p>
-        </article>
-        
-      
-  
+</article>
 
-
-
-
-</div>
       </div>
     </main><footer class="site-footer h-card">
   <data class="u-url" href="/DylanLuoAPCSA/"></data>

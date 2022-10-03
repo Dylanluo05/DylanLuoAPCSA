@@ -204,6 +204,17 @@
 
   
       ,"page1": {
+          "title": "JavaScript Soccer RapidAPI",
+          "content": ". ID Country Team Name . . . . . . . . . . .",
+          "url": "https://dylanluo05.github.io/DylanLuoAPCSA/FirstRapidAPI/",
+          "relUrl": "/FirstRapidAPI/",
+          "date": ""
+      }
+      
+  
+
+  
+      ,"page2": {
           "title": "JavaScript Local Storage Login System",
           "content": ". . Sign In . . Username Password Sign Up . . Username Password Confirm Password .",
           "url": "https://dylanluo05.github.io/DylanLuoAPCSA/MyFirstJavaScript/",
@@ -214,7 +225,7 @@
   
 
   
-      ,"page2": {
+      ,"page3": {
           "title": "About Me",
           "content": "This website is powered by fastpages 1. . a blogging platform that natively supports Jupyter notebooks in addition to other formats. &#8617; . |",
           "url": "https://dylanluo05.github.io/DylanLuoAPCSA/about/",
@@ -237,7 +248,7 @@
   
 
   
-      ,"page8": {
+      ,"page9": {
           "title": "Vocab",
           "content": "AP CSA Vocab Terms: .",
           "url": "https://dylanluo05.github.io/DylanLuoAPCSA/vocab/",
@@ -259,7 +270,7 @@
   
 
   
-      ,"page13": {
+      ,"page14": {
           "title": "",
           "content": "Sitemap: {{ “sitemap.xml” | absolute_url }} | .",
           "url": "https://dylanluo05.github.io/DylanLuoAPCSA/robots.txt",
