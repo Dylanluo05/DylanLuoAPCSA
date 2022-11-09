@@ -31,7 +31,7 @@
    * Correct Answer: E. Since k is never changed in the body of the while loop, it will always have a value 1 and thus less than 4. This means the boolean expression || for the while loop will always evaluate to true, and therefore lead to an infinite loop.
 * Question 34:
    * Original Answer: D. Choice III uses the default constructor Point to assign center to a new Point with x and y both equal to 0. However, it attempts to update x and y, which are both private instance variables in Point, leading to a compile time error since x and y are not able to be accessed directly in the class Circle.
-   * Correct Answer: B. Choice II successfully creates a new Point with x assigned to value b and y assigned to value b using the two-parameter Point constuctor.
+   * Correct Answer: B. Choice II successfully creates a new Point with x assigned to value b and y assigned to value b using the two-parameter Point constructor.
 * Question 39:
    * Original Answer: E. Although the return value of recur(9) is 18, this call is made within another recursive call, which means that it is not the true final return value.
    * Correct Answer: D. The inital call recur(27) has a return value of recur(recur(9)). The inner call recur(9) returns 18, which means the outer call becomes recur(18). The call recur(18) returns recur(recur(6)). The inner call recur(6) returns 12, which means the outer call becomes recur(12). The call recur(12) returns recur(recur(4)). The inner call recur(4) returns 8, which means the outer call becomes recur(8). The call recur(8) returns 16, which is the final return value of the initial call recur(27).
