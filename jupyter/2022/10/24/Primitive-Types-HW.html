@@ -151,42 +151,103 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-java"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="p">;</span>
+<div class=" highlight hl-java"><pre><span></span><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Item</span> <span class="p">{</span>
+    <span class="kt">double</span> <span class="nf">purchasePrice</span><span class="p">();</span>
+<span class="p">}</span>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TaxableItem</span> <span class="p">{</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="p">()</span> <span class="p">{</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"2006 FRQ Part 2a"</span><span class="p">);</span>
-        <span class="n">Scanner</span> <span class="n">numInput1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
-        <span class="n">Scanner</span> <span class="n">stringInput</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Is the item taxable? (y/n)"</span><span class="p">);</span>
-        <span class="n">String</span> <span class="n">isTaxable</span> <span class="o">=</span> <span class="n">stringInput</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span>
-        <span class="n">String</span> <span class="n">isTaxableNew</span> <span class="o">=</span> <span class="n">isTaxable</span><span class="p">.</span><span class="na">toLowerCase</span><span class="p">();</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">isTaxableNew</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">"y"</span><span class="p">))</span> <span class="p">{</span>
-            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"What is the tax rate percentage?"</span><span class="p">);</span>
-            <span class="kt">int</span> <span class="n">taxRate</span> <span class="o">=</span> <span class="n">numInput1</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
-            <span class="n">purchasePrice</span><span class="p">(</span><span class="n">taxRate</span><span class="p">);</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">isTaxableNew</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">"n"</span><span class="p">))</span> <span class="p">{</span>
-            <span class="n">purchasePrice</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">purchasePrice</span><span class="p">(</span><span class="kt">double</span> <span class="n">taxRate</span><span class="p">)</span> <span class="p">{</span> 
-        <span class="n">Scanner</span> <span class="n">numInput2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Enter the list price of the item in dollars:"</span><span class="p">);</span>
-        <span class="kt">double</span> <span class="n">listPrice</span> <span class="o">=</span> <span class="n">numInput2</span><span class="p">.</span><span class="na">nextDouble</span><span class="p">();</span>
-        <span class="kt">double</span> <span class="n">finalPrice</span> <span class="o">=</span> <span class="p">(</span><span class="n">listPrice</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">listPrice</span> <span class="o">*</span> <span class="p">(</span><span class="n">taxRate</span><span class="o">/</span><span class="mi">100</span><span class="p">));</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"The final price of the item is: "</span> <span class="o">+</span> <span class="n">finalPrice</span><span class="p">);</span>
-        <span class="k">return</span> <span class="n">finalPrice</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span> 
+<span class="c1">// Class TaxableItem implements the interface Item, which contains the method purchasePrice()</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">TaxableItem</span> <span class="kd">implements</span> <span class="n">Item</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="kt">double</span> <span class="n">taxRate</span><span class="p">;</span>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">runProgram</span> <span class="p">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">TaxableItem</span> <span class="n">t</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TaxableItem</span><span class="p">();</span>
-        <span class="n">t</span><span class="p">.</span><span class="na">run</span><span class="p">();</span>
+    <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">double</span> <span class="nf">getListPrice</span><span class="p">();</span>
+
+    <span class="c1">// Constructor for initializing the tax rate, if there is any</span>
+    <span class="kd">public</span> <span class="nf">TaxableItem</span><span class="p">(</span><span class="kt">double</span> <span class="n">rate</span><span class="p">){</span>
+        <span class="n">taxRate</span> <span class="o">=</span> <span class="n">rate</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Calculates the purchase price of an item by multiplying the tax rate by the list price, then adding that to the original list price</span>
+    <span class="c1">// If there is no tax rate, then the purchase price is simply equal to the list price</span>
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">purchasePrice</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kt">double</span> <span class="n">purchasePriceValue</span> <span class="o">=</span> <span class="n">getListPrice</span><span class="p">()</span> <span class="o">+</span> <span class="p">(</span><span class="n">taxRate</span> <span class="o">*</span> <span class="n">getListPrice</span><span class="p">());</span>
+        <span class="k">return</span> <span class="n">purchasePriceValue</span><span class="p">;</span>
+        <span class="c1">// Alternate way:</span>
+        <span class="c1">// return getListPrice() * (1.0 + taxRate);</span>
+
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="n">runProgram</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+<span class="c1">// Since we are working with an abstract class, we would have to extend to it with another class in order to run our program</span>
+<span class="c1">// As of right now, the class hierarchy seems to be very complicated, so I will further research ways to output the program results</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>2006 FRQ 3a</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Customer</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">cName</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">cID</span><span class="p">;</span>
+
+    <span class="c1">// Constructor to initialize customer name and id</span>
+    <span class="kd">public</span> <span class="nf">Customer</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">,</span> <span class="kt">int</span> <span class="n">idNum</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cName</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
+        <span class="n">cID</span> <span class="o">=</span> <span class="n">idNum</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Gets the name of the specified customer</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">cName</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Gets the unique ID of the specified customer</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getID</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">cID</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Compares given customer with another customer. Returns a positive integer if the customer is greater than the other customer, </span>
+    <span class="c1">// 0 if they are equal, and a negative integer if the customer is less than the other customer.</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">compareCustomer</span><span class="p">(</span><span class="n">Customer</span> <span class="n">other</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">nameComparison</span> <span class="o">=</span> <span class="n">getName</span><span class="p">().</span><span class="na">compareTo</span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">nameComparison</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">nameComparison</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">getID</span><span class="p">()</span> <span class="o">!=</span> <span class="n">other</span><span class="p">.</span><span class="na">getID</span><span class="p">())</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="n">getID</span><span class="p">()</span> <span class="o">-</span> <span class="n">other</span><span class="p">.</span><span class="na">getID</span><span class="p">();</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Running method for visualizing outputs</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Customer</span> <span class="n">c1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Customer</span><span class="p">(</span><span class="s">"Smith"</span><span class="p">,</span> <span class="mi">1001</span><span class="p">);</span>
+        <span class="n">Customer</span> <span class="n">c2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Customer</span><span class="p">(</span><span class="s">"Anderson"</span><span class="p">,</span> <span class="mi">1002</span><span class="p">);</span>
+        <span class="n">Customer</span> <span class="n">c3</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Customer</span><span class="p">(</span><span class="s">"Smith"</span><span class="p">,</span> <span class="mi">1003</span><span class="p">);</span>
+        <span class="n">Customer</span> <span class="n">c4</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Customer</span><span class="p">(</span><span class="s">"Will"</span><span class="p">,</span> <span class="mi">1004</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">c1</span><span class="p">.</span><span class="na">compareCustomer</span><span class="p">(</span><span class="n">c4</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">Customer</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
 </pre></div>
 
     </div>
@@ -199,11 +260,7 @@ window.onload = wrap_img;
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>2006 FRQ Part 2a
-Is the item taxable? (y/n)
-What is the tax rate percentage?
-Enter the list price of the item in dollars
-The final price of the item is: 1520.0
+<pre>-4
 </pre>
 </div>
 </div>
@@ -250,7 +307,7 @@ The final price of the item is: 1520.0
       </div>
     </div>
 
-    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" target="_blank" title="fastai"><svg class="svg-icon grey"><use xlink:href="/DylanLuoAPCSA/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" target="_blank" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/DylanLuoAPCSA/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+    <div class="social-links"><ul class="social-media-list"></ul>
 </div>
 
   </div>

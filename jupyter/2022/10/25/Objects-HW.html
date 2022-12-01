@@ -82,7 +82,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      1 min read
+      2 min read
     
 </span></p>
 
@@ -143,14 +143,15 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-java"><pre><span></span><span class="kn">import</span> <span class="nn">java.lang.Math</span><span class="p">;</span>
-
+<div class=" highlight hl-java"><pre><span></span><span class="c1">// Class for initializing values for each Goblin trait</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Goblin</span> <span class="p">{</span>
+    <span class="c1">// Initialize all trait variables</span>
     <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="p">;</span>
     <span class="kd">private</span> <span class="kt">int</span> <span class="n">HP</span><span class="p">;</span>
     <span class="kd">private</span> <span class="kt">int</span> <span class="n">DMG</span><span class="p">;</span>
     <span class="kd">private</span> <span class="kt">double</span> <span class="n">hitChance</span><span class="p">;</span>
 
+    <span class="c1">// Get methods for each trait value</span>
     <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="p">()</span> <span class="p">{</span>
         <span class="k">return</span> <span class="n">name</span><span class="p">;</span>
     <span class="p">}</span>
@@ -175,6 +176,8 @@ window.onload = wrap_img;
         <span class="p">}</span>
     <span class="p">}</span>
 
+
+    <span class="c1">// Set methods for each trait value</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="p">(</span><span class="n">String</span> <span class="n">newName</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">this</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">newName</span><span class="p">;</span>
     <span class="p">}</span>
@@ -195,11 +198,29 @@ window.onload = wrap_img;
         <span class="k">this</span><span class="p">.</span><span class="na">hitChance</span> <span class="o">=</span> <span class="n">newHitChance</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
+</pre></div>
 
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="c1">// Math import for randomization</span>
+<span class="kn">import</span> <span class="nn">java.lang.Math</span><span class="p">;</span>
+
+<span class="c1">// Class that simulates the outcome of fights between 2 goblins</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Duel</span> <span class="p">{</span>
-
+    <span class="c1">// Method that simulates each goblin's attack. Every attack either leads to a miss or some amount damage to a goblin.</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">attack</span><span class="p">(</span><span class="n">Goblin</span> <span class="n">attackerGoblin</span><span class="p">,</span> <span class="n">Goblin</span> <span class="n">attackeeGoblin</span><span class="p">)</span> <span class="p">{</span>
-
         <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">attackerGoblin</span><span class="p">.</span><span class="na">getName</span><span class="p">()</span> <span class="o">+</span> <span class="s">" attacks "</span> <span class="o">+</span> <span class="n">attackeeGoblin</span><span class="p">.</span><span class="na">getName</span><span class="p">()</span> <span class="o">+</span> <span class="s">"!"</span><span class="p">);</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="na">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">attackerGoblin</span><span class="p">.</span><span class="na">getHitChance</span><span class="p">())</span> <span class="p">{</span>
             <span class="n">attackeeGoblin</span><span class="p">.</span><span class="na">takeDMG</span><span class="p">(</span><span class="n">attackerGoblin</span><span class="p">.</span><span class="na">getDMG</span><span class="p">());</span>
@@ -213,6 +234,7 @@ window.onload = wrap_img;
         <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
     <span class="p">}</span>
 
+    <span class="c1">// Start up method that runs as long as both goblins are alive</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">fight</span><span class="p">(</span><span class="n">Goblin</span> <span class="n">goblin1</span><span class="p">,</span> <span class="n">Goblin</span> <span class="n">goblin2</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">while</span> <span class="p">(</span><span class="n">goblin1</span><span class="p">.</span><span class="na">isAlive</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">goblin2</span><span class="p">.</span><span class="na">isAlive</span><span class="p">())</span> <span class="p">{</span>
             
@@ -234,16 +256,16 @@ window.onload = wrap_img;
 
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">Goblin</span> <span class="n">goblin1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Goblin</span><span class="p">();</span>
-        <span class="n">goblin1</span><span class="p">.</span><span class="na">setName</span><span class="p">(</span><span class="s">"jeffrey"</span><span class="p">);</span>
-        <span class="n">goblin1</span><span class="p">.</span><span class="na">setHP</span><span class="p">(</span><span class="mi">12</span><span class="p">);</span>
-        <span class="n">goblin1</span><span class="p">.</span><span class="na">setDMG</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-        <span class="n">goblin1</span><span class="p">.</span><span class="na">setHitChance</span><span class="p">(</span><span class="mf">0.50</span><span class="p">);</span>
+        <span class="n">goblin1</span><span class="p">.</span><span class="na">setName</span><span class="p">(</span><span class="s">"Satoru Gojo"</span><span class="p">);</span>
+        <span class="n">goblin1</span><span class="p">.</span><span class="na">setHP</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+        <span class="n">goblin1</span><span class="p">.</span><span class="na">setDMG</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+        <span class="n">goblin1</span><span class="p">.</span><span class="na">setHitChance</span><span class="p">(</span><span class="mf">0.85</span><span class="p">);</span>
 
         <span class="n">Goblin</span> <span class="n">goblin2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Goblin</span><span class="p">();</span>
-        <span class="n">goblin2</span><span class="p">.</span><span class="na">setName</span><span class="p">(</span><span class="s">"Gunther the great"</span><span class="p">);</span>
-        <span class="n">goblin2</span><span class="p">.</span><span class="na">setHP</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
-        <span class="n">goblin2</span><span class="p">.</span><span class="na">setDMG</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-        <span class="n">goblin2</span><span class="p">.</span><span class="na">setHitChance</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+        <span class="n">goblin2</span><span class="p">.</span><span class="na">setName</span><span class="p">(</span><span class="s">"Toji Fushiguro"</span><span class="p">);</span>
+        <span class="n">goblin2</span><span class="p">.</span><span class="na">setHP</span><span class="p">(</span><span class="mi">12</span><span class="p">);</span>
+        <span class="n">goblin2</span><span class="p">.</span><span class="na">setDMG</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+        <span class="n">goblin2</span><span class="p">.</span><span class="na">setHitChance</span><span class="p">(</span><span class="mf">0.75</span><span class="p">);</span>
 
         <span class="n">fight</span><span class="p">(</span><span class="n">goblin1</span><span class="p">,</span> <span class="n">goblin2</span><span class="p">);</span>
     <span class="p">}</span>
@@ -262,36 +284,46 @@ window.onload = wrap_img;
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>jeffrey attacks Gunther the great!
-jeffrey hits!
-Gunther the great takes 2 damage
-Gunther the great HP: 2
+<pre>Satoru Gojo attacks Toji Fushiguro!
+Satoru Gojo hits!
+Toji Fushiguro takes 3 damage
+Toji Fushiguro HP: 9
 
-Gunther the great attacks jeffrey!
-Gunther the great hits!
-jeffrey takes 1 damage
-jeffrey HP: 11
+Toji Fushiguro attacks Satoru Gojo!
+Toji Fushiguro hits!
+Satoru Gojo takes 2 damage
+Satoru Gojo HP: 8
 
-jeffrey attacks Gunther the great!
-jeffrey misses...
-Gunther the great HP: 2
+Satoru Gojo attacks Toji Fushiguro!
+Satoru Gojo hits!
+Toji Fushiguro takes 3 damage
+Toji Fushiguro HP: 6
 
-Gunther the great attacks jeffrey!
-Gunther the great hits!
-jeffrey takes 1 damage
-jeffrey HP: 10
+Toji Fushiguro attacks Satoru Gojo!
+Toji Fushiguro hits!
+Satoru Gojo takes 2 damage
+Satoru Gojo HP: 6
 
-jeffrey attacks Gunther the great!
-jeffrey hits!
-Gunther the great takes 2 damage
-Gunther the great HP: 0
+Satoru Gojo attacks Toji Fushiguro!
+Satoru Gojo hits!
+Toji Fushiguro takes 3 damage
+Toji Fushiguro HP: 3
 
-Gunther the great attacks jeffrey!
-Gunther the great hits!
-jeffrey takes 1 damage
-jeffrey HP: 9
+Toji Fushiguro attacks Satoru Gojo!
+Toji Fushiguro misses...
+Satoru Gojo HP: 6
 
-Gunther the great has perished
+Satoru Gojo attacks Toji Fushiguro!
+Satoru Gojo hits!
+Toji Fushiguro takes 3 damage
+Toji Fushiguro HP: 0
+
+Toji Fushiguro attacks Satoru Gojo!
+Toji Fushiguro hits!
+Satoru Gojo takes 2 damage
+Satoru Gojo HP: 4
+
+Toji Fushiguro has perished
 </pre>
 </div>
 </div>
@@ -338,7 +370,7 @@ Gunther the great has perished
       </div>
     </div>
 
-    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" target="_blank" title="fastai"><svg class="svg-icon grey"><use xlink:href="/DylanLuoAPCSA/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" target="_blank" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/DylanLuoAPCSA/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+    <div class="social-links"><ul class="social-media-list"></ul>
 </div>
 
   </div>

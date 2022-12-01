@@ -82,7 +82,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      1 min read
+      2 min read
     
 </span></p>
 
@@ -152,30 +152,54 @@ window.onload = wrap_img;
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-java"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">WordMatch</span> <span class="p">{</span>
-    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">scoreGuess</span><span class="p">(</span><span class="n">String</span> <span class="n">guess</span><span class="p">)</span><span class="err">​</span> <span class="p">{</span><span class="err">​</span>
-        <span class="kt">int</span> <span class="n">val</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="err">​</span>
-        <span class="kt">int</span> <span class="n">len</span> <span class="o">=</span> <span class="n">guess</span><span class="p">.</span><span class="na">length</span><span class="p">();</span><span class="err">​</span>
-        <span class="k">for</span><span class="p">(</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">secret</span><span class="p">.</span><span class="na">length</span><span class="p">()</span><span class="o">-</span><span class="n">len</span><span class="p">;</span> <span class="n">i</span><span class="o">+=</span><span class="mi">1</span><span class="p">)</span><span class="err">​</span> <span class="p">{</span><span class="err">​</span>
-        <span class="n">String</span> <span class="n">ck</span> <span class="o">=</span> <span class="n">secret</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="n">len</span><span class="p">);</span><span class="err">​</span>
-        <span class="k">if</span><span class="p">(</span><span class="n">ck</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">guess</span><span class="p">))</span> <span class="p">{</span><span class="err">​</span>
-            <span class="n">val</span><span class="o">++</span><span class="p">;</span><span class="err">​</span>
-        <span class="p">}</span>
-        <span class="err">​</span>
-        <span class="k">return</span> <span class="n">val</span><span class="o">*</span><span class="n">len</span><span class="o">*</span><span class="n">len</span><span class="p">;</span><span class="err">​</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">secret</span><span class="p">;</span>
+
+    <span class="c1">// Constructor for WordMatch that initializes the secret variable</span>
+    <span class="kd">public</span> <span class="nf">WordMatch</span><span class="p">(</span><span class="n">String</span> <span class="n">word</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">secret</span> <span class="o">=</span> <span class="n">word</span><span class="p">;</span>
     <span class="p">}</span>
+
+    <span class="c1">// Method for comparing guess with secret</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">scoreGuess</span><span class="p">(</span><span class="n">String</span> <span class="n">guess</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">score</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">occurrences</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">guessLength</span> <span class="o">=</span> <span class="n">guess</span><span class="p">.</span><span class="na">length</span><span class="p">();</span>
+        <span class="c1">// The for loop's condition changes with respect to the length of guess, and counts the number of occurrences of guess in secret</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">secret</span><span class="p">.</span><span class="na">length</span><span class="p">()</span> <span class="o">-</span> <span class="n">guessLength</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">String</span> <span class="n">secretComponent</span> <span class="o">=</span> <span class="n">secret</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="n">guessLength</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">guess</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">secretComponent</span><span class="p">))</span> <span class="p">{</span>
+                <span class="n">occurrences</span><span class="o">++</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="n">score</span> <span class="o">=</span> <span class="n">occurrences</span> <span class="o">*</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">Math</span><span class="p">.</span><span class="na">pow</span><span class="p">(</span><span class="n">guessLength</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">score</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Running method for visualizing outputs</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">WordMatch</span> <span class="n">myObj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">WordMatch</span><span class="p">(</span><span class="s">"mississippi"</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">myObj</span><span class="p">.</span><span class="na">scoreGuess</span><span class="p">(</span><span class="s">"i"</span><span class="p">));</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="cm">/*public class runProgram {</span>
-<span class="cm">    public static void main(String[] args) {</span>
-
-<span class="cm">    }</span>
-<span class="cm">}</span>
-
-<span class="cm">runProgram.main(null);*/</span>
+<span class="n">WordMatch</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>4
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -197,16 +221,80 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-java"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ClubMembers</span> <span class="p">{</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addMembers</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">names</span><span class="p">,</span> <span class="kt">int</span> <span class="n">gradYear</span> <span class="p">)</span><span class="err">​</span> <span class="p">{</span><span class="err">​</span>
-        <span class="k">for</span><span class="p">(</span> <span class="n">String</span> <span class="n">n</span> <span class="p">:</span> <span class="n">names</span> <span class="p">)</span><span class="err">​</span> <span class="p">{</span><span class="err">​</span>
-            <span class="n">memberList</span><span class="p">.</span><span class="na">add</span><span class="p">(</span> <span class="k">new</span> <span class="n">MemberInfo</span><span class="p">(</span> <span class="n">n</span><span class="p">,</span> <span class="n">gradYear</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span> <span class="p">);</span><span class="err">​</span>
-        <span class="p">}</span><span class="err">​</span>
-    <span class="p">}</span> 
+<div class=" highlight hl-java"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberInfo</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">memberName</span><span class="p">;</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">memberGradYear</span><span class="p">;</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="n">memberGoodStanding</span><span class="p">;</span>
+
+    <span class="c1">// Constructor that initializes detail variables for a member</span>
+    <span class="kd">public</span> <span class="nf">MemberInfo</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">,</span> <span class="kt">int</span> <span class="n">gradYear</span><span class="p">,</span> <span class="kt">boolean</span> <span class="n">hasGoodStanding</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">memberName</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
+        <span class="n">memberGradYear</span> <span class="o">=</span> <span class="n">gradYear</span><span class="p">;</span>
+        <span class="n">memberGoodStanding</span> <span class="o">=</span> <span class="n">hasGoodStanding</span><span class="p">;</span>    
+    <span class="p">}</span>
+
+    <span class="c1">// Returns graduation year of a member</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getGradYear</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">memberGradYear</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Returns the good standing status of a member</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">inGoodStanding</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">memberGoodStanding</span><span class="p">;</span>
+    <span class="p">}</span>
 <span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ClubMembers</span> <span class="p">{</span>
+    <span class="c1">// memberList ArrayList</span>
+    <span class="kd">private</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">MemberInfo</span><span class="o">&gt;</span> <span class="n">memberList</span><span class="p">;</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addMembers</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">names</span><span class="p">,</span> <span class="kt">int</span> <span class="n">gradYear</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// memberList is initialized</span>
+        <span class="n">memberList</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">MemberInfo</span><span class="o">&gt;</span><span class="p">();</span>
+
+        <span class="c1">// for loop adds all specified new member objects to MemberList</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">names</span><span class="p">.</span><span class="na">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// Alternate method: Create a memberInfo object first then append it to memberList</span>
+            <span class="c1">// MemberInfo memberObject = new MemberInfo(names[i], gradYear, true);</span>
+            <span class="n">memberList</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="k">new</span> <span class="n">MemberInfo</span><span class="p">(</span><span class="n">names</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">,</span> <span class="n">gradYear</span><span class="p">,</span> <span class="kc">true</span><span class="p">));</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Running method for visualizing outputs</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">ClubMembers</span> <span class="n">myObj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClubMembers</span><span class="p">();</span>
+        <span class="n">String</span><span class="o">[]</span> <span class="n">names</span> <span class="o">=</span> <span class="p">{</span><span class="s">"Dylan"</span><span class="p">,</span> <span class="s">"Ritvik"</span><span class="p">,</span> <span class="s">"Aryan"</span><span class="p">};</span>
+        <span class="n">myObj</span><span class="p">.</span><span class="na">addMembers</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="mi">2023</span><span class="p">);</span>
+        <span class="c1">// for loop retrieves all member objects from MemberList, then retrieves memberName, memberGradYear, and memberGoodStanding from each member object and prints them</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">myObj</span><span class="p">.</span><span class="na">memberList</span><span class="p">.</span><span class="na">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">String</span> <span class="n">memberNameRetrieve</span> <span class="o">=</span> <span class="n">myObj</span><span class="p">.</span><span class="na">memberList</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="na">memberName</span><span class="p">;</span>
+            <span class="kt">int</span> <span class="n">memberGradYearRetrieve</span> <span class="o">=</span> <span class="n">myObj</span><span class="p">.</span><span class="na">memberList</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="na">memberGradYear</span><span class="p">;</span>
+            <span class="kt">boolean</span> <span class="n">memberGoodStanding</span> <span class="o">=</span> <span class="n">myObj</span><span class="p">.</span><span class="na">memberList</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="na">memberGoodStanding</span><span class="p">;</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">memberNameRetrieve</span> <span class="o">+</span> <span class="s">"; "</span> <span class="o">+</span> <span class="n">memberGradYearRetrieve</span> <span class="o">+</span> <span class="s">"; "</span> <span class="o">+</span> <span class="n">memberGoodStanding</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">ClubMembers</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Dylan; 2023; true
+Ritvik; 2023; true
+Aryan; 2023; true
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -249,7 +337,7 @@ window.onload = wrap_img;
       </div>
     </div>
 
-    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" target="_blank" title="fastai"><svg class="svg-icon grey"><use xlink:href="/DylanLuoAPCSA/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" target="_blank" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/DylanLuoAPCSA/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+    <div class="social-links"><ul class="social-media-list"></ul>
 </div>
 
   </div>
