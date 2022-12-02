@@ -82,7 +82,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      1 min read
+      2 min read
     
 </span></p>
 
@@ -136,6 +136,101 @@ window.onload = wrap_img;
 
 <div class="container" id="notebook-container">
         
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>
+<strong>Subclass Constructor and super Keywords:</strong> Since constructors are not members, they are not inherited by the subclasses. However, the constructor of the superclass can be invoked from the subclass. The super keyword makes this possible, as it refers to superclass objects. It can be used to call superclass methods, as well as access the superclass constructor.</li>
+<li>
+<strong>Method Overloading:</strong> A feature that allows a class to have multiple method with the same name, but they each have to have different parameters.</li>
+<li>
+<strong>Method Overriding:</strong> A feature that occurs when a subclass has a method with the same name as a method in the superclass. Essentially, the subclass implements a method declared by the superclass.</li>
+<li>
+<strong>Abstract Class and Abstract Method:</strong> An abstract class is a type of restricted class that cannot be be used to create objects. To access it, it has to be inherited from another class. An abstract method can only be used in an abstract class, and it does not comprise of a body. The body of an abstract method is provided by the subclass that inherits it.</li>
+<li>
+<strong>toString(), equals(), and hashCode() standard methods:</strong> toString() converts an object variable into a string. equals() is typically used to check for equality between two string variables. hashCode() returns the integer hash code value of an object.</li>
+<li>
+<strong>Object Late Binding:</strong> Also known as dynamic linkage, late binding occurs when the name of the method being called upon an object is looked up at runtime.</li>
+<li>
+<strong>Polymorphism:</strong> Referring to "many forms", polymorphism occurs when there are many classes that relate to each other by inheritance. Polymorphism generally involves using inherited attributes and methods to perform different kinds of tasks among different subclasses.</li>
+<li>
+<strong>Big O Notation:</strong> A mathematical notation that deals with the limiting behavior of a function when the argument goes toward a particular value or infinity.</li>
+</ul>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">VocabFour</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">a</span><span class="p">;</span>
+    <span class="kd">public</span> <span class="nf">VocabFour</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">methodOne</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Method one works!"</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">methodOne</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Method one with integer "</span> <span class="o">+</span> <span class="n">i</span> <span class="o">+</span> <span class="s">" works!"</span> <span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">methodTwo</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Superclass method two works!"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">SubVocabFour</span> <span class="kd">extends</span> <span class="n">VocabFour</span> <span class="p">{</span>
+    <span class="c1">// Method overriding</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">methodTwo</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// super keyword</span>
+        <span class="kd">super</span><span class="p">.</span><span class="na">methodTwo</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Subclass method two works!"</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">SubVocabFour</span> <span class="n">myObj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SubVocabFour</span><span class="p">();</span>
+        <span class="c1">// Method overloading</span>
+        <span class="n">myObj</span><span class="p">.</span><span class="na">methodOne</span><span class="p">();</span>
+        <span class="n">myObj</span><span class="p">.</span><span class="na">methodOne</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span>
+        <span class="n">myObj</span><span class="p">.</span><span class="na">methodTwo</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">SubVocabFour</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Method one works!
+Method one with integer 7 works!
+Superclass method two works!
+Subclass method two works!
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
 </div>
 
 

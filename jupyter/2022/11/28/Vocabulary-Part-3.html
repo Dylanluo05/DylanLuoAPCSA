@@ -82,7 +82,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      1 min read
+      2 min read
     
 </span></p>
 
@@ -161,6 +161,125 @@ window.onload = wrap_img;
 </div>
 </div>
 </div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">VocabThree</span> <span class="p">{</span>
+    <span class="c1">// Initialized private int variable</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">num</span><span class="p">;</span>
+        
+    <span class="c1">// Accessor method</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getNum</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">num</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Mutator method</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setNum</span><span class="p">(</span><span class="kt">int</span> <span class="n">numInput</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// this keyword</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">num</span> <span class="o">=</span> <span class="n">numInput</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Static variable</span>
+    <span class="kd">static</span> <span class="kt">int</span> <span class="n">staticVar</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
+
+    <span class="c1">// Class variable</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">classVar</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
+
+    <span class="c1">// Protected variable</span>
+    <span class="kd">protected</span> <span class="kt">int</span> <span class="n">protectedVar</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
+
+    <span class="c1">//Static method</span>
+    <span class="kd">static</span> <span class="kt">void</span> <span class="nf">runStatic</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Static method is working!"</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="c1">//Class method</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">runClass</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Class method is working!"</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// main/tester method</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Create an object to access class variables</span>
+        <span class="n">VocabThree</span> <span class="n">myObj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">VocabThree</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Printing Static Variable: "</span> <span class="o">+</span> <span class="n">staticVar</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Printing Class Variable: "</span> <span class="o">+</span> <span class="n">myObj</span><span class="p">.</span><span class="na">classVar</span><span class="p">);</span>
+
+        <span class="n">runStatic</span><span class="p">();</span>
+        <span class="n">myObj</span><span class="p">.</span><span class="na">runClass</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">VocabThree</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Printing Static Variable: 7
+Printing Class Variable: 7
+Static method is working!
+Class method is working!
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="c1">// Inheritance</span>
+<span class="kd">class</span> <span class="nc">SubVocabThree</span> <span class="kd">extends</span> <span class="n">VocabThree</span> <span class="p">{</span>
+    <span class="c1">// main/tester method</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Running inherited class method</span>
+        <span class="n">SubVocabThree</span> <span class="n">myObj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SubVocabThree</span><span class="p">();</span>
+        <span class="n">myObj</span><span class="p">.</span><span class="na">runClass</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">SubVocabThree</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Class method is working!
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
 </div>
 
 
