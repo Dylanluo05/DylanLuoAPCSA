@@ -82,7 +82,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      2 min read
+      3 min read
     
 </span></p>
 
@@ -201,6 +201,16 @@ window.onload = wrap_img;
         <span class="n">myObj</span><span class="p">.</span><span class="na">methodOne</span><span class="p">();</span>
         <span class="n">myObj</span><span class="p">.</span><span class="na">methodOne</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span>
         <span class="n">myObj</span><span class="p">.</span><span class="na">methodTwo</span><span class="p">();</span>
+
+        <span class="n">Integer</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
+        <span class="n">num</span><span class="p">.</span><span class="na">toString</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"toString() method: "</span> <span class="o">+</span> <span class="n">num</span><span class="p">.</span><span class="na">getClass</span><span class="p">());</span>
+
+        <span class="n">String</span> <span class="n">one</span> <span class="o">=</span> <span class="s">"Sup"</span><span class="p">;</span>
+        <span class="n">String</span> <span class="n">two</span> <span class="o">=</span> <span class="s">"Sup"</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"equals() method: "</span> <span class="o">+</span> <span class="n">one</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">two</span><span class="p">));</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"hashCode() method for String variable two: "</span> <span class="o">+</span> <span class="n">two</span><span class="p">.</span><span class="na">hashCode</span><span class="p">());</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
@@ -221,6 +231,120 @@ window.onload = wrap_img;
 Method one with integer 7 works!
 Superclass method two works!
 Subclass method two works!
+toString() method: class java.lang.Integer
+equals() method: true
+hashCode() method for String variable two: 83502
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="c1">// Abstract class and method</span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">AbsVocabFour</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">printMessage</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">// Child class inherits the abstract class defines body for the abstract method</span>
+<span class="kd">class</span> <span class="nc">SubAbsVocabFour</span> <span class="kd">extends</span> <span class="n">AbsVocabFour</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">printMessage</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Abstract message successful!"</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">SubAbsVocabFour</span> <span class="n">myObj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SubAbsVocabFour</span><span class="p">();</span>
+        <span class="n">myObj</span><span class="p">.</span><span class="na">printMessage</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">SubAbsVocabFour</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Abstract message successful!
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="c1">// Polymorphism</span>
+<span class="kd">class</span> <span class="nc">Sport</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">typeOfBall</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"The sport uses this kind of ball"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">Basketball</span> <span class="kd">extends</span> <span class="n">Sport</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">typeOfBall</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"The sport uses a basketball"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">Soccer</span> <span class="kd">extends</span> <span class="n">Sport</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">typeOfBall</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"The sport uses a soccer ball"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">Main</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Sport</span> <span class="n">mySport</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Sport</span><span class="p">();</span>
+        <span class="c1">// Late object binding</span>
+        <span class="n">Sport</span> <span class="n">myBasketball</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Basketball</span><span class="p">();</span>
+        <span class="n">Sport</span> <span class="n">mySoccer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Soccer</span><span class="p">();</span>
+        <span class="n">mySport</span><span class="p">.</span><span class="na">typeOfBall</span><span class="p">();</span>
+        <span class="n">myBasketball</span><span class="p">.</span><span class="na">typeOfBall</span><span class="p">();</span>
+        <span class="n">mySoccer</span><span class="p">.</span><span class="na">typeOfBall</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">Main</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>The sport uses this kind of ball
+The sport uses a basketball
+The sport uses a soccer ball
 </pre>
 </div>
 </div>
