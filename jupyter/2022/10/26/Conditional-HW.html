@@ -364,8 +364,8 @@ window.onload = wrap_img;
 
     <span class="c1">// Running method for visualizing outputs</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">Delimiters</span> <span class="n">myObj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Delimiters</span><span class="p">(</span><span class="s">"&lt;sup&gt;"</span><span class="p">,</span> <span class="s">"&lt;/sup&gt;"</span><span class="p">);</span>
-        <span class="n">String</span><span class="o">[]</span> <span class="n">tokens</span> <span class="o">=</span> <span class="p">{</span><span class="s">"&lt;sup&gt;"</span><span class="p">,</span> <span class="s">"yy"</span><span class="p">,</span> <span class="s">"&lt;sup&gt;"</span><span class="p">,</span> <span class="s">"zz"</span><span class="p">,</span> <span class="s">"&lt;/sup&gt;"</span><span class="p">,</span> <span class="s">"&lt;/sup&gt;"</span><span class="p">};</span>
+        <span class="n">Delimiters</span> <span class="n">myObj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Delimiters</span><span class="p">(</span><span class="s">"("</span><span class="p">,</span> <span class="s">")"</span><span class="p">);</span>
+        <span class="n">String</span><span class="o">[]</span> <span class="n">tokens</span> <span class="o">=</span> <span class="p">{</span><span class="s">"("</span><span class="p">,</span> <span class="s">"yy"</span><span class="p">,</span> <span class="s">")"</span><span class="p">,</span> <span class="s">"zz"</span><span class="p">,</span> <span class="s">"("</span><span class="p">,</span> <span class="s">")"</span><span class="p">};</span>
         <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">delimiters</span> <span class="o">=</span> <span class="n">myObj</span><span class="p">.</span><span class="na">getDelimitersList</span><span class="p">(</span><span class="n">tokens</span><span class="p">);</span>
         <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">delimiters</span><span class="p">);</span>
         <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">myObj</span><span class="p">.</span><span class="na">isBalanced</span><span class="p">(</span><span class="n">delimiters</span><span class="p">));</span>
@@ -385,7 +385,7 @@ window.onload = wrap_img;
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[&lt;sup&gt;, &lt;sup&gt;, &lt;/sup&gt;, &lt;/sup&gt;]
+<pre>[(, ), (, )]
 true
 </pre>
 </div>
