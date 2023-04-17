@@ -82,7 +82,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      7 min read
+      10 min read
     
 </span></p>
 
@@ -127,6 +127,7 @@ window.onload = wrap_img;
 
   <div class="post-content e-content" itemprop="articleBody">
     <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#Collectable">Collectable </a></li>
 <li class="toc-entry toc-h2"><a href="#Big-O-Complexity-Notes">Big O Complexity Notes </a></li>
 <li class="toc-entry toc-h2"><a href="#Big-O-Analysis:">Big O Analysis: </a></li>
 </ul><!--
@@ -148,6 +149,7 @@ window.onload = wrap_img;
 <div class=" highlight hl-java"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.LinkedList</span><span class="p">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Sorting</span> <span class="p">{</span>
+    <span class="c1">// Initialize different Linked Lists to be sorted</span>
     <span class="kd">public</span> <span class="n">LinkedList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">linkedListName</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="p">();</span>
     <span class="kd">public</span> <span class="n">LinkedList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">linkedListNameBubble</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="p">();</span>
     <span class="kd">public</span> <span class="n">LinkedList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">linkedListNameSelection</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="p">();</span>
@@ -163,6 +165,8 @@ window.onload = wrap_img;
         <span class="p">}</span>
     <span class="p">}</span>
 
+    <span class="c1">// Iterate through each element of the linked list, and in each iteration, swap 2 elements if they are not in the correct order.</span>
+    <span class="c1">// After one full loop of the linked list, decrease the loop condition by one, since the last element has to be the highest in the linked list.</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">bubbleSort</span><span class="p">()</span> <span class="p">{</span>
         <span class="kt">int</span> <span class="n">capacity</span> <span class="o">=</span> <span class="n">linkedListNameBubble</span><span class="p">.</span><span class="na">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
         <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">capacity</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
@@ -178,6 +182,8 @@ window.onload = wrap_img;
         <span class="p">}</span>
     <span class="p">}</span>
 
+    <span class="c1">// In one loop of the selection sort, the algorithm finds the minimum value of the linked list.</span>
+    <span class="c1">// After one full loop, the minimum value is set at the minimum index, and the starting index of the loop moves up by one.</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">selectionSort</span><span class="p">()</span> <span class="p">{</span>
         <span class="kt">int</span> <span class="n">tempIndex</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
         <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">tempIndex</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">linkedListNameSelection</span><span class="p">.</span><span class="na">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
@@ -199,6 +205,7 @@ window.onload = wrap_img;
         <span class="p">}</span>
     <span class="p">}</span>
 
+    <span class="c1">// In each iteration, take the current element and compare it to all of the other elements in the linked list, then insert it to the position before the first element it is lower than in value.</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">insertionSort</span><span class="p">()</span> <span class="p">{</span>
         <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">linkedListNameInsertion</span><span class="p">.</span><span class="na">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">i</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
@@ -212,7 +219,7 @@ window.onload = wrap_img;
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
-
+    
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
         <span class="kt">int</span><span class="o">[]</span> <span class="n">numbers</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">};</span>
         <span class="n">Sorting</span> <span class="n">myObj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Sorting</span><span class="p">(</span><span class="n">numbers</span><span class="p">);</span>
@@ -247,6 +254,194 @@ LinkedList before selection sort: [1, 7, 2, 5, 3, 6, 4, 8]
 LinkedList after selection sort: [1, 2, 3, 4, 5, 6, 7, 8]
 LinkedList before insertion sort: [1, 7, 2, 5, 3, 6, 4, 8]
 LinkedList after insertion sort: [1, 2, 3, 4, 5, 6, 7, 8]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Collectable">
+<a class="anchor" href="#Collectable" aria-hidden="true"><span class="octicon octicon-link"></span></a>Collectable<a class="anchor-link" href="#Collectable"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Collectable</span> <span class="kd">implements</span> <span class="n">Comparable</span> <span class="o">&lt;</span><span class="n">Collectable</span><span class="o">&gt;</span> <span class="p">{</span>
+	<span class="kd">public</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">masterType</span> <span class="o">=</span> <span class="s">"Collectable"</span><span class="p">;</span>
+	<span class="kd">private</span> <span class="n">String</span> <span class="n">type</span><span class="p">;</span>	<span class="c1">// extender should define their data type</span>
+
+	<span class="c1">// enumerated interface</span>
+	<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">KeyTypes</span> <span class="p">{</span>
+		<span class="n">String</span> <span class="nf">name</span><span class="p">();</span>
+	<span class="p">}</span>
+	<span class="kd">protected</span> <span class="kd">abstract</span> <span class="n">KeyTypes</span> <span class="nf">getKey</span><span class="p">();</span>  	<span class="c1">// this method helps force usage of KeyTypes</span>
+
+	<span class="c1">// getter</span>
+	<span class="kd">public</span> <span class="n">String</span> <span class="nf">getMasterType</span><span class="p">()</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="n">masterType</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="c1">// getter</span>
+	<span class="kd">public</span> <span class="n">String</span> <span class="nf">getType</span><span class="p">()</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="n">type</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="c1">// setter</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setType</span><span class="p">(</span><span class="n">String</span> <span class="n">type</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">this</span><span class="p">.</span><span class="na">type</span> <span class="o">=</span> <span class="n">type</span><span class="p">;</span>
+	<span class="p">}</span>
+	
+	<span class="c1">// this method is used to establish key order</span>
+	<span class="kd">public</span> <span class="kd">abstract</span> <span class="n">String</span> <span class="nf">toString</span><span class="p">();</span>
+
+	<span class="c1">// this method is used to compare toString of objects</span>
+	<span class="kd">public</span> <span class="kt">int</span> <span class="nf">compareTo</span><span class="p">(</span><span class="n">Collectable</span> <span class="n">obj</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="na">toString</span><span class="p">().</span><span class="na">compareTo</span><span class="p">(</span><span class="n">obj</span><span class="p">.</span><span class="na">toString</span><span class="p">());</span>
+	<span class="p">}</span>
+
+	<span class="c1">// static print method used by extended classes</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">print</span><span class="p">(</span><span class="n">Collectable</span><span class="o">[]</span> <span class="n">objs</span><span class="p">)</span> <span class="p">{</span>
+		<span class="c1">// print 'Object' properties</span>
+		<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">objs</span><span class="p">.</span><span class="na">getClass</span><span class="p">()</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">objs</span><span class="p">.</span><span class="na">length</span><span class="p">);</span>
+
+		<span class="c1">// print 'Collectable' properties</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">objs</span><span class="p">.</span><span class="na">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+			<span class="n">Collectable</span> <span class="n">obj</span> <span class="o">=</span> <span class="n">objs</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">;</span>	<span class="c1">// Look at properties of 1st element</span>
+			<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span>
+					<span class="n">obj</span><span class="p">.</span><span class="na">getMasterType</span><span class="p">()</span> <span class="o">+</span> <span class="s">": "</span> <span class="o">+</span> 
+					<span class="n">obj</span><span class="p">.</span><span class="na">getType</span><span class="p">()</span> <span class="o">+</span>
+					<span class="s">" listed by "</span> <span class="o">+</span>
+					<span class="n">obj</span><span class="p">.</span><span class="na">getKey</span><span class="p">());</span>
+		<span class="p">}</span>
+
+		<span class="c1">// print "Collectable: Objects'</span>
+		<span class="k">for</span><span class="p">(</span><span class="n">Object</span> <span class="n">o</span> <span class="p">:</span> <span class="n">objs</span><span class="p">)</span>	<span class="c1">// observe that type is Opaque</span>
+			<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">o</span><span class="p">);</span>
+
+		<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Sport</span> <span class="kd">extends</span> <span class="n">Collectable</span> <span class="p">{</span>
+	<span class="c1">// Class data</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="n">KeyTypes</span> <span class="n">key</span> <span class="o">=</span> <span class="n">KeyType</span><span class="p">.</span><span class="na">title</span><span class="p">;</span>  <span class="c1">// static initializer</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">setOrder</span><span class="p">(</span><span class="n">KeyTypes</span> <span class="n">key</span><span class="p">)</span> <span class="p">{</span><span class="n">Sport</span><span class="p">.</span><span class="na">key</span> <span class="o">=</span> <span class="n">key</span><span class="p">;}</span>
+	<span class="kd">public</span> <span class="kd">enum</span> <span class="n">KeyType</span> <span class="kd">implements</span> <span class="n">KeyTypes</span> <span class="p">{</span><span class="n">title</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">numPlayers</span><span class="p">}</span>
+
+	<span class="c1">// Instance data</span>
+	<span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">name</span><span class="p">;</span>
+	<span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">numPlayers</span><span class="p">;</span>
+
+	<span class="c1">// Constructor</span>
+	<span class="n">Sport</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">,</span> <span class="kt">int</span> <span class="n">numPlayers</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="k">this</span><span class="p">.</span><span class="na">setType</span><span class="p">(</span><span class="s">"Sport"</span><span class="p">);</span>
+		<span class="k">this</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
+		<span class="k">this</span><span class="p">.</span><span class="na">numPlayers</span> <span class="o">=</span> <span class="n">numPlayers</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="cm">/* 'Generics' requires getKey to help enforce KeyTypes usage */</span>
+	<span class="nd">@Override</span>
+	<span class="kd">protected</span> <span class="n">KeyTypes</span> <span class="nf">getKey</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="n">Sport</span><span class="p">.</span><span class="na">key</span><span class="p">;</span> <span class="p">}</span>
+
+	<span class="cm">/* 'Generics' requires toString override</span>
+<span class="cm">	 * toString provides data based off of Static Key setting</span>
+<span class="cm">	 */</span>
+	<span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="p">()</span> <span class="p">{</span>		
+		<span class="n">String</span> <span class="n">output</span><span class="o">=</span><span class="s">""</span><span class="p">;</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">KeyType</span><span class="p">.</span><span class="na">name</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">getKey</span><span class="p">()))</span> <span class="p">{</span>
+			<span class="n">output</span> <span class="o">+=</span> <span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="p">;</span>
+		<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">KeyType</span><span class="p">.</span><span class="na">numPlayers</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">getKey</span><span class="p">()))</span> <span class="p">{</span>
+			<span class="n">output</span> <span class="o">+=</span> <span class="s">"00"</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="na">numPlayers</span><span class="p">;</span>
+			<span class="n">output</span> <span class="o">=</span> <span class="n">output</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="n">output</span><span class="p">.</span><span class="na">length</span><span class="p">()</span> <span class="o">-</span> <span class="mi">2</span><span class="p">);</span>
+		<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+			<span class="n">output</span> <span class="o">=</span> <span class="kd">super</span><span class="p">.</span><span class="na">getType</span><span class="p">()</span> <span class="o">+</span> <span class="s">": "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="na">name</span> <span class="o">+</span> <span class="s">", "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="na">numPlayers</span><span class="p">;</span>
+		<span class="p">}</span>
+		<span class="k">return</span> <span class="n">output</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="c1">// Test data initializer</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="n">Sport</span><span class="o">[]</span> <span class="nf">sports</span><span class="p">()</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="k">new</span> <span class="n">Sport</span><span class="o">[]</span><span class="p">{</span>
+				<span class="k">new</span> <span class="n">Sport</span><span class="p">(</span><span class="s">"Soccer"</span><span class="p">,</span> <span class="mi">22</span><span class="p">),</span>
+			    <span class="k">new</span> <span class="n">Sport</span><span class="p">(</span><span class="s">"Basketball"</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+			    <span class="k">new</span> <span class="n">Sport</span><span class="p">(</span><span class="s">"Volleyball"</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span>
+			    <span class="k">new</span> <span class="n">Sport</span><span class="p">(</span><span class="s">"Tennis"</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+			    <span class="k">new</span> <span class="n">Sport</span><span class="p">(</span><span class="s">"Football"</span><span class="p">,</span> <span class="mi">22</span><span class="p">)</span>
+		<span class="p">};</span>
+	<span class="p">}</span>
+	
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="c1">// Inheritance Hierarchy</span>
+		<span class="n">Sport</span><span class="o">[]</span> <span class="n">objs</span> <span class="o">=</span> <span class="n">sports</span><span class="p">();</span>
+
+		<span class="c1">// print with title</span>
+		<span class="n">Sport</span><span class="p">.</span><span class="na">setOrder</span><span class="p">(</span><span class="n">KeyType</span><span class="p">.</span><span class="na">title</span><span class="p">);</span>
+		<span class="n">Sport</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="n">objs</span><span class="p">);</span>
+
+		<span class="c1">// print flavor only</span>
+		<span class="n">Sport</span><span class="p">.</span><span class="na">setOrder</span><span class="p">(</span><span class="n">KeyType</span><span class="p">.</span><span class="na">name</span><span class="p">);</span>
+		<span class="n">Sport</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="n">objs</span><span class="p">);</span>
+		
+		<span class="c1">// print numPlayers only</span>
+		<span class="n">Sport</span><span class="p">.</span><span class="na">setOrder</span><span class="p">(</span><span class="n">KeyType</span><span class="p">.</span><span class="na">numPlayers</span><span class="p">);</span>
+		<span class="n">Sport</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="n">objs</span><span class="p">);</span>
+	<span class="p">}</span>
+	
+<span class="p">}</span>
+<span class="n">Sport</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>class [LREPL.$JShell$13B$Sport; 5
+Collectable: Sport listed by title
+Sport: Soccer, 22
+Sport: Basketball, 10
+Sport: Volleyball, 12
+Sport: Tennis, 2
+Sport: Football, 22
+
+class [LREPL.$JShell$13B$Sport; 5
+Collectable: Sport listed by name
+Soccer
+Basketball
+Volleyball
+Tennis
+Football
+
+class [LREPL.$JShell$13B$Sport; 5
+Collectable: Sport listed by numPlayers
+22
+10
+12
+02
+22
+
 </pre>
 </div>
 </div>
