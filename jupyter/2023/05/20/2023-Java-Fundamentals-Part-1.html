@@ -82,7 +82,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      12 min read
+      16 min read
     
 </span></p>
 
@@ -176,6 +176,18 @@ window.onload = wrap_img;
 </ul>
 </li>
 <li class="toc-entry toc-h1"><a href="#Switch">Switch </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
+<li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#Arrays">Arrays </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
+<li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#Arrays-of-Strings">Arrays of Strings </a>
 <ul>
 <li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
 <li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
@@ -1018,6 +1030,222 @@ Got 5!
 <pre>Please enter a command: 
 start
 Machine started!
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Arrays">
+<a class="anchor" href="#Arrays" aria-hidden="true"><span class="octicon octicon-link"></span></a>Arrays<a class="anchor-link" href="#Arrays"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Notes:">
+<a class="anchor" href="#Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes:<a class="anchor-link" href="#Notes:"> </a>
+</h2>
+<ul>
+<li>The key distinction between value types (e.g. int) and reference types (e.g. arrays) is that memory is created to hold value types, while reference types refer to a list of value types. So, think of a value type as a bucket that stores something, and a reference type as sort of a label that refers to value types.</li>
+<li>The values within an array allocate memory to value types.</li>
+<li>In Java, arrays and many other data structures followed 0-based indexing, where the 1st element is located at the 0th index, 2nd is located at the 1st index, and so on.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Examples:">
+<a class="anchor" href="#Examples:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:<a class="anchor-link" href="#Examples:"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// int value type</span>
+        <span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
+
+        <span class="c1">// Declare array that stores values of type int.</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">values</span><span class="p">;</span>
+
+        <span class="c1">// Initialize array values to have a size of 3 int values. The new keyword allocates a specified amount of memory.</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">3</span><span class="o">]</span><span class="p">;</span>
+
+        <span class="c1">// Access the element at the 0th index of the array. Java sets the default value for arrays to 0.</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">values</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">);</span>
+
+        <span class="c1">// Change the element at index 0 to 10.</span>
+        <span class="n">values</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+        <span class="n">values</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+        <span class="n">values</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">values</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">values</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">values</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="p">);</span>
+
+        <span class="c1">// Iterating through the array, making sure to access the elements at all indexes in the array.</span>
+        <span class="c1">// The length method returns the size of the array.</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">values</span><span class="p">.</span><span class="na">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">values</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Initializing an array in one line. Allocating memory and setting data values at the same time.</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">numbers</span> <span class="o">=</span> <span class="p">{</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">};</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">numbers</span><span class="p">.</span><span class="na">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">numbers</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">Application</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>0
+10
+20
+30
+10
+20
+30
+5
+6
+7
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Arrays-of-Strings">
+<a class="anchor" href="#Arrays-of-Strings" aria-hidden="true"><span class="octicon octicon-link"></span></a>Arrays of Strings<a class="anchor-link" href="#Arrays-of-Strings"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Notes:">
+<a class="anchor" href="#Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes:<a class="anchor-link" href="#Notes:"> </a>
+</h2>
+<ul>
+<li>Enhanced for loops are an alternative way (alternate to the conventional for loop) of iterating through an array. In an enhanced for loop, the counter is always incremented by one, which means the loop executes in sequence. Nonetheless, it still simplifies the process of array iteration.</li>
+<li>The core difference between instantiation and initialization is that instantiation involves creating an object of a particular class using the new keywords, while initialization involves assigned a value to a particular variable.</li>
+<li>For primitive data types, the variable stores enough memory to hold any valid (within integer size constraints) integer value. Integer is a primitive type, as indicated by the lowercase declaration of int.</li>
+<li>String is a non-primitive data type, as indicated by the capitalization in the declaration of String. Non-primitive data types allocate enough memory for a reference (the program does not initially know how long the string will be based on the declaration), or address, to some values.</li>
+<li>To recap, reference variable types store references to the actual data, while value type variable directly store the actual data. When working with reference types, it is possible for two variables to reference the same data (objects), which means that changes to one variable can impact the object referenced by the other variable.</li>
+<li>The main difference between primitive types and non-primitive data types is that primitive types are predefined (enough memory for data is allocated during declaration), while non-primitive types are not predefined, as their values are specified by the programmer.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Examples:">
+<a class="anchor" href="#Examples:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:<a class="anchor-link" href="#Examples:"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Declare an array that stores String value types, and has a size of 3.</span>
+        <span class="n">String</span><span class="o">[]</span> <span class="n">words</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">[</span><span class="mi">3</span><span class="o">]</span><span class="p">;</span>
+        <span class="n">words</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="s">"Hello"</span><span class="p">;</span>
+        <span class="n">words</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="s">"to"</span><span class="p">;</span>
+        <span class="n">words</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">=</span> <span class="s">"you"</span><span class="p">;</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">words</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="p">);</span>
+
+        <span class="c1">// Each String value type is wrapped within double quotation marks.</span>
+        <span class="n">String</span><span class="o">[]</span> <span class="n">fruits</span> <span class="o">=</span> <span class="p">{</span><span class="s">"apple"</span><span class="p">,</span> <span class="s">"banana"</span><span class="p">,</span> <span class="s">"pear"</span><span class="p">,</span> <span class="s">"kiwi"</span><span class="p">};</span>
+        <span class="c1">// Enhanced for loop - The : symbol indicates "in". For every "fruit" or value in the array "fruits", print it to the console.</span>
+        <span class="k">for</span><span class="p">(</span><span class="n">String</span> <span class="n">fruit</span> <span class="p">:</span> <span class="n">fruits</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">fruit</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Non-primitive type int</span>
+        <span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="mi">123</span><span class="p">;</span>
+        <span class="c1">// Non-primitive type String. The null value means the variable points to "nothing"</span>
+        <span class="n">String</span> <span class="n">text</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">text</span><span class="p">);</span>
+
+        <span class="c1">// An array further references String data type references to actual values. The array is allocating enough memory for 2 references to String values.</span>
+        <span class="n">String</span><span class="o">[]</span> <span class="n">texts</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="p">;</span>
+        <span class="c1">// Java sets the default values for Strings in an array to 0.</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">texts</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">);</span>
+
+        <span class="c1">// Change the value of the element at the 0th index to "one", causing the array to allocate memory to a String reference to an actual String value (memory).</span>
+        <span class="n">texts</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="s">"one"</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">Application</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>you
+apple
+banana
+pear
+kiwi
+null
+null
 </pre>
 </div>
 </div>
