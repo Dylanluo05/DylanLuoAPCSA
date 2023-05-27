@@ -82,7 +82,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      16 min read
+      19 min read
     
 </span></p>
 
@@ -188,6 +188,18 @@ window.onload = wrap_img;
 </ul>
 </li>
 <li class="toc-entry toc-h1"><a href="#Arrays-of-Strings">Arrays of Strings </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
+<li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#Multi-Dimensional-Arrays">Multi-Dimensional Arrays </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
+<li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#Classes-and-Objects">Classes and Objects </a>
 <ul>
 <li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
 <li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
@@ -1166,7 +1178,7 @@ Machine started!
 <a class="anchor" href="#Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes:<a class="anchor-link" href="#Notes:"> </a>
 </h2>
 <ul>
-<li>Enhanced for loops are an alternative way (alternate to the conventional for loop) of iterating through an array. In an enhanced for loop, the counter is always incremented by one, which means the loop executes in sequence. Nonetheless, it still simplifies the process of array iteration.</li>
+<li>Enhanced for loops are an alternative way (alternate to the conventional for loop) of iterating through an array. In an enhanced for loop, the counter is always incremented by one, which means the loop executes in sequence. Nonetheless, it still simplifies the process of array iteration. An enhanced for loop essentially retrieves an element of the list during each iteration.</li>
 <li>The core difference between instantiation and initialization is that instantiation involves creating an object of a particular class using the new keywords, while initialization involves assigned a value to a particular variable.</li>
 <li>For primitive data types, the variable stores enough memory to hold any valid (within integer size constraints) integer value. Integer is a primitive type, as indicated by the lowercase declaration of int.</li>
 <li>String is a non-primitive data type, as indicated by the capitalization in the declaration of String. Non-primitive data types allocate enough memory for a reference (the program does not initially know how long the string will be based on the declaration), or address, to some values.</li>
@@ -1246,6 +1258,223 @@ pear
 kiwi
 null
 null
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Multi-Dimensional-Arrays">
+<a class="anchor" href="#Multi-Dimensional-Arrays" aria-hidden="true"><span class="octicon octicon-link"></span></a>Multi-Dimensional Arrays<a class="anchor-link" href="#Multi-Dimensional-Arrays"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Notes:">
+<a class="anchor" href="#Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes:<a class="anchor-link" href="#Notes:"> </a>
+</h2>
+<ul>
+<li>Multi-dimensional arrays are essentially arrays of arrays. For example, in a 2D array, each element is an array by itself, which means that each element in the 2D array contains more elements within themselves. </li>
+<li>Each element in an multi-dimensional array is a reference to an array, and not every array in the multi-dimensional array needs to be the same length.</li>
+<li>When accessing a value type in a multi-dimensional array, you need to specify multiple indices. In a 2D array, you specify the row index first, then the column index. Remember that arrays use zero-based indexing. So, the row index indicates which array within the 2D array you are accessing, and the column index indicates which value within that 1D array you are accessing.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Examples:">
+<a class="anchor" href="#Examples:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:<a class="anchor-link" href="#Examples:"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 1D array, since to specify the position of an element, only one index or dimension is needed.</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">values</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">};</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">values</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="p">);</span>
+
+        <span class="c1">// Syntax for 2D array</span>
+        <span class="kt">int</span><span class="o">[][]</span> <span class="n">grid</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">},</span>
+            <span class="p">{</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">},</span>
+            <span class="p">{</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">}</span>
+        <span class="p">};</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">grid</span><span class="o">[</span><span class="mi">1</span><span class="o">][</span><span class="mi">1</span><span class="o">]</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">grid</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">2</span><span class="o">]</span><span class="p">);</span>
+
+        <span class="c1">// Declare a 2D array of references to Strings, specifying its size (square or rectangular shaped)</span>
+        <span class="n">String</span><span class="o">[][]</span> <span class="n">texts</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">[</span><span class="mi">2</span><span class="o">][</span><span class="mi">3</span><span class="o">]</span><span class="p">;</span>
+        <span class="c1">// Change value of element at row index 0 and column index 1</span>
+        <span class="n">texts</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="s">"Hello there"</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">texts</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">1</span><span class="o">]</span><span class="p">);</span>
+
+        <span class="c1">// Iterating through 2D array. Iterate through each row, and in each row, iterate through each column</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">row</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">row</span> <span class="o">&lt;</span> <span class="n">grid</span><span class="p">.</span><span class="na">length</span><span class="p">;</span> <span class="n">row</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">col</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">col</span> <span class="o">&lt;</span> <span class="n">grid</span><span class="o">[</span><span class="n">row</span><span class="o">]</span><span class="p">.</span><span class="na">length</span><span class="p">;</span> <span class="n">col</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">// \t indicates tab character</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="n">grid</span><span class="o">[</span><span class="n">row</span><span class="o">][</span><span class="n">col</span><span class="o">]</span> <span class="o">+</span> <span class="s">"\t"</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="c1">// Create a new line for every new row</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Do not specify column size of the 2D array, which allows you to create row arrays of different sizes (different number of columns)</span>
+        <span class="n">String</span><span class="o">[][]</span> <span class="n">words</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">[</span><span class="mi">2</span><span class="o">][]</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">words</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">);</span>
+        <span class="c1">// Establish the size of the array in the first row of the 2D array</span>
+        <span class="n">words</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">[</span><span class="mi">3</span><span class="o">]</span><span class="p">;</span>
+        <span class="n">words</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="s">"hey there"</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">words</span><span class="o">[</span><span class="mi">0</span><span class="o">][</span><span class="mi">1</span><span class="o">]</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">words</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">Application</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>3
+5
+3
+Hello there
+1	2	3	
+4	5	
+6	7	8	9	
+null
+hey there
+null
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Classes-and-Objects">
+<a class="anchor" href="#Classes-and-Objects" aria-hidden="true"><span class="octicon octicon-link"></span></a>Classes and Objects<a class="anchor-link" href="#Classes-and-Objects"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Notes:">
+<a class="anchor" href="#Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes:<a class="anchor-link" href="#Notes:"> </a>
+</h2>
+<ul>
+<li>If a class is declared public, the class name must be the same as the file name. You can usually only have one public class in a file, but you can have multiple non-public classes in a file.</li>
+<li>A class is essentially a template or blueprint for creating objects. Almost everything in Java is basically an object. A class can be viewed as a type. Objects are instances of classes, or in other words copies of particular classes. An object typically has 3 primary characteristics: identity, state (attributes), and behavior (methods).</li>
+<li>Classes can contain data/attributes, or states. Classes can contain subroutines, or methods/functions, such as the main method, which automatically executes the code within it.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Examples:">
+<a class="anchor" href="#Examples:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:<a class="anchor-link" href="#Examples:"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="c1">// Class</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="p">{</span>
+    <span class="c1">// main method with proper syntax to run program</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Initialize an object of class type "Person", with the variable name "person1"</span>
+        <span class="n">Person</span> <span class="n">person1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="p">();</span>
+        <span class="c1">// Instantiate values for the data stored within the person1 object.</span>
+        <span class="c1">// The dot syntax specifies the property of a particular object.</span>
+        <span class="n">person1</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="s">"Joe Mama"</span><span class="p">;</span>
+        <span class="n">person1</span><span class="p">.</span><span class="na">age</span> <span class="o">=</span> <span class="mi">19</span><span class="p">;</span>
+
+        <span class="c1">// Create new object of class type Person</span>
+        <span class="n">Person</span> <span class="n">person2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="p">();</span>
+        <span class="n">person2</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="s">"someone else"</span><span class="p">;</span>
+        <span class="n">person2</span><span class="p">.</span><span class="na">age</span> <span class="o">=</span> <span class="mi">21</span><span class="p">;</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">person1</span><span class="p">.</span><span class="na">name</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">person1</span><span class="p">.</span><span class="na">age</span><span class="p">);</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">person2</span><span class="p">.</span><span class="na">name</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">person2</span><span class="p">.</span><span class="na">age</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Create new class "Person"</span>
+<span class="kd">class</span> <span class="nc">Person</span> <span class="p">{</span>
+    <span class="c1">// Data</span>
+    <span class="c1">// Instance variables represent data or states.</span>
+    <span class="c1">// Declare variables which do not have values yet.</span>
+    <span class="n">String</span> <span class="n">name</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">age</span><span class="p">;</span>
+    <span class="c1">// Subroutines (methods)</span>
+<span class="p">}</span>
+
+<span class="n">Application</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Joe Mama
+19
+someone else
+21
 </pre>
 </div>
 </div>
