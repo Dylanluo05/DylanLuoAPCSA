@@ -1415,6 +1415,7 @@ null
 <li>If a class is declared public, the class name must be the same as the file name. You can usually only have one public class in a file, but you can have multiple non-public classes in a file.</li>
 <li>A class is essentially a template or blueprint for creating objects. Almost everything in Java is basically an object. A class can be viewed as a type. Objects are instances of classes, or in other words copies of particular classes. This mean that an object has the attributes and methods defined in its class type. An object typically has 3 primary characteristics: identity, state (attributes), and behavior (methods).</li>
 <li>Classes can contain data/attributes, or states. Classes can contain subroutines, or methods/functions, such as the main method, which automatically executes the code within it.</li>
+<li>The dot syntax: objectName.propertyName can be used to directly access an attribute or method of an object of a class (if encapsulation is not used but more on that later).</li>
 </ul>
 
 </div>
@@ -1513,7 +1514,7 @@ someone else
 <a class="anchor" href="#Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes:<a class="anchor-link" href="#Notes:"> </a>
 </h2>
 <ul>
-<li>A subroutine that is a part of a class is called a method. A method can be viewed as a behavior of a class, which performs a specific task(s). The code block (within curly brackets of method) following the method name is what the method runs when called upon. In order for a method to actually run, it needs to be called.</li>
+<li>A subroutine that is a part of a class is called a method. A method can be viewed as a behavior of a class, which performs a specific task(s). The code block (within the curly brackets of the method) following the method name is what the method runs when called upon. In order for a method to actually run, it needs to be called.</li>
 <li>Method names should follow camel case naming convention, where the first letter of the first word is lowercase, but the first letters of the words after the first word are uppercase.</li>
 <li>Methods have access to instance variables within the same class. Method names are followed by parenthesis (), while data/attribute names are not.</li>
 </ul>
@@ -1621,7 +1622,7 @@ Hey there!
 <a class="anchor" href="#Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes:<a class="anchor-link" href="#Notes:"> </a>
 </h2>
 <ul>
-<li>Getter methods are typically used to retrieve/return data from a object of a particular class, or calculate a value based on the properties of the object.</li>
+<li>Getter methods are typically used to retrieve/return data from a object of a particular class, or calculate and return a value based on the properties of the object.</li>
 <li>The void keyword in a Java method indicates that the method does not return a value. void is a method return type, and there are various kinds of return types in Java. The return type indicates the type of data a method returns when called upon, and is written before the method name.</li>
 <li>The return keyword within a method block, upon run upon, causes the method to stop running. It then causes the method to "return" or store the specified value next to the return keyword. The method, when called upon, returns or represents that specific value.</li>
 <li>The return value should be able to have the same data type as that specified next to the method name.</li>
@@ -1680,7 +1681,7 @@ Hey there!
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">Person</span> <span class="n">person1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="p">();</span>
         <span class="c1">// Set the values of the attributes of the person1 object.</span>
-        <span class="c1">// Here, encapsulation is not used, as this separate is able to directly access the data within the Person class.</span>
+        <span class="c1">// Here, encapsulation is not used, as this separate class is able to directly access the data within the Person class.</span>
         <span class="n">person1</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="s">"Dylan"</span><span class="p">;</span>
         <span class="n">person1</span><span class="p">.</span><span class="na">age</span> <span class="o">=</span> <span class="mi">21</span><span class="p">;</span>
         <span class="n">person1</span><span class="p">.</span><span class="na">speak</span><span class="p">();</span>
