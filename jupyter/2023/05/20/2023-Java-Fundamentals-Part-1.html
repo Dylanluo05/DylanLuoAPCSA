@@ -82,7 +82,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      19 min read
+      24 min read
     
 </span></p>
 
@@ -200,6 +200,18 @@ window.onload = wrap_img;
 </ul>
 </li>
 <li class="toc-entry toc-h1"><a href="#Classes-and-Objects">Classes and Objects </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
+<li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#Methods">Methods </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
+<li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#Getters-and-Return-Values">Getters and Return Values </a>
 <ul>
 <li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
 <li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
@@ -1401,7 +1413,7 @@ null
 </h2>
 <ul>
 <li>If a class is declared public, the class name must be the same as the file name. You can usually only have one public class in a file, but you can have multiple non-public classes in a file.</li>
-<li>A class is essentially a template or blueprint for creating objects. Almost everything in Java is basically an object. A class can be viewed as a type. Objects are instances of classes, or in other words copies of particular classes. An object typically has 3 primary characteristics: identity, state (attributes), and behavior (methods).</li>
+<li>A class is essentially a template or blueprint for creating objects. Almost everything in Java is basically an object. A class can be viewed as a type. Objects are instances of classes, or in other words copies of particular classes. This mean that an object has the attributes and methods defined in its class type. An object typically has 3 primary characteristics: identity, state (attributes), and behavior (methods).</li>
 <li>Classes can contain data/attributes, or states. Classes can contain subroutines, or methods/functions, such as the main method, which automatically executes the code within it.</li>
 </ul>
 
@@ -1475,6 +1487,232 @@ null
 19
 someone else
 21
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Methods">
+<a class="anchor" href="#Methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>Methods<a class="anchor-link" href="#Methods"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Notes:">
+<a class="anchor" href="#Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes:<a class="anchor-link" href="#Notes:"> </a>
+</h2>
+<ul>
+<li>A subroutine that is a part of a class is called a method. A method can be viewed as a behavior of a class, which performs a specific task(s). The code block (within curly brackets of method) following the method name is what the method runs when called upon. In order for a method to actually run, it needs to be called.</li>
+<li>Method names should follow camel case naming convention, where the first letter of the first word is lowercase, but the first letters of the words after the first word are uppercase.</li>
+<li>Methods have access to instance variables within the same class. Method names are followed by parenthesis (), while data/attribute names are not.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Examples:">
+<a class="anchor" href="#Examples:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:<a class="anchor-link" href="#Examples:"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kd">class</span> <span class="nc">Person</span> <span class="p">{</span>
+    <span class="n">String</span> <span class="n">name</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">age</span><span class="p">;</span>
+
+    <span class="c1">// Subroutines</span>
+    <span class="c1">// Creating a method called "speak()"</span>
+    <span class="c1">// The speak() method concatenates the data of the class into a String.</span>
+    <span class="kt">void</span> <span class="nf">speak</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// Repeat 3 times.</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"My name is: "</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s">" and I am "</span> <span class="o">+</span> <span class="n">age</span> <span class="o">+</span> <span class="s">" years old"</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="nf">sayHello</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Hey there!"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Person</span> <span class="n">person1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="p">();</span>
+        <span class="n">person1</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="s">"Joe Mama"</span><span class="p">;</span>
+        <span class="n">person1</span><span class="p">.</span><span class="na">age</span> <span class="o">=</span> <span class="mi">17</span><span class="p">;</span>
+        <span class="c1">// Call the speak() method</span>
+        <span class="n">person1</span><span class="p">.</span><span class="na">speak</span><span class="p">();</span>
+        <span class="n">person1</span><span class="p">.</span><span class="na">sayHello</span><span class="p">();</span>
+
+        <span class="c1">// person1 and person2 have different outputs for speak(), because they have different data.</span>
+        <span class="n">Person</span> <span class="n">person2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="p">();</span>
+        <span class="n">person2</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="s">"somebody"</span><span class="p">;</span>
+        <span class="n">person2</span><span class="p">.</span><span class="na">age</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+        <span class="n">person2</span><span class="p">.</span><span class="na">speak</span><span class="p">();</span>
+        <span class="n">person2</span><span class="p">.</span><span class="na">sayHello</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">Application</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>My name is: Joe Mama and I am 17 years old
+My name is: Joe Mama and I am 17 years old
+My name is: Joe Mama and I am 17 years old
+Hey there!
+My name is: somebody and I am 20 years old
+My name is: somebody and I am 20 years old
+My name is: somebody and I am 20 years old
+Hey there!
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Getters-and-Return-Values">
+<a class="anchor" href="#Getters-and-Return-Values" aria-hidden="true"><span class="octicon octicon-link"></span></a>Getters and Return Values<a class="anchor-link" href="#Getters-and-Return-Values"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Notes:">
+<a class="anchor" href="#Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes:<a class="anchor-link" href="#Notes:"> </a>
+</h2>
+<ul>
+<li>Getter methods are typically used to retrieve/return data from a object of a particular class, or calculate a value based on the properties of the object.</li>
+<li>The void keyword in a Java method indicates that the method does not return a value. void is a method return type, and there are various kinds of return types in Java. The return type indicates the type of data a method returns when called upon, and is written before the method name.</li>
+<li>The return keyword within a method block, upon run upon, causes the method to stop running. It then causes the method to "return" or store the specified value next to the return keyword. The method, when called upon, returns or represents that specific value.</li>
+<li>The return value should be able to have the same data type as that specified next to the method name.</li>
+<li>Encapsulation involves "hiding" data from a certain class from other classes. Encapsulation of a certain class prevents other classes from directly accessing its data.</li>
+<li>Getter methods are usually used to "get" data from a separate class whose data has been encapsulated. In these cases, the data from the separate class can not be directly accessed using the object.property notation, so getter methods need to be used (e.g. object.getProperty()).</li>
+<li>The naming convention of a getter method usually involves putting the lowercase keyword "get" in front of the data name, then capitalizing the first letter of all of the words of the data name.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Examples:">
+<a class="anchor" href="#Examples:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:<a class="anchor-link" href="#Examples:"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kd">class</span> <span class="nc">Person</span> <span class="p">{</span>
+    <span class="c1">// Instance data</span>
+    <span class="n">String</span> <span class="n">name</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">age</span><span class="p">;</span>
+
+    <span class="c1">// The speak() method has void, so it does not return anything. In this case, this method is used to output a message.</span>
+    <span class="kt">void</span> <span class="nf">speak</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"My name is: "</span> <span class="o">+</span> <span class="n">name</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// The calculateYearsToRetirement() method returns an int value</span>
+    <span class="kt">int</span> <span class="nf">calculateYearsToRetirement</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">yearsLeft</span> <span class="o">=</span> <span class="mi">65</span> <span class="o">-</span> <span class="n">age</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">yearsLeft</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// The getter method "getAge()" returns the age (type int) attribute of the object of this particular class type on which it is called upon.</span>
+    <span class="kt">int</span> <span class="nf">getAge</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">age</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// The getter method "getName()" returns the name (type String) attribute.</span>
+    <span class="n">String</span> <span class="nf">getName</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">name</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Person</span> <span class="n">person1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="p">();</span>
+        <span class="c1">// Set the values of the attributes of the person1 object.</span>
+        <span class="c1">// Here, encapsulation is not used, as this separate is able to directly access the data within the Person class.</span>
+        <span class="n">person1</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="s">"Dylan"</span><span class="p">;</span>
+        <span class="n">person1</span><span class="p">.</span><span class="na">age</span> <span class="o">=</span> <span class="mi">21</span><span class="p">;</span>
+        <span class="n">person1</span><span class="p">.</span><span class="na">speak</span><span class="p">();</span>
+
+        <span class="c1">// Set the variable "years" to the return value of the method "calculateYearsToRetirement".</span>
+        <span class="kt">int</span> <span class="n">years</span> <span class="o">=</span> <span class="n">person1</span><span class="p">.</span><span class="na">calculateYearsToRetirement</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Years until retirement: "</span> <span class="o">+</span> <span class="n">years</span><span class="p">);</span>
+
+        <span class="kt">int</span> <span class="n">age</span> <span class="o">=</span> <span class="n">person1</span><span class="p">.</span><span class="na">getAge</span><span class="p">();</span>
+        <span class="n">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">person1</span><span class="p">.</span><span class="na">getName</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Name is: "</span> <span class="o">+</span> <span class="n">name</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Age is: "</span> <span class="o">+</span> <span class="n">age</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">Application</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>My name is: Dylan
+Years until retirement: 44
+Name is: Dylan
+Age is: 21
 </pre>
 </div>
 </div>
