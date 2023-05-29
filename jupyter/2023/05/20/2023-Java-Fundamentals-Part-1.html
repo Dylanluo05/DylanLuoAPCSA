@@ -82,7 +82,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      24 min read
+      26 min read
     
 </span></p>
 
@@ -212,6 +212,12 @@ window.onload = wrap_img;
 </ul>
 </li>
 <li class="toc-entry toc-h1"><a href="#Getters-and-Return-Values">Getters and Return Values </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
+<li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#Method-Parameters">Method Parameters </a>
 <ul>
 <li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
 <li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
@@ -1714,6 +1720,112 @@ Hey there!
 Years until retirement: 44
 Name is: Dylan
 Age is: 21
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Method-Parameters">
+<a class="anchor" href="#Method-Parameters" aria-hidden="true"><span class="octicon octicon-link"></span></a>Method Parameters<a class="anchor-link" href="#Method-Parameters"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Notes:">
+<a class="anchor" href="#Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes:<a class="anchor-link" href="#Notes:"> </a>
+</h2>
+<ul>
+<li>Values can be passed into methods. The parenthesis after the method definition hold the parameters of the method, which specify the kind of values that the method can accept into its code block and use. Parameter variables are only available to the code within the method.</li>
+<li>Method arguments are that actual values passed to the method when it is called, and are used while the method is running. Once an argument value is passed, the parameter variable defined will then store that argument, and can be used within the method.</li>
+<li>Multiple method parameters (and arguments) should be separated by commas, and when the arguments are passed to the method, the arguments should correctly correspond (same variable type to respective parameter) to their respective parameters, in terms of position (order in which parameters and arguments are defined).</li>
+<li>When you pass a variable as a method argument, its value will be assigned to the parameter variable defined in the method, not its original argument variable name. </li>
+<li>Non-primitive variable and primitive variables pass slightly differently. For non-primitive variables like Strings (reference to memory), the method changes the variable name of the argument value passed by giving the same value a different label (i.e. variable name). For primitive variables like integers (memory that contains data), the method allocates memory for the parameter variable to hold the value transferred from the argument variable.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Examples:">
+<a class="anchor" href="#Examples:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:<a class="anchor-link" href="#Examples:"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kd">class</span> <span class="nc">Robot</span> <span class="p">{</span>
+    <span class="c1">// Create a public method called "speak()"</span>
+    <span class="c1">// "text" variable is a parameter of the speak() method</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">speak</span><span class="p">(</span><span class="n">String</span> <span class="n">text</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">text</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Create public method that takes of parameter of type int</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">jump</span><span class="p">(</span><span class="kt">int</span> <span class="n">height</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Jumping: "</span> <span class="o">+</span> <span class="n">height</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Create a public method that takes multiple parameters of different data types</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">move</span><span class="p">(</span><span class="n">String</span> <span class="n">direction</span><span class="p">,</span> <span class="kt">double</span> <span class="n">distance</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Moving "</span> <span class="o">+</span> <span class="n">distance</span> <span class="o">+</span> <span class="s">" meters in direction "</span> <span class="o">+</span> <span class="n">direction</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Robot</span> <span class="n">sam</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Robot</span><span class="p">();</span>
+        <span class="c1">// Pass an argument to the method speak()</span>
+        <span class="n">sam</span><span class="p">.</span><span class="na">speak</span><span class="p">(</span><span class="s">"Hey, I'm sam"</span><span class="p">);</span>
+        <span class="n">sam</span><span class="p">.</span><span class="na">jump</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span>
+        <span class="n">sam</span><span class="p">.</span><span class="na">move</span><span class="p">(</span><span class="s">"West"</span><span class="p">,</span> <span class="mf">12.2</span><span class="p">);</span>
+
+        <span class="c1">// Pass the value of the String (reference) variable "greeting" to the speak() method</span>
+        <span class="n">String</span> <span class="n">greeting</span> <span class="o">=</span> <span class="s">"Hello there"</span><span class="p">;</span>
+        <span class="n">sam</span><span class="p">.</span><span class="na">speak</span><span class="p">(</span><span class="n">greeting</span><span class="p">);</span>
+
+        <span class="c1">// Pass the value of the int (actual memory) variable "value" to the jump() method</span>
+        <span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span>
+        <span class="n">sam</span><span class="p">.</span><span class="na">jump</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">Application</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Hey, I'm sam
+Jumping: 7
+Moving 12.2 meters in direction West
+Hello there
+Jumping: 15
 </pre>
 </div>
 </div>
