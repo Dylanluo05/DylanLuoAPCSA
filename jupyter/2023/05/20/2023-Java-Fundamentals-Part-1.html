@@ -82,7 +82,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      31 min read
+      35 min read
     
 </span></p>
 
@@ -230,6 +230,12 @@ window.onload = wrap_img;
 </ul>
 </li>
 <li class="toc-entry toc-h1"><a href="#Constructors">Constructors </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
+<li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#Static-and-Final">Static and Final </a>
 <ul>
 <li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
 <li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
@@ -1471,6 +1477,7 @@ null
         <span class="n">person2</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="s">"someone else"</span><span class="p">;</span>
         <span class="n">person2</span><span class="p">.</span><span class="na">age</span> <span class="o">=</span> <span class="mi">21</span><span class="p">;</span>
 
+        <span class="c1">// Access the data stored within the person1 object.</span>
         <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">person1</span><span class="p">.</span><span class="na">name</span><span class="p">);</span>
         <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">person1</span><span class="p">.</span><span class="na">age</span><span class="p">);</span>
 
@@ -2110,6 +2117,151 @@ Bertie
 Third constructor running!
 Charlie
 7
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Static-and-Final">
+<a class="anchor" href="#Static-and-Final" aria-hidden="true"><span class="octicon octicon-link"></span></a>Static and Final<a class="anchor-link" href="#Static-and-Final"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Notes:">
+<a class="anchor" href="#Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes:<a class="anchor-link" href="#Notes:"> </a>
+</h2>
+<ul>
+<li>A static variable, sort of like a global variable, belongs to the class instead of an instance/object of the class, meaning that there is only one copy of it. An instance variable (non-static variable), sort of like a local variable, is created for a specific object each time an object is initialized.</li>
+<li>There is only one space of memory allocated for a static variable, regardless of the number of objects created.</li>
+<li>An instance (non-static) method is created each time an instance of a class is created, while a static method belongs to the class itself rather than objects on that class. Static methods can be ran without creating an object of the class it is in, and static methods can access static data but not instance variables.</li>
+<li>Instance methods can access both instance and static variables, since objects are created after static data and methods are initialized.</li>
+<li>The Math.class library of Java contains mathematical constants and operations. Constant variables cannot be assigned a new value, hence they are "constant". Constant variables are conventionally named in all uppercase, with underscores sometimes.</li>
+<li>To create a constant variable in Java, use the "final" keyword, since it indicates that the variable can only be assigned a value once (it cannot be reassigned a value).</li>
+<li>Static variables and methods can be used to keep track of the objects created of a specific class. This is because static variables and methods maintain the values/actions they have been assigned through accessing the class itself; creating new instances of the class do not reset static variables and methods.</li>
+<li>Static variables can be used to assign an instance variable unique ID to each object created of a class, since they can be modified from their current value each time a constructor of the class is called, and can be assigned to instance variables. Instance variables can also be assigned to static variables, since although they are created after static variables, static variables can still be modified within the class.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Examples:">
+<a class="anchor" href="#Examples:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:<a class="anchor-link" href="#Examples:"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kd">class</span> <span class="nc">Thing</span> <span class="p">{</span>
+    <span class="c1">// Create 2 public instance variables that can be directly accessed by another class.</span>
+    <span class="c1">// name is an instance variable.</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">name</span><span class="p">;</span>
+    <span class="c1">// description is a static variable.</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="n">description</span><span class="p">;</span>
+    <span class="c1">// Create a public, final, and static integer variable called "LUCKY_NUMBER".</span>
+    <span class="c1">// Final variables need to be assigned a value once they are declared.</span>
+    <span class="kd">public</span> <span class="kd">final</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">LUCKY_NUMBER</span> <span class="o">=</span> <span class="mi">777</span><span class="p">;</span>
+
+    <span class="c1">// Initialize the static variable to be 0.</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="c1">// The variable id should be unique for each object.</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">id</span><span class="p">;</span>
+
+    <span class="c1">// Constructor that runs whenever a instance of Thing is created</span>
+    <span class="kd">public</span> <span class="nf">Thing</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// Assign the value of the static variable count to the instance variable id.</span>
+        <span class="n">id</span> <span class="o">=</span> <span class="n">count</span><span class="p">;</span>
+        <span class="c1">// Increment count by 1 each time an object of Thing is created. The static variable count belongs to the class itself.</span>
+        <span class="n">count</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Non-static method</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">showName</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// Access instance and static variables, printing out the object's id (instance), description (static), and name (instance).</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Object ID: "</span> <span class="o">+</span> <span class="n">id</span> <span class="o">+</span> <span class="s">", "</span> <span class="o">+</span> <span class="n">description</span> <span class="o">+</span> <span class="s">": "</span> <span class="o">+</span> <span class="n">name</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Static method</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">showInfo</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// Access static variable within a static method.</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">description</span><span class="p">);</span>
+        <span class="c1">// Won't work, since static data/methods are created before any objects as well as the instance variables.</span>
+        <span class="c1">// System.out.println(name);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Instantiate the static variable "description" of the class Thing.</span>
+        <span class="n">Thing</span><span class="p">.</span><span class="na">description</span> <span class="o">=</span> <span class="s">"I am a thing"</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">Thing</span><span class="p">.</span><span class="na">description</span><span class="p">);</span>
+        <span class="c1">// Call a static method of the class Thing.</span>
+        <span class="n">Thing</span><span class="p">.</span><span class="na">showInfo</span><span class="p">();</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Before creating objects, count is: "</span> <span class="o">+</span> <span class="n">Thing</span><span class="p">.</span><span class="na">count</span><span class="p">);</span>
+
+        <span class="n">Thing</span> <span class="n">thing1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Thing</span><span class="p">();</span>
+        <span class="n">Thing</span> <span class="n">thing2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Thing</span><span class="p">();</span>
+
+        <span class="n">thing1</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="s">"Bob"</span><span class="p">;</span>
+        <span class="n">thing2</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="s">"Sue"</span><span class="p">;</span>
+        <span class="c1">// Call non-static methods of objects of the class Thing.</span>
+        <span class="n">thing1</span><span class="p">.</span><span class="na">showName</span><span class="p">();</span>
+        <span class="n">thing2</span><span class="p">.</span><span class="na">showName</span><span class="p">();</span>
+
+        <span class="c1">// Static variable count changes each time an object is created.</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"After creating objects, count is: "</span> <span class="o">+</span> <span class="n">Thing</span><span class="p">.</span><span class="na">count</span><span class="p">);</span>
+
+        <span class="c1">// Access the constant PI variable of the Math class/library.</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="na">PI</span><span class="p">);</span>
+
+        <span class="c1">// Access the constant/final LUCKY_NUMBER variable of the Thing class.</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">Thing</span><span class="p">.</span><span class="na">LUCKY_NUMBER</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">Application</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>I am a thing
+I am a thing
+Before creating objects, count is: 0
+Object ID: 0, I am a thing: Bob
+Object ID: 1, I am a thing: Sue
+After creating objects, count is: 2
+3.141592653589793
+777
 </pre>
 </div>
 </div>
