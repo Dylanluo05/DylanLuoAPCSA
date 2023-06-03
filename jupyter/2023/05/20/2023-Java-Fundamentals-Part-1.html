@@ -82,7 +82,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      26 min read
+      31 min read
     
 </span></p>
 
@@ -218,6 +218,18 @@ window.onload = wrap_img;
 </ul>
 </li>
 <li class="toc-entry toc-h1"><a href="#Method-Parameters">Method Parameters </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
+<li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#Setters-and-"this"-Keyword">Setters and &quot;this&quot; Keyword </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
+<li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#Constructors">Constructors </a>
 <ul>
 <li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
 <li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
@@ -1632,7 +1644,7 @@ Hey there!
 <li>The void keyword in a Java method indicates that the method does not return a value. void is a method return type, and there are various kinds of return types in Java. The return type indicates the type of data a method returns when called upon, and is written before the method name.</li>
 <li>The return keyword within a method block, upon run upon, causes the method to stop running. It then causes the method to "return" or store the specified value next to the return keyword. The method, when called upon, returns or represents that specific value.</li>
 <li>The return value should be able to have the same data type as that specified next to the method name.</li>
-<li>Encapsulation involves "hiding" data from a certain class from other classes. Encapsulation of a certain class prevents other classes from directly accessing its data.</li>
+<li>Encapsulation involves "hiding" data from a certain class from other classes. Encapsulation of a certain class prevents other classes from directly accessing its data. It is important to note that instance variables encapsulated within a particular class can be directly accessed within that class, but can only be retrieved by separate classes using getter methods.</li>
 <li>Getter methods are usually used to "get" data from a separate class whose data has been encapsulated. In these cases, the data from the separate class can not be directly accessed using the object.property notation, so getter methods need to be used (e.g. object.getProperty()).</li>
 <li>The naming convention of a getter method usually involves putting the lowercase keyword "get" in front of the data name, then capitalizing the first letter of all of the words of the data name.</li>
 </ul>
@@ -1750,7 +1762,7 @@ Age is: 21
 <li>Method arguments are that actual values passed to the method when it is called, and are used while the method is running. Once an argument value is passed, the parameter variable defined will then store that argument, and can be used within the method.</li>
 <li>Multiple method parameters (and arguments) should be separated by commas, and when the arguments are passed to the method, the arguments should correctly correspond (same variable type to respective parameter) to their respective parameters, in terms of position (order in which parameters and arguments are defined).</li>
 <li>When you pass a variable as a method argument, its value will be assigned to the parameter variable defined in the method, not its original argument variable name. </li>
-<li>Non-primitive variable and primitive variables pass slightly differently. For non-primitive variables like Strings (reference to memory), the method changes the variable name of the argument value passed by giving the same value a different label (i.e. variable name). For primitive variables like integers (memory that contains data), the method allocates memory for the parameter variable to hold the value transferred from the argument variable.</li>
+<li>Non-primitive variable and primitive variables pass slightly differently. For non-primitive variables like Strings (reference to memory), the method changes the reference label of the argument value passed by giving that same value a different reference label (i.e. variable name). For primitive variables like integers (memory that contains data), the method allocates memory for the parameter variable to hold the value transferred from the argument variable.</li>
 </ul>
 
 </div>
@@ -1795,7 +1807,11 @@ Age is: 21
         <span class="n">Robot</span> <span class="n">sam</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Robot</span><span class="p">();</span>
         <span class="c1">// Pass an argument to the method speak()</span>
         <span class="n">sam</span><span class="p">.</span><span class="na">speak</span><span class="p">(</span><span class="s">"Hey, I'm sam"</span><span class="p">);</span>
+
+        <span class="c1">// Pass an argument to the method jump()</span>
         <span class="n">sam</span><span class="p">.</span><span class="na">jump</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span>
+
+        <span class="c1">// Pass 2 arguments of different variable types to the method move()</span>
         <span class="n">sam</span><span class="p">.</span><span class="na">move</span><span class="p">(</span><span class="s">"West"</span><span class="p">,</span> <span class="mf">12.2</span><span class="p">);</span>
 
         <span class="c1">// Pass the value of the String (reference) variable "greeting" to the speak() method</span>
@@ -1826,6 +1842,274 @@ Jumping: 7
 Moving 12.2 meters in direction West
 Hello there
 Jumping: 15
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id='Setters-and-"this"-Keyword'>
+<a class="anchor" href="#Setters-and-" this aria-hidden="true"><span class="octicon octicon-link"></span></a>Setters and "this" Keyword<a class="anchor-link" href='#Setters-and-"this"-Keyword'> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Notes:">
+<a class="anchor" href="#Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes:<a class="anchor-link" href="#Notes:"> </a>
+</h2>
+<ul>
+<li>Setters, also known as mutators, are methods used to update the value of a specific variable typically found within a class. Getter and setter methods are usually used when instance variables are encapsulated (set to private), which means that the variables of the class cannot be directly accessed.</li>
+<li>Setter and getter methods allow you to, from a separate class, retrieve and modify the attributes of another class with out directly accessing the instance variables of that class. Setters and getters are used in conjunction with encapsulation.</li>
+<li>In the case of the instance variable having the same name as the parameter variable, since the parameter variable was declared first, it takes precedence and masks the instance variable's name.</li>
+<li>The "this" keyword refers (think of a substitute name sort of) to the current object within which it is declared. It is typically used to access attributes and methods within the same object.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Examples:">
+<a class="anchor" href="#Examples:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:<a class="anchor-link" href="#Examples:"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kd">class</span> <span class="nc">Frog</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">age</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">alternateName</span><span class="p">;</span>
+
+    <span class="c1">// Setter method sets the instance variable name to the value of the variable newName</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="p">(</span><span class="n">String</span> <span class="n">newName</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">newName</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Naming convention of a setter method. The setter method should not return anything (void return type), since it performs the action of modifying a variable.</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setAge</span><span class="p">(</span><span class="kt">int</span> <span class="n">age</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">age</span> <span class="o">=</span> <span class="n">age</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// In this case, use the "this" keyword, since the instance variable has the same name as the parameter variable.</span>
+    <span class="c1">// The "this" keyword refers to the instance variable of the class, while alternateName refers to the parameter variable.</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setAlternateName</span><span class="p">(</span><span class="n">String</span> <span class="n">alternateName</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// In the example we have, "this" refers to the Frog object frog1 when run. </span>
+        <span class="k">this</span><span class="p">.</span><span class="na">alternateName</span> <span class="o">=</span> <span class="n">alternateName</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// You do not need the "this" keyword here, since there is no variable ambiguity.</span>
+    <span class="c1">// We are calling the methods within the same class.</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setInfo</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">,</span> <span class="kt">int</span> <span class="n">age</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">setName</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
+        <span class="n">setAge</span><span class="p">(</span><span class="n">age</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Use the public keyword to minimize error from get methods. More on that later.</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">name</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// You do not need the "this" keyword for getter methods, since there is no variable ambiguity.</span>
+    <span class="c1">// There is not parameter variable.</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getAge</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">age</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getAlternateName</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">alternateName</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Frog</span> <span class="n">frog1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Frog</span><span class="p">();</span>
+        <span class="c1">// Setting the name variable of the Frog object using dot notation.</span>
+        <span class="c1">//frog1.name = "Bertie";</span>
+        <span class="c1">//frog1.age = 1;</span>
+
+        <span class="c1">// Setting the name variable of the Frog object using a setter method.</span>
+        <span class="n">frog1</span><span class="p">.</span><span class="na">setName</span><span class="p">(</span><span class="s">"Dylan"</span><span class="p">);</span>
+        <span class="n">frog1</span><span class="p">.</span><span class="na">setAge</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+        <span class="n">frog1</span><span class="p">.</span><span class="na">setAlternateName</span><span class="p">(</span><span class="s">"Obito"</span><span class="p">);</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">frog1</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">frog1</span><span class="p">.</span><span class="na">getAge</span><span class="p">());</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">frog1</span><span class="p">.</span><span class="na">getAlternateName</span><span class="p">());</span>
+
+        <span class="n">frog1</span><span class="p">.</span><span class="na">setInfo</span><span class="p">(</span><span class="s">"Chris"</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">frog1</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">frog1</span><span class="p">.</span><span class="na">getAge</span><span class="p">());</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">Application</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Dylan
+2
+Obito
+Chris
+3
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Constructors">
+<a class="anchor" href="#Constructors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Constructors<a class="anchor-link" href="#Constructors"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Notes:">
+<a class="anchor" href="#Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes:<a class="anchor-link" href="#Notes:"> </a>
+</h2>
+<ul>
+<li>A constructor is a special type of method that is by default run every time an instance (object) of a particular class is created. A constructor does not have a return type, and always has to have the same name as the class.</li>
+<li>A constructor is typically used to initialize the instance variables of an object, or perform initial tasks.</li>
+<li>Like methods, there can be multiple constructors with the same name, as long as the parameters are different each time. Java automatically selects the correct constructor on the creation of an object based on the parameter list.</li>
+<li>The default constructor is when no constructor is defined at all, which means that the instantiation of the object takes no parameters and performs no other initial actions.</li>
+<li>Multiple constructors are typically ran all at once when you want a particular instance variable/task(s) to always be initialized.</li>
+<li>Use the "this" keyword to run a constructor within another constructor. Note that the inner constructor ran should always be at the top of the code block of the outer constructor.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Examples:">
+<a class="anchor" href="#Examples:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:<a class="anchor-link" href="#Examples:"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kd">class</span> <span class="nc">Machine</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">code</span><span class="p">;</span>
+
+    <span class="c1">// Naming convention of constructor. There should always be a public keyword in front of the constructor name.</span>
+    <span class="kd">public</span> <span class="nf">Machine</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"First constructor running!"</span><span class="p">);</span>
+        <span class="c1">// Initialize the value of the private instance variable name.</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="s">"Arnie"</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Different constructor that sits the value of name based on a parameter value</span>
+    <span class="kd">public</span> <span class="nf">Machine</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Use "this" to call another constructor within the constructor.</span>
+        <span class="c1">// Initialize the values of the private instance variables name and code, by default.</span>
+        <span class="c1">// The third constructor will be ran first in the second constructor</span>
+        <span class="k">this</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Second constructor running!"</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="nf">Machine</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">,</span> <span class="kt">int</span> <span class="n">code</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Third constructor running!"</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">code</span> <span class="o">=</span> <span class="n">code</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">name</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getCode</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">code</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Create an instance/object of the class Machine. The instance is created primarily with the "new" keyword.</span>
+        <span class="c1">// Once the object is created, the constructor is ran automatically.</span>
+        <span class="n">Machine</span> <span class="n">machine1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Machine</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">machine1</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
+        <span class="c1">// Run the constructor without storing the new instance within a variable.</span>
+        <span class="c1">//new Machine();</span>
+
+        <span class="c1">// Run second constructor with different parameters</span>
+        <span class="n">Machine</span> <span class="n">machine2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Machine</span><span class="p">(</span><span class="s">"Bertie"</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">machine2</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">machine2</span><span class="p">.</span><span class="na">getCode</span><span class="p">());</span>
+
+        <span class="c1">// Run third constructor with different parameters</span>
+        <span class="n">Machine</span> <span class="n">machine3</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Machine</span><span class="p">(</span><span class="s">"Charlie"</span><span class="p">,</span> <span class="mi">7</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">machine3</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">machine3</span><span class="p">.</span><span class="na">getCode</span><span class="p">());</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">Application</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>First constructor running!
+Arnie
+Third constructor running!
+Second constructor running!
+Bertie
+0
+Third constructor running!
+Charlie
+7
 </pre>
 </div>
 </div>
