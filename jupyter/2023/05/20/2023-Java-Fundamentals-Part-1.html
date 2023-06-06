@@ -82,7 +82,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      35 min read
+      41 min read
     
 </span></p>
 
@@ -236,6 +236,12 @@ window.onload = wrap_img;
 </ul>
 </li>
 <li class="toc-entry toc-h1"><a href="#Static-and-Final">Static and Final </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
+<li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#String-Builder-and-String-Formatting">String Builder and String Formatting </a>
 <ul>
 <li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
 <li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
@@ -2262,6 +2268,159 @@ Object ID: 1, I am a thing: Sue
 After creating objects, count is: 2
 3.141592653589793
 777
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="String-Builder-and-String-Formatting">
+<a class="anchor" href="#String-Builder-and-String-Formatting" aria-hidden="true"><span class="octicon octicon-link"></span></a>String Builder and String Formatting<a class="anchor-link" href="#String-Builder-and-String-Formatting"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Notes:">
+<a class="anchor" href="#Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes:<a class="anchor-link" href="#Notes:"> </a>
+</h2>
+<ul>
+<li>In Java, Strings are technically immutable, meaning that once they are created, they cannot be changed. When you initialize the value for a String variable, that value will remain in the program for the rest of its life. Each time you perform actions/modifications to a String variable, it is actually being reassigned to a new specified value (after the modifications), and the previous values stay in the program's memory.</li>
+<li>In Java, the StringBuilder class allows you to essentially create a String variable/object that is mutable, which means that whenever modifications are made to it, its value is actually changed within the program; it is not creating a new value every time, but is instead modifying the current content.</li>
+<li>In short, the StringBuilder is a more memory-efficient alternative to the classic String in terms of appending/concatenating text.</li>
+<li>Method chaining involves calling multiple methods at once on a variable. Each method in the chain returns the current state of the object. For example, the append() method of the StringBuilder class returns a reference to the StringBuilder object each time it is called.</li>
+<li>StringBuffer is a thread-safe alternative to StringBuilder. A StringBuffer is safe to access through multiple different threads. StringBuilder is more "lightweight" because it is not as thread-safe as StringBuffer.</li>
+<li>In Java you can implement different types of String formatting using the backslash syntax. For example, \t creates a new String tab, and \n creates a new String line.</li>
+<li>The println() syntax: the "print" part means the program will print the specified text within the println method. The "ln" part means the program will print a new line after the text.</li>
+<li>The printf() method allows you to print formatting Strings. printf does not print a new line at the end. For each formatting String, the printf will look at the arguments and replace each formatting String (with specified type) with the appropriate corresponding (desired arguments should be placed in same order as formatting Strings) argument value.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Examples:">
+<a class="anchor" href="#Examples:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:<a class="anchor-link" href="#Examples:"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Concatenate Strings to the String variable info.</span>
+        <span class="c1">// Each concatenation involves assigning info to the new combined String value.</span>
+        <span class="n">String</span> <span class="n">info</span> <span class="o">=</span> <span class="s">""</span><span class="p">;</span>
+        <span class="n">info</span> <span class="o">+=</span> <span class="s">"My name is Bob."</span><span class="p">;</span>
+        <span class="n">info</span> <span class="o">+=</span> <span class="s">" "</span><span class="p">;</span>
+        <span class="n">info</span> <span class="o">+=</span> <span class="s">"I am a builder."</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">info</span><span class="p">);</span>
+
+        <span class="c1">// Initialize StringBuilder Object sb with an initial value of an empty String.</span>
+        <span class="n">StringBuilder</span> <span class="n">sb</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="p">(</span><span class="s">""</span><span class="p">);</span>
+        <span class="c1">// Concatenate Strings to the sb object using the append() method. sb's current value is modified each time.</span>
+        <span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">"My name is Sue."</span><span class="p">);</span>
+        <span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">" "</span><span class="p">);</span>
+        <span class="n">sb</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">"I am a lion tamer."</span><span class="p">);</span>
+        <span class="c1">// Print out the String value of the sb StringBuilder object using the toString() method.</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">sb</span><span class="p">.</span><span class="na">toString</span><span class="p">());</span>
+
+        <span class="c1">// Initialize StringBuilder object s with no initial value.</span>
+        <span class="n">StringBuilder</span> <span class="n">s</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="p">();</span>
+        <span class="c1">// Using method chaining to append multiple different Strings at a time to the StringBuilder object s.</span>
+        <span class="n">s</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">"My name is Roger."</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="s">" "</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="s">"I am a skydiver."</span><span class="p">);</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="na">toString</span><span class="p">());</span>
+
+        <span class="c1">// Multi-slash comment lol</span>
+        <span class="c1">///////// Formatting ///////</span>
+        <span class="c1">// String formatting using the backslash format.</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">"Here is some text.\tThat was a tab.\nThat was a new line."</span><span class="p">);</span>
+        <span class="c1">// This text will be printed on the same line as the previous text.</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"More text."</span><span class="p">);</span>
+
+        <span class="c1">/// Formatting integers</span>
+        <span class="c1">// %d represents integer value.</span>
+        <span class="c1">// The number of format Strings should be the same as the number of arguments.</span>
+        <span class="c1">// %10d indicates that the format String will be outputted in a field that is 10 characters wide (right-aligned). %-10d indicates that it will be left-aligned in the 10-character wide field.</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="s">"Total cost %-10d: quantity is %10d\n"</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">120</span><span class="p">);</span>
+        
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// All of the printed text will line up since the format character is always right-aligned.</span>
+            <span class="c1">// The String format syntax involves 2 main components: the % which indicates a format String, and the character at the end which indicates the type of String formatting.</span>
+            <span class="c1">// The flags in between the % and end character specify various properties of the format String, such as the width of output space (specified by number).</span>
+            <span class="c1">// %s indicates a format String of type String.</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="s">"%2d: %s\n"</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="s">"Here is some text"</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">/// Formatting floating point values</span>
+        <span class="c1">// The .2 within the floating point String formatting specifies that the floating point String should only contain up to 2 decimal places.</span>
+        <span class="c1">// The floating point value will round.</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="s">"Total value: %.2f\n"</span><span class="p">,</span> <span class="mf">5.678</span><span class="p">);</span>
+        <span class="c1">// Specify both the width (right-aligned and left-parted with spaces for positive width. Opposite for negative width) of character output and the number of decimal places.</span>
+        <span class="c1">// Note that the width includes all of the characters being outputted.</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="s">"Total value: %6.1f\n"</span><span class="p">,</span> <span class="mf">343.23523</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">Application</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>My name is Bob. I am a builder.
+My name is Sue. I am a lion tamer.
+My name is Roger. I am a skydiver.
+Here is some text.	That was a tab.
+That was a new line.More text.
+Total cost 5         : quantity is        120
+ 0: Here is some text
+ 1: Here is some text
+ 2: Here is some text
+ 3: Here is some text
+ 4: Here is some text
+ 5: Here is some text
+ 6: Here is some text
+ 7: Here is some text
+ 8: Here is some text
+ 9: Here is some text
+10: Here is some text
+11: Here is some text
+12: Here is some text
+13: Here is some text
+14: Here is some text
+15: Here is some text
+16: Here is some text
+17: Here is some text
+18: Here is some text
+19: Here is some text
+Total value: 5.68
+Total value:  343.2
 </pre>
 </div>
 </div>
