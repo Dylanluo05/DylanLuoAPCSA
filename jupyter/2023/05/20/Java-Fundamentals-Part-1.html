@@ -82,7 +82,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      47 min read
+      48 min read
     
 </span></p>
 
@@ -1670,7 +1670,7 @@ Hey there!
 <li>The return keyword within a method block, upon run upon, causes the method to stop running. It then causes the method to "return" or store the specified value next to the return keyword. The method, when called upon, returns or represents that specific value.</li>
 <li>The return value should be able to have the same data type as that specified next to the method name.</li>
 <li>Encapsulation involves "hiding" data from a certain class from other classes. Encapsulation of a certain class prevents other classes from directly accessing its data. It is important to note that instance variables encapsulated within a particular class can be directly accessed within that class, but can only be retrieved by separate classes using getter methods.</li>
-<li>Getter methods are usually used to "get" data from a separate class whose data has been encapsulated. In these cases, the data from the separate class can not be directly accessed using the object.property notation, so getter methods need to be used (e.g. object.getProperty()).</li>
+<li>Getter methods, which are typically public, are usually used to "get" data from a separate class whose data has been encapsulated. In these cases, the data from the separate class can not be directly accessed using the object.property notation, so getter methods need to be used (e.g. object.getProperty()).</li>
 <li>The naming convention of a getter method usually involves putting the lowercase keyword "get" in front of the data name, then capitalizing the first letter of all of the words of the data name.</li>
 </ul>
 
@@ -2571,7 +2571,7 @@ Total value:  343.2
 <li>Privately declared properties can only be directly accessed within the class. This means that a child class does not inherit the private variables of its parent class.</li>
 <li>Access modifiers (e.g. public, protected, default, and private) are basically keywords that define the visibility of the properties, methods, and constructors of a class. Variables without access modifiers are typically accessible throughout the package.</li>
 <li>The protected keyword indicates that a variable is accessible anywhere in the package and can be inherited by child classes. Try to avoid overriding the variables of a parent class from a child class.</li>
-<li>The super keyword refers to the parent class of the child class it is defined within. It can be used as a superclass constructor, where the child class's constructor first calls the constructor of the parent class, using super(); It can also be used to call superclass and attributes methods, where the child class implements the parent class's version of a particular variable or method, using the super keyword plus the dot notation (e.g. super.attributeName, super.methodName()).</li>
+<li>The super keyword refers to the parent class of the child class it is defined within. It can be used as a superclass constructor, where the child class's constructor first calls the constructor of the parent class to possibly instantiate needed variables or call needed methods in the parent class from the child class, using super(); It can also be used to call superclass and attributes methods, where the child class implements the parent class's version of a particular variable or method, using the super keyword plus the dot notation (e.g. super.attributeName, super.methodName()).</li>
 </ul>
 
 </div>
@@ -2688,10 +2688,12 @@ Total value:  343.2
 
     <span class="c1">// Child constructor</span>
     <span class="kd">public</span> <span class="nf">Child</span><span class="p">(</span><span class="n">String</span> <span class="n">name2</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// Invoke the parent's constructor and passing the appropriate arguments. </span>
+        <span class="c1">// Invoke the parent's constructor and pass the appropriate arguments. </span>
         <span class="c1">// Calling the parent's constructor allows the Child class to instantiate the value of the name1 instance variable found in the Parent class</span>
+        <span class="c1">// The value of the name1 variable here belongs to the object of the Child class, but not the Parent class</span>
         <span class="kd">super</span><span class="p">(</span><span class="s">"Jonathan"</span><span class="p">);</span>
 
+        <span class="c1">// Initialize the name2 instance variable of the Child class.</span>
         <span class="k">this</span><span class="p">.</span><span class="na">name2</span> <span class="o">=</span> <span class="n">name2</span><span class="p">;</span>
     <span class="p">}</span>
 
