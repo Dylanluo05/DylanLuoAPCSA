@@ -82,7 +82,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      45 min read
+      47 min read
     
 </span></p>
 
@@ -2571,6 +2571,7 @@ Total value:  343.2
 <li>Privately declared properties can only be directly accessed within the class. This means that a child class does not inherit the private variables of its parent class.</li>
 <li>Access modifiers (e.g. public, protected, default, and private) are basically keywords that define the visibility of the properties, methods, and constructors of a class. Variables without access modifiers are typically accessible throughout the package.</li>
 <li>The protected keyword indicates that a variable is accessible anywhere in the package and can be inherited by child classes. Try to avoid overriding the variables of a parent class from a child class.</li>
+<li>The super keyword refers to the parent class of the child class it is defined within. It can be used as a superclass constructor, where the child class's constructor first calls the constructor of the parent class, using super(); It can also be used to call superclass and attributes methods, where the child class implements the parent class's version of a particular variable or method, using the super keyword plus the dot notation (e.g. super.attributeName, super.methodName()).</li>
 </ul>
 
 </div>
@@ -2618,7 +2619,7 @@ Total value:  343.2
     <span class="c1">// The annotation (@) of an override. </span>
     <span class="nd">@Override</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">start</span><span class="p">()</span> <span class="p">{</span>
-        <span class="c1">// Call the parent class's version of the start() method.</span>
+        <span class="c1">// Call the parent class's version of the start() method using the super keyword.</span>
         <span class="kd">super</span><span class="p">.</span><span class="na">start</span><span class="p">();</span>
         <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Car started."</span><span class="p">);</span>
     <span class="p">}</span>
@@ -2638,17 +2639,64 @@ Total value:  343.2
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="p">{</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// Initialize object of the Machine parent class</span>
+        <span class="c1">// mach1 can only run the defined methods of Machine (and only defined in Machine), since it is defined as a variable of type Machine that points an object of the Machine class.</span>
         <span class="n">Machine</span> <span class="n">mach1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Machine</span><span class="p">();</span>
         <span class="n">mach1</span><span class="p">.</span><span class="na">start</span><span class="p">();</span>
         <span class="n">mach1</span><span class="p">.</span><span class="na">stop</span><span class="p">();</span>
         <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
 
         <span class="c1">// Initialize object of the Car child class, which inherits the attributes and methods of the Machine parent class</span>
+        <span class="c1">// car1 can run the defined methods of both Machine and Car, since it is defined as a variable of type Car which points to an object of the Car class, which inherited from the Machine class.</span>
         <span class="n">Car</span> <span class="n">car1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Car</span><span class="p">();</span>
         <span class="n">car1</span><span class="p">.</span><span class="na">start</span><span class="p">();</span>
         <span class="n">car1</span><span class="p">.</span><span class="na">wipeWindShield</span><span class="p">();</span>
         <span class="n">car1</span><span class="p">.</span><span class="na">showInfo</span><span class="p">();</span>
         <span class="n">car1</span><span class="p">.</span><span class="na">stop</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+
+        <span class="c1">// The Car child class is of type Machine but the Machine parent class is not of type Car.</span>
+        <span class="c1">// car2 can only run the defined methods of Machine (though it will also run the redefined methods of Machine inside the Car class), since it is defined as a variable of type Machine that points to an object of the Car class.</span>
+        <span class="n">Machine</span> <span class="n">car2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Car</span><span class="p">();</span>
+        <span class="n">car2</span><span class="p">.</span><span class="na">start</span><span class="p">();</span>
+        <span class="n">car2</span><span class="p">.</span><span class="na">stop</span><span class="p">();</span>
+
+        <span class="c1">// Creating objects for both the Parent and Child classes</span>
+        <span class="n">Parent</span> <span class="n">parent1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Parent</span><span class="p">(</span><span class="s">"Bob"</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">parent1</span><span class="p">.</span><span class="na">getName1</span><span class="p">());</span>
+        <span class="n">Child</span> <span class="n">child1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Child</span><span class="p">(</span><span class="s">"John"</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">child1</span><span class="p">.</span><span class="na">getName1</span><span class="p">());</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">child1</span><span class="p">.</span><span class="na">getName2</span><span class="p">());</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">Parent</span> <span class="p">{</span>
+    <span class="n">String</span> <span class="n">name1</span><span class="p">;</span>
+
+    <span class="c1">// Parent constructor</span>
+    <span class="kd">public</span> <span class="nf">Parent</span><span class="p">(</span><span class="n">String</span> <span class="n">name1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">name1</span> <span class="o">=</span> <span class="n">name1</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName1</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">name1</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// The Child class inherits the name1 instance variable from the Parent class</span>
+<span class="kd">class</span> <span class="nc">Child</span> <span class="kd">extends</span> <span class="n">Parent</span> <span class="p">{</span>
+    <span class="n">String</span> <span class="n">name2</span><span class="p">;</span>
+
+    <span class="c1">// Child constructor</span>
+    <span class="kd">public</span> <span class="nf">Child</span><span class="p">(</span><span class="n">String</span> <span class="n">name2</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Invoke the parent's constructor and passing the appropriate arguments. </span>
+        <span class="c1">// Calling the parent's constructor allows the Child class to instantiate the value of the name1 instance variable found in the Parent class</span>
+        <span class="kd">super</span><span class="p">(</span><span class="s">"Jonathan"</span><span class="p">);</span>
+
+        <span class="k">this</span><span class="p">.</span><span class="na">name2</span> <span class="o">=</span> <span class="n">name2</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName2</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">name2</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
@@ -2673,6 +2721,13 @@ Car started.
 Wiping windshield.
 Car description: I am something, Year Made: 2023
 Machine stopped.
+
+Machine started.
+Car started.
+Machine stopped.
+Bob
+Jonathan
+John
 </pre>
 </div>
 </div>
