@@ -164,7 +164,7 @@ window.onload = wrap_img;
     <span class="c1">// main tester method to test out features of Intuition AI</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">Intuition</span> <span class="n">intuitAI</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intuition</span><span class="p">();</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">intuitAI</span><span class="p">.</span><span class="na">calculate</span><span class="p">(</span><span class="s">"10 + 11 - 821 + 200 - 111 + 777"</span><span class="p">));</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">intuitAI</span><span class="p">.</span><span class="na">calculate</span><span class="p">(</span><span class="s">"7 + 8 * 5"</span><span class="p">));</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
@@ -181,10 +181,13 @@ window.onload = wrap_img;
     <span class="c1">// Run the calculateAnswer method from the constructor</span>
     <span class="kd">public</span> <span class="nf">Calculator</span><span class="p">(</span><span class="n">String</span> <span class="n">expression</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">operators</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">Integer</span><span class="o">&gt;</span><span class="p">();</span>
-        <span class="n">operators</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"+"</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
-        <span class="n">operators</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"-"</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
-        <span class="n">operators</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"*"</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-        <span class="n">operators</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"/"</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+        <span class="n">operators</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"+"</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+        <span class="n">operators</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"-"</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+        <span class="n">operators</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"*"</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+        <span class="n">operators</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"/"</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+        <span class="n">operators</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"^"</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="n">operators</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"("</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+        <span class="n">operators</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">")"</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
         <span class="n">calculateAnswer</span><span class="p">(</span><span class="n">expression</span><span class="p">);</span>
     <span class="p">}</span>
 
@@ -228,6 +231,17 @@ window.onload = wrap_img;
         
         <span class="c1">// Iterate through the tokens list</span>
         <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">tokens</span><span class="p">.</span><span class="na">size</span><span class="p">();</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// Find the least precedence value, and the index of that operator</span>
+            <span class="kt">int</span> <span class="n">min</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+            <span class="kt">int</span> <span class="n">minIndex</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">tokens</span><span class="p">.</span><span class="na">size</span><span class="p">();</span> <span class="n">x</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">// Use less than sign so that the computations are solved from left to right (since numbers of the left are read first)</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">operators</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">tokens</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">operators</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">tokens</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">&lt;</span> <span class="n">min</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="n">min</span> <span class="o">=</span> <span class="n">operators</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">tokens</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">x</span><span class="p">));</span>
+                    <span class="n">minIndex</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+
             <span class="c1">// Each iteration will either end the loop or modify/update the current tokens list</span>
 
             <span class="c1">// Once the tokens list only contains one token, set that token to the answer</span>
@@ -237,15 +251,15 @@ window.onload = wrap_img;
                 <span class="n">answer</span> <span class="o">=</span> <span class="n">Double</span><span class="p">.</span><span class="na">parseDouble</span><span class="p">(</span><span class="n">temp</span><span class="p">);</span>
                 <span class="k">break</span><span class="p">;</span>
               <span class="c1">// If the current token checked is an operator, compute the numbers around it and replace those values as well as the operator itself with the result of the computation</span>
-            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">operators</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">tokens</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">j</span><span class="p">))</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">operators</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">tokens</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">minIndex</span><span class="p">))</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
                 <span class="c1">// Get values of the numbers around the operator</span>
-                <span class="kt">double</span> <span class="n">a</span> <span class="o">=</span> <span class="n">Double</span><span class="p">.</span><span class="na">parseDouble</span><span class="p">(</span><span class="n">tokens</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">));</span>
-                <span class="kt">double</span> <span class="n">b</span> <span class="o">=</span> <span class="n">Double</span><span class="p">.</span><span class="na">parseDouble</span><span class="p">(</span><span class="n">tokens</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">));</span>
+                <span class="kt">double</span> <span class="n">a</span> <span class="o">=</span> <span class="n">Double</span><span class="p">.</span><span class="na">parseDouble</span><span class="p">(</span><span class="n">tokens</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">minIndex</span> <span class="o">-</span> <span class="mi">1</span><span class="p">));</span>
+                <span class="kt">double</span> <span class="n">b</span> <span class="o">=</span> <span class="n">Double</span><span class="p">.</span><span class="na">parseDouble</span><span class="p">(</span><span class="n">tokens</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">minIndex</span> <span class="o">+</span> <span class="mi">1</span><span class="p">));</span>
                 <span class="c1">// c will be used to store the result of the computation between a and b</span>
                 <span class="kt">double</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 
                 <span class="c1">// Check type of operator</span>
-                <span class="k">switch</span> <span class="p">(</span><span class="n">tokens</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">j</span><span class="p">))</span> <span class="p">{</span>
+                <span class="k">switch</span> <span class="p">(</span><span class="n">tokens</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">minIndex</span><span class="p">))</span> <span class="p">{</span>
                     <span class="k">case</span> <span class="s">"+"</span><span class="p">:</span>
                         <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span>
                         <span class="k">break</span><span class="p">;</span>
@@ -259,11 +273,13 @@ window.onload = wrap_img;
                         <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">/</span> <span class="n">b</span><span class="p">;</span>
                         <span class="k">break</span><span class="p">;</span>
                 <span class="p">}</span>
-
+                
                 <span class="c1">// Replace numbers around the operator, as well as the operator itself, with the result of the computation, and reset the loop</span>
-                <span class="n">tokens</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
-                <span class="n">tokens</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="n">j</span><span class="p">);</span>
-                <span class="n">tokens</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">Double</span><span class="p">.</span><span class="na">toString</span><span class="p">(</span><span class="n">c</span><span class="p">));</span>
+                <span class="n">tokens</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="n">minIndex</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+                <span class="n">tokens</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="n">minIndex</span><span class="p">);</span>
+                <span class="n">tokens</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="n">minIndex</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">Double</span><span class="p">.</span><span class="na">toString</span><span class="p">(</span><span class="n">c</span><span class="p">));</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">tokens</span><span class="p">.</span><span class="na">toString</span><span class="p">());</span>
                 <span class="n">j</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
             <span class="p">}</span>
         <span class="p">}</span>
@@ -289,9 +305,13 @@ window.onload = wrap_img;
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Machine Started...
 Ready to take commands...
-Calculating the following expression: 10 + 11 - 821 + 200 - 111 + 777
-[10, +, 11, -, 821, +, 200, -, 111, +, 777]
-66.0
+Calculating the following expression: 7 + 8 * 5
+[7, +, 8, *, 5]
+40.0
+[7, +, 40.0]
+47.0
+[47.0]
+47.0
 </pre>
 </div>
 </div>
