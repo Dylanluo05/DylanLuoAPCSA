@@ -82,7 +82,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      2 min read
+      6 min read
     
 </span></p>
 
@@ -128,6 +128,12 @@ window.onload = wrap_img;
   <div class="post-content e-content" itemprop="articleBody">
     <ul id="toc" class="section-nav">
 <li class="toc-entry toc-h1"><a href="#23.-Packages">23. Packages </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
+<li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#24.-Interfaces">24. Interfaces </a>
 <ul>
 <li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
 <li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
@@ -375,6 +381,151 @@ window.onload = wrap_img;
 <pre>
 <span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-bold">import </span><span class="ansi-black-intense-fg ansi-red-bg ansi-bold">ocean.Fish</span><span class="ansi-black-intense-fg ansi-bold">;</span>
 <span class="ansi-red-intense-fg ansi-bold">package ocean does not exist</span>
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="24.-Interfaces">
+<a class="anchor" href="#24.-Interfaces" aria-hidden="true"><span class="octicon octicon-link"></span></a>24. Interfaces<a class="anchor-link" href="#24.-Interfaces"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Notes:">
+<a class="anchor" href="#Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes:<a class="anchor-link" href="#Notes:"> </a>
+</h2>
+<ul>
+<li>In Java, interfaces are implicitly abstract (you do not need to declare them with the abstract keyword), and the methods within them are in turn implicitly public and abstract. Interfaces do not contain code that perform actions, but rather the headers of defined methods and sometimes variables (usually public, static, and final).</li>
+<li>Interfaces are ultimately used to achieve abstraction, where they group related methods that all have empty bodies. Interfaces are accessed with the "implement" keyword from another class, and that class defines the bodies of the interface methods, thus overriding (redefining the method to have a body but with the same exact name) the interface method. Distinct classes can define a particular interface's methods differently.</li>
+<li>Similar to abstract classes, interfaces cannot be used to initialize objects (where the interface name follows the new keyword), and do not have "bodies" of code. An interface is implemented by separate classes, in which all of the methods defined in the interface must be overridden with method bodies of code defined in the class. It is important to note that a class can implement multiple interfaces (in contrast, a class can only extend one parent class), and an interface can be implemented by multiple classes (a parent class can be inherited by multiple child classes).</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Examples:">
+<a class="anchor" href="#Examples:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:<a class="anchor-link" href="#Examples:"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="c1">// Creating a Java interface with the name Info</span>
+<span class="kd">interface</span> <span class="nc">Info</span> <span class="p">{</span>
+    <span class="c1">// Header of the showInfo() method.</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">showInfo</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="c1">// The Machine class implements the Info interface</span>
+<span class="kd">class</span> <span class="nc">Machine</span> <span class="kd">implements</span> <span class="n">Info</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">start</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Machine started..."</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Need to override the showInfo() method of the Info interface</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">showInfo</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Machine ID is: "</span> <span class="o">+</span> <span class="n">id</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// The Person class implements the Info interface</span>
+<span class="kd">class</span> <span class="nc">Person</span> <span class="kd">implements</span> <span class="n">Info</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="p">;</span>
+
+    <span class="kd">public</span> <span class="nf">Person</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">greet</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Hello there!"</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">showInfo</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Person name is: "</span> <span class="o">+</span> <span class="n">name</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Machine</span> <span class="n">mach1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Machine</span><span class="p">();</span>
+        <span class="n">mach1</span><span class="p">.</span><span class="na">start</span><span class="p">();</span>
+        <span class="c1">// Call the showInfo() interface method defined in the Machine class</span>
+        <span class="n">mach1</span><span class="p">.</span><span class="na">showInfo</span><span class="p">();</span>
+
+        <span class="n">Person</span> <span class="n">person1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="p">(</span><span class="s">"Bob"</span><span class="p">);</span>
+        <span class="n">person1</span><span class="p">.</span><span class="na">greet</span><span class="p">();</span>
+        <span class="c1">// Call the showInfo() interface method defined in the Person class</span>
+        <span class="n">person1</span><span class="p">.</span><span class="na">showInfo</span><span class="p">();</span>
+
+        <span class="c1">// We can initialize info1 like this because the Machine class implements the Info interface.</span>
+        <span class="c1">// info1 is a variable of type Info that points to an object reference of type Machine.</span>
+        <span class="c1">// Since info1 is a variable of type Info, it can only be used to run the methods of the Info interface, which are defined in the Machine class, which is referenced as an object here.</span>
+        <span class="n">Info</span> <span class="n">info1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Machine</span><span class="p">();</span>
+        <span class="n">info1</span><span class="p">.</span><span class="na">showInfo</span><span class="p">();</span>
+
+        <span class="c1">// info2 is a variable of type Info that points to an already defined object reference of class type Person</span>
+        <span class="n">Info</span> <span class="n">info2</span> <span class="o">=</span> <span class="n">person1</span><span class="p">;</span>
+        <span class="n">info2</span><span class="p">.</span><span class="na">showInfo</span><span class="p">();</span>
+
+        <span class="c1">// mach1 and person1 are both objects that implement the Info interface, which means that are technically of type Info.</span>
+        <span class="c1">// Pass the mach1 and person1 objects to the outputInfo() method, which in itself calls the showInfo() interface method, which is redefined in the Machine and Person classes.</span>
+        <span class="n">outputInfo</span><span class="p">(</span><span class="n">mach1</span><span class="p">);</span>
+        <span class="n">outputInfo</span><span class="p">(</span><span class="n">person1</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Make this method static so that the Application class can directly access the method within itself (even though the method is private)</span>
+    <span class="c1">// The outputInfo() method calls the showInfo interface method, which should be defined in the separate classes that are called in the parameter of outputInfo()</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">outputInfo</span><span class="p">(</span><span class="n">Info</span> <span class="n">info</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">info</span><span class="p">.</span><span class="na">showInfo</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">Application</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Machine started...
+Machine ID is: 7
+Hello there!
+Person name is: Bob
+Machine ID is: 7
+Person name is: Bob
+Machine ID is: 7
+Person name is: Bob
 </pre>
 </div>
 </div>
