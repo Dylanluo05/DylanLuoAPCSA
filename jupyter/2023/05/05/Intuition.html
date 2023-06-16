@@ -82,7 +82,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      3 min read
+      5 min read
     
 </span></p>
 
@@ -175,8 +175,10 @@ window.onload = wrap_img;
 
     <span class="c1">// HashMap to contain valid operators that could be found in the expression</span>
     <span class="c1">// Lower precedence equals compute first</span>
-    <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">operators</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">operators</span><span class="p">;</span>
 
+    <span class="c1">// ArrayList to contain all parentheses in the expression in the order in which they appear</span>
+    <span class="kd">private</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">parentheses</span><span class="p">;</span>
 
     <span class="c1">// Run the calculateAnswer method from the constructor</span>
     <span class="kd">public</span> <span class="nf">Calculator</span><span class="p">(</span><span class="n">String</span> <span class="n">expression</span><span class="p">)</span> <span class="p">{</span>
@@ -203,6 +205,10 @@ window.onload = wrap_img;
                     <span class="c1">// Check if current substring counts as a valid operator</span>
                     <span class="k">if</span> <span class="p">(</span><span class="n">operators</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">expression</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
                         <span class="n">tokens</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">expression</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">x</span><span class="p">));</span>
+                        <span class="c1">// Check if operator is a parenthesis</span>
+                        <span class="k">if</span> <span class="p">(</span><span class="n">expression</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">x</span><span class="p">).</span><span class="na">equals</span><span class="p">(</span><span class="s">"("</span><span class="p">)</span> <span class="o">||</span> <span class="n">expression</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">x</span><span class="p">).</span><span class="na">equals</span><span class="p">(</span><span class="s">")"</span><span class="p">))</span> <span class="p">{</span>
+                            <span class="n">parentheses</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">expression</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">x</span><span class="p">));</span>
+                        <span class="p">}</span>
                         <span class="n">i</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
                         <span class="k">break</span><span class="p">;</span>
                     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -222,6 +228,40 @@ window.onload = wrap_img;
         <span class="p">}</span>
 
         <span class="k">return</span> <span class="n">tokens</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isParenthesesValid</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">parentheses</span><span class="p">.</span><span class="na">toString</span><span class="p">());</span>
+        <span class="c1">// If there is an odd number of parentheses, the expression is not valid</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">parentheses</span><span class="p">.</span><span class="na">size</span><span class="p">()</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Create stack to store open parentheses and remove when needed</span>
+        <span class="n">Stack</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">openParStack</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Stack</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">();</span>
+
+        <span class="c1">// Iterate through parenthesis in the parentheses ArrayList</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">parentheses</span><span class="p">.</span><span class="na">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">parentheses</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="na">equals</span><span class="p">(</span><span class="s">"("</span><span class="p">))</span> <span class="p">{</span>
+                <span class="c1">// If open parenthesis appears, push it to the stack</span>
+                <span class="n">openParStack</span><span class="p">.</span><span class="na">push</span><span class="p">(</span><span class="n">parentheses</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">i</span><span class="p">));</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">openParStack</span><span class="p">.</span><span class="na">size</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">// If close parenthesis appears instead, but no open parentheses are in the stack, return false</span>
+                <span class="c1">// Basically, return false if there are more close parentheses than open parentheses, or if a close parenthesis appears before its open parenthesis counterpart</span>
+                <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">parentheses</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="na">equals</span><span class="p">(</span><span class="s">")"</span><span class="p">))</span> <span class="p">{</span>
+                <span class="c1">// If close parenthesis appears and open parentheses are in the stack, pop an open parenthesis out of the stack</span>
+                <span class="n">openParStack</span><span class="p">.</span><span class="na">pop</span><span class="p">();</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Return false if there are more open parentheses than close parentheses</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">openParStack</span><span class="p">.</span><span class="na">size</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// By default, return true</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
     <span class="p">}</span>
 
     <span class="c1">// Take the tokens of the expression and compute the final answer</span>
