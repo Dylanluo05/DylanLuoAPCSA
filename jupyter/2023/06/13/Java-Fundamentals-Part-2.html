@@ -82,7 +82,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      6 min read
+      11 min read
     
 </span></p>
 
@@ -134,6 +134,12 @@ window.onload = wrap_img;
 </ul>
 </li>
 <li class="toc-entry toc-h1"><a href="#24.-Interfaces">24. Interfaces </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
+<li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#25.-Public,-Private,-and-Protected">25. Public, Private, and Protected </a>
 <ul>
 <li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
 <li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
@@ -526,6 +532,194 @@ Machine ID is: 7
 Person name is: Bob
 Machine ID is: 7
 Person name is: Bob
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="25.-Public,-Private,-and-Protected">
+<a class="anchor" href="#25.-Public,-Private,-and-Protected" aria-hidden="true"><span class="octicon octicon-link"></span></a>25. Public, Private, and Protected<a class="anchor-link" href="#25.-Public,-Private,-and-Protected"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Notes:">
+<a class="anchor" href="#Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes:<a class="anchor-link" href="#Notes:"> </a>
+</h2>
+<ul>
+<li>When referencing an attribute or method of a particular class within that class itself, you do not need to prefix the variable name. In other words, notation like objectName.variableName is unnecessary, since variableName works by itself. This means that the access modifier does not matter; as long as you are referencing the variable within the same class, you can directly access it by name or optionally prefix dot notation.</li>
+<li>Just for review, you typically should have one (and only one) public class in a file, and that public class's name should match the name of the file. However, you can have as many non-public classes with different names in the file as you want.</li>
+<li>Access modifiers define the access level of attributes, methods, classes, and constructors, while non-access modifiers do not define the access level, but rather other forms of functionality.</li>
+<li>Encapsulation is typically used to keep certain attributes or methods of a class hidden/private from the rest of the world, for the purpose of controlling the way people access these variables, and preventing unnecessary changes from happening to them. </li>
+<li>Usually when we declare a particular variable public, that variable is defined as static and/or final, which means it belongs and remains constant (or has a constant change if final is not declared) to the class itself, so that it is relatively unchangeable by others.</li>
+<li>The order in which modifiers appear does not necessarily matter all of the time, but there is a recommended order.</li>
+<li>The public access modifier defines a class, attribute, method, or constructor as directly accessible to all other classes.</li>
+<li>The private access modifier defines an attribute, method, or constructor as only directly accessible within the class it is declared in (can be accessed with getter methods from other classes though). Private variables are not inherited by child classes.</li>
+<li>The protected access modifier defines an attribute, method, or constructor as only accessible within the same package (implies same file too) and any subsequent subclasses (even subclasses in separate packages, unlike the default access modifier) of the class it is declared in. This means that protected variables are inherited by child classes.</li>
+<li>The default access modifier (happens when no access modifier is declared at all) defines a class, attribute, method, or constructor as only accessible by other classes in the same package (implies same file too). A child class can inherit default access modified variables from the parent class only if it is in the same package. It is possible for a child class to extend a parent class in another package using the import feature, but in that case, default variables are not inherited.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Examples:">
+<a class="anchor" href="#Examples:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:<a class="anchor-link" href="#Examples:"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kd">class</span> <span class="nc">Plant</span> <span class="p">{</span>
+    <span class="c1">// Bad practice</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">name</span><span class="p">;</span>
+
+    <span class="c1">// Acceptable practice</span>
+    <span class="c1">// The ID variable belongs to the Plant class itself and remains constant</span>
+    <span class="kd">public</span> <span class="kd">final</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">ID</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span>
+
+    <span class="c1">// The type variable is private, so it is not inherited by subclasses</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">type</span><span class="p">;</span>
+
+    <span class="c1">// The size variable is protected, so it is inherited by subclasses</span>
+    <span class="kd">protected</span> <span class="n">String</span> <span class="n">size</span><span class="p">;</span>
+
+    <span class="c1">// The height variable has the default access modifier</span>
+    <span class="kt">int</span> <span class="n">height</span><span class="p">;</span>
+
+    <span class="kd">public</span> <span class="nf">Plant</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// this.name works, since the this keyword refers to the object that name is a part of.</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="s">"Joe"</span><span class="p">;</span>
+
+        <span class="c1">// Even though it is private, the type instance variable is in the Plant class itself, so it can just be referenced by type.</span>
+        <span class="n">type</span> <span class="o">=</span> <span class="s">"plant"</span><span class="p">;</span>
+
+        <span class="c1">// size is defined as medium in the parent class</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="s">"medium"</span><span class="p">;</span>
+
+        <span class="n">height</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Oak is a child class of the parent class Plant</span>
+<span class="kd">class</span> <span class="nc">Oak</span> <span class="kd">extends</span> <span class="n">Plant</span> <span class="p">{</span>
+    
+    <span class="kd">public</span> <span class="nf">Oak</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// size was defined as medium in the parent class and that value is inherited by the child class</span>
+        <span class="c1">// Here, we are overriding the value of size inherited from the parent class, and setting it to large</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">size</span> <span class="o">=</span> <span class="s">"large"</span><span class="p">;</span>
+
+        <span class="c1">// height variable is inherited, since Oak is in the same package as Plant</span>
+        <span class="n">height</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">Field</span> <span class="p">{</span>
+    <span class="c1">// Create an instance variable that is an object of the Plant class.</span>
+    <span class="c1">// The Plant class is accessible from the Field class because it has the default access modifier and is in the same file and package as the Field class.</span>
+    <span class="kd">private</span> <span class="n">Plant</span> <span class="n">plant</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Plant</span><span class="p">();</span>
+
+    <span class="kd">public</span> <span class="nf">Field</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// size is protected, but Field is in the same file and package as Plant</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">plant</span><span class="p">.</span><span class="na">size</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Plant</span> <span class="n">plant</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Plant</span><span class="p">();</span>
+        <span class="c1">// The name instance variable of the Plant class can be directly accessed outside of the class because it is public, using the prefix dot notation.</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">plant</span><span class="p">.</span><span class="na">name</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">plant</span><span class="p">.</span><span class="na">ID</span><span class="p">);</span>
+
+        <span class="n">Oak</span> <span class="n">oak</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Oak</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">oak</span><span class="p">.</span><span class="na">size</span><span class="p">);</span>
+        <span class="c1">// Application is in the same package as Oak and Plant, so it can directly access height</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">oak</span><span class="p">.</span><span class="na">height</span><span class="p">);</span>
+
+        <span class="c1">// The constructor of Field will print the initialized value of size when an object of the Plant class is created</span>
+        <span class="n">Field</span> <span class="n">field</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Field</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">Application</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Joe
+8
+large
+10
+medium
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="c1">// Pretend that Plant is a part of the world package, and that Grass in another package</span>
+<span class="kn">import</span> <span class="nn">world.Plant</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nc">Grass</span> <span class="kd">extends</span> <span class="n">Plant</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="nf">Grass</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// This won't work because even though Grass is a child class of Plant, it is not in the same package as Plant, and height is a default access-modified variable.</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">height</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-bold">import </span><span class="ansi-black-intense-fg ansi-red-bg ansi-bold">world.Plant</span><span class="ansi-black-intense-fg ansi-bold">;</span>
+<span class="ansi-red-intense-fg ansi-bold">package world does not exist</span>
 </pre>
 </div>
 </div>
