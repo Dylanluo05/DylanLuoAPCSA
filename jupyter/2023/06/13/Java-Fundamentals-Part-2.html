@@ -82,7 +82,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      11 min read
+      17 min read
     
 </span></p>
 
@@ -140,6 +140,18 @@ window.onload = wrap_img;
 </ul>
 </li>
 <li class="toc-entry toc-h1"><a href="#25.-Public,-Private,-and-Protected">25. Public, Private, and Protected </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
+<li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#26.-Polymorphism">26. Polymorphism </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
+<li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#Encapsulation-and-the-API-Docs">Encapsulation and the API Docs </a>
 <ul>
 <li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
 <li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
@@ -720,6 +732,235 @@ medium
 <pre>
 <span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-bold">import </span><span class="ansi-black-intense-fg ansi-red-bg ansi-bold">world.Plant</span><span class="ansi-black-intense-fg ansi-bold">;</span>
 <span class="ansi-red-intense-fg ansi-bold">package world does not exist</span>
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="26.-Polymorphism">
+<a class="anchor" href="#26.-Polymorphism" aria-hidden="true"><span class="octicon octicon-link"></span></a>26. Polymorphism<a class="anchor-link" href="#26.-Polymorphism"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Notes:">
+<a class="anchor" href="#Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes:<a class="anchor-link" href="#Notes:"> </a>
+</h2>
+<ul>
+<li>Polymorphism, which means "many shapes/forms", involves the process of creating multiple classes that related to each other in some way through the inheritance of a super class. It is efficient in allowing code reusability amongst different classes. Polymorphism also states that an object of a sub-class can also have the variable type of the super-class (i.e. SuperClass variableName = new SubClass()). </li>
+<li>However, it is important to note that the initialized variable type of an object variable defines the attributes and methods the variable has access to (can only access those listed in the class of the variable type), while the initialized object type of the variable defines the values of its attributes and the actions of its methods (the values and code defined in the class of the object type).</li>
+<li>As inheritance allows different sub-classes to inherit the attributes and methods of a super class, polymorphism gives us the ability to take those attributes and methods and perform different kinds of tasks amongst different sub-classes that are each somewhat related to each other. Polymorphism basically gives sub-classes the ability to override the attributes and methods defined in the super-class.</li>
+<li>Example: The Animal super-class, which has a sound() method, is inherited by the Pig, Cat, and Dog sub-classes. Pig, Cat, and Dog, will each have their own unique implementation/override of the inherited sound() method.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Examples:">
+<a class="anchor" href="#Examples:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:<a class="anchor-link" href="#Examples:"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kd">class</span> <span class="nc">Plant</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">grow</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Plant is growing"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">Tree</span> <span class="kd">extends</span> <span class="n">Plant</span> <span class="p">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">grow</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Tree is growing"</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">shedLeaves</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Leaves shedding"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Plant</span> <span class="n">plant1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Plant</span><span class="p">();</span>
+        <span class="n">Tree</span> <span class="n">tree</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Tree</span><span class="p">();</span>
+
+        <span class="c1">// plant2 of variable type Plant can refer to the same object of the Tree class that tree refers to.</span>
+        <span class="n">Plant</span> <span class="n">plant2</span> <span class="o">=</span> <span class="n">tree</span><span class="p">;</span>
+        <span class="c1">// Although its variable type is Plant, plant2 refers to a Tree object, and so will run the Tree class's version of the grow() method</span>
+        <span class="n">plant2</span><span class="p">.</span><span class="na">grow</span><span class="p">();</span>
+        <span class="c1">// Will not work, since plant2 has a variable type Plant, and Plant does not contain the shedLeaves() method.</span>
+        <span class="c1">// plant2.shedLeaves();</span>
+
+        <span class="c1">// Will work, since tree has a variable type Tree, and Tree does contain the shedLeaves() method.</span>
+        <span class="n">tree</span><span class="p">.</span><span class="na">shedLeaves</span><span class="p">();</span>
+
+        <span class="c1">// tree is of variable type Plant, and so can be passed as a valid argument to the doGrow() method.</span>
+        <span class="c1">// Since the grow() method is defined in the Plant class, it will run effectively</span>
+        <span class="c1">// The Tree class's version of the grow() method will be used during the calling of doGrow(), since its object type is of the Tree class.</span>
+        <span class="n">doGrow</span><span class="p">(</span><span class="n">tree</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// The doGrow() method is public and static, so we can directly call it within the main test method (both main and doGrow are static methods, so they can directly access each other) in the same Application class.</span>
+    <span class="c1">// The doGrow() method takes parameters of variable type Plant.</span>
+    <span class="c1">// Polymorphism states that where ever a parent class type is expected, a child class type can be used there as well.</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">doGrow</span><span class="p">(</span><span class="n">Plant</span> <span class="n">plant</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">plant</span><span class="p">.</span><span class="na">grow</span><span class="p">();</span>
+        <span class="c1">// An object of the Application class needs to be created in order to access the test() instance method within a static method</span>
+        <span class="n">Application</span> <span class="n">app</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Application</span><span class="p">();</span>
+        <span class="n">app</span><span class="p">.</span><span class="na">test</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">test</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Testing..."</span><span class="p">);</span>
+        <span class="c1">// An instance method can directly access a static method</span>
+        <span class="n">test2</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">test2</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Testing again..."</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">Application</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Tree is growing
+Leaves shedding
+Tree is growing
+Testing...
+Testing again...
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Encapsulation-and-the-API-Docs">
+<a class="anchor" href="#Encapsulation-and-the-API-Docs" aria-hidden="true"><span class="octicon octicon-link"></span></a>Encapsulation and the API Docs<a class="anchor-link" href="#Encapsulation-and-the-API-Docs"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Notes:">
+<a class="anchor" href="#Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes:<a class="anchor-link" href="#Notes:"> </a>
+</h2>
+<ul>
+<li>The purpose of encapsulation (Using access modifiers like private or protected) is primarily to purposely hide some of the inner-workings/elements of a particular class from the public. This prevents direct access to certain attributes or methods of the class, restricting users from directly accessing the state values of those variables. The state/inner values and actions of encapsulated attributes and methods are usually intended to only be directly used within the class (they are typically indirectly used outside the class). Encapsulation is also useful for preventing conflicts in variables amongst different classes. A state value of a variable refers to its instantaneous value during any point of the program's execution.</li>
+<li>Encapsulated variables are typically accessed outside the class with getter and setter methods for those specific variables. The getter method allows users to read values of encapsulated variables, while the setter method allows users to change values of encapsulated variables, all-the-while the inner-workings of the class are modified but hidden away from the public for privacy and security. Getters and setters allow encapsulated attributes and methods to be applied toward external purposes outside of the class.</li>
+<li>The accepted good practice is that whenever you can make a certain variable (attribute or method) private, make it private; if the variable needs to be inherited by child classes, make it protected; and if the user should be able to access the variable, make it public. Most data should be encapsulated, with the exception of constant variables.</li>
+<li>An API stands for Application Programming Interface, which essentially allows the public to access certain features and functionalities of a program.</li>
+<li>An API documentation is essentially a collection of references, descriptions, and examples (such as different kinds of attributes/methods and constructors, as well as the API's properties) that show users how to use and employ the functionality of a particular API.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Examples:">
+<a class="anchor" href="#Examples:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:<a class="anchor-link" href="#Examples:"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kd">class</span> <span class="nc">Plant</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="p">;</span>
+    <span class="c1">// Variables are typically declared as public when they are static and final, meaning their value remains constant and cannot be changed outside the class nor by the public.</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">ID</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getData</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">String</span> <span class="n">data</span> <span class="o">=</span> <span class="s">"Some stuff "</span> <span class="o">+</span> <span class="n">getGrowthForecast</span><span class="p">();</span>
+        <span class="k">return</span> <span class="n">data</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Private methods cannot be directly access outside of the class, and are intended to only be used within the class.</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="nf">getGrowthForecast</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="mi">9</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// The public getter and setter methods of the name variable allow name to be accessed (though not directly) outside of the class</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">name</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Plant</span> <span class="n">plant</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Plant</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">plant</span><span class="p">.</span><span class="na">getData</span><span class="p">());</span>
+        <span class="n">plant</span><span class="p">.</span><span class="na">setName</span><span class="p">(</span><span class="s">"Daniel"</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">plant</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">Application</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Some stuff 9
+Daniel
 </pre>
 </div>
 </div>

@@ -82,7 +82,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      5 min read
+      1 min read
     
 </span></p>
 
@@ -143,91 +143,13 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-java"><pre><span></span><span class="c1">// Main Intuition AI class used for indicating machine status and controlling its actions</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Intuition</span> <span class="p">{</span>
-    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="p">;</span>
-    
-    <span class="c1">// Constructor that runs when Intuition AI is started</span>
-    <span class="kd">public</span> <span class="nf">Intuition</span><span class="p">()</span> <span class="p">{</span>
-        <span class="n">name</span> <span class="o">=</span> <span class="s">"Intuition AI"</span><span class="p">;</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Machine Started..."</span><span class="p">);</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Ready to take commands..."</span><span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="c1">// Run the calculator feature given a particular expression</span>
-    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">calculate</span><span class="p">(</span><span class="n">String</span> <span class="n">expression</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Calculating the following expression: "</span> <span class="o">+</span> <span class="n">expression</span><span class="p">);</span>
-        <span class="n">Calculator</span> <span class="n">calculator</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Calculator</span><span class="p">(</span><span class="n">expression</span><span class="p">);</span>
-        <span class="k">return</span> <span class="n">calculator</span><span class="p">.</span><span class="na">getAnswer</span><span class="p">();</span>
-    <span class="p">}</span>
-
-    <span class="c1">// main tester method to test out features of Intuition AI</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">Intuition</span> <span class="n">intuitAI</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intuition</span><span class="p">();</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">intuitAI</span><span class="p">.</span><span class="na">calculate</span><span class="p">(</span><span class="s">"7 + 8 * 5"</span><span class="p">));</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="c1">// Calculator class to calculate numerical values from expressions</span>
-<span class="kd">class</span> <span class="nc">Calculator</span> <span class="p">{</span>
-    <span class="c1">// Instance variable answer to store the final answer computed based on the given expression</span>
-    <span class="kd">private</span> <span class="kt">double</span> <span class="n">answer</span><span class="p">;</span>
-
-    <span class="c1">// HashMap to contain valid operators that could be found in the expression</span>
-    <span class="c1">// Lower precedence equals compute first</span>
-    <span class="kd">private</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">operators</span><span class="p">;</span>
-
-    <span class="c1">// ArrayList to contain all parentheses in the expression in the order in which they appear</span>
-    <span class="kd">private</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">parentheses</span><span class="p">;</span>
-
-    <span class="c1">// Run the calculateAnswer method from the constructor</span>
-    <span class="kd">public</span> <span class="nf">Calculator</span><span class="p">(</span><span class="n">String</span> <span class="n">expression</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">operators</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">Integer</span><span class="o">&gt;</span><span class="p">();</span>
-        <span class="n">operators</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"+"</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
-        <span class="n">operators</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"-"</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
-        <span class="n">operators</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"*"</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
-        <span class="n">operators</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"/"</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
-        <span class="n">operators</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"^"</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
-        <span class="n">operators</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"("</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-        <span class="n">operators</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">")"</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-        <span class="n">calculateAnswer</span><span class="p">(</span><span class="n">expression</span><span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="c1">// Store the individual important parts of the expression in an ArrayList (e.g. numbers, operators, etc.)</span>
-    <span class="kd">public</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="nf">getTokens</span><span class="p">(</span><span class="n">String</span> <span class="n">expression</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// ArrayList to store individual tokens</span>
-        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">tokens</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">();</span>
-        <span class="c1">// Iterate through each "substring" of length 1 in the expression</span>
-        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">expression</span><span class="p">.</span><span class="na">length</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">// Main test case starts if the current substring is not a space</span>
-            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">expression</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">).</span><span class="na">equals</span><span class="p">(</span><span class="s">" "</span><span class="p">)))</span> <span class="p">{</span>
-                <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">expression</span><span class="p">.</span><span class="na">length</span><span class="p">();</span> <span class="n">x</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="c1">// Check if current substring counts as a valid operator</span>
-                    <span class="k">if</span> <span class="p">(</span><span class="n">operators</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">expression</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
-                        <span class="n">tokens</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">expression</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">x</span><span class="p">));</span>
-                        <span class="c1">// Check if operator is a parenthesis</span>
-                        <span class="k">if</span> <span class="p">(</span><span class="n">expression</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">x</span><span class="p">).</span><span class="na">equals</span><span class="p">(</span><span class="s">"("</span><span class="p">)</span> <span class="o">||</span> <span class="n">expression</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">x</span><span class="p">).</span><span class="na">equals</span><span class="p">(</span><span class="s">")"</span><span class="p">))</span> <span class="p">{</span>
-                            <span class="n">parentheses</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">expression</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">x</span><span class="p">));</span>
-                        <span class="p">}</span>
-                        <span class="n">i</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
-                        <span class="k">break</span><span class="p">;</span>
-                    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                        <span class="c1">// Check if current substring (multiple characters) is the last in the expression</span>
-                        <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="n">expression</span><span class="p">.</span><span class="na">length</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">expression</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">).</span><span class="na">equals</span><span class="p">(</span><span class="s">" "</span><span class="p">))</span> <span class="p">{</span>
-                            <span class="n">tokens</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">expression</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">));</span>
-                            <span class="n">i</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
-                            <span class="k">break</span><span class="p">;</span>
-                        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">expression</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">).</span><span class="na">equals</span><span class="p">(</span><span class="s">" "</span><span class="p">))</span> <span class="p">{</span>
-                            <span class="n">tokens</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">expression</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">x</span><span class="p">));</span>
-                            <span class="n">i</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
-                            <span class="k">break</span><span class="p">;</span>
-                        <span class="p">}</span>
-                    <span class="p">}</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-
-        <span class="k">return</span> <span class="n">tokens</span><span class="p">;</span>
+<div class=" highlight hl-java"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="p">{</span>
+    <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">parentheses</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">();</span>
+    <span class="kd">public</span> <span class="nf">Main</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">parentheses</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"("</span><span class="p">);</span>
+        <span class="n">parentheses</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"("</span><span class="p">);</span>
+        <span class="n">parentheses</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">")"</span><span class="p">);</span>
+        <span class="n">parentheses</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">")"</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isParenthesesValid</span><span class="p">()</span> <span class="p">{</span>
@@ -264,73 +186,13 @@ window.onload = wrap_img;
         <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="c1">// Take the tokens of the expression and compute the final answer</span>
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">calculateAnswer</span><span class="p">(</span><span class="n">String</span> <span class="n">expression</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">tokens</span> <span class="o">=</span> <span class="n">getTokens</span><span class="p">(</span><span class="n">expression</span><span class="p">);</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">tokens</span><span class="p">.</span><span class="na">toString</span><span class="p">());</span>
-        
-        <span class="c1">// Iterate through the tokens list</span>
-        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">tokens</span><span class="p">.</span><span class="na">size</span><span class="p">();</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">// Find the least precedence value, and the index of that operator</span>
-            <span class="kt">int</span> <span class="n">min</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
-            <span class="kt">int</span> <span class="n">minIndex</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">tokens</span><span class="p">.</span><span class="na">size</span><span class="p">();</span> <span class="n">x</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-                <span class="c1">// Use less than sign so that the computations are solved from left to right (since numbers of the left are read first)</span>
-                <span class="k">if</span> <span class="p">(</span><span class="n">operators</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">tokens</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">operators</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">tokens</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">&lt;</span> <span class="n">min</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="n">min</span> <span class="o">=</span> <span class="n">operators</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">tokens</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">x</span><span class="p">));</span>
-                    <span class="n">minIndex</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-
-            <span class="c1">// Each iteration will either end the loop or modify/update the current tokens list</span>
-
-            <span class="c1">// Once the tokens list only contains one token, set that token to the answer</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">tokens</span><span class="p">.</span><span class="na">size</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-                <span class="n">String</span> <span class="n">temp</span> <span class="o">=</span> <span class="s">""</span><span class="p">;</span>
-                <span class="n">temp</span> <span class="o">+=</span> <span class="n">tokens</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-                <span class="n">answer</span> <span class="o">=</span> <span class="n">Double</span><span class="p">.</span><span class="na">parseDouble</span><span class="p">(</span><span class="n">temp</span><span class="p">);</span>
-                <span class="k">break</span><span class="p">;</span>
-              <span class="c1">// If the current token checked is an operator, compute the numbers around it and replace those values as well as the operator itself with the result of the computation</span>
-            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">operators</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">tokens</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">minIndex</span><span class="p">))</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
-                <span class="c1">// Get values of the numbers around the operator</span>
-                <span class="kt">double</span> <span class="n">a</span> <span class="o">=</span> <span class="n">Double</span><span class="p">.</span><span class="na">parseDouble</span><span class="p">(</span><span class="n">tokens</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">minIndex</span> <span class="o">-</span> <span class="mi">1</span><span class="p">));</span>
-                <span class="kt">double</span> <span class="n">b</span> <span class="o">=</span> <span class="n">Double</span><span class="p">.</span><span class="na">parseDouble</span><span class="p">(</span><span class="n">tokens</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">minIndex</span> <span class="o">+</span> <span class="mi">1</span><span class="p">));</span>
-                <span class="c1">// c will be used to store the result of the computation between a and b</span>
-                <span class="kt">double</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-
-                <span class="c1">// Check type of operator</span>
-                <span class="k">switch</span> <span class="p">(</span><span class="n">tokens</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">minIndex</span><span class="p">))</span> <span class="p">{</span>
-                    <span class="k">case</span> <span class="s">"+"</span><span class="p">:</span>
-                        <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span>
-                        <span class="k">break</span><span class="p">;</span>
-                    <span class="k">case</span> <span class="s">"-"</span><span class="p">:</span>
-                        <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">;</span>
-                        <span class="k">break</span><span class="p">;</span>
-                    <span class="k">case</span> <span class="s">"*"</span><span class="p">:</span>
-                        <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">;</span>
-                        <span class="k">break</span><span class="p">;</span>
-                    <span class="k">case</span> <span class="s">"/"</span><span class="p">:</span>
-                        <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">/</span> <span class="n">b</span><span class="p">;</span>
-                        <span class="k">break</span><span class="p">;</span>
-                <span class="p">}</span>
-                
-                <span class="c1">// Replace numbers around the operator, as well as the operator itself, with the result of the computation, and reset the loop</span>
-                <span class="n">tokens</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="n">minIndex</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
-                <span class="n">tokens</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="n">minIndex</span><span class="p">);</span>
-                <span class="n">tokens</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="n">minIndex</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">Double</span><span class="p">.</span><span class="na">toString</span><span class="p">(</span><span class="n">c</span><span class="p">));</span>
-                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
-                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">tokens</span><span class="p">.</span><span class="na">toString</span><span class="p">());</span>
-                <span class="n">j</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-
-    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">getAnswer</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="n">answer</span><span class="p">;</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Main</span> <span class="n">tester</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Main</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">tester</span><span class="p">.</span><span class="na">isParenthesesValid</span><span class="p">());</span>
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="n">Intuition</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+<span class="n">Main</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
 </pre></div>
 
     </div>
@@ -343,15 +205,8 @@ window.onload = wrap_img;
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Machine Started...
-Ready to take commands...
-Calculating the following expression: 7 + 8 * 5
-[7, +, 8, *, 5]
-40.0
-[7, +, 40.0]
-47.0
-[47.0]
-47.0
+<pre>[(, (, ), )]
+true
 </pre>
 </div>
 </div>
