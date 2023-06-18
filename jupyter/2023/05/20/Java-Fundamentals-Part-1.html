@@ -2660,6 +2660,10 @@ Total value:  343.2
         <span class="n">car2</span><span class="p">.</span><span class="na">start</span><span class="p">();</span>
         <span class="n">car2</span><span class="p">.</span><span class="na">stop</span><span class="p">();</span>
 
+        <span class="c1">// This will not work, as all cars may be machines, but not all machines are cars</span>
+        <span class="c1">// The object type of Machine will conflict with the variable type of Car, since Machine is the parent, not the child, of Car</span>
+        <span class="c1">// Car car3 = new Machine();</span>
+
         <span class="c1">// Creating objects for both the Parent and Child classes</span>
         <span class="n">Parent</span> <span class="n">parent1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Parent</span><span class="p">(</span><span class="s">"Bob"</span><span class="p">);</span>
         <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">parent1</span><span class="p">.</span><span class="na">getName1</span><span class="p">());</span>

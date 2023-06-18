@@ -82,7 +82,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      17 min read
+      24 min read
     
 </span></p>
 
@@ -151,7 +151,19 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
 </ul>
 </li>
-<li class="toc-entry toc-h1"><a href="#Encapsulation-and-the-API-Docs">Encapsulation and the API Docs </a>
+<li class="toc-entry toc-h1"><a href="#27.-Encapsulation-and-the-API-Docs">27. Encapsulation and the API Docs </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
+<li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#28.-Casting-Numerical-Values">28. Casting Numerical Values </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
+<li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#29.-Upcasting-and-Downcasting">29. Upcasting and Downcasting </a>
 <ul>
 <li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
 <li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
@@ -873,8 +885,8 @@ Testing again...
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Encapsulation-and-the-API-Docs">
-<a class="anchor" href="#Encapsulation-and-the-API-Docs" aria-hidden="true"><span class="octicon octicon-link"></span></a>Encapsulation and the API Docs<a class="anchor-link" href="#Encapsulation-and-the-API-Docs"> </a>
+<h1 id="27.-Encapsulation-and-the-API-Docs">
+<a class="anchor" href="#27.-Encapsulation-and-the-API-Docs" aria-hidden="true"><span class="octicon octicon-link"></span></a>27. Encapsulation and the API Docs<a class="anchor-link" href="#27.-Encapsulation-and-the-API-Docs"> </a>
 </h1>
 </div>
 </div>
@@ -961,6 +973,285 @@ Testing again...
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Some stuff 9
 Daniel
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="28.-Casting-Numerical-Values">
+<a class="anchor" href="#28.-Casting-Numerical-Values" aria-hidden="true"><span class="octicon octicon-link"></span></a>28. Casting Numerical Values<a class="anchor-link" href="#28.-Casting-Numerical-Values"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Notes:">
+<a class="anchor" href="#Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes:<a class="anchor-link" href="#Notes:"> </a>
+</h2>
+<ul>
+<li>In Java, there are several different numerical variable types, such as int (stores integers) and double (can store numbers with or without decimals).</li>
+<li>Type casting is a method used to convert data for a certain variable type to a different variable type. Type casting can be used for primitive variable types (note that special types of conversion methods different from type casting are used to convert from primitive to non-primitive types and vice versa. Basically, reference/non-primitive types use unique conversion methods rather than type casting), and during its process, data is not changed, but rather the data type, allowing us to see different kinds of conversions amongst different data types. </li>
+<li>Widening casting involves converting a smaller data type to larger data type size, in which the type casting is done automatically by the program (changes are not necessarily major for the value being casted). Narrowing casting involves converting a larger data type to a smaller data type size, in which the type casting is done manually by the programmer (changes may be major for the value being casted).</li>
+<li>Truncation is a form of approximation used when part of a number is chopped off or ignored (e.g. 3.7 --&gt; 3), and typically occurs when an integer is divided from an integer in Java. Rounding is form of approximation used when the number is rounded to the nearest number that satisfies the appropriate place value. Rounding is usually used to round decimals to whole numbers (e.g. 7.8 --&gt; 8).</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Examples:">
+<a class="anchor" href="#Examples:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:<a class="anchor-link" href="#Examples:"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Variable types for storing numerical values</span>
+        <span class="c1">// 16-bits</span>
+        <span class="kt">short</span> <span class="n">shortValue</span> <span class="o">=</span> <span class="mi">55</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">shortValue</span><span class="p">);</span>
+
+        <span class="c1">// 32-bits</span>
+        <span class="kt">int</span> <span class="n">intValue</span> <span class="o">=</span> <span class="mi">888</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">intValue</span><span class="p">);</span>
+
+        <span class="c1">// 8-bits</span>
+        <span class="kt">byte</span> <span class="n">byteValue</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">byteValue</span><span class="p">);</span>
+
+        <span class="c1">// 64-bits</span>
+        <span class="kt">long</span> <span class="n">longValue</span> <span class="o">=</span> <span class="mi">23355</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">longValue</span><span class="p">);</span>
+
+        <span class="c1">// float values have to end with f</span>
+        <span class="kt">float</span> <span class="n">floatValue</span> <span class="o">=</span> <span class="mf">8834.3f</span><span class="p">;</span>
+        <span class="c1">// Alternative notation to instantiating float</span>
+        <span class="kt">float</span> <span class="n">floatValue2</span> <span class="o">=</span> <span class="p">(</span><span class="kt">float</span><span class="p">)</span> <span class="mf">99.3</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">floatValue</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">floatValue2</span><span class="p">);</span>
+
+        <span class="c1">// double values can end with decimal points</span>
+        <span class="kt">double</span> <span class="n">doubleValue</span> <span class="o">=</span> <span class="mf">32.4</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">doubleValue</span><span class="p">);</span>
+
+        <span class="c1">// Use the non-primitive version of primitive variable types to access set methods to display useful information</span>
+        <span class="c1">// For example, the non-primitive version of the double numerical type can be used to displayed the max value it can store</span>
+        <span class="c1">// The non-primitive versions of primitive types are typically referenced similar to the primitive type name, but with the first letter capitalized and the full work being used (e.g. int becoming Integer).</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">Double</span><span class="p">.</span><span class="na">MAX_VALUE</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">Byte</span><span class="p">.</span><span class="na">MAX_VALUE</span><span class="p">);</span>
+
+        <span class="c1">// Notation for type casting</span>
+        <span class="c1">// Narrowing casting</span>
+        <span class="c1">// Here, manual casting is needed, since the long value may be too large to be stored in int, which is why type casting might be needed to perform the necessarily changes to the long value</span>
+        <span class="c1">// Convert the value of longValue to an int, and set it equal to intValue</span>
+        <span class="n">intValue</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">longValue</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">intValue</span><span class="p">);</span>
+
+        <span class="c1">// Widening casting</span>
+        <span class="c1">// Here, manual casting is not needed, because int is automatically converted to double, since its actual value itself does not necessarily change when it is converted to a floating point</span>
+        <span class="n">doubleValue</span> <span class="o">=</span> <span class="n">intValue</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">doubleValue</span><span class="p">);</span>
+
+        <span class="c1">// Convert float to int. The decimal portion is just chopped off, and there is no rounding; this is known as truncation</span>
+        <span class="n">intValue</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">floatValue</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">intValue</span><span class="p">);</span>
+
+        <span class="c1">// Cast value of 130 to byte variable type</span>
+        <span class="c1">// 127 is the max positive value of byte, so 130 will loop around starting at the min value of byte, and move up accordingly to its remaining value</span>
+        <span class="n">byteValue</span> <span class="o">=</span> <span class="p">(</span><span class="kt">byte</span><span class="p">)</span> <span class="mi">130</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">byteValue</span><span class="p">);</span>
+
+        <span class="c1">// Example of type casting during operations</span>
+        <span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+        <span class="kt">double</span> <span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="o">/</span><span class="n">b</span><span class="p">;</span>
+        <span class="c1">// Here, widening casting is used convert int to double</span>
+        <span class="c1">// However, since a and b are both integers, their division will result in a truncated answer, since integers cannot hold decimals</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
+
+        <span class="c1">// All of these produce the same results</span>
+        <span class="c1">// As long as at least one of the numbers in the operation is correctly casted to a double, the result will of the operation will also be a double, and that computation will be stored in a double variable</span>
+        <span class="kt">double</span> <span class="n">d1</span> <span class="o">=</span> <span class="p">(</span><span class="kt">double</span><span class="p">)</span> <span class="n">a</span> <span class="o">/</span> <span class="p">(</span><span class="kt">double</span><span class="p">)</span> <span class="n">b</span><span class="p">;</span>
+        <span class="kt">double</span> <span class="n">d2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">/</span> <span class="p">(</span><span class="kt">double</span><span class="p">)</span> <span class="n">b</span><span class="p">;</span>
+        <span class="kt">double</span> <span class="n">d3</span> <span class="o">=</span> <span class="p">(</span><span class="kt">double</span><span class="p">)</span> <span class="n">a</span> <span class="o">/</span> <span class="n">b</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">d1</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">d2</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">d3</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">Application</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>55
+888
+20
+23355
+8834.3
+99.3
+32.4
+1.7976931348623157E308
+127
+23355
+23355.0
+8834
+-126
+3.0
+3.3333333333333335
+3.3333333333333335
+3.3333333333333335
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="29.-Upcasting-and-Downcasting">
+<a class="anchor" href="#29.-Upcasting-and-Downcasting" aria-hidden="true"><span class="octicon octicon-link"></span></a>29. Upcasting and Downcasting<a class="anchor-link" href="#29.-Upcasting-and-Downcasting"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Notes:">
+<a class="anchor" href="#Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes:<a class="anchor-link" href="#Notes:"> </a>
+</h2>
+<ul>
+<li>Upcasting and downcasting are primarily used for conversions between child and parent objects. During upcasting and downcasting, the object type remains the same, but the variable type changes.</li>
+<li>Upcasting involves the typecasting of a child object to a parent object, and can be done implicitly/automatically. After upcasting, the child object can only access the inherited and overridden attributes/methods of its parent class, but can no longer access the new attributes/methods defined in the child class.</li>
+<li>Downcasting involves the typecasting of a parent object to a child object, and cannot be done implicitly, but rather manually. After downcasting, the parent object can now access all of the attributes and methods, both overridden and new, found in the child class.</li>
+<li>The variable type determines which attributes and methods can be accessed, while the object type determines the actual implementation of the attributes and methods.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Examples:">
+<a class="anchor" href="#Examples:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:<a class="anchor-link" href="#Examples:"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kd">class</span> <span class="nc">Machine</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">start</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Machine started"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">Camera</span> <span class="kd">extends</span> <span class="n">Machine</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">start</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Camera started"</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">snap</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Photo taken"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// The Machine object type cannot be referred to by the Camera child variable type, but can be referred to by the Machine parent variable type</span>
+        <span class="n">Machine</span> <span class="n">mach1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Machine</span><span class="p">();</span>
+        <span class="n">Camera</span> <span class="n">cam1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Camera</span><span class="p">();</span>
+
+        <span class="n">mach1</span><span class="p">.</span><span class="na">start</span><span class="p">();</span>
+        <span class="n">cam1</span><span class="p">.</span><span class="na">start</span><span class="p">();</span>
+        <span class="n">cam1</span><span class="p">.</span><span class="na">snap</span><span class="p">();</span>
+
+        <span class="c1">// Upcasting</span>
+        <span class="c1">// Set mach2 of variable type Machine to refer to the same Camera object that cam1 refers to</span>
+        <span class="c1">// Moving up the class hierarchy, from child variable type Camera to parent variable type Machine</span>
+        <span class="n">Machine</span> <span class="n">mach2</span> <span class="o">=</span> <span class="n">cam1</span><span class="p">;</span>
+        <span class="c1">// The object type is Camera, so the start() method overridden in Camera will be ran. The variable type is simply a reference to the object, and defines the range of attributes and methods that can be accessed.</span>
+        <span class="n">mach2</span><span class="p">.</span><span class="na">start</span><span class="p">();</span>
+        <span class="c1">// mach2.snap() won't work, because the variable type is Machine, and snap() is not a method in the Machine class</span>
+
+        <span class="c1">// Downcasting</span>
+        <span class="n">Machine</span> <span class="n">mach3</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Camera</span><span class="p">();</span>
+        <span class="c1">// Set cam2 of variable type Camera to refer to the same Camera object that mach3 refers to</span>
+        <span class="c1">// This way, all of the attributes and methods of Camera can be accessed with our new object</span>
+        <span class="c1">// Notation for manual casting, which is needed for downcasting. This is because downcasting is more inherently unsafe than upcasting, as more changes are being made to the object variable itself (object type stay the same)</span>
+        <span class="c1">// The Camera object type can be referred to both by the Camera child variable type and the Machine parent variable type</span>
+        <span class="n">Camera</span> <span class="n">cam2</span> <span class="o">=</span> <span class="p">(</span><span class="n">Camera</span><span class="p">)</span> <span class="n">mach3</span><span class="p">;</span>
+        <span class="n">cam2</span><span class="p">.</span><span class="na">start</span><span class="p">();</span>
+        <span class="n">cam2</span><span class="p">.</span><span class="na">snap</span><span class="p">();</span>
+
+        <span class="c1">// This won't work, because the parent object type Machine cannot be referenced by the child variable type Camera</span>
+        <span class="c1">// Object types remain constant, which means the object type Machine cannot be converted to an object type Camera</span>
+        <span class="c1">// Review: Child objects can be referred to by Parent types, but Parent objects cannot be referred to by Child types</span>
+        <span class="c1">// Machine mach4 = new Machine();</span>
+        <span class="c1">// Camera cam3 = (Camera) mach4;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">Application</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Machine started
+Camera started
+Photo taken
+Camera started
+Camera started
+Photo taken
 </pre>
 </div>
 </div>
