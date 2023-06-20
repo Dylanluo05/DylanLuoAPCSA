@@ -82,7 +82,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      24 min read
+      27 min read
     
 </span></p>
 
@@ -164,6 +164,12 @@ window.onload = wrap_img;
 </ul>
 </li>
 <li class="toc-entry toc-h1"><a href="#29.-Upcasting-and-Downcasting">29. Upcasting and Downcasting </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
+<li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#30.-Using-Generics">30. Using Generics </a>
 <ul>
 <li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
 <li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
@@ -1252,6 +1258,117 @@ Photo taken
 Camera started
 Camera started
 Photo taken
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="30.-Using-Generics">
+<a class="anchor" href="#30.-Using-Generics" aria-hidden="true"><span class="octicon octicon-link"></span></a>30. Using Generics<a class="anchor-link" href="#30.-Using-Generics"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Notes:">
+<a class="anchor" href="#Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes:<a class="anchor-link" href="#Notes:"> </a>
+</h2>
+<ul>
+<li>A Generic class is basically a class that can work with different data types and objects. Generic entities operate on a parameterized type(s), which specify the type of data they will work with (i.e. the types of objects they can store and retrieve for the programmer) when instantiated as methods or objects. Generics are able to provide templates for certain classes in a sense. Generic classes are used to create useful data structures in Java such as ArrayList, LinkedList, HashSet, HashMap, etc.</li>
+<li>A Generic method, working just like a normal method, takes a "type" parameter(s) that specifies the type of data that should be passed into the method (usually in between the diamond brackets &lt;&gt;), enabling a general usage of the method.</li>
+<li>A Generic class, working just like a normal class, takes a "type" parameter(s) in a certain section of its definition (usually in between the diamond brackets &lt;&gt;), which specifies the type of data the object of the class works with in general.</li>
+<li>As Generics follow a parameterized type(s), they eliminate the need for programmers to perform redundant type castings (Programmers used to have to type cast the data retrieved from certain data structure classes in order to convert from unwanted object to desired variable type. Now, Generics will return data of the appropriate type). So, for a Generic entity to be Generic, it needs to have one or more type parameters. Parameterized types basically allow Generics to hold and work with (e.g. add, remove, retrieve) a general range of data that fit within the specified data type(s), in turn allowing for type-safety during compile time.</li>
+<li>It is important to note that when defining parameterized types within the &lt;&gt; of a Generic entity, they need to be specified as objects. This means that primitive types need to be specified in their wrapper class forms (e.g. int - Integer). A parameterized type can also be specified as an object (referred by the class name) of a custom class that you created. You can also have nested parameterized types, where the outer parameterized type represents some kind of list which has its own parameterized data type (e.g. type parameter is ArrayList).</li>
+<li>Wrapper classes are basically classes that represent equivalent primitive type counterparts. For example, the wrapper class of int is Integer, and the wrapper class of double is Double. Wrapper classes are essentially the reference/object equivalents to primitive types, and should be defined with Generics in Java's Collection framework.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Examples:">
+<a class="anchor" href="#Examples:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:<a class="anchor-link" href="#Examples:"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kd">class</span> <span class="nc">Animal</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">type</span> <span class="o">=</span> <span class="s">"animal"</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Before Java 5 with Generics was released</span>
+        <span class="c1">// Old way of initializing an ArrayList</span>
+        <span class="n">ArrayList</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="p">();</span>
+        <span class="c1">// Append elements to and retrieve elements from the ArrayList</span>
+        <span class="n">list</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"apple"</span><span class="p">);</span>
+        <span class="n">list</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"banana"</span><span class="p">);</span>
+        <span class="n">list</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"orange"</span><span class="p">);</span>
+
+        <span class="c1">// In the old version, list.get(1) retrieves an object, and so we need to downcast the value of the object to get the desired String value</span>
+        <span class="n">String</span> <span class="n">fruit</span> <span class="o">=</span> <span class="p">(</span><span class="n">String</span><span class="p">)</span> <span class="n">list</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">fruit</span><span class="p">);</span>
+
+        <span class="c1">// After Generics were introduced with Java 5</span>
+        <span class="c1">// Modern way of initializing an ArrayList</span>
+        <span class="c1">// Notice how the parameterized type is specified with the ArrayList in between the diamond brackets &lt;&gt;, during both variable type declaration and object type declaration.</span>
+        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">strings</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">();</span>
+        <span class="c1">// Append elements to and retrieve elements from the ArrayList</span>
+        <span class="c1">// Modern way of modifying ArrayList is very similar to the old way, except we no longer need to type cast due to the parameterized types of Generics</span>
+        <span class="n">strings</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"cat"</span><span class="p">);</span>
+        <span class="n">strings</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"dog"</span><span class="p">);</span>
+        <span class="n">strings</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"alligator"</span><span class="p">);</span>
+
+        <span class="n">String</span> <span class="n">animal</span> <span class="o">=</span> <span class="n">strings</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">animal</span><span class="p">);</span>
+
+        <span class="c1">// There can be more than one parameterized type defined in Generic entities</span>
+        <span class="c1">// The multiple parameterized types are separated by commas</span>
+        <span class="c1">// Initialize HashMap Generic data structure</span>
+        <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span><span class="p">();</span>
+
+        <span class="c1">// Java 7 style of initializing Generics</span>
+        <span class="c1">// The parameterized type only needs to be specified once (in the variable declaration), as the program automatically infers the parameterized type in the second part of declaration</span>
+        <span class="c1">// The ArrayList holds objects of the created Animal class</span>
+        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Animal</span><span class="o">&gt;</span> <span class="n">someList</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">Application</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>banana
+dog
 </pre>
 </div>
 </div>
