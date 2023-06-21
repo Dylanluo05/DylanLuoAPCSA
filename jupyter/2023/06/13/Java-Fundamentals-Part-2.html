@@ -82,7 +82,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      27 min read
+      33 min read
     
 </span></p>
 
@@ -170,6 +170,12 @@ window.onload = wrap_img;
 </ul>
 </li>
 <li class="toc-entry toc-h1"><a href="#30.-Using-Generics">30. Using Generics </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
+<li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#31.-Generics-and-Wildcards">31. Generics and Wildcards </a>
 <ul>
 <li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
 <li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
@@ -1289,7 +1295,7 @@ Photo taken
 <li>A Generic class, working just like a normal class, takes a "type" parameter(s) in a certain section of its definition (usually in between the diamond brackets &lt;&gt;), which specifies the type of data the object of the class works with in general.</li>
 <li>As Generics follow a parameterized type(s), they eliminate the need for programmers to perform redundant type castings (Programmers used to have to type cast the data retrieved from certain data structure classes in order to convert from unwanted object to desired variable type. Now, Generics will return data of the appropriate type). So, for a Generic entity to be Generic, it needs to have one or more type parameters. Parameterized types basically allow Generics to hold and work with (e.g. add, remove, retrieve) a general range of data that fit within the specified data type(s), in turn allowing for type-safety during compile time.</li>
 <li>It is important to note that when defining parameterized types within the &lt;&gt; of a Generic entity, they need to be specified as objects. This means that primitive types need to be specified in their wrapper class forms (e.g. int - Integer). A parameterized type can also be specified as an object (referred by the class name) of a custom class that you created. You can also have nested parameterized types, where the outer parameterized type represents some kind of list which has its own parameterized data type (e.g. type parameter is ArrayList).</li>
-<li>Wrapper classes are basically classes that represent equivalent primitive type counterparts. For example, the wrapper class of int is Integer, and the wrapper class of double is Double. Wrapper classes are essentially the reference/object equivalents to primitive types, and should be defined with Generics in Java's Collection framework.</li>
+<li>Wrapper classes are basically classes that represent equivalent primitive type counterparts. For example, the wrapper class of int is Integer, and the wrapper class of char is Character. Wrapper classes are essentially the reference/object equivalents to primitive types, and should be defined with Generics in Java's Collection framework.</li>
 </ul>
 
 </div>
@@ -1369,6 +1375,190 @@ Photo taken
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>banana
 dog
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="31.-Generics-and-Wildcards">
+<a class="anchor" href="#31.-Generics-and-Wildcards" aria-hidden="true"><span class="octicon octicon-link"></span></a>31. Generics and Wildcards<a class="anchor-link" href="#31.-Generics-and-Wildcards"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Notes:">
+<a class="anchor" href="#Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes:<a class="anchor-link" href="#Notes:"> </a>
+</h2>
+<ul>
+<li>Normally, a Generic entity such as ArrayList with a parameterized type object of a child class is NOT a subclass of a Generic entity with a parameterized type object of a parent class.</li>
+<li>In Java, a wildcard, represented by the ? symbol in the type parameter, indicates that the Generic entity works with data of an unknown type. Wildcard Generics are declared in the parameters of methods. Because of this, the type of variable(s) the Generic entity in the method parameter ultimately works with is typically specified as an argument during the passing of another Generic (which itself has a specified type parameter) to the method. </li>
+<li>Keep in mind that after the parameterized type of a wildcard Generic has been determined with the argument passed, the parameterized type needs to remain consistent (e.g. An ArrayList of type parameter String was passed as an argument for the ArrayList parameter with a wildcard type parameter. In the method, the ArrayList parameter will now be treated as an ArrayList with type parameter String). A wildcard is basically a special kind of type parameter that essentially dictates the type safety of Generics on a broader scale.</li>
+<li>Upper bounds and lower bounds of wildcards cannot be specified at the same time. The lower bound of a wildcard indicates that the unknown type is limited to the specified class type, or any super class of the specified class type. The upper bound of a wildcard indicates that the unknown type is limited to the specified class type, or an sub class of the specified class type.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Examples:">
+<a class="anchor" href="#Examples:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:<a class="anchor-link" href="#Examples:"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="c1">// Import ArrayList class from the java.util library</span>
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="p">;</span>
+
+<span class="c1">// Every class created extends from the Object ultimate parent class</span>
+<span class="kd">class</span> <span class="nc">Machine</span> <span class="p">{</span>
+    <span class="nd">@Override</span>
+    <span class="c1">// Override toString() method inherited from the Object class</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">"I am a machine"</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">start</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Machine is started"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">Camera</span> <span class="kd">extends</span> <span class="n">Machine</span> <span class="p">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">"I am a camera"</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">snap</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Snap"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">();</span>
+        <span class="n">list</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"one"</span><span class="p">);</span>
+        <span class="n">list</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"two"</span><span class="p">);</span>
+        <span class="n">showList</span><span class="p">(</span><span class="n">list</span><span class="p">);</span>
+
+        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Machine</span><span class="o">&gt;</span> <span class="n">machList</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Machine</span><span class="o">&gt;</span><span class="p">();</span>
+        <span class="c1">// Add objects of the Machine class to the ArrayList</span>
+        <span class="c1">// Since the object type is Machine, the program assumes that the variable type is Machine as it is not declared? (inferring the variable type from the object type)</span>
+        <span class="n">machList</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="k">new</span> <span class="n">Machine</span><span class="p">());</span>
+        <span class="n">machList</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="k">new</span> <span class="n">Machine</span><span class="p">());</span>
+        <span class="n">showMachList</span><span class="p">(</span><span class="n">machList</span><span class="p">);</span>
+
+        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Camera</span><span class="o">&gt;</span> <span class="n">camList</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Camera</span><span class="o">&gt;</span><span class="p">();</span>
+        <span class="c1">// Add objects of the Machine class to the ArrayList</span>
+        <span class="c1">// Since the object type is Camera, the program assumes that the variable type is Camera as it is not declared? (inferring the variable type from the object type)</span>
+        <span class="n">camList</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="k">new</span> <span class="n">Camera</span><span class="p">());</span>
+        <span class="n">camList</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="k">new</span> <span class="n">Camera</span><span class="p">());</span>
+        <span class="n">showWhateverList</span><span class="p">(</span><span class="n">camList</span><span class="p">);</span>
+
+        <span class="n">showWhateverMachineList</span><span class="p">(</span><span class="n">machList</span><span class="p">);</span>
+        <span class="n">showWhateverMachineList</span><span class="p">(</span><span class="n">camList</span><span class="p">);</span>
+
+        <span class="n">showWhateverCameraList</span><span class="p">(</span><span class="n">machList</span><span class="p">);</span>
+        <span class="n">showWhateverCameraList</span><span class="p">(</span><span class="n">camList</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Make method static so that it can be directly accessed by the static main method, getting rid of the need of creating an object of the Application class</span>
+    <span class="c1">// Parameter of showList() is of variable type ArrayList with parameterized type String</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">showList</span><span class="p">(</span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">list</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Enhanced for loop</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">String</span> <span class="n">value</span> <span class="p">:</span> <span class="n">list</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Parameter of showMachList() is of variable type ArrayList with parameterized type Machine</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">showMachList</span><span class="p">(</span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Machine</span><span class="o">&gt;</span> <span class="n">machList</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">Machine</span> <span class="n">mach</span> <span class="p">:</span> <span class="n">machList</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">mach</span><span class="p">.</span><span class="na">toString</span><span class="p">());</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Usage of wildcard (indicated by ? symbol)</span>
+    <span class="c1">// Parameter of showWhateverList() is of variable type ArrayList with any kind of parameterized type</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">showWhateverList</span><span class="p">(</span><span class="n">ArrayList</span><span class="o">&lt;?&gt;</span> <span class="n">whateverList</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Since wildcard is used, we have to refer to the objects of the ArrayList as Object, since Object is the parent class of all classes in Java</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">Object</span> <span class="n">value</span> <span class="p">:</span> <span class="n">whateverList</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// Object itself has a toString() method that runs when an object is printed. Here, Camera's toString() method overrides that of the Object class, since objects of Camera were added to the ArrayList</span>
+            <span class="c1">// Since the variable type is Object, only attributes and methods a part of the Object class can be accessed.</span>
+            <span class="c1">// If we wanted to use the attributes and methods of the other classes here, we would have to downcast the variable type Object to a variable type of a child class</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Usage of wildcard while specifying the upper bound of the parameterized type to be of variable type Machine (which encompasses the Machine class, or any child class of Machine)</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">showWhateverMachineList</span><span class="p">(</span><span class="n">ArrayList</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="n">Machine</span><span class="o">&gt;</span> <span class="n">list</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Since the variable type is Machine, only attributes and methods found in the Machine class can be accessed, though they could have been overridden any child classes</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">Machine</span> <span class="n">value</span> <span class="p">:</span> <span class="n">list</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// The toString() method runs when an object is printed</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
+            <span class="n">value</span><span class="p">.</span><span class="na">start</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Usage of wildcard while specifying the lower bound of the parameterized type to be of variable type Camera (which encompasses the Camera class, or any super/parent class of the Camera class)</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">showWhateverCameraList</span><span class="p">(</span><span class="n">ArrayList</span><span class="o">&lt;?</span> <span class="kd">super</span> <span class="n">Camera</span><span class="o">&gt;</span> <span class="n">list</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Since lower bound is specified instead of upper bound, the Object class variable type needs to be used as sort of a parent in order to encompass objects of the Camera class and its super classes</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">Object</span> <span class="n">value</span> <span class="p">:</span> <span class="n">list</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">Application</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>one
+two
+I am a machine
+I am a machine
+I am a camera
+I am a camera
+I am a machine
+Machine is started
+I am a machine
+Machine is started
+I am a camera
+Machine is started
+I am a camera
+Machine is started
+I am a machine
+I am a machine
+I am a camera
+I am a camera
 </pre>
 </div>
 </div>
