@@ -1,0 +1,7 @@
+7 7.7
+Hello World
+I am Dylan
+I love programming, especially in Java
+I love to work out
+I love to play soccer
+I hope to create a world-dominating AI
