@@ -82,7 +82,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      33 min read
+      39 min read
     
 </span></p>
 
@@ -176,6 +176,18 @@ window.onload = wrap_img;
 </ul>
 </li>
 <li class="toc-entry toc-h1"><a href="#31.-Generics-and-Wildcards">31. Generics and Wildcards </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
+<li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#32.-Anonymous-Classes">32. Anonymous Classes </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
+<li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#33.-Reading-Files-Using-Scanner">33. Reading Files Using Scanner </a>
 <ul>
 <li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
 <li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
@@ -1559,6 +1571,237 @@ I am a machine
 I am a machine
 I am a camera
 I am a camera
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="32.-Anonymous-Classes">
+<a class="anchor" href="#32.-Anonymous-Classes" aria-hidden="true"><span class="octicon octicon-link"></span></a>32. Anonymous Classes<a class="anchor-link" href="#32.-Anonymous-Classes"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Notes:">
+<a class="anchor" href="#Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes:<a class="anchor-link" href="#Notes:"> </a>
+</h2>
+<ul>
+<li>In Java, an anonymous class allows you to declare/define and instantiate a class at the same time. They are similar to normal local classes in terms of properties and behaviors, except for the fact that they do not have a name, and are created during instead of before the runtime of the program.</li>
+<li>Anonymous classes primarily serve to provide a way of extending a class or implementing an interface. An anonymous class is used whenever you only want to utilize that local class once in your code (i.e. Only one object refers to the anonymous class, which is the object declared with the creation of an anonymous class that stems off a parent class or interface declaration. You can call as many attributes and methods from that object as you want, as long as they exist within the range of properties inherited from a parent class or implemented from an interface. Reminder that anonymous classes are typically declared to be children of parents classes and implementations of interfaces).</li>
+<li>Anonymous classes ultimately help you make your code more concise, allowing you to essentially make real-time, temporary modifications to the attributes and methods of classes through a single object declaration.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Examples:">
+<a class="anchor" href="#Examples:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:<a class="anchor-link" href="#Examples:"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kd">class</span> <span class="nc">Machine</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">start</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Starting machine..."</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">stop</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Machine stopped"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">interface</span> <span class="nc">Plant</span> <span class="p">{</span>
+    <span class="c1">// Reminder that you declare methods in interfaces, but you do not declare bodies of code, as they are defined by classes that implement the interface</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">grow</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Create reference variable mach1 to refer to object of Machine class</span>
+        <span class="n">Machine</span> <span class="n">mach1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Machine</span><span class="p">();</span>
+        <span class="n">mach1</span><span class="p">.</span><span class="na">start</span><span class="p">();</span>
+
+        <span class="c1">// Notation for creating an anonymous class that is not the Machine class itself, but rather a child of the Machine class</span>
+        <span class="c1">// Notice how the anonymous class does not have a name, but rather inherits or overrides the attributes and methods of Machine</span>
+        <span class="n">Machine</span> <span class="n">mach2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Machine</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">start</span><span class="p">()</span> <span class="p">{</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Camera snapping"</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">};</span>
+        <span class="c1">// Call multiple methods of the single object of the above anonymous class</span>
+        <span class="n">mach2</span><span class="p">.</span><span class="na">start</span><span class="p">();</span>
+        <span class="n">mach2</span><span class="p">.</span><span class="na">stop</span><span class="p">();</span>
+
+        <span class="c1">// You cannot instantiate an object of an interface, as the interface cannot be implemented that way</span>
+        <span class="c1">// You need to instead instantiate an object of a class that actually implements the interface</span>
+        <span class="c1">// Notation for creating an anonymous class that is not the Plant interface itself, but rather a class that implements the Plant interface</span>
+        <span class="c1">// With the anonymous class, we can instantiate an object, since the object is derived from a valid class that implements the interface</span>
+        <span class="n">Plant</span> <span class="n">plant1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Plant</span><span class="p">()</span> <span class="p">{</span>
+            <span class="c1">// Need to override all of the attributes and methods defined in the interface</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">grow</span><span class="p">()</span> <span class="p">{</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Growing..."</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">};</span>
+        <span class="n">plant1</span><span class="p">.</span><span class="na">grow</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">Application</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Starting machine...
+Camera snapping
+Machine stopped
+Growing...
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="33.-Reading-Files-Using-Scanner">
+<a class="anchor" href="#33.-Reading-Files-Using-Scanner" aria-hidden="true"><span class="octicon octicon-link"></span></a>33. Reading Files Using Scanner<a class="anchor-link" href="#33.-Reading-Files-Using-Scanner"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Notes:">
+<a class="anchor" href="#Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes:<a class="anchor-link" href="#Notes:"> </a>
+</h2>
+<ul>
+<li>A backslash in a String usually indicates a special character within the String. To fix this problem, we could put double backslashes instead of single backslashes, because a double backslash indicates that the special character really is a backslash. You could also use forward slashes as an alternative to the double backslashes.</li>
+<li>The Scanner class of the java.util library can be used to read the contents of a specified file, or scan the inputs given by users through an inputStream such as System.in. It provides a variety of methods to read through different data types, usually line by line.</li>
+<li>The "next" methods of the Scanner class, such as nextLine() and nextInt(), literally read the "next specified content" of a file or user input each time they are called (e.g. nextInt() reads the next integer in the file, nextDouble() reads the next decimal number in the file, and nextLine() reads the next remaining line of content in the file). If multiple different data types were to be on the same line, the program can (but does not necessarily need to; could for example use nextInt() to read only the integer and use nextLine() to read the remaining content on the line) read the whole line as a String, concatenating all of the different data types into a single content.</li>
+<li>If an alternative next function to nextLine() is used, such as nextInt(), after the integer in the first line has been read, there will be a blank line that will be read before the rest of the content in the file is read. This is because after the last character of each line, there is an invisible character(s) that represents the line feed, or the end of the line. The nextLine() method accounts for these line feeds along with its selected content, while most of the other next methods do not, as they only read through their appropriate data type contents. </li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Examples:">
+<a class="anchor" href="#Examples:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:<a class="anchor-link" href="#Examples:"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="c1">// Import the File class from the java.io library</span>
+<span class="kn">import</span> <span class="nn">java.io.File</span><span class="p">;</span>
+<span class="c1">// Import the FileNotFoundException class from the java.io library</span>
+<span class="kn">import</span> <span class="nn">java.io.FileNotFoundException</span><span class="p">;</span>
+<span class="c1">// Import the Scanner class from the java.util library</span>
+<span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="p">{</span>
+    <span class="c1">// Indicates that the main program will just stop and throw a FileNotFoundException, in the case where the file path defined is not found on the system</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="kd">throws</span> <span class="n">FileNotFoundException</span> <span class="p">{</span>
+        <span class="c1">// Set file path of the desired file on the project file system</span>
+        <span class="c1">// I used the project relative file path instead of the absolute computer system file path used in the tutorial</span>
+        <span class="n">String</span> <span class="n">filePath</span> <span class="o">=</span> <span class="s">"/home/dylanluo05/DylanLuoAPCSA/assets/java-fundamentals-resources/lesson-33-file.txt"</span><span class="p">;</span>
+        <span class="c1">// Create object of the Java File class, and pass filePath as an argument into the File class's constructor</span>
+        <span class="n">File</span> <span class="n">textFile</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="n">filePath</span><span class="p">);</span>
+        <span class="c1">// Create object of the Java Scanner class, and pass the textFile object (instead of System.in, which indicates that Scanner will take user input. Here, the Scanner reads from the File we defined) as an argument into the Scanner class's constructor</span>
+        <span class="n">Scanner</span> <span class="n">in</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">textFile</span><span class="p">);</span>
+
+        <span class="c1">// nextInt() does not account for line feeds, while nextLine() does.</span>
+        <span class="c1">// Use nextInt() to appropriately store the data in the first line of the file as an int, which is an integer variable type.</span>
+        <span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="n">in</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Read value: "</span> <span class="o">+</span> <span class="n">value</span><span class="p">);</span>
+        <span class="c1">// Read through the double value on the same line as the first integer read, and appropriately store it as a double variable type</span>
+        <span class="kt">double</span> <span class="n">floatingPoint</span> <span class="o">=</span> <span class="n">in</span><span class="p">.</span><span class="na">nextDouble</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Read decimal: "</span> <span class="o">+</span> <span class="n">floatingPoint</span><span class="p">);</span>
+        <span class="c1">// Line feed on the first line will be read after the integer has been read</span>
+        <span class="n">in</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span>
+
+        <span class="c1">// Number the lines in the file after the first line that was just read</span>
+        <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+        <span class="c1">// Loop to read the file line by line, after the first line that has already been read above</span>
+        <span class="c1">// While the file still has another line to read, perform the following actions</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">in</span><span class="p">.</span><span class="na">hasNextLine</span><span class="p">())</span> <span class="p">{</span>
+            <span class="c1">// Store the word content of the currently selected line in the file into a String variable</span>
+            <span class="c1">// The Scanner iterates through each line of the file from top to bottom</span>
+            <span class="n">String</span> <span class="n">line</span> <span class="o">=</span> <span class="n">in</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">count</span> <span class="o">+</span> <span class="s">": "</span> <span class="o">+</span> <span class="n">line</span><span class="p">);</span>
+            <span class="n">count</span><span class="o">++</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="c1">// Here, the close() method will automatically close the specified file in the constructor after it has been scanned through</span>
+        <span class="n">in</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">Application</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Read value: 7
+Read decimal: 7.7
+2: Hello World
+3: I am Dylan
+4: I love programming, especially in Java
+5: I love to work out
+6: I love to play soccer
+7: I hope to create a world-dominating AI
 </pre>
 </div>
 </div>
