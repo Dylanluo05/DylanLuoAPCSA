@@ -82,7 +82,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      44 min read
+      50 min read
     
 </span></p>
 
@@ -194,6 +194,18 @@ window.onload = wrap_img;
 </ul>
 </li>
 <li class="toc-entry toc-h1"><a href="#34.-Handling-Exceptions">34. Handling Exceptions </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
+<li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#35.-Multiple-Exceptions">35. Multiple Exceptions </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
+<li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#36.-Runtime-vs.-Checked-Exceptions">36. Runtime vs. Checked Exceptions </a>
 <ul>
 <li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
 <li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
@@ -1834,10 +1846,8 @@ Read decimal: 7.7
 <a class="anchor" href="#Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes:<a class="anchor-link" href="#Notes:"> </a>
 </h2>
 <ul>
-<li>In Java, an exception is essentially an event during a program's execution in which an error occurs in the flow of the code, leading to the program's disruption and stoppage, and prompting the program to create an object (exceptions are actually objects of a class called Exception) detailing the exception and sending it to the runtime.</li>
-<li>Checked exceptions are those that are found during compile time, while unchecked exceptions are those that are found during the actual runtime of the program.</li>
+<li>In Java, an exception is essentially an event during a program's execution in which an error occurs in the flow of the code, leading to the program's disruption and possible stoppage, and sometimes prompting the program to create an object (exceptions are actually objects of a class called Exception) detailing the exception and sending it to the runtime.</li>
 <li>The throws keyword is defined in a method signature/declaration, and determines which kind of exception (should usually be only one) should be thrown from the method, ultimately defining the certain kind of error the program should handle if it occurs. Generally, we should use throws to handle checked exceptions, since unchecked exceptions do not need to be manually handled as they are automatically caught by runtime. Throwing an exception means creating an object for the exception, then throwing it to the runtime to display. The message presented by the runtime about the exception is known as the stack trace.</li>
-<li>If a compile time error occurs, the entire program just isn't able to execute. If a runtime error occurs, the part of the program before the line of the code that caused the exception is able to execute, but the rest of the program after it is unable to.</li>
 <li>In Java, the try catch statement provides a way of handling exceptions in the program. The code block within the try statement define the code that the program will test for errors. The moment a line of code within the try statement has an error, the try statement immediately throws an exception to the catch statement. </li>
 <li>The exception is essentially caught by the catch statement (parameter of catch statement defines which kind of exceptions it should look for. e.g. FileNoteFoundException e, where e is the object variable to store the FileNoteFoundException; Exception e, where e is the object variable to store any kind of exceptions, as indicated by the general name Exception), and the code block within the catch statement defines the action that will be taken if an error is found within the try statement.</li>
 <li>Following the try catch statement you can optionally write a finally statement, and the code block in the finally statement defines the actions that will be taken after the try catch statement regardless of the result. The useful aspect of try catch is that the program will still run even if errors are found in the try statement (since the exception thrown by try is caught by catch and handled, instead of thrown to runtime). However, exceptions found in the catch statement or finally statement will be thrown to runtime.</li>
@@ -1955,6 +1965,269 @@ Could not open file. File not found
 <span class="ansi-red-intense-fg ansi-bold">	at java.base/java.io.FileReader.&lt;init&gt;(FileReader.java:75)</span>
 <span class="ansi-red-intense-fg ansi-bold">	at Application.main(#14:1)</span>
 <span class="ansi-red-intense-fg ansi-bold">	at .(#42:1)</span></pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="35.-Multiple-Exceptions">
+<a class="anchor" href="#35.-Multiple-Exceptions" aria-hidden="true"><span class="octicon octicon-link"></span></a>35. Multiple Exceptions<a class="anchor-link" href="#35.-Multiple-Exceptions"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Notes:">
+<a class="anchor" href="#Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes:<a class="anchor-link" href="#Notes:"> </a>
+</h2>
+<ul>
+<li>In Java, a method can be modified to be able to handle multiple exceptions, defined in the method signature and separated by commas. The thing is that the method can only throw one exception, but it has the potential to handle any of the exceptions defined, and the exception that is handled depends on the order in which the exceptions occur (whichever occurs first is handled first).</li>
+<li>The throw keyword allows us to explicitly cause the program to throw a type of exception (checked or unchecked) from a block of code. The throw new command allows us to manually throw an object of the Exception class during the program, also enabling us to define a custom error message in the constructor of the object (different exception classes may have different constructor parameters). The throw keyword stops the running of the program.</li>
+<li>The throws keyword, which is defined with exceptions separated commas in the method signature, helps us define a list of potential exceptions that may occur in a method. We can use try catch statements to choose how to handle each kind of exception (each catch statement parameter takes a specific type of exception, and the code block within the catch statement can take custom action with the program still running, or throw the appropriate exception to stop the running of the program).</li>
+<li>In a try multi-catch statement, one catch statement typically lists multiple different exceptions that could occur, separated by |, and defines what action should be taken if any of those exceptions occur.</li>
+<li>The classes that represent each kind of exception are all sub-classes of the Exception parent class. This means the Exception class can encapsulate any kind of exception that could occur. Child exceptions should always be checked before parent exceptions, since parent exceptions always (encapsulate) catch errors of child exceptions, but child exceptions cannot catch errors from the other children of parent exceptions. If a parent exception checker were to be placed before the child exception checker, the child exception would never be reached, because it would be handled by the parent exception checker.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Examples:">
+<a class="anchor" href="#Examples:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:<a class="anchor-link" href="#Examples:"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.text.ParseException</span><span class="p">;</span>
+
+<span class="c1">// The exceptions in this program are mostly checked exceptions that are checked during compile time. This means they need to be handled for the program to run. More on this topic later</span>
+
+<span class="kd">class</span> <span class="nc">Test</span> <span class="p">{</span>
+    <span class="c1">// The run() method can throw either the IOException or the ParseException</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="p">()</span> <span class="kd">throws</span> <span class="n">IOException</span><span class="p">,</span> <span class="n">ParseException</span> <span class="p">{</span>
+        <span class="c1">// throw new IOException();</span>
+        <span class="c1">// You cannot simultaneously throw 2 different exceptions, so only throw one exception here, as we do not have a try catch statement to sort out the different cases</span>
+        <span class="c1">// The object of the ParseException class takes 2 parameters for its constructor</span>
+        <span class="c1">// Throw a custom exception message in the case of a ParseException. The program will take the default action of printing out a stack trace in the case of an IOException</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="n">ParseException</span><span class="p">(</span><span class="s">"Error in command list."</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// FileNotFoundException is a child class of IOException</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">input</span><span class="p">()</span> <span class="kd">throws</span> <span class="n">IOException</span><span class="p">,</span> <span class="n">FileNotFoundException</span> <span class="p">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="n">FileNotFoundException</span><span class="p">(</span><span class="s">"File not found."</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Test</span> <span class="n">test</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Test</span><span class="p">();</span>
+        <span class="c1">// All of the possible exceptions thrown by run() need to be handled by the main() method too</span>
+        <span class="c1">// Try statement comes with multiple catch statements, each defining the case for a different kind of exception</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="n">test</span><span class="p">.</span><span class="na">run</span><span class="p">();</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">IOException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// The printStackTrace() method prints an error message just like throw, but it does not stop the runtime</span>
+            <span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">ParseException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Couldn't parse command file."</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="n">test</span><span class="p">.</span><span class="na">run</span><span class="p">();</span>
+            <span class="c1">// Exception (variable type of variable e) means the catch statement can catch any kind of exception here</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="c1">// try multi-catch statement, which defines an action for IOException and ParseException</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="n">test</span><span class="p">.</span><span class="na">run</span><span class="p">();</span>
+        <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="n">IOException</span> <span class="o">|</span> <span class="n">ParseException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Catch blocks are checked in the chronological order in which they are defined</span>
+        <span class="c1">// FileNotFoundException is a child class of IOException, which means that IOException encapsulates FileNoteFoundException</span>
+        <span class="c1">// This means that FileNotFoundException should be checked first, as if IOException were to be placed before, the catch statement containing FileNotFoundException would not be reached</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="n">test</span><span class="p">.</span><span class="na">input</span><span class="p">();</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">FileNotFoundException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"FileNotFoundException occurred"</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">IOException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"IOException occurred"</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">Application</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Couldn't parse command file.
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>java.text.ParseException: Error in command list.
+	at REPL.$JShell$14G$Test.run($JShell$14G.java:25)
+	at REPL.$JShell$15H$Application.main($JShell$15H.java:33)
+	at REPL.$JShell$21.do_it$($JShell$21.java:18)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at io.github.spencerpark.ijava.execution.IJavaExecutionControl.lambda$execute$1(IJavaExecutionControl.java:95)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+java.text.ParseException: Error in command list.
+	at REPL.$JShell$14G$Test.run($JShell$14G.java:25)
+	at REPL.$JShell$15H$Application.main($JShell$15H.java:41)
+	at REPL.$JShell$21.do_it$($JShell$21.java:18)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at io.github.spencerpark.ijava.execution.IJavaExecutionControl.lambda$execute$1(IJavaExecutionControl.java:95)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>FileNotFoundException occurred
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="36.-Runtime-vs.-Checked-Exceptions">
+<a class="anchor" href="#36.-Runtime-vs.-Checked-Exceptions" aria-hidden="true"><span class="octicon octicon-link"></span></a>36. Runtime vs. Checked Exceptions<a class="anchor-link" href="#36.-Runtime-vs.-Checked-Exceptions"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Notes:">
+<a class="anchor" href="#Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes:<a class="anchor-link" href="#Notes:"> </a>
+</h2>
+<ul>
+<li>Checked exceptions are exceptions that are found during compile time and force you to handle them. Runtime (unchecked) exceptions are exceptions that are found during the actual runtime of the program, and do not necessarily force you to handle them all the time. Both checked and runtime exceptions need to be handled or fixed in some kind of way in order for the program to run properly.</li>
+<li>If a compile time error occurs, the entire program just isn't able to execute. If a runtime error occurs, the part of the program before the line of the code that caused the exception is able to execute, but the rest of the program after it is unable to.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Examples:">
+<a class="anchor" href="#Examples:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:<a class="anchor-link" href="#Examples:"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Checked exception (checked during compile time)</span>
+        <span class="c1">// Thread.sleep(111);</span>
+
+        <span class="c1">// Runtime exception (checked during runtime)</span>
+        <span class="c1">// This prompts an ArithmeticException, which is a child class of RuntimeException, which in turn is a child class of the Exception class</span>
+        <span class="c1">// int value = 7;</span>
+        <span class="c1">// value = value/0;</span>
+
+        <span class="c1">// Another runtime exception</span>
+        <span class="c1">// text is a String reference to null, and you cannot really call methods on a reference to a null value</span>
+        <span class="c1">// Will produce NullPointerException</span>
+        <span class="c1">// String text = null;</span>
+        <span class="c1">// System.out.println(text.length());</span>
+
+        <span class="c1">// Another runtime exception</span>
+        <span class="c1">// Array texts only goes up to index 2, which is why texts[3] will produce an ArrayIndexOutOfBoundsException</span>
+        <span class="n">String</span><span class="o">[]</span> <span class="n">texts</span> <span class="o">=</span> <span class="p">{</span><span class="s">"one"</span><span class="p">,</span> <span class="s">"two"</span><span class="p">,</span> <span class="s">"three"</span><span class="p">};</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">texts</span><span class="o">[</span><span class="mi">3</span><span class="o">]</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">RuntimeException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// The toString() method of exception object e with variable type RuntimeException prints a clear text representation of the ArrayIndexOutOfBoundsException (RuntimeException encapsulates ArrayIndexOutOfBoundsException) that occurred</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="na">toString</span><span class="p">());</span>
+        <span class="p">}</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Exceptions are pretty interesting, right?"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">Application</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>java.lang.ArrayIndexOutOfBoundsException: Index 3 out of bounds for length 3
+Exceptions are pretty interesting, right?
+</pre>
 </div>
 </div>
 
