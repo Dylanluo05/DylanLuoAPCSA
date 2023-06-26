@@ -82,7 +82,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      50 min read
+      55 min read
     
 </span></p>
 
@@ -206,6 +206,12 @@ window.onload = wrap_img;
 </ul>
 </li>
 <li class="toc-entry toc-h1"><a href="#36.-Runtime-vs.-Checked-Exceptions">36. Runtime vs. Checked Exceptions </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
+<li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#37.-Abstract-Classes">37. Abstract Classes </a>
 <ul>
 <li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
 <li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
@@ -480,7 +486,7 @@ window.onload = wrap_img;
 </h2>
 <ul>
 <li>In Java, interfaces are implicitly abstract (you do not need to declare them with the abstract keyword), and the methods within them are in turn implicitly public and abstract. Interfaces do not contain code that perform actions, but rather the headers of defined methods and sometimes variables (usually public, static, and final).</li>
-<li>Interfaces are ultimately used to achieve abstraction, where they group related methods that all have empty bodies. Interfaces are accessed with the "implement" keyword from another class, and that class defines the bodies of the interface methods, thus overriding (redefining the method to have a body but with the same exact name) the interface method. Distinct classes can define a particular interface's methods differently.</li>
+<li>Interfaces are ultimately used to achieve abstraction, where they group related methods that all have empty bodies. Interfaces are accessed with the "implement" keyword from another class, and that class defines the bodies of the interface methods, thus overriding (redefining the method to have a body but with the same exact name) the interface method. Distinct classes can define a particular interface's methods differently. However, attributes can be declared and have their values defined in interfaces, and child classes will inherit the values defined in interfaces, or re-define the variables again (making sure to keep same modifiers and variable name).</li>
 <li>Similar to abstract classes, interfaces cannot be used to initialize objects (where the interface name follows the new keyword), and do not have "bodies" of code. An interface is implemented by separate classes, in which all of the methods defined in the interface must be overridden with method bodies of code defined in the class. It is important to note that a class can implement multiple interfaces (in contrast, a class can only extend one parent class), and an interface can be implemented by multiple classes (a parent class can be inherited by multiple child classes).</li>
 </ul>
 
@@ -2227,6 +2233,164 @@ java.text.ParseException: Error in command list.
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>java.lang.ArrayIndexOutOfBoundsException: Index 3 out of bounds for length 3
 Exceptions are pretty interesting, right?
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="37.-Abstract-Classes">
+<a class="anchor" href="#37.-Abstract-Classes" aria-hidden="true"><span class="octicon octicon-link"></span></a>37. Abstract Classes<a class="anchor-link" href="#37.-Abstract-Classes"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Notes:">
+<a class="anchor" href="#Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes:<a class="anchor-link" href="#Notes:"> </a>
+</h2>
+<ul>
+<li>In Java, abstraction is essentially hiding certain details about attributes and methods, and only providing essential information to users.</li>
+<li>Abstract is a non-access modifier, and can be used on classes and methods. An abstract class basically serves as a base class, which is restricted in that it cannot be used to create objects. To set and get the actual values and bodies of the attributes and methods of an abstract class, it must be inherited by the child class, in which the values are actually established and accessed.</li>
+<li>An abstract class can contain attributes, methods, and abstract methods. An abstract method can only be defined within an abstract class, and does not have a body, which means the action it does (its body) can only defined in a child class that inherits the abstract class. The normal attributes and methods of an abstract class can have values and bodies, though they can only be accessed through a child class that extends the abstract class (note that private instance variables of a parent class can be accessed/inherited by a separate/child class if that instance variable has public getters and setters).</li>
+<li>Abstract methods defined in an abstract class should be coupled with the abstract keyword and have no body, but should not have the abstract modifier and should have a body when re-defined in child classes. Normal attributes and methods defined in either the abstract class or the child classes should not have the abstract keyword, and their values and bodies can be defined in both the abstract class and child classes.</li>
+<li>The main difference in purpose between abstract classes and interfaces is that abstract classes are not intended to create objects from, as they serve to provide common functionality (sort of like a base parent class) to child classes that are related to each other (we want to create objects of these child classes), while interfaces serve to provide common functionality to child classes that are not necessarily related to each other. For example an abstract class Animal can be extended to child classes Pig and Cow (class hierarchy), which are related, while an interface showInfo can be implemented by child classes Machine and Person, which are not that related.</li>
+<li>A class can implement multiple interfaces, but can only have one parent class (although it could technically inherit from the parent class of its parent class). In an interface you should have no implementation of methods (no bodies defined), but in an abstract class you can have implementation of methods (bodies defined for conventional methods but not abstract methods).</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Examples:">
+<a class="anchor" href="#Examples:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:<a class="anchor-link" href="#Examples:"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="c1">// Make the Machine class abstract, so that we cannot create objects of it, since it serves as a base class for child classes</span>
+<span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Machine</span> <span class="p">{</span>
+    <span class="c1">// Private attribute id. You cannot necessarily have abstract attributes, as you can set values for attributes of an abstract class in the abstract class itself</span>
+    <span class="c1">// Use encapsulation to hide details of attributes</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">id</span><span class="p">;</span>
+
+    <span class="c1">// Provide getters and setters for the private instance variable id, so that classes that inherit Machine can actually set and get the value of id</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getId</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">id</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setId</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Define an abstract method called start(). Note that it does not have a body</span>
+    <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">start</span><span class="p">();</span>
+
+    <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">doStuff</span><span class="p">();</span>
+
+    <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">shutDown</span><span class="p">();</span>
+
+    <span class="c1">// Define a normal method called run(). Note that it does have a body</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// Call abstract methods in the non-abstract method run(), which is also inherited to child classes</span>
+        <span class="c1">// These abstract methods will ultimately have to be defined in the child classes, in order for run() to compute properly</span>
+        <span class="n">start</span><span class="p">();</span>
+        <span class="n">doStuff</span><span class="p">();</span>
+        <span class="n">shutDown</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Both Camera and Car extend from Machine, implying they have some common functionalities</span>
+<span class="c1">// Camera and Car are conventional classes, meaning they can define the bodies of the abstract methods defined in Machine</span>
+<span class="kd">class</span> <span class="nc">Camera</span> <span class="kd">extends</span> <span class="n">Machine</span> <span class="p">{</span>
+    <span class="c1">// Implement once-abstract method start(), by overriding it and giving the method a body</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">start</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Starting camera"</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">doStuff</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Do stuff in camera"</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">shutDown</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Shutting down camera"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">Car</span> <span class="kd">extends</span> <span class="n">Machine</span> <span class="p">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">start</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Starting car"</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">doStuff</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Do stuff in car"</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">shutDown</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Shutting down car"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Camera</span> <span class="n">cam1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Camera</span><span class="p">();</span>
+        <span class="n">cam1</span><span class="p">.</span><span class="na">setId</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">cam1</span><span class="p">.</span><span class="na">getId</span><span class="p">());</span>
+        <span class="c1">// Call inherited method run() from cam1 object, which was not overridden and maintained its original definition from Machine</span>
+        <span class="n">cam1</span><span class="p">.</span><span class="na">run</span><span class="p">();</span>
+
+        <span class="n">Car</span> <span class="n">car1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Car</span><span class="p">();</span>
+        <span class="n">car1</span><span class="p">.</span><span class="na">setId</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">car1</span><span class="p">.</span><span class="na">getId</span><span class="p">());</span>
+        <span class="n">car1</span><span class="p">.</span><span class="na">run</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">Application</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>6
+Starting camera
+Do stuff in camera
+Shutting down camera
+1
+Starting car
+Do stuff in car
+Shutting down car
 </pre>
 </div>
 </div>
