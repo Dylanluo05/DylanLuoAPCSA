@@ -82,7 +82,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      55 min read
+      59 min read
     
 </span></p>
 
@@ -212,6 +212,12 @@ window.onload = wrap_img;
 </ul>
 </li>
 <li class="toc-entry toc-h1"><a href="#37.-Abstract-Classes">37. Abstract Classes </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
+<li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#38.-Reading-Files-with-File-Reader">38. Reading Files with File Reader </a>
 <ul>
 <li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
 <li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
@@ -485,8 +491,8 @@ window.onload = wrap_img;
 <a class="anchor" href="#Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes:<a class="anchor-link" href="#Notes:"> </a>
 </h2>
 <ul>
-<li>In Java, interfaces are implicitly abstract (you do not need to declare them with the abstract keyword), and the methods within them are in turn implicitly public and abstract. Interfaces do not contain code that perform actions, but rather the headers of defined methods and sometimes variables (usually public, static, and final).</li>
-<li>Interfaces are ultimately used to achieve abstraction, where they group related methods that all have empty bodies. Interfaces are accessed with the "implement" keyword from another class, and that class defines the bodies of the interface methods, thus overriding (redefining the method to have a body but with the same exact name) the interface method. Distinct classes can define a particular interface's methods differently. However, attributes can be declared and have their values defined in interfaces, and child classes will inherit the values defined in interfaces, or re-define the variables again (making sure to keep same modifiers and variable name).</li>
+<li>In Java, interfaces are implicitly abstract (you do not need to declare them with the abstract keyword), and the methods within them are in turn implicitly public and abstract (but can still be custom defined). Interfaces do not contain code that perform actions, but rather the headers of defined methods and sometimes attributes (which are usually public, static, and final).</li>
+<li>Interfaces are ultimately used to achieve abstraction, where they group related methods that all have empty bodies. Interfaces are accessed with the "implement" keyword from another class, and that class defines the bodies of the interface methods, thus overriding (redefining the method to have a body but with the same exact name and signature/headers) the interface method. Distinct classes can define a particular interface's methods differently. However, attributes can be declared and have their values defined in interfaces, and child classes will inherit the values defined in interfaces, or re-define the variables again (making sure to keep the same modifiers and variable name).</li>
 <li>Similar to abstract classes, interfaces cannot be used to initialize objects (where the interface name follows the new keyword), and do not have "bodies" of code. An interface is implemented by separate classes, in which all of the methods defined in the interface must be overridden with method bodies of code defined in the class. It is important to note that a class can implement multiple interfaces (in contrast, a class can only extend one parent class), and an interface can be implemented by multiple classes (a parent class can be inherited by multiple child classes).</li>
 </ul>
 
@@ -2391,6 +2397,127 @@ Shutting down camera
 Starting car
 Do stuff in car
 Shutting down car
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="38.-Reading-Files-with-File-Reader">
+<a class="anchor" href="#38.-Reading-Files-with-File-Reader" aria-hidden="true"><span class="octicon octicon-link"></span></a>38. Reading Files with File Reader<a class="anchor-link" href="#38.-Reading-Files-with-File-Reader"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Notes:">
+<a class="anchor" href="#Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes:<a class="anchor-link" href="#Notes:"> </a>
+</h2>
+<ul>
+<li>The FileReader class in Java is a way of reading the contents of files. FileReader is typically used to read a stream, or line, of characters from a particular file when called. FileReader can be used to read a line of characters, and store that data in the form of bytes (which would later be converted to characters either by FileReader or more efficiently BufferedReader) with the process of buffering. </li>
+<li>A buffer is essentially a linear and finite sequence of values that are of a particular primitive type. The BufferedReader class in Java serves an efficient way of reading and buffering characters from a character byte stream.</li>
+<li>When it comes to reading files in Java, checked exceptions may be frequently met, so it is important to handle these exceptions in the program, usually in the form of try catch statements. Remember that a try statement can be accompanied by multiple catch statements, each specifying a different type of exception(s).</li>
+<li>Reminder: Variables declared in Java are limited to the scope of the curly brackets around it. It can inside anywhere inside the brackets, but not outside the brackets. A variable can be declared in a wider scope, and its value can be changed either within that scope or within a more inner scope.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Examples:">
+<a class="anchor" href="#Examples:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:<a class="anchor-link" href="#Examples:"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kn">import</span> <span class="nn">java.io.File</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.io.FileReader</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.io.FileNotFoundException</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.io.BufferedReader</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// File class for Java's representation of the file path, attributes, and systems</span>
+        <span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">"/home/dylanluo05/DylanLuoAPCSA/assets/java-fundamentals-resources/lesson-38-file.txt"</span><span class="p">);</span>
+
+        <span class="c1">// Define BufferedReader outside the try catch statement, so that it can be closed after the first set of try catch statements have been run through</span>
+        <span class="c1">// Give br a temporary null value as if the first catch statement executes before br gets a value, the program will not be able to execute the close() method later, since br does not have a value</span>
+        <span class="n">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+        <span class="c1">// Nested try catch statements</span>
+        <span class="k">try</span> <span class="p">{</span>           
+            <span class="c1">// FileReader class for Java to actually read the contents of the file object, and store the data in bytes</span>
+            <span class="n">FileReader</span> <span class="n">fr</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileReader</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+            <span class="c1">// BufferedReader class to buffer the byte data from FileReader into readable char data</span>
+            <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedReader</span><span class="p">(</span><span class="n">fr</span><span class="p">);</span>
+
+            <span class="c1">// Do not define the actual value of String variable line yet, as Strings are immutable. Each time a line is read, store that stream of characters into line. Each time the value of line changes, a brand new String is created and stored into memory.</span>
+            <span class="c1">// Use StringBuilder actually work with mutable Strings</span>
+            <span class="n">String</span> <span class="n">line</span><span class="p">;</span>
+            <span class="c1">// While there is still actual content to read from the file, print out each line of the file using the readLine() method</span>
+            <span class="c1">// The readLine() method reads a particular line of the file provided in bytes by FileReader, and converts it to char (readable format). Each time the readLine() method is called, the next current line of the file is read</span>
+            <span class="k">while</span> <span class="p">((</span><span class="n">line</span> <span class="o">=</span> <span class="n">br</span><span class="p">.</span><span class="na">readLine</span><span class="p">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">line</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">FileNotFoundException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span> 
+            <span class="c1">// Indicate that the file name that was not found on the system (for FileReader)</span>
+            <span class="c1">// Use toString() to represent the file name in an appropriate format</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"File not found: "</span> <span class="o">+</span> <span class="n">file</span><span class="p">.</span><span class="na">toString</span><span class="p">());</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">IOException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// Indicate that the file was unable to be read (for the readLine() method of BufferedReader)</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Unable to read file "</span> <span class="o">+</span> <span class="n">file</span><span class="p">.</span><span class="na">toString</span><span class="p">());</span>
+            <span class="c1">// The finally statement always runs regardless of the result of the try catch statement</span>
+        <span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
+            <span class="c1">// New try catch statement to possibly re-throw exceptions that are met again. This is usually proper convention, as it indicates any further errors down the method hierarchy</span>
+            <span class="k">try</span> <span class="p">{</span>
+                <span class="c1">// BufferedReader is at the top of the chain, as it is reading the FileReader which in turn is reading the File, so it needs to be closed for the purpose of preventing memory leaks due to open files</span>
+                <span class="c1">// Because of this, closing BufferedReader will ultimately close both FileReader and File</span>
+                <span class="n">br</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+            <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">IOException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">// IOException to account for errors produced by the close() method of BufferedReader</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Unable to close file: "</span> <span class="o">+</span> <span class="n">file</span><span class="p">.</span><span class="na">toString</span><span class="p">());</span>
+            <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">NullPointerException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">// NullPointerException for if the BufferedReader object has a null value</span>
+                <span class="c1">// This exception probably would not even be met, since if the file were to be null, it would likely be handled by the catch statements above</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Null Pointer Exception: "</span> <span class="o">+</span> <span class="n">file</span><span class="p">.</span><span class="na">toString</span><span class="p">());</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">Application</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>first line
+second line
+third line
 </pre>
 </div>
 </div>
