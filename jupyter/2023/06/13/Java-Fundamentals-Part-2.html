@@ -82,7 +82,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      59 min read
+      65 min read
     
 </span></p>
 
@@ -218,6 +218,18 @@ window.onload = wrap_img;
 </ul>
 </li>
 <li class="toc-entry toc-h1"><a href="#38.-Reading-Files-with-File-Reader">38. Reading Files with File Reader </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
+<li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#39.-Try-With-Resources">39. Try-With-Resources </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
+<li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#40.-Creating-and-Writing-Text-Files">40. Creating and Writing Text Files </a>
 <ul>
 <li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
 <li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
@@ -1863,7 +1875,7 @@ Read decimal: 7.7
 <li>In Java, the try catch statement provides a way of handling exceptions in the program. The code block within the try statement define the code that the program will test for errors. The moment a line of code within the try statement has an error, the try statement immediately throws an exception to the catch statement. </li>
 <li>The exception is essentially caught by the catch statement (parameter of catch statement defines which kind of exceptions it should look for. e.g. FileNoteFoundException e, where e is the object variable to store the FileNoteFoundException; Exception e, where e is the object variable to store any kind of exceptions, as indicated by the general name Exception), and the code block within the catch statement defines the action that will be taken if an error is found within the try statement.</li>
 <li>Following the try catch statement you can optionally write a finally statement, and the code block in the finally statement defines the actions that will be taken after the try catch statement regardless of the result. The useful aspect of try catch is that the program will still run even if errors are found in the try statement (since the exception thrown by try is caught by catch and handled, instead of thrown to runtime). However, exceptions found in the catch statement or finally statement will be thrown to runtime.</li>
-<li>Sometimes, methods will call each other, which means that multiple methods could encounter the same exception. This means that good practice is that each method should have a way (throw or try catch) to handle the exception.</li>
+<li>Sometimes, methods will call each other, which means that multiple methods could encounter the same exception. This means that good practice is that each method should have a way (throw or try catch) to handle the exception. Any exceptions that may be thrown that may be encountered anywhere else in the program should be handled in some way (either thrown again or caught again).</li>
 </ul>
 
 </div>
@@ -2518,6 +2530,255 @@ Shutting down car
 <pre>first line
 second line
 third line
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="39.-Try-With-Resources">
+<a class="anchor" href="#39.-Try-With-Resources" aria-hidden="true"><span class="octicon octicon-link"></span></a>39. Try-With-Resources<a class="anchor-link" href="#39.-Try-With-Resources"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Notes:">
+<a class="anchor" href="#Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes:<a class="anchor-link" href="#Notes:"> </a>
+</h2>
+<ul>
+<li>The built-in AutoCloseable interface of Java indicates that a class implementing it should have some adequate form of the close() method. </li>
+<li>The try-with-resources statement in Java is very similar to the try catch statement. The notation is mostly the same, except the try statement can now take parameters/clauses, and within the parameters/clauses, you can declare the resources (or objects that work with resources) that the try statement will check and work with. Resources may include files or sockets, which are opened when they are accessed, and should be closed to prevent memory leaks. </li>
+<li>The catch statement in the try-with-resources serves basically the same purpose, handling any exceptions that may be thrown during the running of the try statement, or any exceptions thrown while working with or closing the resource(s), and the finally statement will run no matter the outcome of the try and catch statements.</li>
+<li>Objects of classes that implement AutoCloseable, which are declared within try-with-resources, will automatically call the close() method after finishing performing all of its called actions. If any errors are met before the close() method (in the try statement), the try-with-resources will call the catch statement, and the rest of the try statement will not be executed (known as try exception). However, the catch statement will check again for the close() method, which is ran at the very end of the try-with-resources (known as try-with-resources exception, which may become a suppressed exception if a try exception is met before the same try-with-resources statement. A suppressed exception is basically one that is thrown but somehow is ignored, and mainly appears within try, catch, and finally statements).</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Examples:">
+<a class="anchor" href="#Examples:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:<a class="anchor-link" href="#Examples:"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kn">import</span> <span class="nn">java.io.File</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.io.FileReader</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.io.BufferedReader</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.io.FileNotFoundException</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="p">;</span>
+
+
+<span class="c1">// Temp needs to have a close() method because it implements AutoCloseable</span>
+<span class="kd">class</span> <span class="nc">Temp</span> <span class="kd">implements</span> <span class="n">AutoCloseable</span> <span class="p">{</span>
+    <span class="c1">// Override the close() method provided by AutoCloseable</span>
+    <span class="c1">// The throws keyword indicates that the close() method is capable of handling, or throwing, exceptions of type Exception (basically any exception)</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">close</span><span class="p">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Closing!"</span><span class="p">);</span>
+        <span class="c1">// Manually throw an Exception at the end of the close() method</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="n">Exception</span><span class="p">(</span><span class="s">"oh no!"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Notation for try-with-resources</span>
+        <span class="c1">// The close() method may throw an exception, and that exception must be handled in some way in the main method</span>
+        <span class="k">try</span><span class="p">(</span><span class="n">Temp</span> <span class="n">temp</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Temp</span><span class="p">())</span> <span class="p">{</span>
+            <span class="c1">// The close() method of the temp object (which implements AutoCloseable) will automatically be called after the try-with-resources has fully been executed</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Try-with-resources example"</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// Print error message in standard format</span>
+            <span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">"/home/dylanluo05/DylanLuoAPCSA/assets/java-fundamentals-resources/lesson-39-file.txt"</span><span class="p">);</span>
+        <span class="c1">// Use FileReader and BufferedReader to read the file line by line (FileReader) and effectively get all the characters in each line (BufferedReader)</span>
+        <span class="c1">// Don't store the new object of FileReader in a variable, since we don't reference it again. Here, we just need to pass the new object of FileReader into the constructor of BufferedReader</span>
+        <span class="c1">// Try-with-resources with multiple catch statements</span>
+        <span class="k">try</span><span class="p">(</span><span class="n">BufferedReader</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedReader</span><span class="p">(</span><span class="k">new</span> <span class="n">FileReader</span><span class="p">(</span><span class="n">file</span><span class="p">)))</span> <span class="p">{</span>
+            <span class="c1">// Perform actions on the declared resource (object that works with files) in the try clause above, inside the try statement</span>
+            <span class="n">String</span> <span class="n">line</span><span class="p">;</span>
+            <span class="c1">// While there is still actual content to read from the file, print out each line of the file using the readLine() method</span>
+            <span class="c1">// The readLine() method reads a particular line of the file provided in bytes by FileReader, and converts it to char (readable format). Each time the readLine() method is called, the next current line of the file is read</span>
+            <span class="k">while</span> <span class="p">((</span><span class="n">line</span> <span class="o">=</span> <span class="n">br</span><span class="p">.</span><span class="na">readLine</span><span class="p">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">line</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">FileNotFoundException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Can't find file "</span> <span class="o">+</span> <span class="n">file</span><span class="p">.</span><span class="na">toString</span><span class="p">());</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">IOException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Unable to read file "</span> <span class="o">+</span> <span class="n">file</span><span class="p">.</span><span class="na">toString</span><span class="p">());</span>
+        <span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"End of program"</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">Application</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Try-with-resources example
+Closing!
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>java.lang.Exception: oh no!
+	at REPL.$JShell$12G$Temp.close($JShell$12G.java:30)
+	at REPL.$JShell$13P$Application.main($JShell$13P.java:28)
+	at REPL.$JShell$34.do_it$($JShell$34.java:21)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at io.github.spencerpark.ijava.execution.IJavaExecutionControl.lambda$execute$1(IJavaExecutionControl.java:95)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Dylan
+will
+take
+over
+the
+mf
+world!
+End of program
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="40.-Creating-and-Writing-Text-Files">
+<a class="anchor" href="#40.-Creating-and-Writing-Text-Files" aria-hidden="true"><span class="octicon octicon-link"></span></a>40. Creating and Writing Text Files<a class="anchor-link" href="#40.-Creating-and-Writing-Text-Files"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Notes:">
+<a class="anchor" href="#Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes:<a class="anchor-link" href="#Notes:"> </a>
+</h2>
+<ul>
+<li>In Java, the FileWriter class is essentially used to change or write data in the form of characters to text files. If the specified file path does not exist, FileWriter will create the file itself.</li>
+<li>The BufferedWriter class is essentially used to change or write data to text files while utilizing a character-output stream (contains character bytes that need to be buffered), effectively and efficiently buffering the character-stream passed into its constructor that is to be written into the text files.</li>
+<li>As a reminder, a buffer is essentially an area of memory that is allocated toward temporarily saving data (used when working with files) while it is moved from one place to another (e.g. from program to text file), and buffering is the act of facilitating the data flow and transfer between these 2 places. </li>
+<li>The key difference between FileWriter and BufferedWriter is that FileWriter writes that character-stream directly into the text file, while BufferedWriter internally buffers the character-stream into the text, effectively allowing for less IO operations and thus better overall performance. </li>
+<li>FileWriter and BufferedWriter, like FileReader and BufferedReader, are usually used in correspondence, where FileWriter (initially accesses the file and inputted character streams) is passed into the constructor of BufferedWriter (buffers the character streams and appends them to file). Note that whenever FileWriter and BufferedWriter are used, they will make changes to the original state of the file in its creation (usually blank), not its latest state, which means you cannot add to changes throughout multiple runs of the program (the file will refresh to blank at the beginning of each run of the program). However, you can save the changes to the file, and the file will not refresh unless you run the program again.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Examples:">
+<a class="anchor" href="#Examples:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:<a class="anchor-link" href="#Examples:"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kn">import</span> <span class="nn">java.io.File</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.io.FileWriter</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.io.BufferedWriter</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="s">"/home/dylanluo05/DylanLuoAPCSA/assets/java-fundamentals-resources/lesson-40-file.txt"</span><span class="p">);</span>
+        <span class="c1">// Try-with-resources statement</span>
+        <span class="c1">// Declare resource(s) in the try clause</span>
+        <span class="c1">// Try-with-resources automatically closes resources</span>
+        <span class="c1">// Use FileWriter and BufferedWriter to access/create a file (FileReader), and change the content within it with buffered inputted character streams (BufferedReader)</span>
+        <span class="k">try</span> <span class="p">(</span><span class="n">BufferedWriter</span> <span class="n">br</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedWriter</span><span class="p">(</span><span class="k">new</span> <span class="n">FileWriter</span><span class="p">(</span><span class="n">file</span><span class="p">)))</span> <span class="p">{</span>
+            <span class="c1">// The write() method of BufferedReader can append new text/Strings to the current line of the file that the program is on</span>
+            <span class="n">br</span><span class="p">.</span><span class="na">write</span><span class="p">(</span><span class="s">"This is line one"</span><span class="p">);</span>
+            <span class="c1">// The newLine() method moves the program to the next line of the file</span>
+            <span class="n">br</span><span class="p">.</span><span class="na">newLine</span><span class="p">();</span>
+            <span class="n">br</span><span class="p">.</span><span class="na">write</span><span class="p">(</span><span class="s">"This is line two"</span><span class="p">);</span>
+            <span class="n">br</span><span class="p">.</span><span class="na">newLine</span><span class="p">();</span>
+            <span class="n">br</span><span class="p">.</span><span class="na">write</span><span class="p">(</span><span class="s">"Last line"</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">IOException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Unable to read file "</span> <span class="o">+</span> <span class="n">file</span><span class="p">.</span><span class="na">toString</span><span class="p">());</span>
+        <span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"End of program"</span><span class="p">);</span>
+        <span class="p">}</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">Application</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>End of program
 </pre>
 </div>
 </div>
