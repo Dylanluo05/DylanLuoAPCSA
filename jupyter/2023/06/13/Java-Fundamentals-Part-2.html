@@ -82,7 +82,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      77 min read
+      82 min read
     
 </span></p>
 
@@ -242,6 +242,12 @@ window.onload = wrap_img;
 </ul>
 </li>
 <li class="toc-entry toc-h1"><a href="#42.-Inner-Classes">42. Inner Classes </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
+<li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#43.-Enum-Types:-Basic-and-Advanced-Usage">43. Enum Types: Basic and Advanced Usage </a>
 <ul>
 <li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
 <li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
@@ -3140,6 +3146,185 @@ ID is: 7
 My name is: Robert
 Robot 7 is thinking
 Battery charging...
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="43.-Enum-Types:-Basic-and-Advanced-Usage">
+<a class="anchor" href="#43.-Enum-Types:-Basic-and-Advanced-Usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>43. Enum Types: Basic and Advanced Usage<a class="anchor-link" href="#43.-Enum-Types:-Basic-and-Advanced-Usage"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Notes:">
+<a class="anchor" href="#Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes:<a class="anchor-link" href="#Notes:"> </a>
+</h2>
+<ul>
+<li>In Java, an enum is a special kind of class that contains a group of constant values (implicitly static and final). Enum stands for enumeration, which in turn means "specifically listed." Like attributes of a class, constant values of an enum can be accessed with the dot syntax, and the value name of a constant inside an enum is conventionally all upper case. Enum values have essentially their own data type (they are NOT Strings), and are represented by objects names similar to that of variable names; enum values are data type safe, as they are actually objects of the enum type they are declared within.</li>
+<li>An enum type in Java is primarily used for storing a fixed group of already-defined constant values, which usually all have a common relation. An example of an enum set includes the days of the week, and the values of enums are typically checked with a switch statement. Enum values cannot be changed once the enum has been declared. An enum variable has the variable type of the enum type, can be used to store a particular enum value/object, and can subsequently access attributes and methods of that enum value using the dot notation.</li>
+<li>An enum type can contain a constructor or multiple constructors, which can be used to initialize the instance data of an enum object. Since enum values are essentially objects of the enum type, when the list of enum values are declared within the enum, appropriate arguments must be passed for each of them (if the constructor(s) has parameters). An enum type/class can have attributes and methods like a normal class, which can be accessed with the dot notation on enum variables or enum values declared outside of the enum type (getters and setters needed for private variables), or directly from inside the enum type. All enum types have a values() method, which returns an array of all of the enum values/objects.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Examples:">
+<a class="anchor" href="#Examples:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:<a class="anchor-link" href="#Examples:"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="c1">// enum is a special kind of class</span>
+<span class="c1">// Syntax for declaring an enum, with 3 certain values that it contains</span>
+<span class="kd">enum</span> <span class="n">Animal</span> <span class="p">{</span>
+    <span class="c1">// Enum values are objects of their enum type</span>
+    <span class="c1">// Make sure to end list of enum values with semi-colon</span>
+    <span class="c1">// The constructor of Animal has a parameter, so every enum value must be declared with an argument passed</span>
+    <span class="c1">// When enum values are accessed outside of the enum type, arguments do not need to be passed, since the constructors are ran in the enum type itself</span>
+    <span class="n">CAT</span><span class="p">(</span><span class="s">"Fergus"</span><span class="p">),</span> <span class="n">DOG</span><span class="p">(</span><span class="s">"Fido"</span><span class="p">),</span> <span class="n">MOUSE</span><span class="p">(</span><span class="s">"Jerry"</span><span class="p">);</span>
+
+    <span class="c1">// Instance data of enum type</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="p">;</span>
+
+    <span class="c1">// Access modifier for enum type can either be private or package-private (default)</span>
+    <span class="n">Animal</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">name</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Override toString() method inherited from Object parent class</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">"This animal's name is "</span> <span class="o">+</span> <span class="n">name</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Method</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">speak</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"My name is "</span> <span class="o">+</span> <span class="n">name</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="p">{</span>
+    <span class="c1">// Possible variables that the variable animal should be able to take on. This whole process is inefficient and can be faulty, which is why enums can be useful here</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">DOG</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">CAT</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">MOUSE</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">animal1</span> <span class="o">=</span> <span class="n">CAT</span><span class="p">;</span>
+
+        <span class="c1">// Switch statement, with the case values representing the values of certain final variables</span>
+        <span class="k">switch</span> <span class="p">(</span><span class="n">animal1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">case</span> <span class="n">DOG</span><span class="p">:</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Dog"</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="n">CAT</span><span class="p">:</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Cat"</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="n">MOUSE</span><span class="p">:</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Mouse"</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Syntax for setting a particular value of an enum type to an object enum variable. Notice how we need to define the enum type of the enum variable, similar to how we have to define the variable and object type when creating an ordinary object variable</span>
+        <span class="n">Animal</span> <span class="n">animal2</span> <span class="o">=</span> <span class="n">Animal</span><span class="p">.</span><span class="na">DOG</span><span class="p">;</span>
+        <span class="c1">// Check the possible values of the enum variable</span>
+        <span class="k">switch</span><span class="p">(</span><span class="n">animal2</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">case</span> <span class="n">DOG</span><span class="p">:</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Dog"</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="n">CAT</span><span class="p">:</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Cat"</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="n">MOUSE</span><span class="p">:</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Mouse"</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Enum is a part of the java.lang package, which is automatically imported/available to Java compilers</span>
+        <span class="c1">// Print out the enum value CAT of the enum type Animal</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">Animal</span><span class="p">.</span><span class="na">CAT</span><span class="p">);</span>
+        <span class="c1">// Get the class of the enum value DOG</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">Animal</span><span class="p">.</span><span class="na">DOG</span><span class="p">.</span><span class="na">getClass</span><span class="p">());</span>
+        <span class="c1">// Check if the enum value DOG is part of the enum class Animal</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">Animal</span><span class="p">.</span><span class="na">DOG</span> <span class="k">instanceof</span> <span class="n">Animal</span><span class="p">);</span>
+        <span class="c1">// Check if the enum value DOG is an instance of the Enum class</span>
+        <span class="c1">// Objects of child classes count as instances of parent classes, since child classes extend from parent classes (e.g. object of Toyota child class is technically an instance of the Car parent class)</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">Animal</span><span class="p">.</span><span class="na">DOG</span> <span class="k">instanceof</span> <span class="n">Enum</span><span class="p">);</span>
+
+        <span class="c1">// Print toString() return value of MOUSE enum value/object</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">Animal</span><span class="p">.</span><span class="na">MOUSE</span><span class="p">.</span><span class="na">toString</span><span class="p">());</span>
+
+        <span class="c1">// Store enum object DOG (object constructor ran automatically in enum type itself) in an enum variable for further usage</span>
+        <span class="n">Animal</span> <span class="n">animal3</span> <span class="o">=</span> <span class="n">Animal</span><span class="p">.</span><span class="na">DOG</span><span class="p">;</span>
+        <span class="c1">// Call method of enum type on enum variable</span>
+        <span class="n">animal3</span><span class="p">.</span><span class="na">speak</span><span class="p">();</span>
+
+        <span class="c1">// name() method of Enum class that prints enum value/object name as a String</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Enum name as a string: "</span> <span class="o">+</span> <span class="n">Animal</span><span class="p">.</span><span class="na">DOG</span><span class="p">.</span><span class="na">name</span><span class="p">());</span>
+
+        <span class="c1">// valueOf() method that calls String representation of a specified enum object name</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">Animal</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="s">"CAT"</span><span class="p">));</span>
+
+        <span class="c1">// values() method to get an array (stores data types of enum type) of the list of values/objects of a particular enum type</span>
+        <span class="c1">// When the objects are printed out, the toString() method is automatically ran on each of them</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">Animal</span> <span class="n">animal</span> <span class="p">:</span> <span class="n">Animal</span><span class="p">.</span><span class="na">values</span><span class="p">())</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">animal</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">Application</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Cat
+Dog
+This animal's name is Fergus
+class REPL.$JShell$14K$Animal
+true
+true
+This animal's name is Jerry
+My name is Fido
+Enum name as a string: DOG
+This animal's name is Fergus
+This animal's name is Fergus
+This animal's name is Fido
+This animal's name is Jerry
 </pre>
 </div>
 </div>
