@@ -82,7 +82,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      82 min read
+      86 min read
     
 </span></p>
 
@@ -248,6 +248,12 @@ window.onload = wrap_img;
 </ul>
 </li>
 <li class="toc-entry toc-h1"><a href="#43.-Enum-Types:-Basic-and-Advanced-Usage">43. Enum Types: Basic and Advanced Usage </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
+<li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#44.-Recursion">44. Recursion </a>
 <ul>
 <li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
 <li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
@@ -3325,6 +3331,138 @@ This animal's name is Fergus
 This animal's name is Fergus
 This animal's name is Fido
 This animal's name is Jerry
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="44.-Recursion">
+<a class="anchor" href="#44.-Recursion" aria-hidden="true"><span class="octicon octicon-link"></span></a>44. Recursion<a class="anchor-link" href="#44.-Recursion"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Notes:">
+<a class="anchor" href="#Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes:<a class="anchor-link" href="#Notes:"> </a>
+</h2>
+<ul>
+<li>Recursion is essentially the technique of commanding a method to call itself repeatedly until a halting/base condition is met (like a loop). Often times the halting condition checks the value of a particular variable(s), which is usually changed each time method calls itself, and often belongs to the parameter variable passed into the method. The primary purpose of recursive functions is too break complicated problems into simpler problems which can be solved more easily.</li>
+<li>Stack memory is mostly used to store local variables and method calls (e.g. order of method execution), while heap memory is mostly used to store objects of classes, utilizing dynamic (allocating memory during runtime) memory allocation and de-allocation. A StackOverflowError can occur if a method calls itself in an infinite recursive loop.</li>
+<li>A factorial integer is the product of an integer and all of the integers below it (e.g. 3! = 1 <em> 2 </em> 3 = 6).</li>
+<li>Basically, the first call to a non-void recursive function will start a chain of return values, and each subsequent recursive call will become a part of the base return chain, as the return statement of a recursive call will usually perform some sort of operation on the original base return chain, then return a call of the recursive method again with some variables (typically parameters) changed, and connect that recursive call with the base return chain with the operation specified by the return statement (e.g. halting condition is value == 1, and return 1 when that happens --&gt; return calculate(value - 1) <em> value --&gt; calculate(3) --&gt; return calculate(2) </em> 3 --&gt; return calculate(1) <em> 2 </em> 3 --&gt; return 1 <em> 2 </em> 3 --&gt; return 6). Once the halting condition has been reached, the recursive method will return a value that is usually combined with the rest of the return chain, stopping the calling of the method altogether, and computing and returning the final return value from the whole base return chain and its values (which can be visualized by a recursive tree).</li>
+<li>For void recursive functions, the function will repeatedly call itself (without actually returning the calls) until the base condition has been met, in which case it will just return (returns no value, or void), putting a stop to the recursive calls. In each iteration, the program will perform some sort of action, allowing the recursive method to be one step closer to the halting condition. The halting/base condition is essential for the program to run effectively, as it prevents stack overflow, and allows the recursive method to actually stop calling itself.</li>
+<li>The Towers of Hanoi is a popular recursive solution example.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Examples:">
+<a class="anchor" href="#Examples:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:<a class="anchor-link" href="#Examples:"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="p">{</span>
+    <span class="c1">// Private methods can only be accessed within the class</span>
+    <span class="c1">// Static methods can be called without creating an object of the class (directly within the class, or dot notation with class name for outside the class)</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">test</span><span class="p">(</span><span class="kt">int</span> <span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">value</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">calculate</span><span class="p">(</span><span class="kt">int</span> <span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
+
+        <span class="c1">// Halting condition to stop recursive calls. Each time calculate is called, its parameter variable value is decremented by 1</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">value</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// Return keyword to stop the method execution and thus any more method calls</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="n">calculate</span><span class="p">(</span><span class="n">value</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">factorial</span><span class="p">(</span><span class="kt">int</span> <span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
+
+        <span class="c1">// If value is equal to 1 in the latest recursive call, return the integer 1</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">value</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Else, return the current value multiplied by the return value of a new recursive call, which calls the factorial method again with value decremented by 1, and multiply all of this with the base return chain of values (the base return chain is appended to in every recursive call)</span>
+        <span class="k">return</span> <span class="n">factorial</span><span class="p">(</span><span class="n">value</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">value</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// value is of a primitive type, so its value here will not be affected by the operations performed in the method it is passed in as an argument</span>
+        <span class="c1">// The method allocates new memory to its parameters, which means the values of its parameter variables are independent of the actual argument variables passed into it. This is an example of passing by value</span>
+        <span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
+        <span class="c1">// The value variable inside the test() method is different from the value variable inside the main() tester method</span>
+        <span class="n">test</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Example recursive function:"</span><span class="p">);</span>
+        <span class="n">calculate</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Factorial recursive calculator:"</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">factorial</span><span class="p">(</span><span class="n">value</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">Application</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>6
+7
+Example recursive function:
+7
+6
+5
+4
+3
+2
+1
+Factorial recursive calculator:
+7
+6
+5
+4
+3
+2
+1
+5040
 </pre>
 </div>
 </div>
