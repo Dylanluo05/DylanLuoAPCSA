@@ -82,7 +82,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      86 min read
+      92 min read
     
 </span></p>
 
@@ -254,6 +254,12 @@ window.onload = wrap_img;
 </ul>
 </li>
 <li class="toc-entry toc-h1"><a href="#44.-Recursion">44. Recursion </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
+<li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#45.-Serialization:-Saving-Objects-to-Files">45. Serialization: Saving Objects to Files </a>
 <ul>
 <li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
 <li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
@@ -3463,6 +3469,172 @@ Factorial recursive calculator:
 2
 1
 5040
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="45.-Serialization:-Saving-Objects-to-Files">
+<a class="anchor" href="#45.-Serialization:-Saving-Objects-to-Files" aria-hidden="true"><span class="octicon octicon-link"></span></a>45. Serialization: Saving Objects to Files<a class="anchor-link" href="#45.-Serialization:-Saving-Objects-to-Files"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Notes:">
+<a class="anchor" href="#Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes:<a class="anchor-link" href="#Notes:"> </a>
+</h2>
+<ul>
+<li>Serialization is essentially the process of converting an object state (object's data) into a byte stream and saving that to a database, file, or over a network, while de-serialization is the process of converting an object byte stream into an actual object whose properties can be accessed in the program.</li>
+<li>Normally the file read program and file write program belong to the same program, and take on the forms of the open (read) and save (write) functions.</li>
+<li>In Java, it is normal to have more than one main() method, as it allows the programming to have multiple entry points to their program, with each entry point serving a different purpose (e.g. run main function, test specific area of code, etc.).</li>
+<li>Streaming in Java is basically sending an unchangeable, ordered sequence of elements, usually objects, to a specified location. We can perform different kinds of operations on sent streams (e.g. serializing, reading, writing, etc.).</li>
+<li>The FileOutputStream class is primary used for writing data byte streams to a file, focusing on primitive data types like int, while FileWriter is used to write data byte streams for character-oriented data.</li>
+<li>The ObjectOutputStream class essentially serializes Java objects into data byte streams, which are marked with the class name and object properties. These converted object data streams can be written to files and transferred over networks.</li>
+<li>FileOutputStream and ObjectOutputStream both follow sequential file writing, meaning that the lines of data written into their files are done so by an ordered sequence of code between the opening and closing of the file.</li>
+<li>In Java, to make objects of a class serializable, the class needs to implement the Serializable interface of the java.io package.</li>
+<li>Just to review, byte streams are used for the input and output of 8-bit byte data. Byte streams are sent to the program to be read from an input stream, and are sent to a file or database when written from an output stream, and they contain raw binary data (string of bits) which can be converted to multiple different data types.</li>
+<li>FileInputStream is primarily used to reading raw byte data streams (such as image data or object data) from files to the program, while FileReader is more useful for reading character-oriented data. ObjectInputStream is used for de-serializing and reading object data previously written by ObjectOutputStream, converting the object data back into their corresponding objects to be accessed by the program.</li>
+<li>It is important to note again that each time a certain FileOutputStream and ObjectOutputStream are ran, they don't build upon previously written data to files from previous runs. Instead, the files are reset to their default states at the start of the program (usually empty), and data is written to them from there (overwriting files).</li>
+<li>serialVersionUID is usually a private, static, final, and long, and is a pre-defined unique identifier for a specific class. The purpose of this variable is to make sure that the class of a de-serialized object is the exact same as the class it was serialized as. The pre-defined serialVersionUID may be changed for a certain class by the programmer if the version of that class changes (i.e. attributes and methods are updated, so the programmer changes the serialVersionUID to make it so that the current version of the class is incompatible with previously serialized objects of an older version of the class).</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Examples:">
+<a class="anchor" href="#Examples:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:<a class="anchor-link" href="#Examples:"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kn">import</span> <span class="nn">java.io.FileOutputStream</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.io.FileNotFoundException</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.io.ObjectOutputStream</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.io.Serializable</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.io.FileInputStream</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.io.ObjectInputStream</span><span class="p">;</span>
+
+<span class="c1">// Person implements Serializable interface</span>
+<span class="kd">class</span> <span class="nc">Person</span> <span class="kd">implements</span> <span class="n">Serializable</span> <span class="p">{</span>
+    <span class="c1">// Example serialVersionUID</span>
+    <span class="c1">// private static final long serialVersionUID = 7683485275814867L;</span>
+
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">id</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="p">;</span>
+
+    <span class="kd">public</span> <span class="nf">Person</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">,</span> <span class="n">String</span> <span class="n">name</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">"Person [id="</span> <span class="o">+</span> <span class="n">id</span> <span class="o">+</span> <span class="s">", name="</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s">"]"</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ReadObjects</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Reading objects..."</span><span class="p">);</span>
+
+        <span class="c1">// Try-with-resources to automatically close FileInputStream</span>
+        <span class="c1">// FileInputStream to read bytes from file</span>
+        <span class="k">try</span> <span class="p">(</span><span class="n">FileInputStream</span> <span class="n">fi</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileInputStream</span><span class="p">(</span><span class="s">"/home/dylanluo05/DylanLuoAPCSA/assets/java-fundamentals-resources/people.bin"</span><span class="p">))</span> <span class="p">{</span>
+            <span class="c1">// ObjectInputStream used with FileInputStream to de-serialize and read byte streams of object data from the file</span>
+            <span class="n">ObjectInputStream</span> <span class="n">is</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectInputStream</span><span class="p">(</span><span class="n">fi</span><span class="p">);</span>
+            <span class="c1">// De-serialize and read current object data stream from the input stream of the file</span>
+            <span class="c1">// Downcast variable type of object back to Person, since the Object Stream saves objects as the parent variable type Object</span>
+            <span class="n">Person</span> <span class="n">person1</span> <span class="o">=</span> <span class="p">(</span><span class="n">Person</span><span class="p">)</span> <span class="n">is</span><span class="p">.</span><span class="na">readObject</span><span class="p">();</span>
+            <span class="n">Person</span> <span class="n">person2</span> <span class="o">=</span> <span class="p">(</span><span class="n">Person</span><span class="p">)</span> <span class="n">is</span><span class="p">.</span><span class="na">readObject</span><span class="p">();</span>
+            <span class="n">is</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+
+            <span class="c1">// Read objects in same order in which they were written</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">person1</span><span class="p">);</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">person2</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">FileNotFoundException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">IOException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
+            <span class="c1">// Happens if de-serialized object's class could not be found in the program</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">ClassNotFoundException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">WriteObjects</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Writing objects..."</span><span class="p">);</span>
+        <span class="n">Person</span> <span class="n">mike</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="p">(</span><span class="mi">543</span><span class="p">,</span> <span class="s">"Mike"</span><span class="p">);</span>
+        <span class="n">Person</span> <span class="n">sue</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="p">(</span><span class="mi">123</span><span class="p">,</span> <span class="s">"Sue"</span><span class="p">);</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">mike</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">sue</span><span class="p">);</span>
+
+        <span class="c1">// If people.bin does not already exist, FileOutStream will automatically create the file to the specified file path, or to the working directory if no path is specified</span>
+        <span class="c1">// Try-with-resources notation with FileOutputStream as the resource, which automatically closes the files opened by FileOutputStream after all of their actions</span>
+        <span class="c1">// FileOutputStream to enable to writing a data byte streams</span>
+        <span class="k">try</span> <span class="p">(</span><span class="n">FileOutputStream</span> <span class="n">fs</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileOutputStream</span><span class="p">(</span><span class="s">"/home/dylanluo05/DylanLuoAPCSA/assets/java-fundamentals-resources/people.bin"</span><span class="p">))</span> <span class="p">{</span>
+            <span class="c1">// ObjectOutputStream used in correspondence with FileOutputStream to serialize objects and write them as data byte streams to files</span>
+            <span class="n">ObjectOutputStream</span> <span class="n">os</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectOutputStream</span><span class="p">(</span><span class="n">fs</span><span class="p">);</span>
+            <span class="c1">// Serialize and write object of Person to file</span>
+            <span class="n">os</span><span class="p">.</span><span class="na">writeObject</span><span class="p">(</span><span class="n">mike</span><span class="p">);</span>
+            <span class="n">os</span><span class="p">.</span><span class="na">writeObject</span><span class="p">(</span><span class="n">sue</span><span class="p">);</span>
+            <span class="c1">// Manually close ObjectOutputStream, preventing memory leaks of the file</span>
+            <span class="n">os</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+            <span class="c1">// Happens if we can't create file to specified file location</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">FileNotFoundException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
+            <span class="c1">// Happens if we somehow can't write to the specified file</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">IOException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
+        <span class="p">}</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">WriteObjects</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+<span class="n">ReadObjects</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Writing objects...
+Person [id=543, name=Mike]
+Person [id=123, name=Sue]
+Reading objects...
+Person [id=543, name=Mike]
+Person [id=123, name=Sue]
 </pre>
 </div>
 </div>
