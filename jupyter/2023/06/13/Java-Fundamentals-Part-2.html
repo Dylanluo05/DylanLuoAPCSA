@@ -82,7 +82,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      92 min read
+      97 min read
     
 </span></p>
 
@@ -260,6 +260,12 @@ window.onload = wrap_img;
 </ul>
 </li>
 <li class="toc-entry toc-h1"><a href="#45.-Serialization:-Saving-Objects-to-Files">45. Serialization: Saving Objects to Files </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
+<li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#46.-Serializing-Arrays">46. Serializing Arrays </a>
 <ul>
 <li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
 <li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
@@ -3495,14 +3501,14 @@ Factorial recursive calculator:
 <a class="anchor" href="#Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes:<a class="anchor-link" href="#Notes:"> </a>
 </h2>
 <ul>
-<li>Serialization is essentially the process of converting an object state (object's data) into a byte stream and saving that to a database, file, or over a network, while de-serialization is the process of converting an object byte stream into an actual object whose properties can be accessed in the program.</li>
+<li>Serialization is essentially the process of converting an object state (object's data) into a byte stream and saving that to a database, file, or over a network, while de-serialization is the process of converting an object byte stream into an actual object whose properties can be accessed in the program. Primitive types can also go through the same process of serialization and de-serialization.</li>
 <li>Normally the file read program and file write program belong to the same program, and take on the forms of the open (read) and save (write) functions.</li>
 <li>In Java, it is normal to have more than one main() method, as it allows the programming to have multiple entry points to their program, with each entry point serving a different purpose (e.g. run main function, test specific area of code, etc.).</li>
 <li>Streaming in Java is basically sending an unchangeable, ordered sequence of elements, usually objects, to a specified location. We can perform different kinds of operations on sent streams (e.g. serializing, reading, writing, etc.).</li>
 <li>The FileOutputStream class is primary used for writing data byte streams to a file, focusing on primitive data types like int, while FileWriter is used to write data byte streams for character-oriented data.</li>
 <li>The ObjectOutputStream class essentially serializes Java objects into data byte streams, which are marked with the class name and object properties. These converted object data streams can be written to files and transferred over networks.</li>
 <li>FileOutputStream and ObjectOutputStream both follow sequential file writing, meaning that the lines of data written into their files are done so by an ordered sequence of code between the opening and closing of the file.</li>
-<li>In Java, to make objects of a class serializable, the class needs to implement the Serializable interface of the java.io package.</li>
+<li>In Java, to make objects of a class serializable, the class needs to implement the Serializable interface of the java.io package. The Serializable interface doesn't have any methods to implement, as it only really identifies classes that implement it as serializable.</li>
 <li>Just to review, byte streams are used for the input and output of 8-bit byte data. Byte streams are sent to the program to be read from an input stream, and are sent to a file or database when written from an output stream, and they contain raw binary data (string of bits) which can be converted to multiple different data types.</li>
 <li>FileInputStream is primarily used to reading raw byte data streams (such as image data or object data) from files to the program, while FileReader is more useful for reading character-oriented data. ObjectInputStream is used for de-serializing and reading object data previously written by ObjectOutputStream, converting the object data back into their corresponding objects to be accessed by the program.</li>
 <li>It is important to note again that each time a certain FileOutputStream and ObjectOutputStream are ran, they don't build upon previously written data to files from previous runs. Instead, the files are reset to their default states at the start of the program (usually empty), and data is written to them from there (overwriting files).</li>
@@ -3564,8 +3570,8 @@ Factorial recursive calculator:
         <span class="k">try</span> <span class="p">(</span><span class="n">FileInputStream</span> <span class="n">fi</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileInputStream</span><span class="p">(</span><span class="s">"/home/dylanluo05/DylanLuoAPCSA/assets/java-fundamentals-resources/people.bin"</span><span class="p">))</span> <span class="p">{</span>
             <span class="c1">// ObjectInputStream used with FileInputStream to de-serialize and read byte streams of object data from the file</span>
             <span class="n">ObjectInputStream</span> <span class="n">is</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectInputStream</span><span class="p">(</span><span class="n">fi</span><span class="p">);</span>
-            <span class="c1">// De-serialize and read current object data stream from the input stream of the file</span>
-            <span class="c1">// Downcast variable type of object back to Person, since the Object Stream saves objects as the parent variable type Object</span>
+            <span class="c1">// De-serialize and read current object data stream from the input stream of the file. Each time a read() method of the input stream is called, the input stream moves on to the next byte stream to read</span>
+            <span class="c1">// Downcast variable type of object back to Person, since the ObjectOutputStream saves objects as the parent variable type Object</span>
             <span class="n">Person</span> <span class="n">person1</span> <span class="o">=</span> <span class="p">(</span><span class="n">Person</span><span class="p">)</span> <span class="n">is</span><span class="p">.</span><span class="na">readObject</span><span class="p">();</span>
             <span class="n">Person</span> <span class="n">person2</span> <span class="o">=</span> <span class="p">(</span><span class="n">Person</span><span class="p">)</span> <span class="n">is</span><span class="p">.</span><span class="na">readObject</span><span class="p">();</span>
             <span class="n">is</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
@@ -3635,6 +3641,184 @@ Person [id=123, name=Sue]
 Reading objects...
 Person [id=543, name=Mike]
 Person [id=123, name=Sue]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="46.-Serializing-Arrays">
+<a class="anchor" href="#46.-Serializing-Arrays" aria-hidden="true"><span class="octicon octicon-link"></span></a>46. Serializing Arrays<a class="anchor-link" href="#46.-Serializing-Arrays"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Notes:">
+<a class="anchor" href="#Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes:<a class="anchor-link" href="#Notes:"> </a>
+</h2>
+<ul>
+<li>In Java, an array is actually a type of object that is dynamically created (mutable), which means it is serializable as long as the objects within it are serializable. During serialization, the array will be serialized along with the objects within it.</li>
+<li>An ArrayList is a generic class that is basically like a resizable array. Like an array, an ArrayList and its elements can also be serialized in the program.</li>
+<li>Both arrays and ArrayList, when de-serialized, will take on their original form, as well as the objects within them. Like de-serializing objects, programmers are required to type cast the de-serialized arrays and ArrayLists, due to the Object Stream storing objects as the grandparent variable type Object (e.g. type[] for arrays, ArrayList<code>&lt;type&gt;</code> for ArrayLists).</li>
+<li>Generic classes such as ArrayList encounter type erasure. Type erasure happens during compile time and is basically when the information about the parameterized type is lost during some kind of operation. Arrays, however, do not encounter type erasure, as they maintain the information about the variable type they store during compile time.</li>
+<li>The purpose of the defined parameterized type is to prevent programmers from appending elements of the wrong variable type to the Generic, but after compile time, or in this case after serializing and de-serializing the Generic, the full information about the parameterized type is basically erased. Because of this, the program will produce a warning when you type cast a de-serialized Generic, but it will still work as long as the elements saved inside the Generic have the same variable type as the type casted parameterized type.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Examples:">
+<a class="anchor" href="#Examples:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:<a class="anchor-link" href="#Examples:"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kn">import</span> <span class="nn">java.io.FileOutputStream</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.io.FileNotFoundException</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.io.ObjectOutputStream</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.io.Serializable</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.io.FileInputStream</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.io.ObjectInputStream</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">WriteObjects</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Writing objects..."</span><span class="p">);</span>
+
+        <span class="c1">// Instantiate array that stores variable type Person, which contains 3 objects of the Person class</span>
+        <span class="c1">// The objects are not assigned to a variable but are rather instantiated directly in the array</span>
+        <span class="c1">// Since the objects are not stored in variables, they can be considered anonymous objects, but since they are stored in an array, they can actually be referenced more than one time in the code with the array's methods, as well as take up individual heap memory</span>
+        <span class="c1">// Even though the variable types of the objects are not defined, they will automatically be assigned variable type of the array, since they are references of the same class type as the variable type (would also work if they were references of a child class type of the variable type)</span>
+        <span class="n">Person</span><span class="o">[]</span> <span class="n">people</span> <span class="o">=</span> <span class="p">{</span><span class="k">new</span> <span class="n">Person</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">"Sue"</span><span class="p">),</span> <span class="k">new</span> <span class="n">Person</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">"Mike"</span><span class="p">),</span> <span class="k">new</span> <span class="n">Person</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s">"Bob"</span><span class="p">)};</span>
+
+        <span class="c1">// ArrayList of parameterized variable type Person</span>
+        <span class="c1">// Here, the asList() method of the Arrays class initializes the elements of the ArrayList by sort of converting an already-defined array into an ArrayList (the array itself doesn't change, but the ArrayList does)</span>
+        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span> <span class="n">peopleList</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="n">people</span><span class="p">));</span>
+
+        <span class="c1">// Notation for try-with-resources with multiple auto-closable resources defined within the try parameter</span>
+        <span class="k">try</span> <span class="p">(</span><span class="n">FileOutputStream</span> <span class="n">fs</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileOutputStream</span><span class="p">(</span><span class="s">"/home/dylanluo05/DylanLuoAPCSA/assets/java-fundamentals-resources/people-array.ser"</span><span class="p">);</span> <span class="n">ObjectOutputStream</span> <span class="n">os</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectOutputStream</span><span class="p">(</span><span class="n">fs</span><span class="p">))</span> <span class="p">{</span>
+            <span class="c1">// Serialize and write an array of Person objects to the file</span>
+            <span class="n">os</span><span class="p">.</span><span class="na">writeObject</span><span class="p">(</span><span class="n">people</span><span class="p">);</span>
+            <span class="c1">// Serialize and write an ArrayList of Person objects to the file</span>
+            <span class="n">os</span><span class="p">.</span><span class="na">writeObject</span><span class="p">(</span><span class="n">peopleList</span><span class="p">);</span>
+
+            <span class="c1">// Serialize and write an integer that is the size of the ArrayList into the file</span>
+            <span class="n">os</span><span class="p">.</span><span class="na">writeInt</span><span class="p">(</span><span class="n">peopleList</span><span class="p">.</span><span class="na">size</span><span class="p">());</span>
+            <span class="k">for</span> <span class="p">(</span><span class="n">Person</span> <span class="n">person</span> <span class="p">:</span> <span class="n">peopleList</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">// Serialize and write each object in peopleList one at a time to the file</span>
+                <span class="n">os</span><span class="p">.</span><span class="na">writeObject</span><span class="p">(</span><span class="n">person</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">FileNotFoundException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">IOException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Implement Serializable interface to make class serializable by the program</span>
+<span class="kd">class</span> <span class="nc">Person</span> <span class="kd">implements</span> <span class="n">Serializable</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">id</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="p">;</span>
+
+    <span class="kd">public</span> <span class="nf">Person</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">,</span> <span class="n">String</span> <span class="n">name</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">"Person[id="</span> <span class="o">+</span> <span class="n">id</span> <span class="o">+</span> <span class="s">", name="</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s">"]"</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">ReadObjects</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Reading objects..."</span><span class="p">);</span>
+        
+        <span class="c1">// Have try-with-resources auto-close both the FileInputStream and ObjectInputStream</span>
+        <span class="c1">// This is so that the resources will be able to close no matter the outcome of the try-with-resources statement, as even if an exception is caught before the end of the resources' actions, they will auto-close at the end of the try-with-resources statement</span>
+        <span class="k">try</span> <span class="p">(</span><span class="n">FileInputStream</span> <span class="n">fi</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileInputStream</span><span class="p">(</span><span class="s">"/home/dylanluo05/DylanLuoAPCSA/assets/java-fundamentals-resources/people-array.ser"</span><span class="p">);</span> <span class="n">ObjectInputStream</span> <span class="n">is</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectInputStream</span><span class="p">(</span><span class="n">fi</span><span class="p">);)</span> <span class="p">{</span>
+            <span class="c1">// Type cast de-serialized array back to variable type Person[], since the ObjectOutputStream stores objects as grandparent variable type Object, and store it inside a new initialized array of type Person called people, defining its size and the objects within it</span>
+            <span class="n">Person</span><span class="o">[]</span> <span class="n">people</span> <span class="o">=</span> <span class="p">(</span><span class="n">Person</span><span class="o">[]</span><span class="p">)</span> <span class="n">is</span><span class="p">.</span><span class="na">readObject</span><span class="p">();</span>
+            <span class="c1">// Iterate through each Person object in the array and print out its String representation</span>
+            <span class="c1">// Each object has been automatically assigned the variable type of the array</span>
+            <span class="k">for</span> <span class="p">(</span><span class="n">Person</span> <span class="n">person</span> <span class="p">:</span> <span class="n">people</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">person</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="c1">// Type cast de-serialized ArrayList back to variable type ArrayList of parameterized type Person</span>
+            <span class="c1">// Annotation for suppressing unchecked exception warnings</span>
+            <span class="nd">@SuppressWarnings</span><span class="p">(</span><span class="s">"unchecked"</span><span class="p">)</span>
+            <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span> <span class="n">peopleList</span> <span class="o">=</span> <span class="p">(</span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span><span class="p">)</span> <span class="n">is</span><span class="p">.</span><span class="na">readObject</span><span class="p">();</span>
+            <span class="c1">// Iterate through ArrayList with enhanced for loop</span>
+            <span class="k">for</span> <span class="p">(</span><span class="n">Person</span> <span class="n">person</span> <span class="p">:</span> <span class="n">peopleList</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">person</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="c1">// De-serialize integer that is the currently selected byte stream of the ObjectInputStream, and use that as the capacity of the for loop after, which iterates through the following de-serialized objects</span>
+            <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="n">is</span><span class="p">.</span><span class="na">readInt</span><span class="p">();</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">num</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">// De-serialize current object</span>
+                <span class="n">Person</span> <span class="n">person</span> <span class="o">=</span> <span class="p">(</span><span class="n">Person</span><span class="p">)</span> <span class="n">is</span><span class="p">.</span><span class="na">readObject</span><span class="p">();</span>
+                <span class="c1">// Print out object, which automatically calls the toString() method</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">person</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="n">is</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">FileNotFoundException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">IOException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">ClassNotFoundException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">WriteObjects</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+<span class="n">ReadObjects</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Writing objects...
+Reading objects...
+Person[id=1, name=Sue]
+Person[id=2, name=Mike]
+Person[id=3, name=Bob]
+Person[id=1, name=Sue]
+Person[id=2, name=Mike]
+Person[id=3, name=Bob]
+Person[id=1, name=Sue]
+Person[id=2, name=Mike]
+Person[id=3, name=Bob]
 </pre>
 </div>
 </div>
