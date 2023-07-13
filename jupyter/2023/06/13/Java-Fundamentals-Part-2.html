@@ -82,7 +82,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      97 min read
+      102 min read
     
 </span></p>
 
@@ -266,6 +266,12 @@ window.onload = wrap_img;
 </ul>
 </li>
 <li class="toc-entry toc-h1"><a href="#46.-Serializing-Arrays">46. Serializing Arrays </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
+<li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#47.-The-Transient-Keyword-and-More-Serialization">47. The Transient Keyword and More Serialization </a>
 <ul>
 <li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
 <li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
@@ -3512,7 +3518,7 @@ Factorial recursive calculator:
 <li>Just to review, byte streams are used for the input and output of 8-bit byte data. Byte streams are sent to the program to be read from an input stream, and are sent to a file or database when written from an output stream, and they contain raw binary data (string of bits) which can be converted to multiple different data types.</li>
 <li>FileInputStream is primarily used to reading raw byte data streams (such as image data or object data) from files to the program, while FileReader is more useful for reading character-oriented data. ObjectInputStream is used for de-serializing and reading object data previously written by ObjectOutputStream, converting the object data back into their corresponding objects to be accessed by the program.</li>
 <li>It is important to note again that each time a certain FileOutputStream and ObjectOutputStream are ran, they don't build upon previously written data to files from previous runs. Instead, the files are reset to their default states at the start of the program (usually empty), and data is written to them from there (overwriting files).</li>
-<li>serialVersionUID is usually a private, static, final, and long, and is a pre-defined unique identifier for a specific class. The purpose of this variable is to make sure that the class of a de-serialized object is the exact same as the class it was serialized as. The pre-defined serialVersionUID may be changed for a certain class by the programmer if the version of that class changes (i.e. attributes and methods are updated, so the programmer changes the serialVersionUID to make it so that the current version of the class is incompatible with previously serialized objects of an older version of the class).</li>
+<li>serialVersionUID is usually a private, static, final, and long, and is a pre-defined unique identifier for a specific class. The purpose of this variable is to make sure that the class of a de-serialized object is the exact same as the class it was serialized as. The pre-defined serialVersionUID may be changed for a certain class by the programmer if the version of that class changes (i.e. attributes and methods are updated, so the programmer changes the serialVersionUID to make it so that the current version of the class is incompatible with previously serialized objects of an older version of the class) If serialVersionUID for an object of a particular class has somehow changed after de-serialization, the program will output an InvalidClassException runtime error.</li>
 </ul>
 
 </div>
@@ -3819,6 +3825,156 @@ Person[id=3, name=Bob]
 Person[id=1, name=Sue]
 Person[id=2, name=Mike]
 Person[id=3, name=Bob]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="47.-The-Transient-Keyword-and-More-Serialization">
+<a class="anchor" href="#47.-The-Transient-Keyword-and-More-Serialization" aria-hidden="true"><span class="octicon octicon-link"></span></a>47. The Transient Keyword and More Serialization<a class="anchor-link" href="#47.-The-Transient-Keyword-and-More-Serialization"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Notes:">
+<a class="anchor" href="#Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes:<a class="anchor-link" href="#Notes:"> </a>
+</h2>
+<ul>
+<li>In Java, a thread is essentially a directional path that is ran through during the program's execution. Most programs have at least one thread, known as the main thread, which allows for the program's execution. Having multiple threads helps the program to be more efficient, as it is able to perform many tasks at the same time. To achieve this, programmers often implement the Runnable or Callable interface into their classes.</li>
+<li>The transient keyword defines a property of a class as un-serializable, meaning it will not be converted into a byte stream and will not be saved into a file, database, or over a network. An object will maintain the values of any transient variables before serialization, but after the process of serialization and de-serialization, its transient variables' values will be erased and instead have Java's respective data type default values.</li>
+<li>In Java, all instance variables of a serializable class will be serialized, static variables will not be serialized and will default to the current value set by the class after de-serialization, transient variables will not be serialized, and super class variables will be serialized if the super class is serializable. It is important to note that during the de-serialization process, the program creates a new instance of the object in memory, but does not actually invoke the constructor call, as it instead bypasses it, populating the object's data with its original state and fields from the de-serialized information (with the exception of transient variables which are not serialized and static variables, which are given the current value set by the class itself).</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Examples:">
+<a class="anchor" href="#Examples:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:<a class="anchor-link" href="#Examples:"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="kd">implements</span> <span class="n">Serializable</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">id</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="p">;</span>
+    <span class="c1">// Make secondId variable transient, so that it cannot be serialized</span>
+    <span class="kd">private</span> <span class="kd">transient</span> <span class="kt">int</span> <span class="n">secondId</span><span class="p">;</span>
+    <span class="c1">// Only one copy of static variables are created, and that copy is shared amongst multiple objects of the same class. This means whenever its value is changed, it will stay the value for all subsequent objects unless changed again</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">count</span><span class="p">;</span>
+
+    <span class="kd">public</span> <span class="nf">Person</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Default constructor"</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="nf">Person</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">,</span> <span class="n">String</span> <span class="n">name</span><span class="p">,</span> <span class="kt">int</span> <span class="n">secondId</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">secondId</span> <span class="o">=</span> <span class="n">secondId</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Normal constructor"</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Use static getters and setters to access a static attribute</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">getCount</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">count</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">setCount</span><span class="p">(</span><span class="kt">int</span> <span class="n">count</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Static method notation, as Person refers to the same class reference as the this keyword</span>
+        <span class="c1">// The this keyword usually refers to the object, but since we are working with a static variable, the class should be referred to instead</span>
+        <span class="n">Person</span><span class="p">.</span><span class="na">count</span> <span class="o">=</span> <span class="n">count</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">"Person [id="</span> <span class="o">+</span> <span class="n">id</span> <span class="o">+</span> <span class="s">", name="</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s">", secondId="</span> <span class="o">+</span> <span class="n">secondId</span> <span class="o">+</span> <span class="s">", count="</span> <span class="o">+</span> <span class="n">count</span> <span class="o">+</span> <span class="s">"]"</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">WriteObjects</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Writing objects..."</span><span class="p">);</span>
+        <span class="c1">// Try-with-resources auto-closes FileOutputStream and ObjectOutputStream</span>
+        <span class="k">try</span> <span class="p">(</span><span class="n">ObjectOutputStream</span> <span class="n">os</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectOutputStream</span><span class="p">(</span><span class="k">new</span> <span class="n">FileOutputStream</span><span class="p">(</span><span class="s">"/home/dylanluo05/DylanLuoAPCSA/assets/java-fundamentals-resources/transient.ser"</span><span class="p">)))</span> <span class="p">{</span>
+            <span class="c1">// Define transient variable secondId as 10 for person object before serialization</span>
+            <span class="c1">// Will print Normal constructor, since we are using the three-argument constructor</span>
+            <span class="n">Person</span> <span class="n">person</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="s">"Mark"</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+            <span class="c1">// Use dot notation to access setter method, but use the class name instead of object name, since the static method belongs to the class itself</span>
+            <span class="c1">// The count static attribute will be set to 88 for all subsequent objects of the Person class, unless changed later on</span>
+            <span class="n">Person</span><span class="p">.</span><span class="na">setCount</span><span class="p">(</span><span class="mi">88</span><span class="p">);</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">person</span><span class="p">);</span>
+            <span class="n">os</span><span class="p">.</span><span class="na">writeObject</span><span class="p">(</span><span class="n">person</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">FileNotFoundException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// Print default error message for this kind of exception, and continue on with code</span>
+            <span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">IOException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">ReadObjects</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Reading objects..."</span><span class="p">);</span>
+
+        <span class="c1">// Make code more concise by not storing the FileInputStream object in a variable, but instead instantiating it and passing it directly as an argument into ObjectInputStream</span>
+        <span class="c1">// The FileInputStream object type is compatible to the FileInputStream variable type, and so is an appropriate argument for ObjectInputStream's parameter</span>
+        <span class="k">try</span> <span class="p">(</span><span class="n">ObjectInputStream</span> <span class="n">is</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ObjectInputStream</span><span class="p">(</span><span class="k">new</span> <span class="n">FileInputStream</span><span class="p">(</span><span class="s">"/home/dylanluo05/DylanLuoAPCSA/assets/java-fundamentals-resources/transient.ser"</span><span class="p">)))</span> <span class="p">{</span>
+            <span class="c1">// transient secondId was not serialized, so after de-serialization, the secondId attribute of the person object doesn't have an actual value, and so will default to a value of 0</span>
+            <span class="c1">// Does not run constructor, since the fields of the object have already been previously defined, and are simply being de-serialized to be accessed</span>
+            <span class="c1">// Default constructor nor Normal Constructor are printed, since no constructor's are actually invoked, as the program is restoring the object state from the serialized data</span>
+            <span class="n">Person</span> <span class="n">person</span> <span class="o">=</span> <span class="p">(</span><span class="n">Person</span><span class="p">)</span> <span class="n">is</span><span class="p">.</span><span class="na">readObject</span><span class="p">();</span>
+            <span class="c1">// static variable count is not serialized, and so Java will give it the current static value set by the class</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">person</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">FileNotFoundException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">IOException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">ClassNotFoundException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">WriteObjects</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+<span class="n">ReadObjects</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Writing objects...
+Normal constructor
+Person [id=7, name=Mark, secondId=10, count=88]
+Reading objects...
+Person [id=7, name=Mark, secondId=0, count=88]
 </pre>
 </div>
 </div>
