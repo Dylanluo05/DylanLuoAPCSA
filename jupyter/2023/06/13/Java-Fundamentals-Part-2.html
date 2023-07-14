@@ -82,7 +82,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      102 min read
+      111 min read
     
 </span></p>
 
@@ -272,6 +272,12 @@ window.onload = wrap_img;
 </ul>
 </li>
 <li class="toc-entry toc-h1"><a href="#47.-The-Transient-Keyword-and-More-Serialization">47. The Transient Keyword and More Serialization </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
+<li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#48.-Passing-by-Value">48. Passing by Value </a>
 <ul>
 <li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
 <li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
@@ -3975,6 +3981,250 @@ Normal constructor
 Person [id=7, name=Mark, secondId=10, count=88]
 Reading objects...
 Person [id=7, name=Mark, secondId=0, count=88]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="48.-Passing-by-Value">
+<a class="anchor" href="#48.-Passing-by-Value" aria-hidden="true"><span class="octicon octicon-link"></span></a>48. Passing by Value<a class="anchor-link" href="#48.-Passing-by-Value"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Notes:">
+<a class="anchor" href="#Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes:<a class="anchor-link" href="#Notes:"> </a>
+</h2>
+<ul>
+<li>Java follows the system of passing by value, which often occurs in passing arguments to methods or constructors.</li>
+<li>Passing by value for primitive data types means that whenever a value or variable value is passed as an argument to a method or constructor, the program creates a copy of that value for the parameter variable to store into new memory, instead of an actual reference to the primitive variable. This means that changes made to the parameter variable do not affect and are not connected to the argument variable. This also implies that the name of the argument variable doesn't really matter, as once it is passed to the method/constructor, its value will be copied to the parameter variable, and the program will perform operations on the parameter instead of the actual argument.</li>
+<li>The normal scope of a variable is limited to the closest enclosing block, or curly parentheses, meaning it cannot be accessed outside of the block, but can be accessed and changed anywhere within the block (even within inner code blocks). This sort of explains the phenomenon of passing by value, since the argument value and parameter value are not even in the same code block.</li>
+<li>Just a reminder that the Java compiler normally executes code in a sequence from the top to bottom of the program. Statements such as loops can loop the reading of the code back to a certain point of the program after certain code has been read, and will continue doing so until a halting condition has been met.</li>
+<li>In Java, method overloading is where we create multiple methods of one class with the same name but with different parameters (can be different number of parameters or different data types of parameters). We can have 2 methods with the same name and parameters if they are from separate classes, since they are called/referenced by different objects (or classes if the methods are static) anyway.</li>
+<li>When declaring primitive data in Java, the program allocates enough memory to store any value fits that data type (e.g. enough memory for maximum value of int). But when declaring non-primitive data, or objects, in Java, the program allocates memory for an address/reference to the actual memory of the object data.</li>
+<li>Passing by value for non-primitive types is similar to that of passing by value for primitive types, but instead of the program creating a copy of the value itself, it creates a copy of the reference to the object passed. Because the parameter object variable refers to the same object as the argument object variable, changes made to the parameter object variable via the object's defined methods (or dot notation) will actually affect the argument object variable. This means that whenever the object is modified ANYWHERE in the program (usually by the object references that address it), the memory storing its data is actually modified. </li>
+<li>However, if the parameter object reference is assigned to a new object, the parameter variable will now refer to a different area of memory, since the new keyword creates heap memory for a new object. This means that any subsequent changes to the object referenced by the parameter variable do not affect the object referenced by the argument variable, since the parameter and argument now refer to different objects.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Examples:">
+<a class="anchor" href="#Examples:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:<a class="anchor-link" href="#Examples:"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kd">class</span> <span class="nc">Person</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="p">;</span>
+
+    <span class="kd">public</span> <span class="nf">Person</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">name</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">"Person[name="</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s">"]"</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">show</span><span class="p">(</span><span class="kt">int</span> <span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// show() method creates a copy of the value passed into it for its parameter</span>
+        <span class="c1">// So, the value parameter variable here is in a separate part of memory from the value variable passed as an argument</span>
+        <span class="c1">// This value variable only exists within the show() method</span>
+        <span class="c1">// Changes to value variable in this method do not affect the value variable in main() method</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Parameter value is initially: "</span> <span class="o">+</span> <span class="n">value</span><span class="p">);</span>
+        <span class="n">value</span><span class="o">++</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Parameter value is now: "</span> <span class="o">+</span> <span class="n">value</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Method overloading, where we create another show() method but with different parameters</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">show</span><span class="p">(</span><span class="n">Person</span> <span class="n">person</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Parameter object is initially: "</span><span class="o">+</span> <span class="n">person</span><span class="p">.</span><span class="na">toString</span><span class="p">());</span>
+        <span class="c1">// Change the name attribute of the object currently referenced by both the parameter and the argument</span>
+        <span class="n">person</span><span class="p">.</span><span class="na">setName</span><span class="p">(</span><span class="s">"John"</span><span class="p">);</span>
+        <span class="c1">// Set person object variable to a new object of Person with a different name attribute value</span>
+        <span class="c1">// The parameter and argument now refer to different objects</span>
+        <span class="n">person</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="p">(</span><span class="s">"Mike"</span><span class="p">);</span>
+        <span class="c1">// The person object variable now does not affect the person object variable in the main() method, as the parameter person refers to a new object now</span>
+        <span class="n">person</span><span class="p">.</span><span class="na">setName</span><span class="p">(</span><span class="s">"Tom"</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Parameter object is now: "</span> <span class="o">+</span> <span class="n">person</span><span class="p">.</span><span class="na">toString</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">show</span><span class="p">(</span><span class="n">String</span> <span class="n">text</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Parameter String is initially: "</span> <span class="o">+</span> <span class="n">text</span><span class="p">);</span>
+        <span class="c1">// Changes like concatenation to a String variable will cause it to reference a new String object with new memory allocated toward it</span>
+        <span class="n">text</span> <span class="o">+=</span> <span class="s">"!"</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Parameter String is now: "</span> <span class="o">+</span> <span class="n">text</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">show</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">"Parameter array of integers before passing by value is: "</span><span class="p">);</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">num</span> <span class="p">:</span> <span class="n">nums</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="n">num</span> <span class="o">+</span> <span class="s">" "</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+        <span class="c1">// Use method of arrays to modify the object (array) referenced by both the parameter and the argument</span>
+        <span class="n">nums</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
+        <span class="c1">// Make parameter variable reference new array object with different values</span>
+        <span class="c1">// Parameter variable now refers to different array than argument variable</span>
+        <span class="c1">// Have to define size first with new keyword, then set values, since nums originally already refers an array with defined values, which means it needs to first be assigned to a new object</span>
+        <span class="n">nums</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="p">;</span>
+        <span class="n">nums</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="n">nums</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">"Parameter array of integers after passing by value is: "</span><span class="p">);</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">num</span> <span class="p">:</span> <span class="n">nums</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="n">num</span> <span class="o">+</span> <span class="s">" "</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">show</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">texts</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">"Parameter array of Strings before passing by value is: "</span><span class="p">);</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">String</span> <span class="n">text2</span> <span class="p">:</span> <span class="n">texts</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="n">text2</span> <span class="o">+</span> <span class="s">" "</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+        <span class="c1">// Modify array referenced by both parameter and argument</span>
+        <span class="n">texts</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">=</span> <span class="s">"Hey there"</span><span class="p">;</span>
+        <span class="c1">// The program will create new memory for the changed String, but the array itself will modify its own memory to store the new modified String</span>
+        <span class="n">texts</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">+=</span> <span class="s">"!"</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">"Parameter array of Strings after passing by value is: "</span><span class="p">);</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">String</span> <span class="n">text2</span> <span class="p">:</span> <span class="n">texts</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="n">text2</span> <span class="o">+</span> <span class="s">" "</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Make object name similar to class name as it is a common naming convention</span>
+        <span class="n">Application</span> <span class="n">app</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Application</span><span class="p">();</span>
+        <span class="c1">// This value variable only exists within the main() method</span>
+        <span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
+        <span class="c1">// Passing by value for primitive types</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Original argument value before passing by value is: "</span> <span class="o">+</span> <span class="n">value</span><span class="p">);</span>
+        <span class="n">app</span><span class="p">.</span><span class="na">show</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Original argument value after passing by value is: "</span> <span class="o">+</span> <span class="n">value</span><span class="p">);</span>
+
+        <span class="c1">// Passing by value for non-primitive types (objects)</span>
+        <span class="c1">// Print new empty line</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+        <span class="n">Person</span> <span class="n">person</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="p">(</span><span class="s">"Bob"</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Argument object before passing by value is: "</span> <span class="o">+</span> <span class="n">person</span><span class="p">.</span><span class="na">toString</span><span class="p">());</span>
+        <span class="c1">// Java knows which version of the show() method to invoke by reading the types of arguments passed into it and matching them with the appropriate parameters</span>
+        <span class="n">app</span><span class="p">.</span><span class="na">show</span><span class="p">(</span><span class="n">person</span><span class="p">);</span>
+        <span class="c1">// Changes to the parameter object reference will affect the argument object reference if they continue to refer to the same object</span>
+        <span class="c1">// If the parameter object reference is set to address a new object, it will no longer affect the object referred by the argument object reference</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Argument object after passing by value is: "</span> <span class="o">+</span> <span class="n">person</span><span class="p">.</span><span class="na">toString</span><span class="p">());</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+
+        <span class="c1">// More non-primitive type passing by value examples</span>
+        <span class="c1">// Passing by value for String</span>
+        <span class="n">String</span> <span class="n">text</span> <span class="o">=</span> <span class="s">"Hey there"</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Argument String before passing by value is: "</span> <span class="o">+</span> <span class="n">text</span><span class="p">);</span>
+        <span class="n">app</span><span class="p">.</span><span class="na">show</span><span class="p">(</span><span class="n">text</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Argument String after passing by value is: "</span> <span class="o">+</span> <span class="n">text</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+
+        <span class="c1">// Passing by value for array of primitive type</span>
+        <span class="c1">// Can declare and define values for array on one line, since nums has not been assigned to an object yet, and since we are defining the variable type to be array of integers (int[]), we are showing the program that nums is a new variable being instantiated</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">nums</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">};</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">"Argument array of integers before passing by value is: "</span><span class="p">);</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">num</span> <span class="p">:</span> <span class="n">nums</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="n">num</span> <span class="o">+</span> <span class="s">" "</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+        <span class="n">app</span><span class="p">.</span><span class="na">show</span><span class="p">(</span><span class="n">nums</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">"Argument array of integers after passing by value is: "</span><span class="p">);</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">num</span> <span class="p">:</span> <span class="n">nums</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="n">num</span> <span class="o">+</span> <span class="s">" "</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+
+        <span class="c1">// Passing by value for array of non-primitive type</span>
+        <span class="n">String</span><span class="o">[]</span> <span class="n">texts</span> <span class="o">=</span> <span class="p">{</span><span class="s">"Hi"</span><span class="p">,</span> <span class="s">"Hello"</span><span class="p">,</span> <span class="s">"Hey"</span><span class="p">};</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">"Argument array of Strings before passing by value is: "</span><span class="p">);</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">String</span> <span class="n">text1</span> <span class="p">:</span> <span class="n">texts</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="n">text1</span> <span class="o">+</span> <span class="s">" "</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+        <span class="n">app</span><span class="p">.</span><span class="na">show</span><span class="p">(</span><span class="n">texts</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">"Argument array of Strings after passing by value is: "</span><span class="p">);</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">String</span> <span class="n">text1</span> <span class="p">:</span> <span class="n">texts</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="n">text1</span> <span class="o">+</span> <span class="s">" "</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">Application</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Original argument value before passing by value is: 7
+Parameter value is initially: 7
+Parameter value is now: 8
+Original argument value after passing by value is: 7
+
+Argument object before passing by value is: Person[name=Bob]
+Parameter object is initially: Person[name=Bob]
+Parameter object is now: Person[name=Tom]
+Argument object after passing by value is: Person[name=John]
+
+Argument String before passing by value is: Hey there
+Parameter String is initially: Hey there
+Parameter String is now: Hey there!
+Argument String after passing by value is: Hey there
+
+Argument array of integers before passing by value is: 1 2 3 
+Parameter array of integers before passing by value is: 1 2 3 
+Parameter array of integers after passing by value is: 1 3 
+Argument array of integers after passing by value is: 1 2 7 
+
+Argument array of Strings before passing by value is: Hi Hello Hey 
+Parameter array of Strings before passing by value is: Hi Hello Hey 
+Parameter array of Strings after passing by value is: Hi Hello Hey there! 
+Argument array of Strings after passing by value is: Hi Hello Hey there! 
 </pre>
 </div>
 </div>
