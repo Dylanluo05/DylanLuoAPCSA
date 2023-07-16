@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Java Fundamentals - Java Collections Framework Notes | fastpages</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Java Fundamentals - Java Collections Framework Notes" />
+<meta name="author" content="Dylan Luo" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Java Fundamentals Post for Java Collections Framework notes" />
+<meta property="og:description" content="Java Fundamentals Post for Java Collections Framework notes" />
+<link rel="canonical" href="https://dylanluo05.github.io/DylanLuoAPCSA/jupyter/2023/07/16/Java-Fundamentals-Java-Collections-Framework.html" />
+<meta property="og:url" content="https://dylanluo05.github.io/DylanLuoAPCSA/jupyter/2023/07/16/Java-Fundamentals-Java-Collections-Framework.html" />
+<meta property="og:site_name" content="fastpages" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-07-16T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Java Fundamentals - Java Collections Framework Notes" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Dylan Luo"},"dateModified":"2023-07-16T00:00:00-05:00","datePublished":"2023-07-16T00:00:00-05:00","description":"Java Fundamentals Post for Java Collections Framework notes","headline":"Java Fundamentals - Java Collections Framework Notes","mainEntityOfPage":{"@type":"WebPage","@id":"https://dylanluo05.github.io/DylanLuoAPCSA/jupyter/2023/07/16/Java-Fundamentals-Java-Collections-Framework.html"},"url":"https://dylanluo05.github.io/DylanLuoAPCSA/jupyter/2023/07/16/Java-Fundamentals-Java-Collections-Framework.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/DylanLuoAPCSA/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://dylanluo05.github.io/DylanLuoAPCSA/feed.xml" title="fastpages" /><link rel="shortcut icon" type="image/x-icon" href="/DylanLuoAPCSA/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/DylanLuoAPCSA/">fastpages</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/DylanLuoAPCSA/FirstRapidAPI/">JavaScript Soccer RapidAPI</a><a class="page-link" href="/DylanLuoAPCSA/MyFirstJavaScript/">JavaScript Local Storage Login System</a><a class="page-link" href="/DylanLuoAPCSA/about/">About Me</a><a class="page-link" href="/DylanLuoAPCSA/search/">Search</a><a class="page-link" href="/DylanLuoAPCSA/categories/">Tags</a><a class="page-link" href="/DylanLuoAPCSA/vocab/">Vocab</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Java Fundamentals - Java Collections Framework Notes</h1><p class="page-description">Java Fundamentals Post for Java Collections Framework notes</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2023-07-16T00:00:00-05:00" itemprop="datePublished">
+        Jul 16, 2023
+      </time>• 
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="p-author h-card" itemprop="name">Dylan Luo</span></span>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      4 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/DylanLuoAPCSA/categories/#jupyter">jupyter</a>
+        
+      
+      </p>
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-justify-center">
+          <div class="px-2">
+
+    <a href="https://github.com/Dylanluo05/DylanLuoAPCSA/tree/master/_notebooks/2023-07-16-Java-Fundamentals-Java-Collections-Framework.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/DylanLuoAPCSA/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/Dylanluo05/DylanLuoAPCSA/master?filepath=_notebooks%2F2023-07-16-Java-Fundamentals-Java-Collections-Framework.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/DylanLuoAPCSA/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/Dylanluo05/DylanLuoAPCSA/blob/master/_notebooks/2023-07-16-Java-Fundamentals-Java-Collections-Framework.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/DylanLuoAPCSA/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+          <div class="px-2">
+  <a href="https://deepnote.com/launch?url=https%3A%2F%2Fgithub.com%2FDylanluo05%2FDylanLuoAPCSA%2Fblob%2Fmaster%2F_notebooks%2F2023-07-16-Java-Fundamentals-Java-Collections-Framework.ipynb" target="_blank">
+      <img class="notebook-badge-image" src="/DylanLuoAPCSA/assets/badges/deepnote.svg" alt="Launch in Deepnote"/>
+  </a>
+</div>
+
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h1"><a href="#49.-ArrayLists">49. ArrayLists </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
+<li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
+</ul>
+</li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2023-07-16-Java-Fundamentals-Java-Collections-Framework.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="49.-ArrayLists">
+<a class="anchor" href="#49.-ArrayLists" aria-hidden="true"><span class="octicon octicon-link"></span></a>49. ArrayLists<a class="anchor-link" href="#49.-ArrayLists"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Notes:">
+<a class="anchor" href="#Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes:<a class="anchor-link" href="#Notes:"> </a>
+</h2>
+<ul>
+<li>The Java Collections framework defines a group of classes that each have some sort of architecture used for grouping collections of individual objects. A framework is basically a platform of pre-written code (typically includes multitudes of classes and interfaces) used to assist programmers with creating applications, usually in the form of providing useful attributes and methods to help keep programmers' code concise.</li>
+<li>The ArrayList class, which a part of the Java Collections framework, is essentially utilized to define a special type of array that is resizable and mutable. Basically, an ArrayList can change itself (size and content) dynamically. ArrayList is a Generic class, meaning it takes a parameterized type that specifies the data type it will work with (similar to defining the data type stored by an array).</li>
+<li>An ArrayList basically stores an internal array within itself, and whenever the size of the internal array has to change to accommodate for appended or removed elements, the ArrayList copies all of the elements to a new array with the new changes implemented.</li>
+<li>Whenever you remove an element from an ArrayList, the indices all of the elements after that element change (decrement by 1), as the ArrayList has to fill up the hole left by the removed element.</li>
+<li>The capacity of an ArrayList is different from its size in that the capacity defines the number of elements the ArrayList can store without changing the size of its internal array, while the size is the number of actual data/elements saved within the ArrayList. The capacity of an ArrayList can be manually specified, but is by default 10 elements, and will dynamically grow with the elements appended to the ArrayList (after capacity has been exceeded), but will remain constant when elements are removed from the ArrayList (unless trimToSize() method is used). The size of an ArrayList starts off at 0 if the ArrayList is initialized as empty, and will change in correspondence to elements being added to or removed from the ArrayList.</li>
+<li>The classes in the Collections framework are grouped by different interfaces (e.g. The list classes such as ArrayList and LinkedList implement the List interface).</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Examples:">
+<a class="anchor" href="#Examples:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:<a class="anchor-link" href="#Examples:"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="c1">// Import the ArrayList class, a part of the Collections framework, from the java.util package</span>
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="p">;</span>
+<span class="c1">// Import List interface</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Initialize ArrayList of parameterized type Integer, and defines its capacity as 3</span>
+        <span class="c1">// Cannot define parameterized type with primitive type directly; have to define with wrapper class counterpart, since Generics store objects</span>
+        <span class="c1">// After defining wrapper class of int (Integer), we can store and access primitive integer data to and from the ArrayList</span>
+        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">numbers</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+
+        <span class="c1">// Append elements to ArrayList (can append values directly or values of variables) will dynamically change its size</span>
+        <span class="n">numbers</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+        <span class="n">numbers</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+        <span class="n">numbers</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="mi">40</span><span class="p">);</span>
+
+        <span class="c1">// Get size of ArrayList</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">numbers</span><span class="p">.</span><span class="na">size</span><span class="p">());</span>
+
+        <span class="c1">// Retrieving elements of ArrayList via their index, since ArrayLists are ordered, as well as zero-indexed, just like arrays</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">numbers</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"\nFirst iteration:"</span><span class="p">);</span>
+        <span class="c1">// Iterate through elements of ArrayList using normal for loop</span>
+        <span class="c1">// Define for loop capacity with size of ArrayList. size() method to get number of elements in ArrayList</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">numbers</span><span class="p">.</span><span class="na">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">numbers</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">i</span><span class="p">));</span>
+        <span class="p">}</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"\nRemoving Elements:"</span><span class="p">);</span>
+        <span class="c1">// Removing elements from ArrayList via their index will also dynamically change its size</span>
+        <span class="c1">// Print the element that was removed from ArrayList</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">numbers</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="n">numbers</span><span class="p">.</span><span class="na">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">));</span>
+        <span class="c1">// Removing the first element may cause the program to take more time than removing the last element, since removing the first element will cause the indices of all subsequent elements to change</span>
+        <span class="n">numbers</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"\nSecond Iteration:"</span><span class="p">);</span>
+        <span class="c1">// Enhanced for loop to iterate through ArrayList</span>
+        <span class="c1">// Can use type Integer instead of int, since both data types equate to each other in terms of what the data they can store (int is primitive counterpart while Integer is object counterpart)</span>
+        <span class="c1">// Just a reminder that Integer and int can be converted to each other without manual type casting. Just assigning the value will be automatically converted, since their is no conversion risks (e.g. there is low risk of lossy conversion)</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">value</span> <span class="p">:</span> <span class="n">numbers</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">// The values object variable is of object type ArrayList but of interface variable type List. Notice how List also takes parameterized types</span>
+        <span class="c1">// This means that values can only implement the attributes and methods defined in List, but not those exclusive to ArrayList</span>
+        <span class="c1">// Nonetheless, values can still be considered an ArrayList, and can call the properties of ArrayList that are defined in List</span>
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">values</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">Application</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>3
+10
+
+First iteration:
+10
+100
+40
+
+Removing Elements:
+40
+
+Second Iteration:
+100
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="Dylanluo05/DylanLuoAPCSA"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/DylanLuoAPCSA/jupyter/2023/07/16/Java-Fundamentals-Java-Collections-Framework.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/DylanLuoAPCSA/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="https://dylanluo05.github.io/DylanLuoAPCSA/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/DylanLuoAPCSA/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>An easy to use blogging platform with support for Jupyter Notebooks.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
