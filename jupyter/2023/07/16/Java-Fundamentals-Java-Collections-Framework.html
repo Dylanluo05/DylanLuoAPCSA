@@ -82,7 +82,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      11 min read
+      15 min read
     
 </span></p>
 
@@ -134,6 +134,12 @@ window.onload = wrap_img;
 </ul>
 </li>
 <li class="toc-entry toc-h1"><a href="#50.-LinkedLists">50. LinkedLists </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
+<li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#51.-HashMap:-Retrieving-Objects-via-a-Key">51. HashMap: Retrieving Objects via a Key </a>
 <ul>
 <li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
 <li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
@@ -332,6 +338,7 @@ hey
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-java"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="p">;</span>
+<span class="c1">// Import LinkedList class from java.util package</span>
 <span class="kn">import</span> <span class="nn">java.util.LinkedList</span><span class="p">;</span>
 <span class="c1">// Import List interface from java.util package</span>
 <span class="kn">import</span> <span class="nn">java.util.List</span><span class="p">;</span>
@@ -425,6 +432,113 @@ LinkedList before changes:
 1
 LinkedList after changes:
 [1, 2, 3]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="51.-HashMap:-Retrieving-Objects-via-a-Key">
+<a class="anchor" href="#51.-HashMap:-Retrieving-Objects-via-a-Key" aria-hidden="true"><span class="octicon octicon-link"></span></a>51. HashMap: Retrieving Objects via a Key<a class="anchor-link" href="#51.-HashMap:-Retrieving-Objects-via-a-Key"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Notes:">
+<a class="anchor" href="#Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes:<a class="anchor-link" href="#Notes:"> </a>
+</h2>
+<ul>
+<li>In Java, the HashMap, which is a part of the Java Collections framework, is a data structure that saves items as key-value pairs. This means that a specific element in a HashMap consists of 2 parts: a key and a value, where the key is used to access its corresponding value. HashMaps are Generics, as they ask for 2 parameterized types, one to define the data type of the keys and the other to define that of the values. Basically, think of a HashMap as a look-up table that stores key-value pairs, with every key being unique and each key giving access to a certain value. If a key-value pair is appended to a HashMap but the key already exists, the new value will replace the already-existing value in the HashMap, and the key will remain the same (you can have duplicate values, but keys must be unique).</li>
+<li>Most data structures, such as ArrayLists and HashMaps which are designed to hold objects, that are a part of the Java Collections framework use auto-boxing to automatically convert primitive data into their non-primitive/object counterparts (wrapper classes. e.g. int to Integer, which happens when appending primitive variables to data structures such as ArrayList). Unboxing is the process fo converting a wrapper class into its primitive data type counterpart (e.g. Integer to int, which happens when retrieving primitive values from data structures such as ArrayList).</li>
+<li>HashMap is not an ordered data structure, as its appended element order does not necessarily match its retrieved element order (the retrieved element order is not always the same every time for HashMaps, since their elements are typically retrieved by their value properties via keys). HashMaps implement a hashing function, which essentially allows them to map keys to certain indices within an internal array, giving them the ability to have fast access times when retrieving values based on keys.</li>
+<li>The Map.Entry<code>&lt;Key Type, Value Type&gt;</code> Generic method of the Map interface is used to retrieve a specific entry/element of a HashMap into an object that stores the key and value pair. The entrySet() method of the HashMap class creates a set and returns a set-view of all of the elements/entries in the HashMap. These 2 methods are essentially used in correspondence with each other to iterate through HashMaps, allowing programmers to access a specific entry, as well as useful properties such as the entry's key and value pair. The keySet() method of the HashMap class creates a set/collection of all of the keys in the HashMap for iteration, while the values() method of the HashMap class creates a set/collection of all of the values in the HashMap for iteration. Just like HashMaps, the sets created by keySet() and values() are not ordered.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Examples:">
+<a class="anchor" href="#Examples:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:<a class="anchor-link" href="#Examples:"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="c1">// Import HashMap class from java.util package</span>
+<span class="kn">import</span> <span class="nn">java.util.HashMap</span><span class="p">;</span>
+<span class="c1">// Import Map interface, which HashMap implements, from java.util package</span>
+<span class="kn">import</span> <span class="nn">java.util.Map</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Instantiate HashMap with key parameterized type Integer and value parameterized type String</span>
+        <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span><span class="p">();</span>
+        <span class="c1">// Add key-value pairs to the HashMap</span>
+        <span class="c1">// Notice how key is passed first, then value</span>
+        <span class="c1">// Autoboxing converts key of type int to Integer</span>
+        <span class="n">map</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s">"Five"</span><span class="p">);</span>
+        <span class="n">map</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="s">"Six"</span><span class="p">);</span>
+        <span class="n">map</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="s">"Seven"</span><span class="p">);</span>
+        <span class="c1">// Putting a key-value pair with a key that has already been appended will result in the value being updated with the new passed value</span>
+        <span class="n">map</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s">"New Five"</span><span class="p">);</span>
+
+        <span class="c1">// Retrieve the corresponding value to the 5 key in the HashMap</span>
+        <span class="n">String</span> <span class="n">text</span> <span class="o">=</span> <span class="n">map</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">text</span><span class="p">);</span>
+
+        <span class="c1">// HashMap will return value of null for keys that don't exist within it</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">map</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span>
+
+        <span class="c1">// Iterate through key-value pairs of HashMap</span>
+        <span class="c1">// Use Map.Entry to represent the variable type of a specific element (key-value pair), as well as its properties, in the map collection (HashMap)</span>
+        <span class="c1">// Use entrySet() method to create a set view of all of the elements in the HashMap, so that we can iterate through each element in the HashMap using the set</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">Map</span><span class="p">.</span><span class="na">Entry</span><span class="o">&lt;</span><span class="n">Integer</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">entry</span> <span class="p">:</span> <span class="n">map</span><span class="p">.</span><span class="na">entrySet</span><span class="p">())</span> <span class="p">{</span>
+            <span class="c1">// Unboxing converts key of type Integer to int</span>
+            <span class="c1">// Get key and value of current HashMap entry/element in iteration</span>
+            <span class="kt">int</span> <span class="n">key</span> <span class="o">=</span> <span class="n">entry</span><span class="p">.</span><span class="na">getKey</span><span class="p">();</span>
+            <span class="n">String</span> <span class="n">value</span> <span class="o">=</span> <span class="n">entry</span><span class="p">.</span><span class="na">getValue</span><span class="p">();</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">key</span> <span class="o">+</span> <span class="s">": "</span> <span class="o">+</span> <span class="n">value</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">Application</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>New Five
+null
+5: New Five
+6: Six
+7: Seven
 </pre>
 </div>
 </div>
