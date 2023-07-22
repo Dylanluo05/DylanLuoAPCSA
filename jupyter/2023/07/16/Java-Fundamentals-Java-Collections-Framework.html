@@ -82,7 +82,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      15 min read
+      21 min read
     
 </span></p>
 
@@ -140,6 +140,12 @@ window.onload = wrap_img;
 </ul>
 </li>
 <li class="toc-entry toc-h1"><a href="#51.-HashMap:-Retrieving-Objects-via-a-Key">51. HashMap: Retrieving Objects via a Key </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
+<li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#52.-Sorted-Maps">52. Sorted Maps </a>
 <ul>
 <li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
 <li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
@@ -311,7 +317,7 @@ hey
 <a class="anchor" href="#Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes:<a class="anchor-link" href="#Notes:"> </a>
 </h2>
 <ul>
-<li>Like an ArrayList, a LinkedList is a linear dynamic data structure used for saving a collection of elements. However, a LinkedList stores each element as a node, as opposed to an ArrayList which stores elements in consecutive memory blocks. Each node composes of a value and two pointers (pointers require memory) to the previous and next nodes in the LinkedList.</li>
+<li>Like an ArrayList, a LinkedList is a linear dynamic data structure used for saving a collection of elements. However, a LinkedList stores each element as a node, as opposed to an ArrayList which stores elements in consecutive memory blocks. Each node composes of a value and two pointers (pointers require memory) to the previous and next nodes in the LinkedList. By default, LinkedLists implement a Doubly-LinkedList structure, where each node has both a previous and next pointer. But, LinkedLists can be modified to implement a Singly-LinkedList structure, where each node only has a next pointer.</li>
 <li>A general rule of thumb is that when you want to add or remove elements toward the end of a List, you should use an ArrayList, but if you want to add or remove elements just about anywhere else in the List, you should use a LinkedList. This is due to the fact that adding new elements anywhere but the end of the List will cause an ArrayList to shift the positions of all the elements after the index at which the new element is added, while a LinkedList does not.</li>
 <li>An ArrayList essentially organizes and manages an internal array, in which is creates a continuous memory location chain (requiring an internal array as its container) for all of its elements. Because of this, it is easy for an ArrayList to access and traverse through elements by index (can access any element in ArrayList by index in constant time because program can calculate location with index and consecutive memory locations within internal array, but for LinkedList, accessing an element by index causes the LinkedList to start at the head node, then use the next pointers of the subsequent nodes to reach the desired index), as well as add items toward the end of the List, since doing so does not really affect the indices of the other elements in the List. To add on, whenever the size of an ArrayList exceeds the capacity, the current capacity of the ArrayList will double, and the ArrayList will create a new copy of the internal array with the new element changes implemented.</li>
 <li>Since a LinkedList does not store elements in consecutive memory blocks (each node could be anywhere in memory, but each node's pointers refer to the memory locations), its dynamic memory allocation helps be more efficient in cases such as adding or removing elements within the beginning and middle of the List. A standard LinkedList starts off at the head/first node, and each node within it points to the previous element and next element in the List (basically the pointers of a node refer to the memory locations of the previous and next nodes), where the head node's previous pointer refers to a null value and the last node's next pointer also refers to a null value.</li>
@@ -460,7 +466,7 @@ LinkedList after changes:
 <ul>
 <li>In Java, the HashMap, which is a part of the Java Collections framework, is a data structure that saves items as key-value pairs. This means that a specific element in a HashMap consists of 2 parts: a key and a value, where the key is used to access its corresponding value. HashMaps are Generics, as they ask for 2 parameterized types, one to define the data type of the keys and the other to define that of the values. Basically, think of a HashMap as a look-up table that stores key-value pairs, with every key being unique and each key giving access to a certain value. If a key-value pair is appended to a HashMap but the key already exists, the new value will replace the already-existing value in the HashMap, and the key will remain the same (you can have duplicate values, but keys must be unique).</li>
 <li>Most data structures, such as ArrayLists and HashMaps which are designed to hold objects, that are a part of the Java Collections framework use auto-boxing to automatically convert primitive data into their non-primitive/object counterparts (wrapper classes. e.g. int to Integer, which happens when appending primitive variables to data structures such as ArrayList). Unboxing is the process fo converting a wrapper class into its primitive data type counterpart (e.g. Integer to int, which happens when retrieving primitive values from data structures such as ArrayList).</li>
-<li>HashMap is not an ordered data structure, as its appended element order does not necessarily match its retrieved element order (the retrieved element order is not always the same every time for HashMaps, since their elements are typically retrieved by their value properties via keys). HashMaps implement a hashing function, which essentially allows them to map keys to certain indices within an internal array, giving them the ability to have fast access times when retrieving values based on keys.</li>
+<li>HashMap is not an ordered data structure, as its appended element order does not necessarily match its retrieved element order (the retrieved element order is not always the same every time for HashMaps, since their elements are typically retrieved by their value properties via keys, not indices). HashMaps implement a hashing function, which essentially allows them to map keys to certain indices within an internal array, giving them the ability to have fast access times when retrieving values based on keys.</li>
 <li>The Map.Entry<code>&lt;Key Type, Value Type&gt;</code> Generic method of the Map interface is used to retrieve a specific entry/element of a HashMap into an object that stores the key and value pair. The entrySet() method of the HashMap class creates a set and returns a set-view of all of the elements/entries in the HashMap. These 2 methods are essentially used in correspondence with each other to iterate through HashMaps, allowing programmers to access a specific entry, as well as useful properties such as the entry's key and value pair. The keySet() method of the HashMap class creates a set/collection of all of the keys in the HashMap for iteration, while the values() method of the HashMap class creates a set/collection of all of the values in the HashMap for iteration. Just like HashMaps, the sets created by keySet() and values() are not ordered.</li>
 </ul>
 
@@ -539,6 +545,147 @@ null
 5: New Five
 6: Six
 7: Seven
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="52.-Sorted-Maps">
+<a class="anchor" href="#52.-Sorted-Maps" aria-hidden="true"><span class="octicon octicon-link"></span></a>52. Sorted Maps<a class="anchor-link" href="#52.-Sorted-Maps"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Notes:">
+<a class="anchor" href="#Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes:<a class="anchor-link" href="#Notes:"> </a>
+</h2>
+<ul>
+<li>By default, HashMaps are not ordered, meaning that the order in which key-value pairs are appended to a HashMap does not always match the retrieval order, and the retrieval order is not always consistent.</li>
+<li>The LinkedHashMap is a special type of HashMap that also implements the Map interface, and is actually ordered in that it maintains the appended order of elements. This means that the order in which elements are inserted into the LinkedHashMap matches the retrieval order. </li>
+<li>The LinkedHashMap accomplishes this by having both an internal Doubly-LinkedList and a hash table. The hash table is used to store the key and value pairs, and the LinkedList is used to keep the order in which elements are appended to the LinkedHashMap. If the value of a particular key is updated, the element's index in the LinkedList stays the same, since the order of elements in the LinkedHashMap is determined by order of when each element was first appended. When elements are removed from the LinkedHashMap, they are removed from both the LinkedList and hash table.</li>
+<li>The constructor of the LinkedHashMap can be used to specify to base the order of the LinkedHashMap on appended order or access order. In the case of using access order, the element that is most recently accessed will be automatically moved to the end of the LinkedList, marking it as the most recent appended element.</li>
+<li>A hash code is a nearly-unique (limited to finite range of integers) integer identifier automatically generated by Java for objects. A HashMap basically keeps an internal hash table to keep key-value pairs. When a key-value pair is appended to a HashMap, the HashMap uses a hashing algorithm to determine the hash code of the key object (hence why HashMaps take non-primitive data types), then convert the hash code into an index to mark the key's location in the internal array (the array represents the hash table, where the index represents the hash code of the key, and the element represents the key-value pair itself). The key-value pair is then assigned to the bucket corresponding to the index in the array (reminder that primitive data are stored as actual values in an array, while object data are stored as references to their memory locations in the array), and in the case of retrieving a value from a key, the HashMap calculates the hash code of the inputted key, then uses the index representation of the hash code to find the key-value pair that matches the inputted key within the hash table. The internal array/hash table is dynamically resized using a load factor, which happens when the ratio of number of elements to the array size exceeds a certain capacity.</li>
+<li>The TreeMap is special kind of HashMap that sorts its elements (by key) in natural order (or in a custom order if a custom comparator is defined by the programmer), implementing the NavigableMap interface and the SortedMap interface, which extends the Map interface. Like HashMap and LinkedHashMap, TreeMap provides sufficient methods for searching, insertion (can also update values for already-appended keys), and deletion.</li>
+<li>Natural order typically means numerical and alphabetical order, and serves the basis as to how TreeMaps order the elements within it (by comparing keys). Each TreeMap has an underlying red-black binary search tree, which maintains the balanced height of the tree. The NavigableMap interfaces provides TreeMaps with further functionalities such as range-based key and value retrievals.</li>
+<li>In Java, a tree is a fundamental data structure that represents a hierarchical structure of nodes. The root node is the ultimate parent of all the nodes under it, each node has zero or mode child nodes, and nodes are connected by edges (which are basically connections that link two nodes together and usually have directionality from parent node to child node).</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Examples:">
+<a class="anchor" href="#Examples:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:<a class="anchor-link" href="#Examples:"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.HashMap</span><span class="p">;</span>
+<span class="c1">// Import the LinkedHashMap class from the java.util package</span>
+<span class="kn">import</span> <span class="nn">java.util.LinkedHashMap</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nc">Temp</span> <span class="p">{</span> <span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Since the Temp class doesn't have a custom toString() method, this will print out an automatic String representation of the object</span>
+        <span class="c1">// The text after the @ sign is the hexadecimal text that relates to the object's memory address</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="k">new</span> <span class="n">Temp</span><span class="p">());</span>
+
+        <span class="c1">// These classes all implement the Map interface, so use Map as variable type to capture all these classes when used as parameter in method</span>
+        <span class="c1">// Can make variable type Map, as the method testMap() primarily uses Map methods, and a common variable type Map can be used to group these different types of Maps, and this is practical in that Map is the variable type of the parameter of testMap()</span>
+        <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">hashMap</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span><span class="p">();</span>
+        <span class="c1">// Use LinkedHashMap as viable option to keep keys and values in the order that they were put into the HashMap</span>
+        <span class="n">LinkedHashMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">linkedHashMap</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedHashMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span><span class="p">();</span>
+        <span class="c1">// Use TreeMap as viable option to sort elements (by key) in natural order, which usually implements numerical and alphabetical order</span>
+        <span class="n">TreeMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">treeMap</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TreeMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span><span class="p">();</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"HashMap (Unordered):"</span><span class="p">);</span>
+        <span class="n">testMap</span><span class="p">(</span><span class="n">hashMap</span><span class="p">);</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"LinkedHashMap (Insertion order):"</span><span class="p">);</span>
+        <span class="n">testMap</span><span class="p">(</span><span class="n">linkedHashMap</span><span class="p">);</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"TreeMap (Natural order):"</span><span class="p">);</span>
+        <span class="n">testMap</span><span class="p">(</span><span class="n">treeMap</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">testMap</span><span class="p">(</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">Integer</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">map</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// HashMap, LinkedHashMap, and TreeMap all implement the Map interface, meaning a lot of their methods have been defined in the Map interface, and thus can be used by the object of variable type Map</span>
+        <span class="c1">// Insertion</span>
+        <span class="n">map</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="s">"Fox"</span><span class="p">);</span>
+        <span class="n">map</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="s">"Pig"</span><span class="p">);</span>
+        <span class="n">map</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="s">"Dog"</span><span class="p">);</span>
+        <span class="n">map</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="s">"Cat"</span><span class="p">);</span>
+        <span class="n">map</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">"Cow"</span><span class="p">);</span>
+        <span class="n">map</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">"Lion"</span><span class="p">);</span>
+        <span class="c1">// Deletion by key</span>
+        <span class="n">map</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
+        <span class="c1">// Update existing key</span>
+        <span class="n">map</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">"Jaguar"</span><span class="p">);</span>
+
+        <span class="c1">// Iteration and retrieval</span>
+        <span class="c1">// keySet() creates a set that contains all the keys in the Map</span>
+        <span class="c1">// Could use int instead of Integer for unboxing data types of values from the Map, but regardless, the values stays the same</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">Integer</span> <span class="n">key</span> <span class="p">:</span> <span class="n">map</span><span class="p">.</span><span class="na">keySet</span><span class="p">())</span> <span class="p">{</span>
+            <span class="n">String</span> <span class="n">value</span> <span class="o">=</span> <span class="n">map</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">key</span> <span class="o">+</span> <span class="s">": "</span> <span class="o">+</span> <span class="n">value</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">Application</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>REPL.$JShell$14$Temp@10a28e86
+HashMap (Unordered):
+1: Jaguar
+2: Lion
+7: Dog
+8: Cat
+9: Fox
+LinkedHashMap (Insertion order):
+9: Fox
+7: Dog
+8: Cat
+1: Jaguar
+2: Lion
+TreeMap (Natural order):
+1: Jaguar
+2: Lion
+7: Dog
+8: Cat
+9: Fox
 </pre>
 </div>
 </div>
