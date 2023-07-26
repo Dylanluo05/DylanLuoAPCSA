@@ -82,7 +82,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      25 min read
+      32 min read
     
 </span></p>
 
@@ -152,6 +152,12 @@ window.onload = wrap_img;
 </ul>
 </li>
 <li class="toc-entry toc-h1"><a href="#53.-Sets">53. Sets </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
+<li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#54.-Using-Custom-Objects-in-Sets-and-as-Keys-in-Maps">54. Using Custom Objects in Sets and as Keys in Maps </a>
 <ul>
 <li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
 <li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
@@ -506,7 +512,7 @@ LinkedList after changes:
         <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="p">,</span> <span class="n">String</span><span class="o">&gt;</span><span class="p">();</span>
         <span class="c1">// Add key-value pairs to the HashMap</span>
         <span class="c1">// Notice how key is passed first, then value</span>
-        <span class="c1">// Autoboxing converts key of type int to Integer</span>
+        <span class="c1">// Auto-boxing converts key of type int to Integer</span>
         <span class="n">map</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s">"Five"</span><span class="p">);</span>
         <span class="n">map</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="s">"Six"</span><span class="p">);</span>
         <span class="n">map</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="s">"Seven"</span><span class="p">);</span>
@@ -878,6 +884,195 @@ Contains dog
 [cat, dog]
 [mouse, cat, bear, dog, lion]
 [mouse, bear, lion]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="54.-Using-Custom-Objects-in-Sets-and-as-Keys-in-Maps">
+<a class="anchor" href="#54.-Using-Custom-Objects-in-Sets-and-as-Keys-in-Maps" aria-hidden="true"><span class="octicon octicon-link"></span></a>54. Using Custom Objects in Sets and as Keys in Maps<a class="anchor-link" href="#54.-Using-Custom-Objects-in-Sets-and-as-Keys-in-Maps"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Notes:">
+<a class="anchor" href="#Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes:<a class="anchor-link" href="#Notes:"> </a>
+</h2>
+<ul>
+<li>The equals() and hashCode() methods are both methods inherited from the Object grandparent class, and are typically overridden by the programmer to define what the programmer thinks determines equality between objects.</li>
+<li>In conventionally overriding, the equals() method returns true if 2 objects are equal semantically (i.e. in terms of property values, unlike == which checks if 2 objects are literally the same object/memory location, which is the same as the default equals() method that is not overridden). When overriding the equals() method, programmer usually follow these core principles: reflexive, symmetric, transitive, consistent, and null values, which ensure that the equals() method is effective and consistent in comparing objects semantically.</li>
+<li>The hashCode() method generates an almost-unique integer hash code (identifier) for a particular object, and hash codes are often used by data structures such as Maps and Sets, which utilize hash tables, during object management. Hash-based data structures calculate the hash code of an object to determine the location that object should be placed within its internal data structure(s), which includes a hash table (which is sort of like an array with indices and elements).</li>
+<li>Oftentimes, when the equals() method is overridden, the hashCode() method is also overridden. This is because, with the hashCode() method being overridden the correct way, 2 objects that are considered equal semantically by the equals() method will have the same hash codes, thus effectively maintaining the important relationship between the equals() and hashCode() methods (as the hash code is an identifier of an object and its property values).</li>
+<li>As hash-based data structures like Maps and Sets contain unique keys and elements, respectively, they by default cannot tell if 2 custom objects (objects of the Java default classes, like String, actually have overridden equals() methods that actually compare the contents of 2 objects) are actually equal semantically. Because of this, the equals() method should be overridden in the custom class to define what makes objects of it equal (usually defined semantically), so that these data structures can prevent duplicate custom objects (duplicate as in equal semantically) and thus maintain only distinct items. Furthermore, the hashCode() method should also be overridden, because 2 objects that are equal semantically should conventionally have the same hash codes; hash-based data structures use the hash code of objects to determine their position in the hash table, so 2 duplicate objects should have the same hash code to ensure data collisions are handled (with LinkedLists at each index to hold duplicate elements). It is important to note that hash-based data structures use both the equals() method and the hashCode() method to determine if 2 objects are distinct, as well as the different locations (in the hash table) of distinct objects.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Examples:">
+<a class="anchor" href="#Examples:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:<a class="anchor-link" href="#Examples:"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.Map</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.LinkedHashMap</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Set</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.LinkedHashSet</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nc">Person</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">id</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="p">;</span>
+
+    <span class="kd">public</span> <span class="nf">Person</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">,</span> <span class="n">String</span> <span class="n">name</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">"Person{ID is: "</span> <span class="o">+</span> <span class="n">id</span> <span class="o">+</span> <span class="s">"; Name is: "</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s">"}"</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Override the equals() and hashCode() methods to ensure objects of the Person class are compared semantically when checking for equality</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">hashCode</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// Hash algorithm to calculate hash code of object</span>
+        <span class="c1">// Notice how the algorithm takes into account values of the attributes, indicating that attributes have an impact on the hash code of an object</span>
+        <span class="kd">final</span> <span class="kt">int</span> <span class="n">prime</span> <span class="o">=</span> <span class="mi">31</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">prime</span> <span class="o">*</span> <span class="n">result</span> <span class="o">+</span> <span class="n">id</span><span class="p">;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">prime</span> <span class="o">*</span> <span class="n">result</span> <span class="o">+</span> <span class="p">((</span><span class="n">name</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="o">?</span> <span class="mi">0</span> <span class="p">:</span> <span class="n">name</span><span class="p">.</span><span class="na">hashCode</span><span class="p">());</span>
+        <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="p">(</span><span class="n">Object</span> <span class="n">obj</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Check if objects refer to the same memory location with ==, if they are non-null, and if they are from the same class</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span> <span class="o">==</span> <span class="n">obj</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">obj</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">getClass</span><span class="p">()</span> <span class="o">!=</span> <span class="n">obj</span><span class="p">.</span><span class="na">getClass</span><span class="p">())</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="c1">// Check if the property values of both objects are equal (semantically)</span>
+        <span class="kd">final</span> <span class="n">Person</span> <span class="n">other</span> <span class="o">=</span> <span class="p">(</span><span class="n">Person</span><span class="p">)</span> <span class="n">obj</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">id</span> <span class="o">!=</span> <span class="n">other</span><span class="p">.</span><span class="na">id</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">name</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="na">name</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">name</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="na">name</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Make object type LinkedHashMap, not Map, since you cannot create an object of an interface. You can, however, create an object of a class that implements the interface</span>
+        <span class="c1">// LinkedHashMap maintains insertion order</span>
+        <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">Integer</span><span class="o">&gt;</span><span class="p">();</span>     
+        <span class="n">map</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"one"</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="n">map</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"two"</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+        <span class="n">map</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"three"</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+        <span class="c1">// Keys in Maps are unique, which means that the value of this particular key is updated with that of the duplicate key</span>
+        <span class="n">map</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"one"</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="c1">// The keySet() method creates a set (collection of unique elements) of all the keys in the Map, which are all the same data type as defined by the parameterized type in the Map</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">String</span> <span class="n">key</span> <span class="p">:</span> <span class="n">map</span><span class="p">.</span><span class="na">keySet</span><span class="p">())</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">key</span> <span class="o">+</span> <span class="s">": "</span> <span class="o">+</span> <span class="n">map</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">key</span><span class="p">));</span>
+        <span class="p">}</span>
+
+        <span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">set</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedHashSet</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">();</span>
+        <span class="n">set</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"dog"</span><span class="p">);</span>
+        <span class="n">set</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"cat"</span><span class="p">);</span>
+        <span class="n">set</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"mouse"</span><span class="p">);</span>
+        <span class="c1">// A Set only contains distinct elements, which means duplicate items are essentially ignored in terms of what data is saved</span>
+        <span class="n">set</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"cat"</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">set</span><span class="p">);</span>
+
+        <span class="c1">// Map and Set interactions with custom objects</span>
+        <span class="c1">// Create custom object from the Person class we created ourselves</span>
+        <span class="n">Person</span> <span class="n">person1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s">"Bob"</span><span class="p">);</span>
+        <span class="n">Person</span> <span class="n">person2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">"Sue"</span><span class="p">);</span>
+        <span class="n">Person</span> <span class="n">person3</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">"Mike"</span><span class="p">);</span>
+        <span class="n">Person</span> <span class="n">person4</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">"Sue"</span><span class="p">);</span>
+
+        <span class="c1">// In terms of attribute values, person2 and person4 are equal semantically</span>
+        <span class="c1">// However, Maps and Sets by default view them as distinct objects, as they do not compare them in terms of their properties</span>
+        <span class="c1">// By overriding the equals() and hashCode() methods, we can determine what counts as equal in terms of properties for objects of this particular class (and any child classes of the class. Will have to override again for child classes to account for properties specific to the child classes)</span>
+        <span class="c1">// Sets and Maps use the equals() and hashCode() methods (based on what boolean value they return) to determine if 2 objects are distinct to each other</span>
+        <span class="c1">// After overriding these 2 methods, person2 and person4 will be considered equal semantically by Sets and Maps, and thus not distinct to each other</span>
+
+        <span class="c1">// Map stores keys as variable type Person, which accounts for objects created from the Person class</span>
+        <span class="n">Map</span><span class="o">&lt;</span><span class="n">Person</span><span class="p">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">customMap</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedHashMap</span><span class="o">&lt;</span><span class="n">Person</span><span class="p">,</span> <span class="n">Integer</span><span class="o">&gt;</span><span class="p">();</span>
+        <span class="n">customMap</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">person1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="n">customMap</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">person2</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+        <span class="n">customMap</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">person3</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+        <span class="n">customMap</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">person4</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+        <span class="k">for</span> <span class="p">(</span><span class="n">Person</span> <span class="n">key</span> <span class="p">:</span> <span class="n">customMap</span><span class="p">.</span><span class="na">keySet</span><span class="p">())</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">key</span> <span class="o">+</span> <span class="s">": "</span> <span class="o">+</span> <span class="n">customMap</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">key</span><span class="p">));</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Set stores elements as variable type Person</span>
+        <span class="n">Set</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span> <span class="n">customSet</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedHashSet</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span><span class="p">();</span>
+        <span class="n">customSet</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">person1</span><span class="p">);</span>
+        <span class="n">customSet</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">person2</span><span class="p">);</span>
+        <span class="n">customSet</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">person3</span><span class="p">);</span>
+        <span class="n">customSet</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">person4</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">customSet</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">Application</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>one: 1
+two: 2
+three: 3
+[dog, cat, mouse]
+Person{ID is: 0; Name is: Bob}: 1
+Person{ID is: 1; Name is: Sue}: 1
+Person{ID is: 2; Name is: Mike}: 3
+[Person{ID is: 0; Name is: Bob}, Person{ID is: 1; Name is: Sue}, Person{ID is: 2; Name is: Mike}]
 </pre>
 </div>
 </div>
