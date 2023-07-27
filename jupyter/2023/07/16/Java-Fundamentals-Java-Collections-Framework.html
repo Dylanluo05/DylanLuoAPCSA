@@ -82,7 +82,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      40 min read
+      46 min read
     
 </span></p>
 
@@ -164,6 +164,12 @@ window.onload = wrap_img;
 </ul>
 </li>
 <li class="toc-entry toc-h1"><a href="#55.-Sorting-Lists">55. Sorting Lists </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
+<li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#56.-Natural-Ordering">56. Natural Ordering </a>
 <ul>
 <li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
 <li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
@@ -1115,7 +1121,7 @@ Person{ID is: 2; Name is: Mike}: 3
 <li>The Comparator Generic/template interface is implemented by classes defined by programmer as custom comparators. When the programmer does not want to compare objects on the basis of the natural ordering defined by the Comparable interface, which is implemented by the objects being compared, they create a custom class that implements the Comparator interface, which takes a parameterized type that indicates what type of data is being compared. With this custom class, the programmer can define the type of ordering the custom comparator is based on. The compare() method of the Comparator interface takes 2 object parameters of the defined parameterized type by the programmer, then returns a negative integer if the first object is less than the second object, returns 0 if both objects are considered equal, and returns a positive integer if the first object is greater than the second object.</li>
 <li>With a custom comparator, objects of any class can now be sorted (like custom objects instead of wrapper classes and Strings), even their classes do not implement the Comparable interface. Custom comparators can be used in correspondence with the sort() method of the Collections class to replace the default natural ordering sorting. By default, the sort() method utilizes the natural ordering comparator provided by Comparable, but with a custom comparator, the sort() method utilizes the compare() method provided by the implemented Comparator.</li>
 <li>The compareTo() method of the Comparable interface compares 2 objects based on natural ordering, and returns a negative integer if the first object (the one the method is called on) is less than the second object (the one passed as an argument), 0 if both objects are equal, and a positive integer if the first object is greater than the second object. It basically follows the same logic as the compare() method from the Comparator interface.</li>
-<li>To sort in descending order for a custom comparator, just reverse the usual (usual as in ascending) sign of the return value(s), meaning if the first object is less than the second object, return a positive integer, if they are equal, return 0, and if the first object is greater than the second object, return a negative integer.</li>
+<li>To sort in descending (greatest to least) order for a custom comparator, just reverse the usual (usual as in ascending) sign of the return value(s), meaning if the first object is less than the second object, return a positive integer, if they are equal, return 0, and if the first object is greater than the second object, return a negative integer.</li>
 </ul>
 
 </div>
@@ -1312,6 +1318,191 @@ Integer ArrayList after descending natural sort: [73, 37, 20, 3, 1]
 Custom object ArrayList before sort: [Person{ID: 1, Name: Joe}, Person{ID: 3, Name: Bob}, Person{ID: 4, Name: Claire}, Person{ID: 2, Name: Sue}]
 Custom object ArrayList after ascending sort by id: [Person{ID: 1, Name: Joe}, Person{ID: 2, Name: Sue}, Person{ID: 3, Name: Bob}, Person{ID: 4, Name: Claire}]
 Custom object ArrayList after ascending sort by name: [Person{ID: 3, Name: Bob}, Person{ID: 4, Name: Claire}, Person{ID: 1, Name: Joe}, Person{ID: 2, Name: Sue}]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="56.-Natural-Ordering">
+<a class="anchor" href="#56.-Natural-Ordering" aria-hidden="true"><span class="octicon octicon-link"></span></a>56. Natural Ordering<a class="anchor-link" href="#56.-Natural-Ordering"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Notes:">
+<a class="anchor" href="#Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes:<a class="anchor-link" href="#Notes:"> </a>
+</h2>
+<ul>
+<li>Natural ordering, which is also referred to as lexicographic (principles of the dictionary) ordering or alphanumeric ordering, is essentially a sorting basis that sorts elements either numerically (numbers), alphabetically (words), or alphanumerically (both numbers and words, where all numbers are first considered, and then the words in alphabetical order).</li>
+<li>The Collection Generic (takes parameterized type just like its sub-interfaces) interface provides an architectural foundation for managing data structures of the Java Collections framework, as it is implemented (directly by the classes themselves or indirectly through the sub-interfaces those classes implement) by different types of Lists, Sets, and Queues. As such, it provides fundamental operations for these diverse data structures such as adding, removing, querying (e.g. check if empty), updating, and iterating. The Collection interface has a variety of sub-interfaces (interface inheritance) such as List, Set, and Queue, which each define more specifically the characteristics and inner-workings of the data structures that fall under them.</li>
+<li>The Comparable Generic interface is typically used by a class (Comparable is automatically implemented by String and Wrapper classes) implementing it to define the natural ordering sorting basis of that class. Once a custom class effectively implements the compareTo() (ascending: return negative integer (current object is sorted to an earlier position in the data structure) if current object is less than specified argument object, return 0 (both objects are next to each other) if both objects are equal, and return a positive integer (current object is sorted to a later position) if the current object is greater than the specified argument object. descending: reverse the signs of the integer returned) method of Comparable, its custom objects can then be sorted in custom natural order within key data structures of the Java Collections framework.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Examples:">
+<a class="anchor" href="#Examples:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:<a class="anchor-link" href="#Examples:"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="c1">// Necessary imports</span>
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Collection</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Collections</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.TreeSet</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.lang.Comparable</span><span class="p">;</span>
+
+<span class="c1">// Make custom class Person implement Comparable interface with parameterized type Person</span>
+<span class="c1">// The Comparable interface here allows for Person custom objects to be compared to each other on the basis of a natural order that will need to be later defined here</span>
+<span class="kd">class</span> <span class="nc">Person</span> <span class="kd">implements</span> <span class="n">Comparable</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="p">;</span>
+
+    <span class="kd">public</span> <span class="nf">Person</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">"Person{"</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s">"}"</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Override hashCode() and equals() methods so that Sets can determine if objects of Person are distinct or not</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">hashCode</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// The value of the hash code is affected by the value of the name attribute, meaning objects of Person that are considered equal should have the same hash code</span>
+        <span class="kd">final</span> <span class="kt">int</span> <span class="n">prime</span> <span class="o">=</span> <span class="mi">31</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">prime</span> <span class="o">*</span> <span class="n">result</span> <span class="o">+</span> <span class="p">((</span><span class="n">name</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="o">?</span> <span class="mi">0</span> <span class="p">:</span> <span class="n">name</span><span class="p">.</span><span class="na">hashCode</span><span class="p">());</span>
+        <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="p">(</span><span class="n">Object</span> <span class="n">obj</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Use variable type Object super class, as Object accounts for all child classes, in case an object of a different class to the current object is passed</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span> <span class="o">==</span> <span class="n">obj</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">obj</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">getClass</span><span class="p">()</span> <span class="o">!=</span> <span class="n">obj</span><span class="p">.</span><span class="na">getClass</span><span class="p">())</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="c1">// Once both objects are confirmed to have the same class, down-cast the other object to the appropriate class variable type</span>
+        <span class="kd">final</span> <span class="n">Person</span> <span class="n">other</span> <span class="o">=</span> <span class="p">(</span><span class="n">Person</span><span class="p">)</span> <span class="n">obj</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">name</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="na">name</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">name</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="na">name</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// The compareTo() method is similar to that of the compare() method of the Comparator interface, and defines how Person objects should be compared in the custom order (usually defined as the natural order of these custom objects)</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">compareTo</span><span class="p">(</span><span class="n">Person</span> <span class="n">person</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Natural order by name length numerically ascending</span>
+        <span class="kt">int</span> <span class="n">len1</span> <span class="o">=</span> <span class="n">name</span><span class="p">.</span><span class="na">length</span><span class="p">();</span>
+        <span class="kt">int</span> <span class="n">len2</span> <span class="o">=</span> <span class="n">person</span><span class="p">.</span><span class="na">name</span><span class="p">.</span><span class="na">length</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">len1</span> <span class="o">&gt;</span> <span class="n">len2</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">len1</span> <span class="o">&lt;</span> <span class="n">len2</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="c1">// Do not return 0 automatically if 2 names have the same length, as we need to prevent conflict with the equals() method</span>
+            <span class="c1">// This is because for TreeSet and TreeMap, the return value of 0 from the compareTo() method may conflict with the return value from the equals() method within a class</span>
+            <span class="c1">// Since TreeSet and TreeMap use both compareTo() and equals() to determine the content and order of the elements within them, if compareTo() deems 2 values as equal, when equals() does not, this conflict may result in TreeSet or TreeMap ignoring some distinct elements which were deemed equal by compareTo()</span>
+            <span class="cm">/* return 0; */</span>
+
+            <span class="c1">// Since the name attribute is of type String, the version of the compareTo() method used here will be that of the parameterized String class type, thus showing the usefulness of parameterized type (different data types should be worked with differently)</span>
+            <span class="c1">// Even though name is a private attribute, we do not need getters or setters to access it from the other object, since it is being accessed within the class it was originally defined in</span>
+            <span class="c1">// If 2 objects' names have the same length, compare them alphabetically (actually looks through content of Strings). This makes it so that the return values of equals() and compareTo() no longer conflict with each other, as the compareTo() method now actually searches through the contents of name attribute values</span>
+            <span class="c1">// Alternatively, we could have instead modified the equals() method to have consistent return values with the compareTo() method</span>
+            <span class="k">return</span> <span class="n">name</span><span class="p">.</span><span class="na">compareTo</span><span class="p">(</span><span class="n">person</span><span class="p">.</span><span class="na">name</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Define ArrayList with parameterized type custom object of variable type Person</span>
+        <span class="c1">// Lists need to be manually sorted</span>
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span> <span class="n">list</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span><span class="p">();</span>
+        <span class="c1">// Define TreeSet with parameterized type Person, which stores elements automatically sorted in natural order </span>
+        <span class="c1">// However, since Person is a custom class, we need to manually make it implement the Comparable interface, as well as define its natural ordering</span>
+        <span class="c1">// This way, the Collections sort() method will work on data structures that store Person objects, and TreeSet can save Person objects and automatically sort them by the manually defined natural order</span>
+        <span class="n">Set</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span> <span class="n">set</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TreeSet</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span><span class="p">();</span>
+
+        <span class="n">addElements</span><span class="p">(</span><span class="n">list</span><span class="p">);</span>
+        <span class="c1">// Sort ArrayList with elements of variable and object type Person, which in turn implements the Comparable interface (allows for Collections class's sort() method to work in the first place), by natural order</span>
+        <span class="n">Collections</span><span class="p">.</span><span class="na">sort</span><span class="p">(</span><span class="n">list</span><span class="p">);</span>
+        <span class="n">addElements</span><span class="p">(</span><span class="n">set</span><span class="p">);</span>
+
+        <span class="n">showElements</span><span class="p">(</span><span class="n">list</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+        <span class="n">showElements</span><span class="p">(</span><span class="n">set</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// static so this method can be called directly inside the static main() method</span>
+    <span class="c1">// private so this method can only be called inside the class (however, this method can be indirectly called outside of the class if it is called within a public class in the same class)</span>
+    <span class="c1">// The Collection interface is extended by List and Set interfaces, so data structures that fall under variable type List and Set also by inheritance fall under variable type Collection</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">addElements</span><span class="p">(</span><span class="n">Collection</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span> <span class="n">collection</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">collection</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="k">new</span> <span class="n">Person</span><span class="p">(</span><span class="s">"Joe"</span><span class="p">));</span>
+        <span class="n">collection</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="k">new</span> <span class="n">Person</span><span class="p">(</span><span class="s">"Sue"</span><span class="p">));</span>
+        <span class="n">collection</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="k">new</span> <span class="n">Person</span><span class="p">(</span><span class="s">"Juliet"</span><span class="p">));</span>
+        <span class="n">collection</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="k">new</span> <span class="n">Person</span><span class="p">(</span><span class="s">"Claire"</span><span class="p">));</span>
+        <span class="n">collection</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="k">new</span> <span class="n">Person</span><span class="p">(</span><span class="s">"Mike"</span><span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">showElements</span><span class="p">(</span><span class="n">Collection</span><span class="o">&lt;</span><span class="n">Person</span><span class="o">&gt;</span> <span class="n">collection</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">Person</span> <span class="n">element</span> <span class="p">:</span> <span class="n">collection</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="n">element</span> <span class="o">+</span> <span class="s">" "</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">Application</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Person{Joe} Person{Sue} Person{Mike} Person{Claire} Person{Juliet} 
+
+Person{Joe} Person{Sue} Person{Mike} Person{Claire} Person{Juliet} 
 </pre>
 </div>
 </div>

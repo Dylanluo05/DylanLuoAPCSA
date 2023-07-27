@@ -1017,6 +1017,7 @@ Testing again...
 <li>The accepted good practice is that whenever you can make a certain variable (attribute or method) private, make it private; if the variable needs to be inherited by child classes, make it protected; and if the user should be able to access the variable, make it public. Most data should be encapsulated, with the exception of constant variables.</li>
 <li>An API stands for Application Programming Interface, which essentially allows the public to access certain features and functionalities of a program.</li>
 <li>An API documentation is essentially a collection of references, descriptions, and examples (such as different kinds of attributes/methods and constructors, as well as the API's properties) that show users how to use and employ the functionality of a particular API.</li>
+<li>It is important to note that when you are working with an object within a class, and the object is of that particular class (instantiating an object of the class within itself), we do not necessarily need getters and setters to access the encapsulated attributes and methods of that object; we can just access them using dot notation with the object name, and this is because the separate object's attributes and methods can be directly accessed within the class it was originally defined from (we just need the object name for reference, in order to differentiate its properties from that of the current object, which is represented by the current class code itself).</li>
 </ul>
 
 </div>
