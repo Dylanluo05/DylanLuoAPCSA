@@ -82,7 +82,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      53 min read
+      57 min read
     
 </span></p>
 
@@ -176,6 +176,12 @@ window.onload = wrap_img;
 </ul>
 </li>
 <li class="toc-entry toc-h1"><a href="#57.-Queues">57. Queues </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
+<li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#58.-Using-Iterators">58. Using Iterators </a>
 <ul>
 <li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
 <li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
@@ -1566,6 +1572,7 @@ Person{Joe} Person{Sue} Person{Mike} Person{Claire} Person{Juliet}
     <div class="input_area">
 <div class=" highlight hl-java"><pre><span></span><span class="c1">// Necessary imports</span>
 <span class="kn">import</span> <span class="nn">java.util.Queue</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.concurrent.BlockingQueue</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nn">java.util.concurrent.ArrayBlockingQueue</span><span class="p">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="p">{</span>
@@ -1688,6 +1695,164 @@ Queue 2 poll: 10
 Queue 2 poll: 20
 Queue 2 poll: null
 Queue 2 peek: null
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="58.-Using-Iterators">
+<a class="anchor" href="#58.-Using-Iterators" aria-hidden="true"><span class="octicon octicon-link"></span></a>58. Using Iterators<a class="anchor-link" href="#58.-Using-Iterators"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Notes:">
+<a class="anchor" href="#Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes:<a class="anchor-link" href="#Notes:"> </a>
+</h2>
+<ul>
+<li>In Java, the Iterator Generic (template type, meaning we have to specify parameterized type of the elements stored within it) interface of the Java Collections framework is useful for traversing through the elements of core data structures such as List, Set, and Map, which are all a part of the Java Collections framework. The Iterator interface provides methods that are effective in iterating through the elements of a certain type of collection, one by one, without necessarily interfering the collection's implementation details or inner-workings.</li>
+<li>The iterator() method of the Collection interface from the Java Collections framework essentially returns a Generic (has parameterized data type that will match that of the data structure) Iterator object when called on a data structure (Iterator object derived from that data structure), and this Iterator object provides further methods (obtained from Iterator interface, but each collection's way of implementing Iterator's methods may be different from each other) that allow the elements of the data structure to be accessed one by one, thus enabling iteration. </li>
+<li>An Iterator object can only be derived from a data structure if that type of collection implements the Iterable interface, since classes that implement Iterable will have the correct implementation of the iterator() method that was originally declared in Collection to properly create an Iterator Generic object. Just about all of the data structures in the Java Collections framework implement Iterable (more on Iterable later), as important interfaces like List, Set, and Map all extend the Iterable interface, and by inheritance all of the classes that implement them will have to by extension implement Iterable.</li>
+<li>The ListIterator interface of the Java Collections framework provides additional methods useful for iterating through Lists, not only forwards, but also backwards, unlike the standard Iterator interface. ListIterator objects can be created by calling the listIterator() method on Lists that implement Iterable.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Examples:">
+<a class="anchor" href="#Examples:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:<a class="anchor-link" href="#Examples:"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.LinkedList</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Iterator</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">LinkedList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">animals</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">();</span>
+        <span class="n">animals</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"fox"</span><span class="p">);</span>
+        <span class="n">animals</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"cat"</span><span class="p">);</span>
+        <span class="n">animals</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"dog"</span><span class="p">);</span>
+        <span class="n">animals</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"rabbit"</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Iteration with enhanced for loop:"</span><span class="p">);</span>
+        <span class="c1">// Standard way of iteration through List is using for loop by list index or enhanced for loop</span>
+        <span class="c1">// For-each loops actually sort of utilize Iterator behind-the-scenes</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">String</span> <span class="n">animal</span> <span class="p">:</span> <span class="n">animals</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">animal</span><span class="p">);</span>
+            <span class="c1">// animals.remove(2);</span>
+            <span class="c1">// The remove() method of LinkedList will not work here, as it will result in a ConcurrentModificationException due to an iteration operation and removal operation happening at the same time</span>
+        <span class="p">}</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+
+        <span class="c1">// Create Iterator object with parameterized type String from the iterator() method used on the LinkedList, and store that in a variable with variable type Iterator interface with parameterized type String (has to match that of the Iterator object created from the collection)</span>
+        <span class="n">Iterator</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">it</span> <span class="o">=</span> <span class="n">animals</span><span class="p">.</span><span class="na">iterator</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Iteration with Iterator object:"</span><span class="p">);</span>
+        <span class="c1">// hasNext() method of Iterator interface returns true if the Iterator object still has another element in front to access, and returns false otherwise</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">it</span><span class="p">.</span><span class="na">hasNext</span><span class="p">())</span> <span class="p">{</span>
+            <span class="c1">// next() method provided by Iterator interface, when called on the Iterator object, accesses and returns the next element in the collection</span>
+            <span class="c1">// When the next() method is first called, it accesses the first element in the data structure</span>
+            <span class="n">String</span> <span class="n">animal</span> <span class="o">=</span> <span class="n">it</span><span class="p">.</span><span class="na">next</span><span class="p">();</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">animal</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">animal</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">"cat"</span><span class="p">))</span> <span class="p">{</span>
+                <span class="c1">// remove() method of Iterator interface removes the current element, which is the one last returned by the next() method, from the actual collection itself</span>
+                <span class="c1">// This will not result in a ConcurrentModificationException, since the element being removed as just been iterated through, and Iterator will continue traversing through the elements after it</span>
+                <span class="n">it</span><span class="p">.</span><span class="na">remove</span><span class="p">();</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"LinkedList after calling remove() method on Iterator object: "</span> <span class="o">+</span> <span class="n">animals</span><span class="p">.</span><span class="na">toString</span><span class="p">());</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+
+        <span class="c1">// Create ListIterator object with parameterized type String with listIterator() method</span>
+        <span class="n">ListIterator</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">lit</span> <span class="o">=</span> <span class="n">animals</span><span class="p">.</span><span class="na">listIterator</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Iteration with ListIterator object:"</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Forwards:"</span><span class="p">);</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">lit</span><span class="p">.</span><span class="na">hasNext</span><span class="p">())</span> <span class="p">{</span>
+            <span class="n">String</span> <span class="n">animal</span> <span class="o">=</span> <span class="n">lit</span><span class="p">.</span><span class="na">next</span><span class="p">();</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">animal</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">animal</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="s">"fox"</span><span class="p">))</span> <span class="p">{</span>
+                <span class="c1">// set() method updates element last accessed in the collection</span>
+                <span class="n">lit</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="s">"lion"</span><span class="p">);</span>
+                <span class="c1">// add() method adds element right before the element that would currently be accessed by the next() method (that element would still be accessed by next() after appending, as the element added will be skipped by next())</span>
+                <span class="n">lit</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"cat"</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Backwards:"</span><span class="p">);</span>
+        <span class="c1">// hasPrevious() returns true if ListIterator object still has another element behind to access in the List, and returns false otherwise</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">lit</span><span class="p">.</span><span class="na">hasPrevious</span><span class="p">())</span> <span class="p">{</span>
+            <span class="c1">// previous() method accesses and returns the previous element in the List, and will return the last element if called for the first time at the end of the List by the ListIterator object</span>
+            <span class="n">String</span> <span class="n">animal</span> <span class="o">=</span> <span class="n">lit</span><span class="p">.</span><span class="na">previous</span><span class="p">();</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">animal</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">Application</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Iteration with enhanced for loop:
+fox
+cat
+dog
+rabbit
+
+Iteration with Iterator object:
+fox
+cat
+dog
+rabbit
+
+LinkedList after calling remove() method on Iterator object: [fox, dog, rabbit]
+
+Iteration with ListIterator object:
+Forwards:
+fox
+dog
+rabbit
+
+Backwards:
+rabbit
+dog
+cat
+lion
+
 </pre>
 </div>
 </div>
