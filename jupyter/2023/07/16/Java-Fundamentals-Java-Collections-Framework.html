@@ -82,7 +82,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      142 min read
+      147 min read
     
 </span></p>
 
@@ -194,6 +194,12 @@ window.onload = wrap_img;
 </ul>
 </li>
 <li class="toc-entry toc-h1"><a href="#60.-Deciding-which-Collection-to-Use">60. Deciding which Collection to Use </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
+<li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#61.-Complex-Data-Structures">61. Complex Data Structures </a>
 <ul>
 <li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
 <li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
@@ -515,7 +521,7 @@ LinkedList after changes:
 <li>In Java, the HashMap, which is a part of the Java Collections framework, is a data structure that saves items as key-value pairs. This means that a specific element in a HashMap consists of 2 parts: a key and a value, where the key is used to access its corresponding value. HashMaps are Generics, as they ask for 2 parameterized types, one to define the data type of the keys and the other to define that of the values. Basically, think of a HashMap as a look-up table that stores key-value pairs, with every key being unique and each key giving access to a certain value. If a key-value pair is appended to a HashMap but the key already exists, the new value will replace the already-existing value in the HashMap, and the key will remain the same (you can have duplicate values, but keys must be unique).</li>
 <li>Most data structures, such as ArrayLists and HashMaps which are designed to hold objects, that are a part of the Java Collections framework use auto-boxing to automatically convert primitive data into their non-primitive/object counterparts (wrapper classes. e.g. int to Integer, which happens when appending primitive variables to data structures such as ArrayList). Unboxing is the process fo converting a wrapper class into its primitive data type counterpart (e.g. Integer to int, which happens when retrieving primitive values from data structures such as ArrayList).</li>
 <li>HashMap is not an ordered data structure, as its appended element order does not necessarily match its retrieved element order (the retrieved element order is not always the same every time for HashMaps, since their elements are typically retrieved by their value properties via keys, not indices). HashMaps implement a hashing function, which essentially allows them to map keys to certain indices within an internal array, giving them the ability to have fast access times when retrieving values based on keys.</li>
-<li>The Map.Entry<code>&lt;Key Type, Value Type&gt;</code> Generic method of the Map interface is used to retrieve a specific entry/element of a HashMap into an object that stores the key and value pair. The entrySet() method of the HashMap class creates a set and returns a set-view of all of the elements/entries in the HashMap. These 2 methods are essentially used in correspondence with each other to iterate through HashMaps, allowing programmers to access a specific entry, as well as useful properties such as the entry's key and value pair. The keySet() method of the HashMap class creates a set/collection of all of the keys in the HashMap for iteration, while the values() method of the HashMap class creates a set/collection of all of the values in the HashMap for iteration. Just like HashMaps, the sets created by keySet() and values() are not ordered.</li>
+<li>The Map.Entry<code>&lt;Key Type, Value Type&gt;</code> Generic method of the Map interface is used to retrieve a specific entry/element of a HashMap into an object that stores the key and value pair. The entrySet() method of the HashMap class creates a Set (collection of unique elements, focusing on the keys, which should be unique) and returns a set-view of all of the elements/entries in the HashMap. These 2 methods are essentially used in correspondence with each other to iterate through HashMaps, allowing programmers to access a specific entry, as well as useful properties such as the entry's key and value pair. The keySet() method of the HashMap class creates a Set/collection of all of the keys in the HashMap for iteration, while the values() method of the HashMap class creates a collection of all of the values (can have duplicates and values do not have to be unique) in the HashMap for iteration. Just like HashMaps, the collections created by keySet() and values() are not ordered.</li>
 </ul>
 
 </div>
@@ -2161,6 +2167,145 @@ a.closest("[data-ved]"))?D(f)||"":"";f=f||"";if(a.hasAttribute("jsname"))a=a.get
 </pre></div>
 
     </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="61.-Complex-Data-Structures">
+<a class="anchor" href="#61.-Complex-Data-Structures" aria-hidden="true"><span class="octicon octicon-link"></span></a>61. Complex Data Structures<a class="anchor-link" href="#61.-Complex-Data-Structures"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Notes:">
+<a class="anchor" href="#Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes:<a class="anchor-link" href="#Notes:"> </a>
+</h2>
+<ul>
+<li>Usually, when obtaining data from resources such as files and databases, we would want to create a class that contains properties to hold the different kinds of data, then save objects of that class (each object represents an individual element of the resource, and each element has properties of data), along with each of their properties holding certain areas of the data from the resource, into a Generic Java collection that has a parameterized data type of the class variable type. However, sometimes, we do not necessary know how we should represent certain parts of the data from a resource in a class, such as when some parts of the data are more intricate (i.e. some of the data cannot be directly stored as Wrapper classes or Strings, but rather need to be represented as a data structure that possible stores other data structures) and we want to also represent the important relationships amongst the different data sets. This is where complex data structures come to use.</li>
+<li>In Java, a complex data structure is typically a data structure that stores and combines other objects and data structures within itself, and is sometimes sort of like a nested collection; for example, a Map that contains Sets as its values (with Set and its parameterized type defined in the Map's value parameterized type). A complex data structure essentially combines multiple instances of other data structures, and can come in numerous forms such as a List of Lists or an array of arrays. Complex data structures are mainly used to represent and manage more intricate data sets and the relationships amongst them, effectively enabling greater abstraction (reduce data complexity and increase efficiency and readability), as well as more efficient and advanced data management.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Examples:">
+<a class="anchor" href="#Examples:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:<a class="anchor-link" href="#Examples:"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.Map</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Set</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.HashMap</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.LinkedHashSet</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="p">{</span>
+    <span class="c1">// Make arrays static, so that they can be accessed directly within the static main() method without creating an object of the Application class</span>
+    <span class="c1">// Use example with arrays to represent JSON data that you would typically get from resources such as files and databases</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span><span class="o">[]</span> <span class="n">vehicles</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s">"ambulance"</span><span class="p">,</span> <span class="s">"helicopter"</span><span class="p">,</span> <span class="s">"lifeboat"</span>
+    <span class="p">};</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span><span class="o">[][]</span> <span class="n">drivers</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="p">{</span><span class="s">"Fred"</span><span class="p">,</span> <span class="s">"Sue"</span><span class="p">,</span> <span class="s">"Pete"</span><span class="p">},</span>
+        <span class="p">{</span><span class="s">"Sue"</span><span class="p">,</span> <span class="s">"Richard"</span><span class="p">,</span> <span class="s">"Bob"</span><span class="p">,</span> <span class="s">"Fred"</span><span class="p">},</span>
+        <span class="p">{</span><span class="s">"Pete"</span><span class="p">,</span> <span class="s">"Mary"</span><span class="p">,</span> <span class="s">"Bob"</span><span class="p">}</span>
+    <span class="p">};</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// The scenario here is that the first row of drivers can operate the ambulance, the second row can operate the helicopter, and the third row can operate the lifeboat</span>
+        <span class="c1">// In each row, the first person (0th index) has the highest precedence of driving their assigned vehicle, but if they are not available, the second person takes precedence, and so on</span>
+        
+        <span class="c1">// Example of a complex data structure, where the Map takes keys of parameterized type String, but also values of parameterized type Set, which in turn has parameterized type String</span>
+        <span class="c1">// So basically, a complex data structure in this case is sort of like a nested collection, where a Map is storing Sets within it. The key here represents the vehicle, and the corresponding value represents the unique set of eligible drivers</span>
+        <span class="c1">// Use Map then parameterized Set interfaces for variable type in order to account for different types of Maps and Sets, then specify HashMap class for object type but still with parameterized Set interface, since we need to define the type of class for the Map object, but we do not need to define the type of Set yet as it is still just a parameterized variable type</span>
+        <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;&gt;</span> <span class="n">personnel</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;&gt;</span><span class="p">();</span>
+
+        <span class="c1">// Use length to get size of array, but use size() to get size of Generic collections such as Lists and Sets</span>
+        <span class="c1">// Append appropriate key-value pairs to the Map, according to the scenario described earlier</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">vehicles</span><span class="p">.</span><span class="na">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">String</span> <span class="n">vehicle</span> <span class="o">=</span> <span class="n">vehicles</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">;</span>
+            <span class="n">String</span><span class="o">[]</span> <span class="n">driverList</span> <span class="o">=</span> <span class="n">drivers</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">;</span>
+
+            <span class="c1">// Specify LinkedHashSet class for the Set type, since we are creating a Set object here, and we want to maintain array/insertion order</span>
+            <span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">driverSet</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedHashSet</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">();</span>
+            <span class="k">for</span> <span class="p">(</span><span class="n">String</span> <span class="n">driver</span> <span class="p">:</span> <span class="n">driverList</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">driverSet</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">driver</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="c1">// Vehicle as key, and set of corresponding unique eligible drivers as value</span>
+            <span class="n">personnel</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">vehicle</span><span class="p">,</span> <span class="n">driverSet</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Put this block of code in a manual pair of curly brackets, which manually scopes this code block to between the brackets</span>
+        <span class="c1">// This allows us to use the variable names defined within this code block outside the manually-defined scope</span>
+        <span class="p">{</span>
+            <span class="c1">// Get one particular Set of drivers for a specified vehicle from the Map</span>
+            <span class="c1">// Can use driverList as variable name again because it is outside the scope of the previously defined driverList variable</span>
+            <span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">driverList</span> <span class="o">=</span> <span class="n">personnel</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">"helicopter"</span><span class="p">);</span>
+            <span class="k">for</span> <span class="p">(</span><span class="n">String</span> <span class="n">driver</span> <span class="p">:</span> <span class="n">driverList</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Eligible driver: "</span> <span class="o">+</span> <span class="n">driver</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+
+        <span class="c1">// Iterate through keys and corresponding values of the Map, which in this case can be considered a complex data structure</span>
+        <span class="c1">// keySet() method creates an unordered Set of all of the unique keys in the HashMap</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">String</span> <span class="n">vehicle</span> <span class="p">:</span> <span class="n">personnel</span><span class="p">.</span><span class="na">keySet</span><span class="p">())</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="n">vehicle</span> <span class="o">+</span> <span class="s">": "</span><span class="p">);</span>
+            <span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">driverList</span> <span class="o">=</span> <span class="n">personnel</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">vehicle</span><span class="p">);</span>
+
+            <span class="k">for</span> <span class="p">(</span><span class="n">String</span> <span class="n">driver</span> <span class="p">:</span> <span class="n">driverList</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="n">driver</span> <span class="o">+</span> <span class="s">" "</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">Application</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Eligible driver: Sue
+Eligible driver: Richard
+Eligible driver: Bob
+Eligible driver: Fred
+
+helicopter: Sue Richard Bob Fred 
+lifeboat: Pete Mary Bob 
+ambulance: Fred Sue Pete 
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
