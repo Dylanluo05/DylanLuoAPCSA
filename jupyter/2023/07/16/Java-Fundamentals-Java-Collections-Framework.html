@@ -82,7 +82,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      150 min read
+      159 min read
     
 </span></p>
 
@@ -208,6 +208,12 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h1"><a href="#62.-General-Tips-for-Computer-Science-Jobs-and-Coding">62. General Tips for Computer Science Jobs and Coding </a>
 <ul>
 <li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#63.-Lambda-Expressions">63. Lambda Expressions </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Notes:">Notes: </a></li>
+<li class="toc-entry toc-h2"><a href="#Examples:">Examples: </a></li>
 </ul>
 </li>
 </ul><!--
@@ -2356,6 +2362,260 @@ ambulance: Fred Sue Pete
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="63.-Lambda-Expressions">
+<a class="anchor" href="#63.-Lambda-Expressions" aria-hidden="true"><span class="octicon octicon-link"></span></a>63. Lambda Expressions<a class="anchor-link" href="#63.-Lambda-Expressions"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Notes:">
+<a class="anchor" href="#Notes:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Notes:<a class="anchor-link" href="#Notes:"> </a>
+</h2>
+<ul>
+<li>In Java, lambda expressions (introduced in Java 8) essentially represent a single-method interface by utilizing a functional interface, which is an interface that contains only one abstract method, but can have multiple instance or static methods. Lambda expressions are also known as lambda functions or anonymous methods, because they basically provide a method that does not have a name, but still has code functionality. Lambda expressions enable the ability to instantiate a functional interface and define the implementation of its abstract method in a concise way. Lambda expressions have a variety of uses, such as when a programmer wants to pass a block of code to run in its own separate thread (employed in multi-thread environments), or when the programmer wants to re-define the abstract methods of widely-used functional interfaces such as Comparable of the Java Collections framework.</li>
+<li>Final variables essentially have constant values that cannot be changed. Effectively final variables are essentially normal variables whose values do not change after being instantiated with initial values. Final and effectively final variables are allowed to be used in anonymous classes and lambda expressions. Lambda expressions are very similar to anonymous classes in terms of purpose, although they have their key differences. Lambda expressions are essentially objects/instances of functional interfaces, and have useful abilities that allow it to support functional programming, which is a programming style that mainly applies and inter-connects functions as its algorithmic-based programming model.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Examples:">
+<a class="anchor" href="#Examples:" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples:<a class="anchor-link" href="#Examples:"> </a>
+</h2>
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="c1">// The Executable interface can be considered a functional interface, since it only contains one abstract method</span>
+<span class="kd">interface</span> <span class="nc">Executable</span> <span class="p">{</span>
+    <span class="c1">// Abstract method (body is not defined yet, but will be defined by classes/lambda expressions that implement the Executable functional interface)</span>
+    <span class="kt">void</span> <span class="nf">execute</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kd">interface</span> <span class="nc">AnotherExecutable</span> <span class="p">{</span>
+    <span class="c1">// This abstract method needs to have a return value</span>
+    <span class="kt">int</span> <span class="nf">anotherExecute</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kd">interface</span> <span class="nc">ThirdExecutable</span> <span class="p">{</span>
+    <span class="c1">// Abstract method that takes parameters</span>
+    <span class="kt">int</span> <span class="nf">thirdExecute</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">interface</span> <span class="nc">StringExecutable</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="nf">stringExecute</span><span class="p">(</span><span class="n">String</span> <span class="n">a</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">interface</span> <span class="nc">FourthExecutable</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="nf">fourthExecute</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">Runner</span> <span class="p">{</span>
+    <span class="c1">// The run() method takes in its parameter objects of classes that implement the Executable interface</span>
+    <span class="c1">// Executable can be considered the parent variable type of all of the child classes that implement it, since those classes technically inherit its declared methods</span>
+    <span class="c1">// The object/anonymous class/lambda expression passed here will have its own execute() abstract method of the Executable interface defined</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="p">(</span><span class="n">Executable</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Executing code block..."</span><span class="p">);</span>
+        <span class="n">e</span><span class="p">.</span><span class="na">execute</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">anotherRun</span><span class="p">(</span><span class="n">AnotherExecutable</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Executing code block..."</span><span class="p">);</span>
+        <span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="n">e</span><span class="p">.</span><span class="na">anotherExecute</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Return value is: "</span> <span class="o">+</span> <span class="n">value</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Method overloading with different kinds of parameters</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">thirdRun</span><span class="p">(</span><span class="n">ThirdExecutable</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Executing code block..."</span><span class="p">);</span>
+        <span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="n">e</span><span class="p">.</span><span class="na">thirdExecute</span><span class="p">(</span><span class="mi">12</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Return value is: "</span> <span class="o">+</span> <span class="n">value</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">thirdRun</span><span class="p">(</span><span class="n">StringExecutable</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Executing code block..."</span><span class="p">);</span>
+        <span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="n">e</span><span class="p">.</span><span class="na">stringExecute</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Return value is: "</span> <span class="o">+</span> <span class="n">value</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">fourthRun</span><span class="p">(</span><span class="n">FourthExecutable</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Executing code block..."</span><span class="p">);</span>
+        <span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="n">e</span><span class="p">.</span><span class="na">fourthExecute</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Return value is: "</span> <span class="o">+</span> <span class="n">value</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Application</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Runner</span> <span class="n">runner</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Runner</span><span class="p">();</span>
+        <span class="c1">// Before lambda expressions...</span>
+        <span class="c1">// Pass into the run() method an anonymous class, which does not have a name. Although we cannot instantiate an object of the interface itself, the instantiated anonymous class here implements the Executable interface and subsequently implements its method(s), as shown by new Executable() {} notation</span>
+        <span class="n">runner</span><span class="p">.</span><span class="na">run</span><span class="p">(</span><span class="k">new</span> <span class="n">Executable</span><span class="p">()</span> <span class="p">{</span>
+            <span class="c1">// Define execute() method here to be called in the run() method in the Runner class</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">void</span> <span class="nf">execute</span><span class="p">()</span> <span class="p">{</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Hello there"</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+
+        <span class="c1">// After lambda expressions...</span>
+        <span class="c1">// Lambda expression that only has one statement is passed to the run() method</span>
+        <span class="c1">// (parameters) -&gt; expression is the syntax of the lambda expression we passed into the run() method, where (parameters) indicates the parameters (can be none) of the abstract method of the functional interface (we can define operations on the parameters. Keep in mind that we are talking about the parameters themselves, not the arguments passed into the method), and expression indicates the code body of the lambda expression that defines the implementation of the abstract method</span>
+        <span class="c1">// Since run() takes parameters of variable type Executable (objects of classes that implement the Executable functional interface), when the lambda expression is passed into run(), the program will know that it will define the abstract method of the functional interface Executable, and so the abstract execute() method will now have statements to actually execute when called upon within run()</span>
+        <span class="n">runner</span><span class="p">.</span><span class="na">run</span><span class="p">(()</span> <span class="o">-&gt;</span> <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Hello there"</span><span class="p">));</span>
+
+        <span class="c1">// Lambda expression that has a code block that contains multiple expressions is passed to the run() method</span>
+        <span class="c1">// (parameters) -&gt; {statements;} is the syntax of the lambda expression here, where {statements;} indicates the multiple statements, each separated by a ; and a new line, that are passed into the run() method to define the implementation of the abstract execute() method of the Executable functional interface</span>
+        <span class="c1">// The lambda expression will take on a variable type Executable functional interface, which will determine the abstract method the lambda expression will ultimately implement, effectively allowing it represent a single-method interface with the utilization of a functional interface</span>
+        <span class="n">runner</span><span class="p">.</span><span class="na">run</span><span class="p">(()</span> <span class="o">-&gt;</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"This is code passed in a lambda expression"</span><span class="p">);</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Hello there"</span><span class="p">);</span>
+        <span class="p">});</span>
+
+        <span class="c1">// Store a lambda expression into an object of variable type Executable interface</span>
+        <span class="c1">// The lambda expression here sort of acts like an anonymous class that implements the Executable interface (satisfying the defined variable type), as it implements the code body of the abstract method provided by the functional interface</span>
+        <span class="c1">// The lambda expression is considered like sort of an anonymous function, as it defines the code block of a method that has no name, but this method ultimately defines the implementation of the abstract method of the functional interface that this lambda expression is declared to implement</span>
+        <span class="n">Executable</span> <span class="n">executableObject</span> <span class="o">=</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Hello again"</span><span class="p">);</span>
+        <span class="p">};</span>
+
+        <span class="c1">// Alternate way, where you cast the lambda expression object to variable type Executable, and store it in an object variable of variable type Object, which encompasses all child classes and interfaces</span>
+        <span class="cm">/*</span>
+<span class="cm">         * Object executableObject = (Executable) () -&gt; {</span>
+<span class="cm">         *     System.out.println("Hello again");</span>
+<span class="cm">         * };</span>
+<span class="cm">         */</span>
+
+        <span class="n">runner</span><span class="p">.</span><span class="na">run</span><span class="p">(</span><span class="n">executableObject</span><span class="p">);</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+
+        <span class="c1">// Pass into anotherRun() an anonymous class of variable type AnotherExecutable that will define the anotherExecute() abstract method</span>
+        <span class="n">runner</span><span class="p">.</span><span class="na">anotherRun</span><span class="p">(</span><span class="k">new</span> <span class="n">AnotherExecutable</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">int</span> <span class="nf">anotherExecute</span><span class="p">()</span> <span class="p">{</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Anonymous class running"</span><span class="p">);</span>
+                <span class="k">return</span> <span class="mi">7</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+
+        <span class="c1">// Pass into anotherRun() a lambda expression with multiple statements, which after being passed into the method will take on variable type AnotherExecutable, and this variable type allows the program to know which method the lambda expression implements, as well as that method's return type</span>
+        <span class="n">runner</span><span class="p">.</span><span class="na">anotherRun</span><span class="p">(()</span> <span class="o">-&gt;</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Lambda expression running"</span><span class="p">);</span>
+            <span class="k">return</span> <span class="mi">8</span><span class="p">;</span>
+        <span class="p">});</span>
+
+        <span class="c1">// Pass into anotherRun() a lambda expression with one statement, and the program can automatically recognize the data type of that statement, and use that statement as the return value (thus removing the need for the return keyword here)</span>
+        <span class="n">runner</span><span class="p">.</span><span class="na">anotherRun</span><span class="p">(()</span> <span class="o">-&gt;</span> <span class="mi">9</span><span class="p">);</span>
+
+        <span class="n">runner</span><span class="p">.</span><span class="na">thirdRun</span><span class="p">(</span><span class="k">new</span> <span class="n">ThirdExecutable</span><span class="p">()</span> <span class="p">{</span>
+            <span class="c1">// Override abstract method while keeping the same parameters</span>
+            <span class="c1">// Make sure to have appropriate return value</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">int</span> <span class="nf">thirdExecute</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="mi">7</span> <span class="o">+</span> <span class="n">a</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+
+        <span class="c1">// Return the sum of 8 and a as the return value of the lambda expression</span>
+        <span class="c1">// Declare the parameter(s) of the abstract method in the lambda expression (we don't usually need to define the data type of the parameter, but since thirdRun() has been method overloaded in such a way (same number of parameters but different types), we need to in order for the program to determine which version of thirdRun() is being run), as well as the define the code body of the abstract method</span>
+        <span class="n">runner</span><span class="p">.</span><span class="na">thirdRun</span><span class="p">((</span><span class="kt">int</span> <span class="n">a</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="mi">8</span> <span class="o">+</span> <span class="n">a</span><span class="p">);</span>
+
+        <span class="c1">// Call other version of thirdRun(), where the abstract method and lambda expression take a parameter of type String instead of int</span>
+        <span class="n">runner</span><span class="p">.</span><span class="na">thirdRun</span><span class="p">((</span><span class="n">String</span> <span class="n">a</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+            <span class="k">return</span> <span class="mi">7</span><span class="p">;</span>
+        <span class="p">});</span>
+
+        <span class="c1">// Use effectively final variable defined in main() method in anonymous class and lambda expression</span>
+        <span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+
+        <span class="kt">int</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">77</span><span class="p">;</span>
+
+        <span class="n">runner</span><span class="p">.</span><span class="na">fourthRun</span><span class="p">(</span><span class="k">new</span> <span class="n">FourthExecutable</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nd">@Override</span>
+            <span class="kd">public</span> <span class="kt">int</span> <span class="nf">fourthExecute</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">// Can do this: int d = 88, since the anonymous class creates its own scope that allows us to redeclare variables just for within that scope</span>
+                <span class="c1">// Reminder that re-declared variables within inner scope do not affect the previously declared variables in the outer scope</span>
+                <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="n">c</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+
+        <span class="c1">// No need to define data types of the parameters here since there is no method overloading. The program will figure out the data types itself</span>
+        <span class="n">runner</span><span class="p">.</span><span class="na">fourthRun</span><span class="p">((</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">{</span>
+            <span class="c1">// Can't do this: int d= 8, since the lambda expression technically does not create its own scope</span>
+            <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="n">c</span><span class="p">;</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">Application</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Executing code block...
+Hello there
+Executing code block...
+Hello there
+Executing code block...
+This is code passed in a lambda expression
+Hello there
+Executing code block...
+Hello again
+
+Executing code block...
+Anonymous class running
+Return value is: 7
+Executing code block...
+Lambda expression running
+Return value is: 8
+Executing code block...
+Return value is: 9
+Executing code block...
+Return value is: 19
+Executing code block...
+Return value is: 20
+Executing code block...
+Hello
+Return value is: 7
+Executing code block...
+Return value is: 125
+Executing code block...
+Return value is: 125
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
 </div>
 
 
